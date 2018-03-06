@@ -6,7 +6,7 @@ public class Main {
                 3, 5, 10, 0, 3, 10,
 
                 6, 0);
-
+//lolleren
         Player tummas = new Player("Tummas Jóhan Sigvardsen", "Godsbanen 17, 3., 22, 9000 Aalborg",
 
                 "tsigva16@student.aau.dk","Din mor", 50695073,"Defence", "22-10-1992",
