@@ -18,11 +18,9 @@ public class Main {
         System.out.println(andreas.getAddress());
         System.out.println(tummas.getAddress());
 
-        Match kamp = new Match("d", 5, 2, 4, "ed",
+        Match kamp = new Match(5, 1, 2, 2, "Andreas", "AaB");
 
-                "Ig",2);
-
-        System.out.println(kamp.getscore());
+        System.out.println(kamp.getGoalsFor() + " - " + kamp.getGoalsAgainst());
 
 
 
