@@ -14,7 +14,8 @@ public class Main {
                 4, 5, 10, 0, 3, 10,
 
                 6, 0);
-// test
+// test i am masterbaiter wtf
+// Så var der historien om hans og grethe den gik jo nu engang som den altid gør
         System.out.println(andreas.getAddress());
         System.out.println(tummas.getAddress());
 
