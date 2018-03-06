@@ -4,9 +4,10 @@ public class Player {
     private String address;
     private String mail;
     private String ICEname;
-    private int ICEtelephone; //ved ikke hvordan man får en ICEname kontakt ind - den skal indeholde navn, tlf nr, class for sig i stedet?
+    private int ICEtelephone;
     private String position;
     private String birthday;
+    private String status; // injured or healthy as a horse
     private int matchesPlayed;
     private int yellowCards;
     private int redCards;
@@ -18,7 +19,7 @@ public class Player {
 
     // constructor
     public Player(String name, String address, String mail, String ICEname, int ICEtelephone, String position, String birthday,
-                  int matchesPlayed, int yellowCards, int redCards, int goalsScored, int assists,
+                  String status, int matchesPlayed, int yellowCards, int redCards, int goalsScored, int assists,
                   int motm, int attendedMatches, int attendedTrainings) {
         this.name = name;
         this.address = address;
@@ -27,6 +28,7 @@ public class Player {
         this.ICEtelephone = ICEtelephone;
         this.position = position;
         this.birthday = birthday;
+        this.status = status;
         this.matchesPlayed = matchesPlayed;
         this.yellowCards = yellowCards;
         this.redCards = redCards;
@@ -63,6 +65,9 @@ public class Player {
     public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
+
+    public String getStatus() { return status; }
+    public void setStatus(String status) { this.status = status; }
 
     public int getMatchesPlayed() {
         return matchesPlayed;
