@@ -18,5 +18,4 @@ public class Main {
 
         System.out.println(kamp.getGoalsFor() + " - " + kamp.getGoalsAgainst());
     }
-
 }
