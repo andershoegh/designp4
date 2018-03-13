@@ -24,6 +24,8 @@ public class Main {
 
         try {
             printFromTable.printTable(SqlConnection.connectToDB());
+            insertToPlayer.insertPlayers(SqlConnection.connectToDB());
+            printFromTable.printTable(SqlConnection.connectToDB());
         } catch (SQLException e){
             System.out.println(e.getMessage());
         }
