@@ -10,8 +10,11 @@ public class printFromTable {
             ResultSet res = stmt.executeQuery("SELECT * FROM testing");
 
             while (res.next()) {
-                String playerName = res.getString("name");
-                System.out.println(playerName);
+                String id = res.getString("_id");
+                String name = res.getString("name");
+                String number = res.getString("number");
+                System.out.println("ID på spilleren er: " + id + ". Navnet på spilleren er: " + name +
+                        ". Telefon nummeret på spileren er: " + number);
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
