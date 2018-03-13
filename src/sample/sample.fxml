@@ -1,57 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<<<<<<< HEAD
 <?import javafx.scene.control.CheckBox?>
-=======
-<?import javafx.scene.control.ButtonBar?>
->>>>>>> master
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.TextFlow?>
 
-<<<<<<< HEAD
 <GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
-   <columnConstraints>
-      <ColumnConstraints />
-   </columnConstraints>
-   <rowConstraints>
-      <RowConstraints />
-   </rowConstraints>
-   <children>
+    <columnConstraints>
+        <ColumnConstraints />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints />
+    </rowConstraints>
+    <children>
 
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" />
-      <Pane prefHeight="200.0" prefWidth="200.0">
-         <children>
-            <Button layoutX="9.0" layoutY="137.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="176.0" text="I have pissed off!" />
-            <TextFlow layoutY="12.0" prefHeight="67.0" prefWidth="200.0" />
-            <CheckBox layoutX="12.0" layoutY="100.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="176.0" text="I will piss off!" />
-         </children></Pane>
-=======
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <ButtonBar buttonMinWidth="200.0" layoutX="65.0" layoutY="104.0" minHeight="56.0" prefHeight="64.0" prefWidth="204.0">
-        <buttons>
-          <Button minHeight="50.0" mnemonicParsing="false" text="Oversigt" textOverrun="CLIP">
-               <font>
-                  <Font name="Avenir Next Bold" size="14.0" />
-               </font>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-            </Button>
-        </buttons>
-      </ButtonBar>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e1ebf500" height="721.0" layoutY="95.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.5" width="282.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="95.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.5" width="282.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="96.0" layoutX="281.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.5" width="920.0" />
-      <ButtonBar buttonMinWidth="200.0" layoutX="65.0" layoutY="160.0" minHeight="56.0" prefHeight="64.0" prefWidth="204.0">
-         <buttons>
-            <Button minHeight="50.0" mnemonicParsing="false" text="Spillere" textOverrun="CLIP" />
-         </buttons>
-      </ButtonBar>
->>>>>>> master
-   </children>
-</AnchorPane>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+        <Pane prefHeight="200.0" prefWidth="200.0">
+            <children>
+                <Button layoutX="9.0" layoutY="137.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="176.0" text="I have pissed off!" />
+                <TextFlow layoutY="12.0" prefHeight="67.0" prefWidth="200.0" />
+                <CheckBox layoutX="12.0" layoutY="100.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="176.0" text="I will piss off!" />
+            </children></Pane>
+    </children>
+</GridPane>
