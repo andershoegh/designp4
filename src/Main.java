@@ -1,3 +1,7 @@
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -17,6 +21,15 @@ public class Main {
         Match kamp = new Match(5, 1, 2, 2, "Andreas Sigsgaard", "AaB");
 
         System.out.println(kamp.getGoalsFor() + " - " + kamp.getGoalsAgainst());
+
+        try {
+            printFromTable.printTable(SqlConnection.connectToDB());
+        } catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
+
+        SqlConnection.closeConnection();
+
     }
 }
 
