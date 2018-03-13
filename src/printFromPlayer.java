@@ -1,8 +1,8 @@
 import java.sql.*;
 
-public class printFromTable {
+public class printFromPlayer {
 
-    public static void printTable(Connection conn) throws SQLException {
+    public static void printPlayer(Connection conn) throws SQLException {
         Statement stmt = null;
 
         try {

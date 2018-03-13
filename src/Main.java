@@ -24,10 +24,16 @@ public class Main {
 
         try {
             System.out.println("Inserting player into database.");
-            insertToPlayer.insertPlayers(SqlConnection.connectToDB());
+            //insertToPlayer.insertPlayers(SqlConnection.connectToDB());
 
-            System.out.println("Printing database.");
-            printFromTable.printTable(SqlConnection.connectToDB());
+            System.out.println("Inserting match into database.");
+            insertToMatch.insertMatch(SqlConnection.connectToDB());
+
+            System.out.println("Printing 'player' table in 'CoachDB' database.");
+            printFromPlayer.printPlayer(SqlConnection.connectToDB());
+
+            System.out.println("Printing 'match' table in 'CoachDB' database.");
+            printFromMatch.printMatch(SqlConnection.connectToDB());
 
         } catch (SQLException e){
             System.out.println(e.getMessage());
