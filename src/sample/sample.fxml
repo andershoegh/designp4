@@ -1,57 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<<<<<<< HEAD
-<?import javafx.scene.control.CheckBox?>
-=======
-<?import javafx.scene.control.ButtonBar?>
->>>>>>> master
+<?import com.gluonhq.charm.glisten.control.ExpansionPanel.CollapsedPanel?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<<<<<<< HEAD
-<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
-   <columnConstraints>
-      <ColumnConstraints />
-   </columnConstraints>
-   <rowConstraints>
-      <RowConstraints />
-   </rowConstraints>
-   <children>
 
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" />
-      <Pane prefHeight="200.0" prefWidth="200.0">
-         <children>
-            <Button layoutX="9.0" layoutY="137.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="176.0" text="I have pissed off!" />
-            <TextFlow layoutY="12.0" prefHeight="67.0" prefWidth="200.0" />
-            <CheckBox layoutX="12.0" layoutY="100.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="176.0" text="I will piss off!" />
-         </children></Pane>
-=======
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ButtonBar buttonMinWidth="200.0" layoutX="65.0" layoutY="104.0" minHeight="56.0" prefHeight="64.0" prefWidth="204.0">
-        <buttons>
-          <Button minHeight="50.0" mnemonicParsing="false" text="Oversigt" textOverrun="CLIP">
-               <font>
-                  <Font name="Avenir Next Bold" size="14.0" />
-               </font>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-            </Button>
-        </buttons>
-      </ButtonBar>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e1ebf500" height="721.0" layoutY="95.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.5" width="282.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="95.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.5" width="282.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="96.0" layoutX="281.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.5" width="920.0" />
-      <ButtonBar buttonMinWidth="200.0" layoutX="65.0" layoutY="160.0" minHeight="56.0" prefHeight="64.0" prefWidth="204.0">
-         <buttons>
-            <Button minHeight="50.0" mnemonicParsing="false" text="Spillere" textOverrun="CLIP" />
-         </buttons>
-      </ButtonBar>
->>>>>>> master
+      <SplitPane layoutX="29.0" layoutY="107.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="600.0" AnchorPane.topAnchor="80.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <ExpansionPanel.CollapsedPanel layoutX="72.0" layoutY="16.0" prefWidth="252" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+      <SplitPane layoutX="235.0" layoutY="81.0" prefHeight="160.0" prefWidth="200.0" AnchorPane.bottomAnchor="520.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="600.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
+        </items>
+      </SplitPane>
+      <SplitPane layoutX="304.0" layoutY="71.0" prefHeight="160.0" prefWidth="200.0" AnchorPane.bottomAnchor="520.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <Label layoutX="242.0" layoutY="21.0" prefHeight="34.0" prefWidth="115.0" text="Oversigt" textAlignment="CENTER" AnchorPane.rightAnchor="241.0" AnchorPane.topAnchor="21.0">
+                     <font>
+                        <Font size="28.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+      <Pane layoutX="242.0" layoutY="124.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0" />
    </children>
 </AnchorPane>
