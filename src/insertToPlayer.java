@@ -12,9 +12,7 @@ class insertToPlayer {
         try {
             stmt = conn.createStatement();
 
-            stmt.executeUpdate("INSERT INTO player " +
-                    "VALUES (null, 'Test', '9000 Aalborg', 31313131," +
-                    "'test@test.dk', null, null, 'Bænken', 1,0,0,0,0,0,0,0)");
+            stmt.executeUpdate("INSERT INTO player VALUES (null, 'Pernille', 'Finlandsgade 7, 9000 Aalborg', 31313131, 'test@test.dk', null, null, 'Bænken', 1,0,0,0,0,0,0,0)");
 
             conn.close();
         } catch (Exception e) {
