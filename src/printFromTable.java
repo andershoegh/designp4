@@ -7,10 +7,10 @@ public class printFromTable {
 
         try {
             stmt = conn.createStatement();
-            ResultSet res = stmt.executeQuery("SELECT * FROM table");
+            ResultSet res = stmt.executeQuery("SELECT * FROM testing");
 
             while (res.next()) {
-                String playerName = res.getString("playerName");
+                String playerName = res.getString("name");
                 System.out.println(playerName);
             }
         } catch (SQLException e) {
