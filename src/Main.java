@@ -28,7 +28,7 @@ public class Main {
 
             // System.out.println("Printing 'player' table in 'CoachDB' database.");
             // printFromPlayer.printPlayer(SqlConnection.connectToDB());
-            
+
             System.out.println("Inserting match into database.");
             insertToMatch.insertMatch(SqlConnection.connectToDB());
 
