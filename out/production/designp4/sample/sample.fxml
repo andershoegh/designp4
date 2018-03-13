@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <SplitPane layoutX="29.0" layoutY="107.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="600.0" AnchorPane.topAnchor="80.0">
         <items>
@@ -25,37 +25,37 @@
                   <Button layoutX="38.0" layoutY="280.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Diverse" />
                   <ImageView fitHeight="29.0" fitWidth="28.0" layoutX="5.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../grafik%20til%20scenebuilder/Pie%20chart.png" />
+                        <Image url="@../../graphics/Pie_chart.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="29.0" fitWidth="28.0" layoutX="5.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../grafik%20til%20scenebuilder/Spiller%20logo.png" />
+                        <Image url="@../../graphics/Spiller_logo.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="29.0" fitWidth="28.0" layoutX="5.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../grafik%20til%20scenebuilder/Logo_træning.png" />
+                        <Image url="@../../graphics/Logo_træning.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="29.0" fitWidth="28.0" layoutX="6.0" layoutY="151.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../grafik%20til%20scenebuilder/Fodbold.png" />
+                        <Image url="@../../graphics/Fodbold.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="29.0" fitWidth="28.0" layoutX="5.0" layoutY="195.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../grafik%20til%20scenebuilder/Logo_statistik.png" />
+                        <Image url="@../../graphics/Logo_statistik.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="29.0" fitWidth="28.0" layoutX="5.0" layoutY="238.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../grafik%20til%20scenebuilder/Kalender%20Logo.png" />
+                        <Image url="@../../graphics/Kalender_Logo.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="29.0" fitWidth="28.0" layoutX="5.0" layoutY="285.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../grafik%20til%20scenebuilder/Logo/diverse.png" />
+                        <Image url="@../../graphics/Logo/diverse.png" />
                      </image>
                   </ImageView>
                </children>
