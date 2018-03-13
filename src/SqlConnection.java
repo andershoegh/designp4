@@ -9,7 +9,7 @@ public class SqlConnection {
     public static Connection connectToDB(){
 
         try {
-            conn = DriverManager.getConnection("jdbc:sqlite:test.db");
+            conn = DriverManager.getConnection("jdbc:sqlite:coachdb.db");
             if (conn != null) {
                 System.out.println("Connection to SQLite has been established");
             }
