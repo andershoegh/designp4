@@ -1,0 +1,20 @@
+#teamname{
+    -fx-font-size: 13;
+}
+
+.button{
+    -fx-min-height: 55;
+    -fx-padding-left: 20;
+    -fx-background-color: #383838;
+    -fx-text-fill: #d8d8d8;
+    -fx-border-radius: 0;
+}
+
+.button:hover{
+    -fx-background-color: #3e3e3e;
+    -fx-text-fill: #ffffff;
+}
+
+.button:pressed{
+    -fx-background-color: #484848;
+}
