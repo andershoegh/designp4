@@ -1,0 +1,43 @@
+.teamname{
+    -fx-font-size: 13px;
+}
+
+.window{
+    -fx-font-family: Montserrat;
+    -fx-font-size: 12px;
+    -fx-background-color: #585858;
+}
+
+.pageheadline{
+    -fx-font-size: 24;
+}
+
+.menubar{
+    -fx-min-width: 200px;
+    -fx-background-color: #383838;
+}
+
+.button{
+    -fx-min-height: 55px;
+    -fx-padding-left: 20;
+    -fx-background-color: #383838;
+    -fx-text-fill: #d8d8d8;
+    -fx-border-radius: 0;
+}
+
+.button:hover{
+    -fx-background-color: #3e3e3e;
+    -fx-text-fill: #ffffff;
+    -fx-border-radius: 0;
+}
+
+.button:pressed{
+    -fx-background-color: #484848;
+    -fx-border-radius: 0;
+}
+
+.selectedmenu{
+    -fx-border-style: solid;
+    -fx-border-color: transparent transparent transparent #a1b56c;
+    -fx-border-width: 5px;
+}
