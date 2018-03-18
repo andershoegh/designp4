@@ -43,7 +43,7 @@ class insertToMatch {
         }
 
 
-        // Prepareing to insert the values into database
+        // Preparing to insert the values into database
         String sql = "INSERT INTO match "
                 + "(_id, goalsFor, goalsAgainst, redCards, yellowCards, playerScored, opponentName)" +
 
