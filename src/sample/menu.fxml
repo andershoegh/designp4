@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane styleClass="window" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<AnchorPane styleClass="window" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.addNewPlayerController">
    <children>
       <HBox styleClass="menubar" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -79,7 +79,7 @@
                               <Insets top="4.0" />
                            </HBox.margin></Text>
                         <Region prefWidth="25.0" />
-                        <TextField prefWidth="300.0" />
+                        <TextField fx:id="nameInput" prefWidth="300.0" />
                      </children>
                   </HBox>
                   <HBox layoutX="10.0" layoutY="60.0" prefWidth="200.0">
@@ -90,7 +90,21 @@
                            </HBox.margin>
                         </Text>
                         <Region prefWidth="25.0" />
-                        <TextField prefWidth="300.0" />
+                        <TextField fx:id="addressInput" prefWidth="300.0" />
+                     </children>
+                     <VBox.margin>
+                        <Insets top="12.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox prefWidth="200.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Telefon" textAlignment="RIGHT" wrappingWidth="205.0">
+                           <HBox.margin>
+                              <Insets top="4.0" />
+                           </HBox.margin>
+                        </Text>
+                        <Region prefWidth="25.0" />
+                        <TextField fx:id="phoneInput" prefWidth="300.0" />
                      </children>
                      <VBox.margin>
                         <Insets top="12.0" />
@@ -104,7 +118,7 @@
                            </HBox.margin>
                         </Text>
                         <Region prefWidth="25.0" />
-                        <TextField prefWidth="300.0" />
+                        <TextField fx:id="mailInput" prefWidth="300.0" />
                      </children>
                      <VBox.margin>
                         <Insets top="12.0" />
@@ -118,7 +132,7 @@
                            </HBox.margin>
                         </Text>
                         <Region prefWidth="25.0" />
-                        <TextField prefWidth="300.0" />
+                        <TextField fx:id="ICEnameInput" prefWidth="300.0" />
                      </children>
                      <VBox.margin>
                         <Insets top="12.0" />
@@ -132,21 +146,7 @@
                            </HBox.margin>
                         </Text>
                         <Region prefWidth="25.0" />
-                        <TextField prefWidth="300.0" />
-                     </children>
-                     <VBox.margin>
-                        <Insets top="12.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <HBox prefWidth="200.0">
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Position" textAlignment="RIGHT" wrappingWidth="205.0">
-                           <HBox.margin>
-                              <Insets top="4.0" />
-                           </HBox.margin>
-                        </Text>
-                        <Region prefWidth="25.0" />
-                        <TextField prefWidth="300.0" />
+                        <TextField fx:id="ICEphoneInput" prefWidth="300.0" />
                      </children>
                      <VBox.margin>
                         <Insets top="12.0" />
@@ -160,7 +160,21 @@
                            </HBox.margin>
                         </Text>
                         <Region prefWidth="25.0" />
-                        <TextField prefWidth="300.0" />
+                        <TextField fx:id="birthdayInput" prefWidth="300.0" />
+                     </children>
+                     <VBox.margin>
+                        <Insets top="12.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox prefWidth="200.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Position" textAlignment="RIGHT" wrappingWidth="205.0">
+                           <HBox.margin>
+                              <Insets top="4.0" />
+                           </HBox.margin>
+                        </Text>
+                        <Region prefWidth="25.0" />
+                        <TextField fx:id="positionInput" prefWidth="300.0" />
                      </children>
                      <VBox.margin>
                         <Insets top="12.0" />
@@ -174,7 +188,7 @@
                            </HBox.margin>
                         </Text>
                         <Region prefWidth="25.0" />
-                        <TextField prefWidth="300.0" />
+                        <TextField fx:id="healthInput" prefWidth="300.0" />
                      </children>
                      <VBox.margin>
                         <Insets top="12.0" />
@@ -183,7 +197,7 @@
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Region prefWidth="326.0" />
-                        <Button mnemonicParsing="false" styleClass="buttonApprove" text="Godkend" />
+                        <Button mnemonicParsing="false" onAction="#acceptButtonClick" styleClass="buttonApprove" text="Godkend" />
                         <Region prefWidth="25.0" />
                         <Button mnemonicParsing="false" styleClass="buttonCancel" text="Annuller" />
                      </children>
