@@ -1,3 +1,5 @@
+package player;
+
 import java.sql.*;
 import java.util.Scanner;
 
@@ -55,7 +57,7 @@ class insertToPlayer {
         }
 
 
-        // Prepareing to insert the values into database
+        // Preparing to insert the values into database
         String sql = "INSERT INTO player "
                 + " (_id, name, address, phone, mail," +
                 "iceName, iceTelephone, position, health, " +
