@@ -12,7 +12,7 @@ public class Player {
     private int redCards;
     private int goalsScored;
     private int assists;
-    private int motm;  // man of the match
+    private int motm;  // man of the Match
     private int attendedMatches;
     private int attendedTrainings;
 

@@ -1,9 +1,11 @@
+package Match;
+
 public class Match {
     private int goalsFor;
     private int goalsAgainst;
     private int redCards;
     private int yellowCards;
-    private String playerScored; // playerScored is for the coach, to state which player scored a goal this match.
+    private String playerScored; // playerScored is for the coach, to state which Player scored a goal this Match.
     private String opponentName;
 
     // getter and setters
