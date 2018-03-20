@@ -1,4 +1,4 @@
-package Player;
+package player;
 
 import java.sql.*;
 import java.util.Scanner;
