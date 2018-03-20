@@ -1,6 +1,6 @@
-package sample;
+package Player.Controller;
 
-import sql.SqlConnection;
+import SQL.SqlConnection;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import java.sql.Connection;
