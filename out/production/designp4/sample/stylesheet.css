@@ -1,0 +1,66 @@
+.teamname{
+    -fx-font-size: 13px;
+    -fx-text-fill: #d8d8d8;
+}
+
+.window{
+    -fx-font-family: Montserrat;
+    -fx-font-size: 12px;
+    -fx-background-color: #e8e8e8;
+}
+
+.pageheadline{
+    -fx-font-size: 24;
+}
+
+.menubar{
+    -fx-min-width: 200px;
+    -fx-background-color: #383838;
+}
+
+.button{
+    -fx-pref-height: 55px;
+    -fx-padding-left: 20;
+    -fx-background-color: #383838;
+    -fx-text-fill: #d8d8d8;
+    -fx-border-radius: 0;
+}
+
+.button:hover{
+    -fx-background-color: #3e3e3e;
+    -fx-text-fill: #ffffff;
+    -fx-border-radius: 0;
+}
+
+.button:pressed{
+    -fx-background-color: #484848;
+    -fx-border-radius: 0;
+}
+
+.selectedmenu{
+    -fx-border-style: solid;
+    -fx-border-color: transparent transparent transparent #a1b56c;
+    -fx-border-width: 5px;
+}
+
+.buttonApprove{
+    -fx-background-color: #a1b56c;
+    -fx-pref-width: 90px;
+    -fx-pref-height: 35px;
+    -fx-text-fill: white;
+}
+
+.buttonApprove:hover{
+    -fx-background-color: #b9c891;
+}
+
+.buttonCancel{
+    -fx-background-color: #ab4642;
+    -fx-pref-width: 90px;
+    -fx-pref-height: 35px;
+    -fx-text-fill: white;
+}
+
+.buttonCancel:hover{
+    -fx-background-color: #c07471;
+}

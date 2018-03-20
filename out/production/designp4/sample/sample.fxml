@@ -10,11 +10,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
       <SplitPane layoutX="29.0" layoutY="107.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="600.0" AnchorPane.topAnchor="80.0">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+          <AnchorPane>
                <children>
                   <Button layoutX="38.0" layoutY="17.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Oversigt" />
                   <Button layoutX="38.0" layoutY="61.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Spillere" />
@@ -64,7 +64,7 @@
       </SplitPane>
       <SplitPane layoutX="235.0" layoutY="81.0" prefHeight="160.0" prefWidth="200.0" AnchorPane.bottomAnchor="520.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="600.0" AnchorPane.topAnchor="0.0">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+          <AnchorPane>
                <children>
                   <TextField layoutX="43.0" layoutY="25.0" prefHeight="27.0" prefWidth="140.0" text="Holdnavn" />
                </children>
@@ -73,7 +73,7 @@
       </SplitPane>
       <SplitPane layoutX="304.0" layoutY="71.0" prefHeight="160.0" prefWidth="200.0" AnchorPane.bottomAnchor="520.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+          <AnchorPane>
                <children>
                   <Label layoutX="242.0" layoutY="21.0" prefHeight="34.0" prefWidth="115.0" text="Oversigt" textAlignment="CENTER" AnchorPane.rightAnchor="241.0" AnchorPane.topAnchor="21.0">
                      <font>
