@@ -56,6 +56,5 @@ public class print {
             assert stmt != null;
             Objects.requireNonNull(stmt).close();
         }
-        return print;
     }
 }
