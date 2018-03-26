@@ -10,6 +10,7 @@ import java.sql.SQLException;
 
 public class addNewPlayerController {
 
+    // This is a connection between the FXML file and the DB, inserting values.
     @FXML
     private TextField nameInput;
     @FXML
@@ -50,7 +51,7 @@ public class addNewPlayerController {
             stmt.setInt(3, Integer.parseInt(phoneInput.getText()));
             stmt.setString(4, mailInput.getText());
             stmt.setString(5, ICEnameInput.getText());
-            stmt.setInt(6, Integer.parseInt(ICEphoneInput.getText()));
+            stmt.setInt(6, Integer.parseInt(ICEphoneInput.getText())); // String being parsed to int, to give it to DB.
             stmt.setString(7, positionInput.getText());
             stmt.setString(8, healthInput.getText());
 
