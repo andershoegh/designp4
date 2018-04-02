@@ -1,3 +1,5 @@
+package Player;
+
 // class for all players generated in system
 public class Player {
     private String name;

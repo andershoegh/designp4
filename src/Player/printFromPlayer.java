@@ -1,3 +1,5 @@
+// For testing purposes
+
 import java.sql.*;
 
 public class printFromPlayer {
