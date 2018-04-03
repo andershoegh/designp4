@@ -74,3 +74,32 @@
 .table-row-cell:empty .table-cell {
     -fx-border-width: 0px;
 }
+
+.tabYellowCard{
+    -fx-background-color: rgba(255, 227, 25, 0.2);
+    -fx-text-fill: black;
+    -fx-pref-width: 70px;
+}
+
+.tabYellowCard:hover{
+    -fx-background-color: rgba(255, 227, 119, 0.3);
+}
+
+.tabYellowCard:selected{
+    -fx-background-color: #eff196;
+}
+
+.tabRedCard{
+    -fx-background-color: rgba(171, 70, 66, 0.31);
+    -fx-text-fill: black;
+    -fx-pref-width: 70px;
+}
+
+.tabRedCard:hover{
+    -fx-background-color: rgba(192, 116, 113, 0.31);
+}
+
+.tabRedCard:selected{
+    -fx-background-color: #c07471;
+}
+
