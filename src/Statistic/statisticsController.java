@@ -16,7 +16,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class statisticsController {
-
+/*
     // This is a connection between the FXML file and the DB, inserting values.
     @FXML
     private TableView stats_player_tableview;
@@ -55,5 +55,7 @@ public class statisticsController {
         }
 
             SqlConnection.closeConnection();
+
     }
+*/
 }
