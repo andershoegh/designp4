@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import player.Player;
 import sql.SqlConnection;
@@ -25,12 +26,10 @@ public class PlayerListController {
     private ObservableList<Player> playerData;
 
     // setting FXML IDs
-    @FXML
-    private TableView<Player> tablePlayers;
-    @FXML
-    private TableColumn<?, ?> columnName;
-    @FXML
-    private TableColumn<?, ?> columnPosition;
+    @FXML private TableView<Player> tablePlayers;
+    @FXML private TableColumn<?, ?> columnName;
+    @FXML private TableColumn<?, ?> columnPosition;
+    @FXML private TableColumn<?, ?> columnEdit;
 
     // Runs when FXML is loaded
     @FXML
@@ -81,6 +80,29 @@ public class PlayerListController {
 
             stage.setScene(addPlayerScene);
             stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void deletePlayerButtonClick(){
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("../DeletePlayer.fxml"));
+            Parent deletePlayerFXML = loader.load();
+
+            Stage stage = new Stage();
+            // Prevents user interaction with other windows while popup is open
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Slet spiller");
+
+            // Passes selected player info to DeletePlayerController.java
+            player.Controller.DeletePlayerController controller = loader.getController();
+            controller.initData(tablePlayers.getSelectionModel().getSelectedItem());
+
+            Scene deletePlayerScene = new Scene(deletePlayerFXML);
+            stage.setScene(deletePlayerScene);
+            stage.showAndWait();
         } catch (IOException e) {
             e.printStackTrace();
         }

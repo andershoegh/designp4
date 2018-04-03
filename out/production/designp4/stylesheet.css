@@ -67,10 +67,52 @@
     -fx-background-color: #c07471;
 }
 
-.table-row-cell:empty {
-    -fx-background-color: white;
+.table-row-cell {
+    -fx-border-color: transparent;
+    -fx-table-cell-border-color: transparent;
+    -fx-background-color: #e8e8e8;
 }
 
-.table-row-cell:empty .table-cell {
-    -fx-border-width: 0px;
+.table-row-cell:hover {
+    -fx-background-color: #787878;
 }
+
+.table-row-cell:selected {
+    -fx-text-fill: #e8e8e8;
+    -fx-background-color: #585858;
+}
+
+.table-view {
+    -fx-background-color: transparent;
+    -fx-border-color: none;
+    -fx-focus-color: none;
+}
+
+.tabYellowCard{
+    -fx-background-color: rgba(255, 227, 25, 0.2);
+    -fx-text-fill: black;
+    -fx-pref-width: 70px;
+}
+
+.tabYellowCard:hover{
+    -fx-background-color: rgba(255, 227, 119, 0.3);
+}
+
+.tabYellowCard:selected{
+    -fx-background-color: #eff196;
+}
+
+.tabRedCard{
+    -fx-background-color: rgba(171, 70, 66, 0.31);
+    -fx-text-fill: black;
+    -fx-pref-width: 70px;
+}
+
+.tabRedCard:hover{
+    -fx-background-color: rgba(192, 116, 113, 0.31);
+}
+
+.tabRedCard:selected{
+    -fx-background-color: #c07471;
+}
+
