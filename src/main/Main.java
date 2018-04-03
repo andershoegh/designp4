@@ -1,4 +1,4 @@
-package Main;
+package main;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -11,9 +11,9 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("../Player/AddPlayer.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../Player/PlayerList.fxml"));
         primaryStage.setTitle("Coach meister 9000");
-        primaryStage.setScene(new Scene(root, 800, 1209));
+        primaryStage.setScene(new Scene(root, 1209,800));
         primaryStage.show();
     }
 

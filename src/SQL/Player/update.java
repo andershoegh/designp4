@@ -1,6 +1,6 @@
-package SQL.Player;
+package sql.Player;
 
-import SQL.db;
+import sql.db;
 
 public class update extends db {
 }

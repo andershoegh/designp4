@@ -1,4 +1,4 @@
-package SQL.Player;
+package sql.Player;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

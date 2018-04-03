@@ -1,9 +1,10 @@
-package Player;
+package player;
 
 // class for all players generated in system
 public class Player {
     private String name;
     private String address;
+    private int phone;
     private String mail;
     private String ICEname;
     private int ICEtelephone;
@@ -19,11 +20,12 @@ public class Player {
     private int attendedTrainings;
 
     // constructor
-    public Player(String name, String address, String mail, String ICEname, int ICEtelephone, String position, String birthday,
+    public Player(String name, String address, int phone, String mail, String ICEname, int ICEtelephone, String position, String birthday,
                   String status, int yellowCards, int redCards, int goalsScored, int assists,
                   int motm, int attendedMatches, int attendedTrainings) {
         this.name = name;
         this.address = address;
+        this.phone = phone;
         this.mail = mail;
         this.ICEname = ICEname;
         this.ICEtelephone = ICEtelephone;
@@ -45,6 +47,9 @@ public class Player {
 
     public String getAddress() { return address; }
     public void setAddress(String address) { this.address = address; }
+
+    public int getPhone() { return phone; }
+    public void setPhone(int phone) { this.phone = phone; }
 
     public String getMail() { return mail; }
     public void setMail(String mail) { this.mail = mail; }

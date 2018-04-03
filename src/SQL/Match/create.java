@@ -1,6 +1,6 @@
-package SQL.Match;
+package sql.Match;
 
-import SQL.db;
+import sql.db;
 
 public class create extends db {
 }
