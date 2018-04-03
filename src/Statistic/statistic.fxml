@@ -90,9 +90,9 @@
                       <RowConstraints maxHeight="335.73334350585935" minHeight="10.0" prefHeight="231.53333740234376" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <TableView maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="613.0" prefWidth="354.0" GridPane.rowSpan="2147483647">
+                        <TableView fx:id="stats_players_tableview" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="613.0" prefWidth="354.0" GridPane.rowSpan="2147483647">
                           <columns>
-                            <TableColumn editable="false" maxWidth="367.2000335454941" minWidth="0.0" prefWidth="367.2000335454941" sortable="false" text="Spillere" />
+                            <TableColumn fx:id="stats_players_tablecolumn" editable="false" maxWidth="367.2000335454941" minWidth="0.0" prefWidth="367.2000335454941" sortable="false" text="Spillere" />
                           </columns>
                            <columnResizePolicy>
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -101,11 +101,11 @@
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </GridPane.margin>
                         </TableView>
-                        <TableView maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="180.0" prefWidth="285.0" snapToPixel="false" GridPane.columnIndex="1">
+                        <TableView fx:id="stats_goals_tableview" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="180.0" prefWidth="285.0" snapToPixel="false" GridPane.columnIndex="1">
                            <columns>
-                              <TableColumn editable="false" maxWidth="50.0" minWidth="0.0" prefWidth="28.26669156551361" sortable="false" />
-                              <TableColumn maxWidth="253.60004270076752" prefWidth="212.00004959106445" text="Mål" />
-                              <TableColumn maxWidth="50.0" prefWidth="30.399995803833008" />
+                              <TableColumn fx:id="stats_goals_number_tablecolumn" editable="false" maxWidth="50.0" minWidth="0.0" prefWidth="28.26669156551361" sortable="false" />
+                              <TableColumn fx:id="stats_goals_tablecolumn" maxWidth="253.60004270076752" prefWidth="212.00004959106445" text="Mål" />
+                              <TableColumn fx:id="stats_goals_amount_tablecolumn" maxWidth="50.0" prefWidth="30.399995803833008" />
                            </columns>
                            <columnResizePolicy>
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -117,11 +117,11 @@
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </GridPane.margin>
                         </TableView>
-                        <TableView maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="180.0" prefWidth="285.0" snapToPixel="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <TableView fx:id="stats_match_tableview" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="180.0" prefWidth="285.0" snapToPixel="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <columns>
-                              <TableColumn editable="false" maxWidth="50.0" minWidth="0.0" prefWidth="28.26669156551361" sortable="false" />
-                              <TableColumn maxWidth="253.60004270076752" prefWidth="212.00004959106445" text="Kampe spillet" />
-                              <TableColumn maxWidth="50.0" prefWidth="30.399995803833008" />
+                              <TableColumn fx:id="stats_match_number_tablecolumn" editable="false" maxWidth="50.0" minWidth="0.0" prefWidth="28.26669156551361" sortable="false" />
+                              <TableColumn fx:id="stats_match_tablecolumn" maxWidth="253.60004270076752" prefWidth="212.00004959106445" text="Kampe spillet" />
+                              <TableColumn fx:id="stats_match_amount_tablecolumn" maxWidth="50.0" prefWidth="30.399995803833008" />
                            </columns>
                            <columnResizePolicy>
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -133,11 +133,11 @@
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </GridPane.margin>
                         </TableView>
-                        <TableView maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="180.0" prefWidth="255.0" snapToPixel="false" GridPane.columnIndex="2">
+                        <TableView fx:id="stats_assists_tableview" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="180.0" prefWidth="255.0" snapToPixel="false" GridPane.columnIndex="2">
                            <columns>
-                              <TableColumn editable="false" maxWidth="50.0" minWidth="0.0" prefWidth="28.26669156551361" sortable="false" />
-                              <TableColumn maxWidth="253.60004270076752" prefWidth="212.00004959106445" text="Assists" />
-                              <TableColumn maxWidth="50.0" prefWidth="30.399995803833008" />
+                              <TableColumn fx:id="stats_assists_number_tablecolumn" editable="false" maxWidth="50.0" minWidth="0.0" prefWidth="28.26669156551361" sortable="false" />
+                              <TableColumn fx:id="stats_assists_tablecolumn" maxWidth="253.60004270076752" prefWidth="212.00004959106445" text="Assists" />
+                              <TableColumn fx:id="stats_assists_amount_tablecolumn" maxWidth="50.0" prefWidth="30.399995803833008" />
                            </columns>
                            <columnResizePolicy>
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -149,11 +149,11 @@
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </GridPane.margin>
                         </TableView>
-                        <TableView maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="211.0" prefWidth="255.0" snapToPixel="false" GridPane.columnIndex="2" GridPane.rowIndex="2" GridPane.rowSpan="2147483647">
+                        <TableView fx:id="stats_trainings_tableview" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="211.0" prefWidth="255.0" snapToPixel="false" GridPane.columnIndex="2" GridPane.rowIndex="2" GridPane.rowSpan="2147483647">
                            <columns>
-                              <TableColumn editable="false" maxWidth="50.0" minWidth="0.0" prefWidth="28.26669156551361" sortable="false" />
-                              <TableColumn maxWidth="253.60004270076752" prefWidth="212.00004959106445" text="Træninger" />
-                              <TableColumn maxWidth="50.0" prefWidth="30.399995803833008" />
+                              <TableColumn fx:id="stats_trainings_number_tablecolumn" editable="false" maxWidth="50.0" minWidth="0.0" prefWidth="28.26669156551361" sortable="false" />
+                              <TableColumn fx:id="stats_trainings_tablecolumn" maxWidth="253.60004270076752" prefWidth="212.00004959106445" text="Træninger" />
+                              <TableColumn fx:id="stats_trainings_amount_tablecolumn" maxWidth="50.0" prefWidth="30.399995803833008" />
                            </columns>
                            <columnResizePolicy>
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -165,11 +165,11 @@
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </GridPane.margin>
                         </TableView>
-                        <TableView maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="180.0" prefWidth="255.0" snapToPixel="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                        <TableView fx:id="stats_mofm_tableview" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="180.0" prefWidth="255.0" snapToPixel="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
                            <columns>
-                              <TableColumn editable="false" maxWidth="50.0" minWidth="0.0" prefWidth="28.26669156551361" sortable="false" />
-                              <TableColumn maxWidth="253.60004270076752" prefWidth="212.00004959106445" text="Man of the Match" />
-                              <TableColumn maxWidth="50.0" prefWidth="30.399995803833008" />
+                              <TableColumn fx:id="stats_mofm_number_tablecolumn" editable="false" maxWidth="50.0" minWidth="0.0" prefWidth="28.26669156551361" sortable="false" />
+                              <TableColumn fx:id="stats_mofm_tablecolumn" maxWidth="253.60004270076752" prefWidth="212.00004959106445" text="Man of the Match" />
+                              <TableColumn fx:id="stats_mofm_amount_tablecolumn" maxWidth="50.0" prefWidth="30.399995803833008" />
                            </columns>
                            <columnResizePolicy>
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -181,11 +181,11 @@
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </GridPane.margin>
                         </TableView>
-                        <TableView maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="180.0" prefWidth="286.0" snapToPixel="false" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <TableView fx:id="stats_cards_tableview" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="180.0" prefWidth="286.0" snapToPixel="false" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <columns>
-                              <TableColumn editable="false" maxWidth="50.0" minWidth="0.0" prefWidth="28.26669156551361" sortable="false" />
-                              <TableColumn maxWidth="253.60004270076752" prefWidth="212.00004959106445" text="Gule kort" />
-                              <TableColumn maxWidth="50.0" prefWidth="30.399995803833008" />
+                              <TableColumn fx:id="stats_cards_number_tablecolumn" editable="false" maxWidth="50.0" minWidth="0.0" prefWidth="28.26669156551361" sortable="false" />
+                              <TableColumn fx:id="stats_cards_tablecolumn" maxWidth="253.60004270076752" prefWidth="212.00004959106445" text="Gule kort" />
+                              <TableColumn fx:id="stats_cards_amount_tablecolumn" maxWidth="50.0" prefWidth="30.399995803833008" />
                            </columns>
                            <columnResizePolicy>
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
