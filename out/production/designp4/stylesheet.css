@@ -1,3 +1,5 @@
+/* This file is the stylesheet for the AddPlayer.fxml file */
+
 .teamname{
     -fx-font-size: 13px;
     -fx-text-fill: #d8d8d8;
@@ -63,4 +65,12 @@
 
 .buttonCancel:hover{
     -fx-background-color: #c07471;
+}
+
+.table-row-cell:empty {
+    -fx-background-color: white;
+}
+
+.table-row-cell:empty .table-cell {
+    -fx-border-width: 0px;
 }
