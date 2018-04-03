@@ -1,4 +1,4 @@
-package Overview;
+package overview;
 
 public class Test3 {
 }

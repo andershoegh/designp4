@@ -1,4 +1,4 @@
-package Statistic;
+package statistic;
 
 public class Test {
 }

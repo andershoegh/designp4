@@ -1,4 +1,4 @@
-package Calender;
+package calender;
 
 public class Test4 {
 }

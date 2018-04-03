@@ -1,8 +1,15 @@
-package Player.Controller;
+package player.Controller;
 
-import SQL.SqlConnection;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import sql.SqlConnection;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import java.io.IOException;
 import java.sql.Connection;
 
 import java.sql.PreparedStatement;
@@ -30,7 +37,7 @@ public class addNewPlayerController {
     @FXML
     private TextField healthInput;
 
-    public void acceptButtonClick(){
+    public void acceptButtonClick(ActionEvent event){
 
         Connection conn = SqlConnection.connectToDB();
         String sql = "INSERT INTO player "
@@ -57,10 +64,34 @@ public class addNewPlayerController {
 
             // Updates the database
             stmt.executeUpdate();
+
+            // Switching scene from AddPlayer.FXML to PlayerList.FXML
+            Parent addPlayerFXML = FXMLLoader.load(getClass().getResource("../PlayerList.fxml"));
+            Scene addPlayerScene = new Scene(addPlayerFXML);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            stage.setScene(addPlayerScene);
+            stage.show();
         } catch(SQLException e) {
             System.out.println(e.getMessage());
+        } catch(IOException e) {
+            e.printStackTrace();
         }
 
         SqlConnection.closeConnection();
+    }
+
+    public void cancelButtonClick(ActionEvent event){
+        // Switching scene from AddPlayer.FXML to PlayerList.FXML
+        try {
+            Parent addPlayerFXML = FXMLLoader.load(getClass().getResource("../PlayerList.fxml"));
+            Scene addPlayerScene = new Scene(addPlayerFXML);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            stage.setScene(addPlayerScene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
