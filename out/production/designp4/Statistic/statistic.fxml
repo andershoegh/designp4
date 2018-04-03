@@ -24,7 +24,7 @@
                 <AnchorPane />
             </children>
         </HBox>
-        <BorderPane prefHeight="800.0" prefWidth="1209.0">
+        <BorderPane prefHeight="900.0" prefWidth="1600.0">
             <top>
                 <HBox prefHeight="59.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
                     <children>
