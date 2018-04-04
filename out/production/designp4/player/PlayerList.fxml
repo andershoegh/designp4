@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="player.Controller.PlayerListController">
+<AnchorPane styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="player.Controller.PlayerListController">
     <children>
         <HBox styleClass="menubar" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -78,6 +78,7 @@
                     <columns>
                       <TableColumn fx:id="columnName" prefWidth="75.0" text="Navn" />
                       <TableColumn fx:id="columnPosition" prefWidth="75.0" text="Position" />
+                        <TableColumn fx:id="columnEdit" prefWidth="75.0" text="Column X" />
                     </columns>
                      <VBox.margin>
                         <Insets left="50.0" right="50.0" />
@@ -92,10 +93,15 @@
                   <Region prefHeight="20.0" prefWidth="200.0" />
                   <HBox alignment="CENTER_RIGHT">
                      <children>
-                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#addPlayerButtonClick" styleClass="buttonApprove" text="Tilføj spiller">
+                        <Button alignment="CENTER" minWidth="100.0" mnemonicParsing="false" onAction="#addPlayerButtonClick" styleClass="buttonApprove" text="Tilføj spiller">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
+                           <HBox.margin>
+                              <Insets right="20.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#deletePlayerButtonClick" styleClass="buttonCancel" text="Slet spiller">
                            <HBox.margin>
                               <Insets right="50.0" />
                            </HBox.margin>
