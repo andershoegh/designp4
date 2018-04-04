@@ -27,7 +27,7 @@
                     <children>
                         <ImageView fitHeight="49.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../Logo1.png" />
+                                <Image url="file:graphics/Logo1.png" />
                             </image>
                             <HBox.margin>
                                 <Insets left="15.0" top="15.0" />
@@ -101,7 +101,7 @@
                               <Insets right="20.0" />
                            </HBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" onAction="#deletePlayerButtonClick" styleClass="buttonCancel" text="Slet spiller">
+                        <Button minWidth="126.0" mnemonicParsing="false" onAction="#deletePlayerButtonClick" styleClass="buttonCancel" text="Slet valgt spiller">
                            <HBox.margin>
                               <Insets right="50.0" />
                            </HBox.margin>

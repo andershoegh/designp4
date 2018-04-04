@@ -29,7 +29,6 @@ public class PlayerListController {
     @FXML private TableView<Player> tablePlayers;
     @FXML private TableColumn<?, ?> columnName;
     @FXML private TableColumn<?, ?> columnPosition;
-    @FXML private TableColumn<?, ?> columnEdit;
 
     // Runs when FXML is loaded
     @FXML
@@ -57,7 +56,7 @@ public class PlayerListController {
                         rs.getString("position"), "00/00/00", rs.getString("health"),
                         rs.getInt("yellowCards"), rs.getInt("redCards"), rs.getInt("goalScored"),
                         rs.getInt("assist"), rs.getInt("motm"), rs.getInt("attendedMatches"),
-                        rs.getInt("attendedTrainings"))
+                        rs.getInt("attendedTrainings"), rs.getInt("_id"))
                 );
             }
         } catch (SQLException e) {

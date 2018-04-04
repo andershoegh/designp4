@@ -21,7 +21,7 @@
             <Region prefHeight="55.0" prefWidth="200.0" />
             <HBox alignment="CENTER_RIGHT" prefWidth="200.0">
                <children>
-                  <Button mnemonicParsing="false" styleClass="buttonApprove" text="Duer ikke">
+                  <Button fx:id="acceptButton" mnemonicParsing="false" onAction="#confirmButtonClick" styleClass="buttonApprove" text="Slet">
                      <HBox.margin>
                         <Insets right="15.0" />
                      </HBox.margin>
