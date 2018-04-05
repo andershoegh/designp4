@@ -89,9 +89,9 @@
 }
 
 .tabYellowCard{
-    -fx-background-color: rgba(255, 227, 25, 0.2);
+    -fx-background-color: rgba(255, 227, 25, 0.31);
     -fx-text-fill: black;
-    -fx-pref-width: 70px;
+    -fx-pref-width: 90px;
 }
 
 .tabYellowCard:hover{
@@ -105,7 +105,7 @@
 .tabRedCard{
     -fx-background-color: rgba(171, 70, 66, 0.31);
     -fx-text-fill: black;
-    -fx-pref-width: 70px;
+    -fx-pref-width: 90px;
 }
 
 .tabRedCard:hover{
@@ -114,5 +114,11 @@
 
 .tabRedCard:selected{
     -fx-background-color: #c07471;
+}
+
+.greenButton{
+    -fx-background-color: #a1b56c;
+    -fx-text-fill: white;
+    -fx-pref-height: 30;
 }
 
