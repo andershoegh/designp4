@@ -1,0 +1,124 @@
+/* This file is the stylesheet for the AddPlayer.fxml file */
+
+.teamname{
+    -fx-font-size: 13px;
+    -fx-text-fill: #d8d8d8;
+}
+
+.window{
+    -fx-font-family: Montserrat;
+    -fx-font-size: 12px;
+    -fx-background-color: #e8e8e8;
+}
+
+.pageheadline{
+    -fx-font-size: 24;
+}
+
+.menubar{
+    -fx-min-width: 200px;
+    -fx-background-color: #383838;
+}
+
+.button{
+    -fx-pref-height: 55px;
+    -fx-padding-left: 20;
+    -fx-background-color: #383838;
+    -fx-text-fill: #d8d8d8;
+    -fx-border-radius: 0;
+}
+
+.button:hover{
+    -fx-background-color: #3e3e3e;
+    -fx-text-fill: #ffffff;
+    -fx-border-radius: 0;
+}
+
+.button:pressed{
+    -fx-background-color: #484848;
+    -fx-border-radius: 0;
+}
+
+.selectedmenu{
+    -fx-border-style: solid;
+    -fx-border-color: transparent transparent transparent #a1b56c;
+    -fx-border-width: 5px;
+}
+
+.buttonApprove{
+    -fx-background-color: #a1b56c;
+    -fx-pref-width: 90px;
+    -fx-pref-height: 35px;
+    -fx-text-fill: white;
+}
+
+.buttonApprove:hover{
+    -fx-background-color: #b9c891;
+}
+
+.buttonCancel{
+    -fx-background-color: #ab4642;
+    -fx-pref-width: 90px;
+    -fx-pref-height: 35px;
+    -fx-text-fill: white;
+}
+
+.buttonCancel:hover{
+    -fx-background-color: #c07471;
+}
+
+.table-row-cell {
+    -fx-border-color: transparent;
+    -fx-table-cell-border-color: transparent;
+    -fx-background-color: #e8e8e8;
+}
+
+.table-row-cell:hover {
+    -fx-background-color: #787878;
+}
+
+.table-row-cell:selected {
+    -fx-text-fill: #e8e8e8;
+    -fx-background-color: #585858;
+}
+
+.table-view {
+    -fx-background-color: transparent;
+    -fx-border-color: none;
+    -fx-focus-color: none;
+}
+
+.tabYellowCard{
+    -fx-background-color: rgba(255, 227, 25, 0.31);
+    -fx-text-fill: black;
+    -fx-pref-width: 90px;
+}
+
+.tabYellowCard:hover{
+    -fx-background-color: rgba(255, 227, 119, 0.3);
+}
+
+.tabYellowCard:selected{
+    -fx-background-color: #eff196;
+}
+
+.tabRedCard{
+    -fx-background-color: rgba(171, 70, 66, 0.31);
+    -fx-text-fill: black;
+    -fx-pref-width: 90px;
+}
+
+.tabRedCard:hover{
+    -fx-background-color: rgba(192, 116, 113, 0.31);
+}
+
+.tabRedCard:selected{
+    -fx-background-color: #c07471;
+}
+
+.greenButton{
+    -fx-background-color: #a1b56c;
+    -fx-text-fill: white;
+    -fx-pref-height: 30;
+}
+
