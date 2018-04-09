@@ -139,7 +139,7 @@
                                        <graphic>
                                           <ImageView fitHeight="16.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@../../graphics/gultkort.png" />
+                                                <Image url="@../../graphics/yellowcard.png" />
                                              </image>
                                           </ImageView>
                                        </graphic>
@@ -155,7 +155,7 @@
                                        <graphic>
                                           <ImageView fitHeight="16.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@../../graphics/rødtkort.png" />
+                                                <Image url="@../../graphics/redcard.png" />
                                              </image>
                                           </ImageView>
                                        </graphic>
