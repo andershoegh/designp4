@@ -2,96 +2,99 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Match.Controller.matchOverviewController">
-    <children>
-        <HBox styleClass="menubar" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
-            <children>
-                <AnchorPane />
-            </children>
-        </HBox>
-        <BorderPane prefHeight="800.0" prefWidth="1209.0">
-            <top>
-                <HBox prefHeight="59.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
-                    <children>
+<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="player.controller.PlayerControllerList">
+   <children>
+      <HBox maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0">
+         <children>
+            <VBox prefHeight="720.0" prefWidth="200.0" styleClass="menubar">
+               <children>
+                  <HBox>
+                     <children>
                         <ImageView fitHeight="49.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../../Logo1.png" />
-                            </image>
-                            <HBox.margin>
-                                <Insets left="15.0" top="15.0" />
-                            </HBox.margin>
+                           <image>
+                              <Image url="@../../graphics/aaif.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="15.0" top="15.0" />
+                           </HBox.margin>
                         </ImageView>
                         <Label styleClass="teamname" text="AAIF Senior">
-                            <HBox.margin>
-                                <Insets left="20.0" top="30.0" />
-                            </HBox.margin>
+                           <HBox.margin>
+                              <Insets left="20.0" top="30.0" />
+                           </HBox.margin>
                         </Label>
-                        <Region minWidth="87.0" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="pageheadline" text="Kampe">
-                            <HBox.margin>
-                                <Insets top="25.0" />
-                            </HBox.margin>
-                        </Text>
-                    </children>
-                </HBox>
-            </top>
-            <left>
-                <VBox BorderPane.alignment="CENTER">
-                    <children>
-                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" text="Oversigt">
-                            <VBox.margin>
-                                <Insets top="45.0" />
-                            </VBox.margin>
-                        </Button>
-                        <Button alignment="CENTER" layoutX="10.0" layoutY="55.0" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" text="Kalender">
-                        </Button>
-                        <Button alignment="CENTER" layoutX="10.0" layoutY="100.0" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" text="Spillere">
-                        </Button>
-                        <Button alignment="CENTER" layoutX="10.0" layoutY="145.0" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" styleClass="selectedmenu" text="Kampe">
-                        </Button>
-                        <Button alignment="CENTER" layoutX="10.0" layoutY="190.0" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" text="Træning">
-                        </Button>
-                        <Button alignment="CENTER" layoutX="10.0" layoutY="235.0" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" text="Statistik">
-                        </Button>
-                        <Button alignment="CENTER" layoutX="10.0" layoutY="280.0" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" text="Diverse">
-                        </Button>
-                    </children>
-                </VBox>
-            </left>
-            <center>
-                <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-                    <children>
-                  <TableView editable="true" fixedCellSize="1.0" prefHeight="456.0" prefWidth="969.0" tableMenuButtonVisible="true">
-                    <columns>
-                      <TableColumn prefWidth="75.0" text="Runde" />
-                      <TableColumn prefWidth="150.0" text="Tidspunkt" />
-                        <TableColumn prefWidth="230.0" text="Kamp" />
-                        <TableColumn prefWidth="210.0" text="Spillested" />
-                        <TableColumn prefWidth="210.0" text="Resultat" />
-                        <TableColumn prefWidth="94.8740234375" text="Taktik" />
-                    </columns>
+                     </children>
                      <VBox.margin>
-                        <Insets left="20.0" right="20.0" top="10.0" />
+                        <Insets bottom="30.0" />
                      </VBox.margin>
-                     <columnResizePolicy>
-                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                     </columnResizePolicy>
-                  </TableView>
-                    </children>
-                </VBox>
-            </center>
-        </BorderPane>
-    </children>
+                  </HBox>
+                  <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" text="Oversigt" />
+                  <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="Kalender" />
+                  <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" styleClass="selectedmenu" text="Spillere" />
+                  <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" text="Kampe" />
+                  <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" text="Træning" />
+                  <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" text="Statistik" />
+                  <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" text="Diverse" />
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="1080.0">
+               <children>
+                  <HBox prefHeight="71.0" prefWidth="200.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="pageheadline" text="Kampe">
+                           <HBox.margin>
+                              <Insets left="35.0" top="25.0" />
+                           </HBox.margin>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <Line endX="1080.0" />
+                  <AnchorPane prefHeight="647.0" prefWidth="1081.0">
+                     <children>
+                        <TableView editable="true" fixedCellSize="1.0" layoutX="56.0" layoutY="28.0" prefHeight="456.0" prefWidth="969.0" tableMenuButtonVisible="true">
+                           <columns>
+                              <TableColumn prefWidth="75.0" text="Runde" />
+                              <TableColumn prefWidth="150.0" text="Tidspunkt" />
+                              <TableColumn prefWidth="230.0" text="Kamp" />
+                              <TableColumn prefWidth="210.0" text="Spillested" />
+                              <TableColumn prefWidth="210.0" text="Resultat" />
+                              <TableColumn prefWidth="94.8740234375" text="Taktik" />
+                           </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                        <HBox layoutX="61.0" layoutY="511.0" prefHeight="100.0" prefWidth="960.0">
+                           <children>
+                              <Button mnemonicParsing="false" prefHeight="23.0" prefWidth="92.0" styleClass="greenButton" text="Ny sæson">
+                                 <HBox.margin>
+                                    <Insets left="700.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <ComboBox prefWidth="150.0" styleClass="greenButton">
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </ComboBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
 </AnchorPane>

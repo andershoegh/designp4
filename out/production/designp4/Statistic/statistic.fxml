@@ -10,238 +10,231 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Player.Controller.addNewPlayerController">
-    <children>
-        <HBox styleClass="menubar" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
-            <children>
-                <AnchorPane />
-            </children>
-        </HBox>
-        <BorderPane prefHeight="800.0" prefWidth="1209.0">
-            <top>
-                <HBox prefHeight="59.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
-                    <children>
+<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="player.controller.PlayerControllerList">
+   <children>
+      <HBox maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0">
+         <children>
+            <VBox prefHeight="720.0" prefWidth="200.0" styleClass="menubar">
+               <children>
+                  <HBox>
+                     <children>
                         <ImageView fitHeight="49.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../../Logo1.png" />
-                            </image>
-                            <HBox.margin>
-                                <Insets left="15.0" top="15.0" />
-                            </HBox.margin>
+                           <image>
+                              <Image url="@../../graphics/aaif.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="15.0" top="15.0" />
+                           </HBox.margin>
                         </ImageView>
                         <Label styleClass="teamname" text="AAIF Senior">
-                            <HBox.margin>
-                                <Insets left="20.0" top="30.0" />
-                            </HBox.margin>
+                           <HBox.margin>
+                              <Insets left="20.0" top="30.0" />
+                           </HBox.margin>
                         </Label>
-                        <Region minWidth="87.0" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="pageheadline" text="Statistik">
-                            <HBox.margin>
-                                <Insets top="25.0" />
-                            </HBox.margin>
-                        </Text>
-                    </children>
-                </HBox>
-            </top>
-            <left>
-                <VBox BorderPane.alignment="CENTER">
-                    <children>
-                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" text="Oversigt">
-                            <VBox.margin>
-                                <Insets top="45.0" />
-                            </VBox.margin>
-                        </Button>
-                        <Button alignment="CENTER" layoutX="10.0" layoutY="55.0" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" text="Kalender">
-                        </Button>
-                        <Button alignment="CENTER" layoutX="10.0" layoutY="100.0" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" text="Spillere">
-                        </Button>
-                        <Button alignment="CENTER" layoutX="10.0" layoutY="145.0" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" text="Kampe">
-                        </Button>
-                        <Button alignment="CENTER" layoutX="10.0" layoutY="190.0" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" text="Træning">
-                        </Button>
-                        <Button alignment="CENTER" layoutX="10.0" layoutY="235.0" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" styleClass="selectedmenu" text="Statistik">
-                        </Button>
-                        <Button alignment="CENTER" layoutX="10.0" layoutY="280.0" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" text="Diverse">
-                        </Button>
-                    </children>
-                </VBox>
-            </left>
-            <center>
-                <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-                    <children>
-                        <Region prefHeight="60.0" prefWidth="200.0" />
-                  <GridPane prefHeight="726.0" prefWidth="1004.0">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="470.8000183105469" minWidth="10.0" prefWidth="395.46674194335935" />
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="388.2000732421875" minWidth="10.0" prefWidth="305.66667480468755" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="428.7332763671875" minWidth="10.0" prefWidth="308.33332519531245" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints maxHeight="234.8" minHeight="10.0" prefHeight="232.59998168945313" vgrow="SOMETIMES" />
-                      <RowConstraints maxHeight="326.80004272460934" minHeight="0.0" prefHeight="219.86670532226566" vgrow="SOMETIMES" />
-                      <RowConstraints maxHeight="335.73334350585935" minHeight="10.0" prefHeight="231.53333740234376" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <TableView fx:id="stats_players_tableview" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="601.0" prefWidth="354.0" GridPane.rowSpan="2147483647">
-                          <columns>
-                              <TableColumn fx:id="stats_player_number_tablecolumn1" editable="false" maxWidth="50.0" minWidth="0.0" prefWidth="28.26669156551361" sortable="false" text="Nr." />
-                            <TableColumn fx:id="stats_players_tablecolumn" editable="false" maxWidth="367.2000335454941" minWidth="0.0" prefWidth="172.79995346069336" sortable="false" text="Spillere" />
-                              <TableColumn fx:id="stats_player_goals_tablecolumn" editable="false" maxWidth="106.93336486816406" minWidth="0.0" prefWidth="71.46662902832031" sortable="false" text="Mål" />
-                              <TableColumn fx:id="stats_player_assists_tablecolumn" editable="false" maxWidth="96.79995727539062" minWidth="0.0" prefWidth="61.066650390625" sortable="false" text="Assists" />
-                          </columns>
-                           <columnResizePolicy>
-                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                           </columnResizePolicy>
-                           <GridPane.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </GridPane.margin>
-                        </TableView>
-                        <TableView fx:id="stats_goals_tableview" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="180.0" prefWidth="285.0" snapToPixel="false" GridPane.columnIndex="1">
-                           <columns>
-                              <TableColumn fx:id="stats_goals_number_tablecolumn" editable="false" maxWidth="50.0" minWidth="0.0" prefWidth="28.26669156551361" sortable="false" text="Nr." />
-                              <TableColumn fx:id="stats_goals_tablecolumn" maxWidth="253.60004270076752" prefWidth="212.00004959106445" text="Mål" />
-                              <TableColumn fx:id="stats_goals_amount_tablecolumn" maxWidth="50.0" prefWidth="30.399995803833008" text="Antal" />
-                           </columns>
-                           <columnResizePolicy>
-                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                           </columnResizePolicy>
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                           <GridPane.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </GridPane.margin>
-                        </TableView>
-                        <TableView fx:id="stats_match_tableview" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="180.0" prefWidth="285.0" snapToPixel="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                           <columns>
-                              <TableColumn fx:id="stats_match_number_tablecolumn" editable="false" maxWidth="50.0" minWidth="0.0" prefWidth="28.26669156551361" sortable="false" text="Nr." />
-                              <TableColumn fx:id="stats_match_tablecolumn" maxWidth="253.60004270076752" prefWidth="212.00004959106445" text="Kampe spillet" />
-                              <TableColumn fx:id="stats_match_amount_tablecolumn" maxWidth="50.0" prefWidth="30.399995803833008" text="Antal" />
-                           </columns>
-                           <columnResizePolicy>
-                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                           </columnResizePolicy>
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                           <GridPane.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </GridPane.margin>
-                        </TableView>
-                        <TableView fx:id="stats_assists_tableview" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="180.0" prefWidth="255.0" snapToPixel="false" GridPane.columnIndex="2">
-                           <columns>
-                              <TableColumn fx:id="stats_assists_number_tablecolumn" editable="false" maxWidth="50.0" minWidth="0.0" prefWidth="28.26669156551361" sortable="false" text="Nr." />
-                              <TableColumn fx:id="stats_assists_tablecolumn" maxWidth="253.60004270076752" prefWidth="212.00004959106445" text="Assists" />
-                              <TableColumn fx:id="stats_assists_amount_tablecolumn" maxWidth="50.0" prefWidth="30.399995803833008" text="Antal" />
-                           </columns>
-                           <columnResizePolicy>
-                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                           </columnResizePolicy>
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                           <GridPane.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </GridPane.margin>
-                        </TableView>
-                        <TableView fx:id="stats_trainings_tableview" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="178.0" prefWidth="255.0" snapToPixel="false" GridPane.columnIndex="2" GridPane.rowIndex="2" GridPane.rowSpan="2147483647">
-                           <columns>
-                              <TableColumn fx:id="stats_trainings_number_tablecolumn" editable="false" maxWidth="50.0" minWidth="0.0" prefWidth="28.26669156551361" sortable="false" text="Nr." />
-                              <TableColumn fx:id="stats_trainings_tablecolumn" maxWidth="253.60004270076752" prefWidth="212.00004959106445" text="Træninger" />
-                              <TableColumn fx:id="stats_trainings_amount_tablecolumn" maxWidth="50.0" prefWidth="30.399995803833008" text="Antal" />
-                           </columns>
-                           <columnResizePolicy>
-                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                           </columnResizePolicy>
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                           <GridPane.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </GridPane.margin>
-                        </TableView>
-                        <TableView fx:id="stats_mofm_tableview" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="180.0" prefWidth="255.0" snapToPixel="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
-                           <columns>
-                              <TableColumn fx:id="stats_mofm_number_tablecolumn" editable="false" maxWidth="50.0" minWidth="0.0" prefWidth="28.26669156551361" sortable="false" text="Nr." />
-                              <TableColumn fx:id="stats_mofm_tablecolumn" maxWidth="253.60004270076752" prefWidth="212.00004959106445" text="Man of the Match" />
-                              <TableColumn fx:id="stats_mofm_amount_tablecolumn" maxWidth="50.0" prefWidth="30.399995803833008" text="Antal" />
-                           </columns>
-                           <columnResizePolicy>
-                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                           </columnResizePolicy>
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                           <GridPane.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </GridPane.margin>
-                        </TableView>
-                        <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                          <tabs>
-                            <Tab fx:id="stats_yellow_cards" text="Gule kort">
-                              <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                       <children>
-                                          <TableView fx:id="stats_cards_tableview1" layoutX="10.0" layoutY="10.0" prefHeight="166.0" prefWidth="266.0" snapToPixel="false" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                             <columns>
-                                                <TableColumn fx:id="stats_yellowcards_number_tablecolumn" editable="false" maxWidth="50.0" minWidth="0.0" prefWidth="28.26669156551361" sortable="false" text="Nr." />
-                                                <TableColumn fx:id="stats_yellowcards_tablecolumn" maxWidth="253.60004270076752" prefWidth="212.00004959106445" text="Spillere med gule kort" />
-                                                <TableColumn fx:id="stats_yellowcards_amount_tablecolumn" maxWidth="50.0" prefWidth="30.399995803833008" text="Antal" />
-                                             </columns>
-                                             <columnResizePolicy>
-                                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                                             </columnResizePolicy>
-                                             <opaqueInsets>
-                                                <Insets />
-                                             </opaqueInsets>
-                                          </TableView>
-                                       </children>
-                                    </AnchorPane>
-                              </content>
-                            </Tab>
-                            <Tab fx:id="stats_red_cards" text="Røde kort">
-                              <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                       <children>
-                                          <TableView fx:id="stats_cards_tableview" prefHeight="140.0" prefWidth="265.0" snapToPixel="false" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                             <columns>
-                                                <TableColumn fx:id="stats_cards_number_tablecolumn" editable="false" maxWidth="50.0" minWidth="0.0" prefWidth="28.26669156551361" sortable="false" text="Nr." />
-                                                <TableColumn fx:id="stats_redcards_tablecolumn" maxWidth="253.60004270076752" prefWidth="212.00004959106445" text="Spillere med røde kort" />
-                                                <TableColumn fx:id="stats_redcards_amount_tablecolumn" maxWidth="50.0" prefWidth="30.399995803833008" text="Antal" />
-                                             </columns>
-                                             <columnResizePolicy>
-                                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                                             </columnResizePolicy>
-                                             <opaqueInsets>
-                                                <Insets />
-                                             </opaqueInsets>
-                                          </TableView>
-                                       </children>
-                                    </AnchorPane>
-                              </content>
-                            </Tab>
-                          </tabs>
-                           <GridPane.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </GridPane.margin>
-                        </TabPane>
                      </children>
-                     <padding>
-                        <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
-                     </padding>
-                  </GridPane>
-                    </children>
-                </VBox>
-            </center>
-        </BorderPane>
-    </children>
+                     <VBox.margin>
+                        <Insets bottom="30.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" text="Oversigt" />
+                  <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="Kalender" />
+                  <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" styleClass="selectedmenu" text="Spillere" />
+                  <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" text="Kampe" />
+                  <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" text="Træning" />
+                  <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" text="Statistik" />
+                  <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" text="Diverse" />
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="1080.0">
+               <children>
+                  <HBox prefHeight="71.0" prefWidth="200.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="pageheadline" text="Statistik">
+                           <HBox.margin>
+                              <Insets left="35.0" top="25.0" />
+                           </HBox.margin>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <Line endX="1080.0" />
+                  <AnchorPane prefHeight="652.0" prefWidth="1081.0">
+                     <children>
+                        <GridPane prefHeight="658.0" prefWidth="1081.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="470.8000183105469" minWidth="10.0" prefWidth="375.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="403.0" minWidth="10.0" prefWidth="296.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="428.7332763671875" minWidth="10.0" prefWidth="276.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints maxHeight="234.8" minHeight="10.0" prefHeight="232.59998168945313" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="326.80004272460934" minHeight="0.0" prefHeight="214.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="335.73334350585935" minHeight="10.0" prefHeight="226.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <TableView fx:id="stats_players_tableview" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="571.0" prefWidth="354.0" GridPane.rowSpan="2147483647">
+                                 <columns>
+                                    <TableColumn fx:id="stats_player_number_tablecolumn1" editable="false" maxWidth="50.0" minWidth="0.0" prefWidth="28.26669156551361" sortable="false" text="Nr." />
+                                    <TableColumn fx:id="stats_players_tablecolumn" editable="false" maxWidth="367.2000335454941" minWidth="0.0" prefWidth="172.79995346069336" sortable="false" text="Spillere" />
+                                    <TableColumn fx:id="stats_player_goals_tablecolumn" editable="false" maxWidth="106.93336486816406" minWidth="0.0" prefWidth="71.46662902832031" sortable="false" text="Mål" />
+                                    <TableColumn fx:id="stats_player_assists_tablecolumn" editable="false" maxWidth="96.79995727539062" minWidth="0.0" prefWidth="61.066650390625" sortable="false" text="Assists" />
+                                 </columns>
+                                 <GridPane.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </GridPane.margin>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                              </TableView>
+                              <TableView fx:id="stats_goals_tableview" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="180.0" prefWidth="285.0" snapToPixel="false" GridPane.columnIndex="1">
+                                 <columns>
+                                    <TableColumn fx:id="stats_goals_number_tablecolumn" editable="false" maxWidth="50.0" minWidth="0.0" prefWidth="28.26669156551361" sortable="false" text="Nr." />
+                                    <TableColumn fx:id="stats_goals_tablecolumn" maxWidth="253.60004270076752" prefWidth="212.00004959106445" text="Mål" />
+                                    <TableColumn fx:id="stats_goals_amount_tablecolumn" maxWidth="50.0" prefWidth="30.399995803833008" text="Antal" />
+                                 </columns>
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <GridPane.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </GridPane.margin>
+                              </TableView>
+                              <TableView fx:id="stats_match_tableview" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="180.0" prefWidth="285.0" snapToPixel="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <columns>
+                                    <TableColumn fx:id="stats_match_number_tablecolumn" editable="false" maxWidth="50.0" minWidth="0.0" prefWidth="28.26669156551361" sortable="false" text="Nr." />
+                                    <TableColumn fx:id="stats_match_tablecolumn" maxWidth="253.60004270076752" prefWidth="212.00004959106445" text="Kampe spillet" />
+                                    <TableColumn fx:id="stats_match_amount_tablecolumn" maxWidth="50.0" prefWidth="30.399995803833008" text="Antal" />
+                                 </columns>
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <GridPane.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </GridPane.margin>
+                              </TableView>
+                              <TableView fx:id="stats_assists_tableview" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="180.0" prefWidth="255.0" snapToPixel="false" GridPane.columnIndex="2">
+                                 <columns>
+                                    <TableColumn fx:id="stats_assists_number_tablecolumn" editable="false" maxWidth="50.0" minWidth="0.0" prefWidth="28.26669156551361" sortable="false" text="Nr." />
+                                    <TableColumn fx:id="stats_assists_tablecolumn" maxWidth="253.60004270076752" prefWidth="212.00004959106445" text="Assists" />
+                                    <TableColumn fx:id="stats_assists_amount_tablecolumn" maxWidth="50.0" prefWidth="30.399995803833008" text="Antal" />
+                                 </columns>
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <GridPane.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </GridPane.margin>
+                              </TableView>
+                              <TableView fx:id="stats_trainings_tableview" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="178.0" prefWidth="255.0" snapToPixel="false" GridPane.columnIndex="2" GridPane.rowIndex="2" GridPane.rowSpan="2147483647">
+                                 <columns>
+                                    <TableColumn fx:id="stats_trainings_number_tablecolumn" editable="false" maxWidth="50.0" minWidth="0.0" prefWidth="28.26669156551361" sortable="false" text="Nr." />
+                                    <TableColumn fx:id="stats_trainings_tablecolumn" maxWidth="253.60004270076752" prefWidth="212.00004959106445" text="Træninger" />
+                                    <TableColumn fx:id="stats_trainings_amount_tablecolumn" maxWidth="50.0" prefWidth="30.399995803833008" text="Antal" />
+                                 </columns>
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <GridPane.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </GridPane.margin>
+                              </TableView>
+                              <TableView fx:id="stats_mofm_tableview" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="180.0" prefWidth="255.0" snapToPixel="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                 <columns>
+                                    <TableColumn fx:id="stats_mofm_number_tablecolumn" editable="false" maxWidth="50.0" minWidth="0.0" prefWidth="28.26669156551361" sortable="false" text="Nr." />
+                                    <TableColumn fx:id="stats_mofm_tablecolumn" maxWidth="253.60004270076752" prefWidth="212.00004959106445" text="Man of the Match" />
+                                    <TableColumn fx:id="stats_mofm_amount_tablecolumn" maxWidth="50.0" prefWidth="30.399995803833008" text="Antal" />
+                                 </columns>
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <GridPane.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </GridPane.margin>
+                              </TableView>
+                              <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                 <tabs>
+                                    <Tab fx:id="stats_yellow_cards" text="Gule kort">
+                                       <content>
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                             <children>
+                                                <TableView fx:id="stats_cards_tableview1" layoutX="10.0" layoutY="10.0" prefHeight="166.0" prefWidth="266.0" snapToPixel="false" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <columns>
+                                                      <TableColumn fx:id="stats_yellowcards_number_tablecolumn" editable="false" maxWidth="50.0" minWidth="0.0" prefWidth="28.26669156551361" sortable="false" text="Nr." />
+                                                      <TableColumn fx:id="stats_yellowcards_tablecolumn" maxWidth="253.60004270076752" prefWidth="212.00004959106445" text="Spillere med gule kort" />
+                                                      <TableColumn fx:id="stats_yellowcards_amount_tablecolumn" maxWidth="50.0" prefWidth="30.399995803833008" text="Antal" />
+                                                   </columns>
+                                                   <columnResizePolicy>
+                                                      <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                                   </columnResizePolicy>
+                                                   <opaqueInsets>
+                                                      <Insets />
+                                                   </opaqueInsets>
+                                                </TableView>
+                                             </children>
+                                          </AnchorPane>
+                                       </content>
+                                    </Tab>
+                                    <Tab fx:id="stats_red_cards" text="Røde kort">
+                                       <content>
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                             <children>
+                                                <TableView fx:id="stats_cards_tableview" prefHeight="140.0" prefWidth="265.0" snapToPixel="false" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <columns>
+                                                      <TableColumn fx:id="stats_cards_number_tablecolumn" editable="false" maxWidth="50.0" minWidth="0.0" prefWidth="28.26669156551361" sortable="false" text="Nr." />
+                                                      <TableColumn fx:id="stats_redcards_tablecolumn" maxWidth="253.60004270076752" prefWidth="212.00004959106445" text="Spillere med røde kort" />
+                                                      <TableColumn fx:id="stats_redcards_amount_tablecolumn" maxWidth="50.0" prefWidth="30.399995803833008" text="Antal" />
+                                                   </columns>
+                                                   <columnResizePolicy>
+                                                      <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                                   </columnResizePolicy>
+                                                   <opaqueInsets>
+                                                      <Insets />
+                                                   </opaqueInsets>
+                                                </TableView>
+                                             </children>
+                                          </AnchorPane>
+                                       </content>
+                                    </Tab>
+                                 </tabs>
+                                 <GridPane.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </GridPane.margin>
+                              </TabPane>
+                           </children>
+                           <padding>
+                              <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                           </padding>
+                        </GridPane>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
 </AnchorPane>
