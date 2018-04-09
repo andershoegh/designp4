@@ -1,11 +1,11 @@
-package player.Controller;
+package Player.Controller;
 
 import SQL.SqlConnection;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import player.Player;
+import Player.Player;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

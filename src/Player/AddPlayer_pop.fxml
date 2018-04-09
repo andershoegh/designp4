@@ -42,7 +42,7 @@
             <TextField prefHeight="27.0" prefWidth="334.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
             <TextField prefHeight="27.0" prefWidth="334.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <Button maxHeight="5.0" maxWidth="70.0" mnemonicParsing="false" onAction="#onOpretClick" prefHeight="5.0" prefWidth="70.0" styleClass="buttonApprove" text="Opret" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="7" />
+            <Button maxHeight="5.0" maxWidth="70.0" mnemonicParsing="false" prefHeight="5.0" prefWidth="70.0" styleClass="buttonApprove" text="Opret" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="7" />
             <Button alignment="CENTER" maxHeight="5.0" maxWidth="70.0" mnemonicParsing="false" prefHeight="5.0" prefWidth="70.0" styleClass="buttonCancel" text="Annuller" GridPane.rowIndex="7" />
          </children>
       </GridPane>
