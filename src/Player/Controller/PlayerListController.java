@@ -1,4 +1,4 @@
-package player.Controller;
+package Player.Controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -7,8 +7,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import player.Player;
-import sql.SqlConnection;
+import Player.Player;
+import SQL.SqlConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -96,7 +96,7 @@ public class PlayerListController {
             stage.setTitle("Slet spiller");
 
             // Passes selected player info to DeletePlayerController.java
-            player.Controller.DeletePlayerController controller = loader.getController();
+            DeletePlayerController controller = loader.getController();
             controller.initData(tablePlayers.getSelectionModel().getSelectedItem());
 
             Scene deletePlayerScene = new Scene(deletePlayerFXML);
