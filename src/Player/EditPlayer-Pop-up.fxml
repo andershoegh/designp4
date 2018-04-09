@@ -13,8 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox layoutX="9.0" layoutY="402.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
@@ -98,23 +97,27 @@
             </GridPane>
          </children>
       </HBox>
-      <Text layoutX="179.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Placeholder">
-         <font>
-            <Font name="Arial" size="24.0" />
-         </font>
-      </Text>
-      <Avatar layoutX="64.0" layoutY="52.0" radius="40.0" />
-      <Text layoutX="175.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Placering" AnchorPane.topAnchor="140.0" />
-      <TextField layoutX="256.0" layoutY="134.0" prefWidth="300.0" AnchorPane.topAnchor="135.0" />
-      <Text layoutX="175.0" layoutY="192.568359375" strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse" AnchorPane.topAnchor="180.0" />
-      <TextField layoutX="256.0" layoutY="173.0" prefWidth="300.0" AnchorPane.topAnchor="175.0" />
-      <Text layoutX="175.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Telefon" AnchorPane.topAnchor="220.0" />
-      <TextField layoutX="256.0" layoutY="209.0" prefWidth="300.0" AnchorPane.topAnchor="215.0" />
-      <Text layoutX="175.0" layoutY="273.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mail" AnchorPane.topAnchor="260.0" />
-      <TextField layoutX="256.0" layoutY="244.0" prefWidth="300.0" AnchorPane.topAnchor="255.0" />
-      <Text layoutX="175.0" layoutY="312.568359375" strokeType="OUTSIDE" strokeWidth="0.0" text="Fødselsdag" AnchorPane.topAnchor="300.0" />
-      <TextField layoutX="256.0" layoutY="294.0" prefWidth="300.0" AnchorPane.topAnchor="295.0" />
-      <ToggleButton layoutX="171.0" layoutY="335.0" mnemonicParsing="false" text="ToggleButton" AnchorPane.topAnchor="335.0" />
-      <TextField layoutX="276.0" layoutY="335.0" prefWidth="200.0" AnchorPane.topAnchor="335.0" />
+      <AnchorPane layoutX="46.0" layoutY="16.0">
+         <children>
+            <Text layoutX="111.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Placeholder">
+               <font>
+                  <Font name="Arial" size="24.0" />
+               </font>
+            </Text>
+            <Avatar radius="40.0" />
+            <Text layoutX="111.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Placering" AnchorPane.topAnchor="55.0" />
+            <TextField layoutX="192.0" layoutY="50.0" prefWidth="300.0" AnchorPane.topAnchor="50.0" />
+            <Text layoutX="111.0" layoutY="94.431640625" strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse" AnchorPane.topAnchor="95.0" />
+            <TextField layoutX="192.0" layoutY="90.0" prefWidth="300.0" AnchorPane.topAnchor="90.0" />
+            <Text layoutX="111.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Telefon" wrappingWidth="46.337890625" AnchorPane.topAnchor="135.0" />
+            <TextField layoutX="192.0" layoutY="130.0" prefWidth="300.0" AnchorPane.topAnchor="130.0" />
+            <Text layoutX="111.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mail" AnchorPane.topAnchor="175.0" />
+            <TextField layoutX="192.0" layoutY="170.0" prefWidth="300.0" />
+            <Text layoutX="111.0" layoutY="214.431640625" strokeType="OUTSIDE" strokeWidth="0.0" text="Fødselsdag" AnchorPane.topAnchor="215.0" />
+            <TextField layoutX="192.0" layoutY="210.0" prefWidth="300.0" />
+            <ToggleButton layoutX="107.0" layoutY="250.0" mnemonicParsing="false" text="ToggleButton" />
+            <TextField layoutX="212.0" layoutY="250.0" prefWidth="280.0" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
