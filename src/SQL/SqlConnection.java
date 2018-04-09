@@ -1,4 +1,4 @@
-package sql;
+package SQL;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -30,5 +30,4 @@ public class SqlConnection {
             System.out.println(ex.getMessage());
         }
     }
-
 }

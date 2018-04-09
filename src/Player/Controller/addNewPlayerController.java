@@ -1,4 +1,4 @@
-package player.Controller;
+package Player.Controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -6,7 +6,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import sql.SqlConnection;
+import SQL.SqlConnection;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import java.io.IOException;

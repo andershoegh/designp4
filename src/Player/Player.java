@@ -1,4 +1,4 @@
-package player;
+package Player;
 
 // class for all players generated in system
 public class Player {
