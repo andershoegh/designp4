@@ -1,4 +1,4 @@
-package player.Controller;
+package Player.Controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -8,7 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
-import sql.SqlConnection;
+import SQL.SqlConnection;
 import javafx.fxml.FXML;
 import java.io.IOException;
 import java.sql.Connection;
