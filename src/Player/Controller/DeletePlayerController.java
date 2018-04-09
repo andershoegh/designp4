@@ -1,6 +1,6 @@
 package player.Controller;
 
-import sql.SqlConnection;
+import SQL.SqlConnection;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
