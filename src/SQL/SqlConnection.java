@@ -30,5 +30,4 @@ public class SqlConnection {
             System.out.println(ex.getMessage());
         }
     }
-
 }
