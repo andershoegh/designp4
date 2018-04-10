@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="player.Controller.PlayerListController">
+<AnchorPane styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Player.Controller.PlayerListController">
     <children>
         <HBox styleClass="menubar" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -27,7 +27,7 @@
                     <children>
                         <ImageView fitHeight="49.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="file:graphics/Logo1.png" />
+                                <Image url="@../../graphics/aaif.png" />
                             </image>
                             <HBox.margin>
                                 <Insets left="15.0" top="15.0" />
