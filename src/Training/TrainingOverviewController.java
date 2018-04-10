@@ -1,10 +1,9 @@
-package Overview;
+package Training;
 
 import Controller.MenuController;
 import javafx.event.ActionEvent;
 
-public class OverviewController {
-
+public class TrainingOverviewController {
     MenuController controller = new MenuController();
 
     public void menuButtonClick(ActionEvent event){

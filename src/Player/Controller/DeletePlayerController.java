@@ -49,5 +49,4 @@ public class DeletePlayerController {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
     }
-
 }

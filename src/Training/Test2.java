@@ -1,4 +1,4 @@
-package training;
+package Training;
 
 public class Test2 {
 }

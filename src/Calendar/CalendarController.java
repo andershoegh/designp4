@@ -1,10 +1,11 @@
-package Overview;
+package Calendar;
 
 import Controller.MenuController;
 import javafx.event.ActionEvent;
 
-public class OverviewController {
+public class CalendarController {
 
+    // Menu buttons navigation
     MenuController controller = new MenuController();
 
     public void menuButtonClick(ActionEvent event){
