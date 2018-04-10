@@ -10,9 +10,9 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("../Player/PlayerList.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../Overview/Overview.fxml"));
         primaryStage.setTitle("Coach meister 9000");
-        primaryStage.setScene(new Scene(root, 1209,800));
+        primaryStage.setScene(new Scene(root, 1280,720));
         primaryStage.show();
     }
 
