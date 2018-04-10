@@ -18,24 +18,15 @@ import java.sql.SQLException;
 public class addNewPlayerController {
 
     // This is a connection between the FXML file and the DB, inserting values.
-    @FXML
-    private TextField nameInput;
-    @FXML
-    private TextField addressInput;
-    @FXML
-    private TextField phoneInput;
-    @FXML
-    private TextField mailInput;
-    @FXML
-    private TextField ICEnameInput;
-    @FXML
-    private TextField ICEphoneInput;
-    @FXML
-    private TextField positionInput;
-    @FXML
-    private TextField birthdayInput;
-    @FXML
-    private TextField healthInput;
+    @FXML private TextField nameInput;
+    @FXML private TextField addressInput;
+    @FXML private TextField phoneInput;
+    @FXML private TextField mailInput;
+    @FXML private TextField ICEnameInput;
+    @FXML private TextField ICEphoneInput;
+    @FXML private TextField positionInput;
+    @FXML private TextField birthdayInput;
+    @FXML private TextField healthInput;
 
     public void acceptButtonClick(ActionEvent event){
 

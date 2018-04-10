@@ -1,5 +1,6 @@
 package Player.Controller;
 
+import Controller.MenuController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -105,5 +106,12 @@ public class PlayerListController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    // Menu buttons navigation
+    MenuController controller = new MenuController();
+
+    public void menuButtonClick(ActionEvent event){
+        controller.menuNavigation(event);
     }
 }

@@ -54,8 +54,8 @@
                   </HBox>
                   <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" text="Oversigt" />
                   <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="Kalender" />
-                  <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" styleClass="selectedmenu" text="Spillere" />
-                  <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" text="Kampe" />
+                  <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" text="Spillere" />
+                  <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" styleClass="selectedmenu" text="Kampe" />
                   <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" text="Træning" />
                   <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" text="Statistik" />
                   <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" text="Diverse" />

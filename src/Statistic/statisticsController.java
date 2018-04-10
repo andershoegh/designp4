@@ -1,5 +1,6 @@
-package Player.Controller;
+package Statistic;
 
+import Controller.MenuController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -16,6 +17,13 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class statisticsController {
+
+    // Menu buttons navigation
+    MenuController controller = new MenuController();
+
+    public void menuButtonClick(ActionEvent event){
+        controller.menuNavigation(event);
+    }
 /*
     // This is a connection between the FXML file and the DB, inserting values.
     @FXML
