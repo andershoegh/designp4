@@ -11,7 +11,7 @@ public class SqlConnection {
     public static Connection connectToDB(){
 
         try {
-            conn = DriverManager.getConnection("jdbc:sqlite:coachdb.db");
+            conn = DriverManager.getConnection("jdbc:sqlite:coachDB.db");
             if (conn != null) {
                 System.out.println("Connection to SQLite has been established");
             }
