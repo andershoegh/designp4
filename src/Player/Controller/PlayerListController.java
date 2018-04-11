@@ -89,6 +89,29 @@ public class PlayerListController {
         }
     }
 
+    public void editPlayerButtonClick(){
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("../EditPlayer-Pop-up.fxml"));
+            Parent editPlayerFXML = loader.load();
+
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+
+            EditPlayerController controller = loader.getController();
+            controller.initData(tablePlayers.getSelectionModel().getSelectedItem());
+
+            Scene editPlayerScene = new Scene(editPlayerFXML);
+            stage.setScene(editPlayerScene);
+            stage.showAndWait();
+
+            clearTable();
+            initialize();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
     public void deletePlayerButtonClick(){
         try {
             FXMLLoader loader = new FXMLLoader();

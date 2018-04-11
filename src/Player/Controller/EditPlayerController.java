@@ -1,15 +1,28 @@
 package Player.Controller;
 
+import Player.Player;
+import SQL.SqlConnection;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class EditPlayerController {
 
+    private Player selectedPlayer;
+    private int playerID;
+
+    @FXML Button saveButton;
+
     // editable
     @FXML private Label playerName;
-    @FXML private TextField placement;
+    @FXML private TextField position;
     @FXML private TextField address;
     @FXML private TextField telephone;
     @FXML private TextField mail;
@@ -24,4 +37,50 @@ public class EditPlayerController {
     @FXML private Label attendedTrainings;
     @FXML private Label yellowCards;
     @FXML private Label redCards;
+
+    public void initData(Player player){
+        selectedPlayer = player;
+        playerName.setText(selectedPlayer.getName());
+      //  position.setText(selectedPlayer.getPosition());
+        address.setText(selectedPlayer.getAddress());
+        telephone.setText(Integer.toString(selectedPlayer.getPhone()));
+        mail.setText(selectedPlayer.getMail());
+
+        playerID = selectedPlayer.getId();
+
+        /* Lortet virker ikke helt endnu, upcoming feature
+
+        goalsScored.setText(Integer.toString(selectedPlayer.getGoalsScored()));
+        assists.setText(Integer.toString(selectedPlayer.getAssists()));
+        attendedMatches.setText(Integer.toString(selectedPlayer.getAttendedMatches()));
+        attendedTrainings.setText(Integer.toString(selectedPlayer.getAttendedTrainings()));
+        yellowCards.setText(Integer.toString(selectedPlayer.getYellowCards()));
+        redCards.setText(Integer.toString(selectedPlayer.getRedCards()));
+
+        System.out.println(selectedPlayer.getMotm());
+        */
+    }
+
+    public void saveButtonClick(){
+        try {
+            Connection conn = SqlConnection.connectToDB();
+
+            String sql = "UPDATE player SET address = '?', phone = '?', mail = '?', position = '?' WHERE _id = '?'";
+
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+            stmt.setString(1, address.getText());
+            stmt.setInt(2, Integer.parseInt(telephone.getText()));
+            stmt.setString(3, mail.getText());
+            stmt.setString(4, position.getText());
+            stmt.setInt(5, playerID);
+
+            stmt.executeUpdate();
+
+            Stage stage = (Stage) saveButton.getScene().getWindow();
+            stage.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

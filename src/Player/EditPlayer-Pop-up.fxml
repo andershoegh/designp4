@@ -35,7 +35,7 @@
                         <Label text="Kampens spiller" />
                      </children>
                   </VBox>
-                  <Button mnemonicParsing="false" styleClass="buttonApprove" stylesheets="@../stylesheet.css" text="Gem" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                  <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveButtonClick" styleClass="buttonApprove" stylesheets="@../stylesheet.css" text="Gem" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                      <font>
                         <Font size="16.0" />
                      </font>
