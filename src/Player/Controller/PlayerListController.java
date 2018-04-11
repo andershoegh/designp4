@@ -39,6 +39,10 @@ public class PlayerListController {
         loadDataFromDB();
     }
 
+    public void clearTable(){
+        tablePlayers.getItems().clear();
+    }
+
     // Retrieves data from appropriate player class constructor
     private void setCellTable(){
         columnName.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -103,6 +107,9 @@ public class PlayerListController {
             Scene deletePlayerScene = new Scene(deletePlayerFXML);
             stage.setScene(deletePlayerScene);
             stage.showAndWait();
+
+            clearTable();
+            initialize();
         } catch (IOException e) {
             e.printStackTrace();
         }

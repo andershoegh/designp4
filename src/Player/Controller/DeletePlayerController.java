@@ -19,7 +19,6 @@ public class DeletePlayerController {
     @FXML private Button acceptButton;
     @FXML private Button closeButton;
 
-
     // Extracts the name from the selected player
     public void initData(Player player){
         selectedPlayer = player;
