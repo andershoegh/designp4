@@ -24,46 +24,4 @@ public class statisticsController {
     public void menuButtonClick(ActionEvent event){
         controller.menuNavigation(event);
     }
-/*
-    // This is a connection between the FXML file and the DB, inserting values.
-    @FXML
-    private TableView stats_player_tableview;
-    @FXML
-    private TableColumn stats_player_number_tablecolumn;
-    @FXML
-    private TableColumn stats_player_tablecolumn;
-    @FXML
-    private TableColumn stats_player_goals_tablecolumn;
-    @FXML
-    private TableColumn stats_player_assists_tablecolumn;
-
-    public class input_stats_player_tableview {
-
-        Connection conn = SqlConnection.connectToDB();
-
-        String sql = "SELECT " + "(name, goalScored, assist)" + " FROM player ";
-
-
-            try
-
-        {
-            PreparedStatement stmt = conn.prepareStatement(sql);
-
-
-        } catch(
-        SQLException e)
-
-        {
-            System.out.println(e.getMessage());
-        } catch(
-        IOException e)
-
-        {
-            e.printStackTrace();
-        }
-
-            SqlConnection.closeConnection();
-
-    }
-*/
 }
