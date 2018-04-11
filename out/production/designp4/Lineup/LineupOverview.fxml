@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" styleClass="window" stylesheets="@GitHub/designp4/src/stylesheet.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+      <HBox maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0">
+         <children>
+            <VBox prefHeight="720.0" prefWidth="200.0" styleClass="menubar">
+               <children>
+                  <HBox>
+                     <children>
+                              <ImageView fitHeight="49.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                                  <image>
+                                      <Image url="@GitHub/designp4/graphics/aaif.png" />
+                                  </image>
+                                  <HBox.margin>
+                                      <Insets left="15.0" top="15.0" />
+                                  </HBox.margin>
+                              </ImageView>
+                              <Label styleClass="teamname" text="AAIF Senior">
+                                  <HBox.margin>
+                                      <Insets left="20.0" top="30.0" />
+                                  </HBox.margin>
+                              </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="30.0" />
+                     </VBox.margin>
+                  </HBox>
+                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" text="Oversigt" />
+                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="Kalender" />
+                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" styleClass="selectedmenu" text="Spillere" />
+                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" text="Kampe" />
+                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" text="Træning" />
+                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" text="Statistik" />
+                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" text="Diverse" />
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="1080.0">
+               <children>
+                  <HBox prefHeight="71.0" prefWidth="200.0">
+                     <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="pageheadline" text="Matches">
+                                  <HBox.margin>
+                                      <Insets left="35.0" top="25.0" />
+                                  </HBox.margin>
+                              </Text>
+                     </children>
+                  </HBox>
+                  <Line endX="1080.0" />
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <HBox prefHeight="55.0" prefWidth="1081.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="68.0" prefWidth="176.0" text="Match:" />
+                              <Label alignment="CENTER" prefHeight="55.0" prefWidth="334.0" text="Hvem vs hvem" />
+                              <Label alignment="CENTER" prefHeight="74.0" prefWidth="246.0" text="til tidspunkt" />
+                           </children>
+                        </HBox>
+                        <VBox fx:id="bench" layoutX="939.0" layoutY="60.0" prefHeight="539.0" prefWidth="125.0">
+                           <children>
+                              <HBox prefHeight="78.0" prefWidth="125.0">
+                                 <children>
+                                    <Label alignment="CENTER" prefHeight="41.0" prefWidth="123.0" text="Bench" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <ImageView fx:id="tacticfield" fitHeight="539.0" fitWidth="448.0" layoutX="581.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Fodboldbane.png" />
+                           </image>
+                        </ImageView>
+                        <VBox layoutX="20.0" layoutY="60.0" prefHeight="539.0" prefWidth="255.0">
+                           <children>
+                              <TableView fx:id="players" prefHeight="494.0" prefWidth="255.0">
+                                <columns>
+                                  <TableColumn prefWidth="254.0" text="Players" />
+                                </columns>
+                              </TableView>
+                              <JFXButton fx:id="addNewPlayer" alignment="CENTER" buttonType="RAISED" prefHeight="50.0" prefWidth="274.0" ripplerFill="#47ab4c" text="Add Player" />
+                           </children>
+                        </VBox>
+                        <VBox layoutX="286.0" layoutY="60.0" prefHeight="539.0" prefWidth="255.0">
+                           <children>
+                              <TableView prefHeight="494.0" prefWidth="255.0">
+                                 <columns>
+                                    <TableColumn fx:id="tactics" prefWidth="254.0" text="Tactics" />
+                                 </columns>
+                              </TableView>
+                              <JFXButton fx:id="addNewTactic" alignment="CENTER" buttonType="RAISED" prefHeight="50.0" prefWidth="274.0" ripplerFill="#47ab4c" text="New tactic" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+    </children>
+</AnchorPane>
