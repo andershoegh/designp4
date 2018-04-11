@@ -122,3 +122,19 @@
     -fx-pref-height: 30;
 }
 
+.overviewButtons{
+    -fx-pref-height: 35;
+    -fx-pref-width: 70;
+    -fx-background-color: #383838;
+}
+
+.overviewHeadline{
+    -fx-font-size: 18;
+}
+
+.overviewText{
+    -fx-font-weight: bold;
+}
+
+
+

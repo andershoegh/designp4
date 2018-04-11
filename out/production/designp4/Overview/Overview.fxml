@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Overview.OverviewController">
+<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Overview.OverviewController">
    <children>
       <HBox maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0">
          <children>
@@ -65,45 +65,68 @@
                      <children>
                         <VBox fx:id="TrainingBox1" layoutX="110.0" layoutY="38.0" prefHeight="252.0" prefWidth="324.0" style="-fx-background-color: white;">
                            <children>
-                              <HBox alignment="CENTER" prefHeight="50.0" prefWidth="226.0">
+                              <HBox alignment="CENTER" prefHeight="44.0" prefWidth="324.0">
                                  <children>
-                                    <Label fx:id="training1Headline" contentDisplay="CENTER" text="Label" />
+                                    <Label fx:id="training1Headline" contentDisplay="CENTER" styleClass="overviewHeadline" stylesheets="@../stylesheet.css" text="Label" />
                                  </children>
                               </HBox>
+                              <Line endX="182.0" startX="-100.0">
+                                 <VBox.margin>
+                                    <Insets left="20.0" />
+                                 </VBox.margin>
+                              </Line>
                               <HBox prefHeight="37.0" prefWidth="324.0">
                                  <children>
-                                    <Label text="Antal tilmeldte">
+                                    <Label styleClass="overviewText" stylesheets="@../stylesheet.css" text="Antal tilmeldte:">
                                        <HBox.margin>
                                           <Insets left="30.0" right="10.0" />
                                        </HBox.margin>
+                                       <padding>
+                                          <Insets top="10.0" />
+                                       </padding>
                                     </Label>
                                     <Label fx:id="training1Attend" text="Label">
                                        <HBox.margin>
                                           <Insets left="10.0" right="10.0" />
                                        </HBox.margin>
+                                       <padding>
+                                          <Insets top="10.0" />
+                                       </padding>
                                     </Label>
                                  </children>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
                               </HBox>
                               <HBox layoutX="10.0" layoutY="54.0" prefHeight="105.0" prefWidth="324.0">
                                  <children>
-                                    <Label text="Afbud">
+                                    <Label styleClass="overviewText" stylesheets="@../stylesheet.css" text="Afbud:">
                                        <HBox.margin>
                                           <Insets left="30.0" right="30.0" />
                                        </HBox.margin>
                                        <opaqueInsets>
                                           <Insets />
                                        </opaqueInsets>
+                                       <padding>
+                                          <Insets top="10.0" />
+                                       </padding>
                                     </Label>
-                                    <ListView fx:id="training1Cancel" prefHeight="200.0" prefWidth="200.0">
+                                    <ListView fx:id="training1Cancel" prefHeight="93.0" prefWidth="200.0">
                                        <HBox.margin>
-                                          <Insets />
+                                          <Insets top="5.0" />
                                        </HBox.margin>
+                                       <padding>
+                                          <Insets top="10.0" />
+                                       </padding>
                                     </ListView>
                                  </children>
+                                 <VBox.margin>
+                                    <Insets top="3.0" />
+                                 </VBox.margin>
                               </HBox>
                               <HBox alignment="CENTER" layoutX="10.0" layoutY="101.0" prefHeight="35.0" prefWidth="324.0">
                                  <children>
-                                    <Button fx:id="training1Program" mnemonicParsing="false" text="Program" />
+                                    <Button fx:id="training1ProgramButton" mnemonicParsing="false" styleClass="overviewButtons" stylesheets="@../stylesheet.css" text="Program" />
                                  </children>
                                  <VBox.margin>
                                     <Insets top="15.0" />
@@ -118,12 +141,17 @@
                            <children>
                               <HBox alignment="CENTER" prefHeight="50.0" prefWidth="226.0">
                                  <children>
-                                    <Label fx:id="training2Headline" contentDisplay="CENTER" text="Label" />
+                                    <Label fx:id="training2Headline" contentDisplay="CENTER" styleClass="overviewHeadline" stylesheets="@../stylesheet.css" text="Label" />
                                  </children>
                               </HBox>
-                              <HBox prefHeight="37.0" prefWidth="324.0">
+                              <Line endX="182.0" startX="-100.0">
+                                 <VBox.margin>
+                                    <Insets left="20.0" />
+                                 </VBox.margin>
+                              </Line>
+                              <HBox prefHeight="26.0" prefWidth="324.0">
                                  <children>
-                                    <Label text="Antal tilmdelte">
+                                    <Label styleClass="overviewText" stylesheets="@../stylesheet.css" text="Antal tilmdelte:">
                                        <HBox.margin>
                                           <Insets left="30.0" right="10.0" />
                                        </HBox.margin>
@@ -134,12 +162,15 @@
                                        </HBox.margin>
                                     </Label>
                                  </children>
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
                               </HBox>
                               <HBox layoutX="10.0" layoutY="54.0" prefHeight="105.0" prefWidth="324.0">
                                  <children>
-                                    <Label text="Afbud">
+                                    <Label styleClass="overviewText" stylesheets="@../stylesheet.css" text="Afbud:">
                                        <HBox.margin>
-                                          <Insets left="30.0" right="30.0" />
+                                          <Insets left="30.0" right="30.0" top="10.0" />
                                        </HBox.margin>
                                        <opaqueInsets>
                                           <Insets />
@@ -147,14 +178,14 @@
                                     </Label>
                                     <ListView fx:id="training2Cancel" prefHeight="200.0" prefWidth="200.0">
                                        <HBox.margin>
-                                          <Insets />
+                                          <Insets top="5.0" />
                                        </HBox.margin>
                                     </ListView>
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER" layoutX="10.0" layoutY="101.0" prefHeight="35.0" prefWidth="324.0">
                                  <children>
-                                    <Button fx:id="training2Program" mnemonicParsing="false" text="Program" />
+                                    <Button fx:id="training2ProgramButton" mnemonicParsing="false" styleClass="overviewButtons" stylesheets="@../stylesheet.css" text="Program" />
                                  </children>
                                  <VBox.margin>
                                     <Insets top="15.0" />
@@ -169,71 +200,94 @@
                            <children>
                               <HBox alignment="CENTER" prefHeight="50.0" prefWidth="226.0">
                                  <children>
-                                    <Label fx:id="matchHeadline" contentDisplay="CENTER" text="Label" />
+                                    <Label fx:id="matchHeadline" contentDisplay="CENTER" styleClass="overviewHeadline" stylesheets="@../stylesheet.css" text="Label" />
                                  </children>
                               </HBox>
-                              <HBox prefHeight="41.0" prefWidth="324.0">
+                              <Line endX="182.0" startX="-100.0">
+                                 <VBox.margin>
+                                    <Insets left="20.0" />
+                                 </VBox.margin>
+                              </Line>
+                              <HBox prefHeight="30.0" prefWidth="324.0">
                                  <children>
-                                    <Label text="Dato:">
+                                    <Label styleClass="overviewText" stylesheets="@../stylesheet.css" text="Dato:">
                                        <HBox.margin>
-                                          <Insets left="30.0" right="10.0" />
+                                          <Insets />
                                        </HBox.margin>
+                                       <padding>
+                                          <Insets left="30.0" />
+                                       </padding>
                                     </Label>
                                     <Label fx:id="matchDate" text="Label">
                                        <HBox.margin>
-                                          <Insets left="10.0" right="10.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                 </children>
-                              </HBox>
-                              <HBox layoutX="10.0" layoutY="60.0" prefHeight="32.0" prefWidth="324.0">
-                                 <children>
-                                    <Label text="Sted">
-                                       <HBox.margin>
                                           <Insets left="30.0" right="10.0" />
                                        </HBox.margin>
                                     </Label>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="15.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox layoutX="10.0" layoutY="60.0" prefHeight="30.0" prefWidth="324.0">
+                                 <children>
+                                    <Label styleClass="overviewText" stylesheets="@../stylesheet.css" text="Sted:">
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                       <padding>
+                                          <Insets left="30.0" />
+                                       </padding>
+                                    </Label>
                                     <Label fx:id="matchPlace" text="Label">
                                        <HBox.margin>
-                                          <Insets left="10.0" right="10.0" />
+                                          <Insets left="30.0" right="10.0" />
                                        </HBox.margin>
                                     </Label>
                                  </children>
                               </HBox>
                               <HBox layoutX="10.0" layoutY="54.0" prefHeight="108.0" prefWidth="324.0">
                                  <children>
-                                    <Label alignment="TOP_LEFT" text="Afbud">
+                                    <Label alignment="TOP_LEFT" styleClass="overviewText" stylesheets="@../stylesheet.css" text="Afbud:">
                                        <HBox.margin>
-                                          <Insets left="30.0" right="10.0" />
+                                          <Insets top="5.0" />
                                        </HBox.margin>
+                                       <padding>
+                                          <Insets left="30.0" />
+                                       </padding>
                                     </Label>
                                     <ListView fx:id="matchCancel" prefHeight="200.0" prefWidth="200.0">
                                        <HBox.margin>
-                                          <Insets left="8.0" />
+                                          <Insets left="15.0" />
                                        </HBox.margin>
                                     </ListView>
                                  </children>
                               </HBox>
                               <HBox prefHeight="181.0" prefWidth="324.0">
                                  <children>
-                                    <Label text="Noter">
+                                    <Label styleClass="overviewText" stylesheets="@../stylesheet.css" text="Noter:">
                                        <HBox.margin>
-                                          <Insets left="30.0" right="10.0" top="10.0" />
+                                          <Insets top="5.0" />
                                        </HBox.margin>
+                                       <padding>
+                                          <Insets left="30.0" />
+                                       </padding>
                                     </Label>
                                     <TextArea fx:id="matchNotes" prefHeight="200.0" prefWidth="200.0">
                                        <HBox.margin>
-                                          <Insets left="10.0" />
+                                          <Insets left="15.0" />
                                        </HBox.margin>
                                     </TextArea>
                                  </children>
                                  <padding>
                                     <Insets top="8.0" />
                                  </padding>
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
                               </HBox>
                               <HBox alignment="CENTER" layoutX="10.0" layoutY="101.0" prefHeight="38.0" prefWidth="324.0">
                                  <children>
-                                    <Button fx:id="matchTactic" mnemonicParsing="false" text="Taktik" />
+                                    <Button fx:id="matchTacticButton" mnemonicParsing="false" styleClass="overviewButtons" stylesheets="@../stylesheet.css" text="Taktik" />
                                  </children>
                                  <VBox.margin>
                                     <Insets top="13.0" />
