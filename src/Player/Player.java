@@ -10,7 +10,7 @@ public class Player {
     private int ICEtelephone;
     private String position;
     private String birthday;
-    private String status; // injured or healthy as a horse
+    private int health; // injured or healthy as a horse
     private int yellowCards;
     private int redCards;
     private int goalsScored;
@@ -22,7 +22,7 @@ public class Player {
 
     // constructor
     public Player(String name, String address, int phone, String mail, String ICEname, int ICEtelephone, String position, String birthday,
-                  String status, int yellowCards, int redCards, int goalsScored, int assists,
+                  int health, int yellowCards, int redCards, int goalsScored, int assists,
                   int motm, int attendedMatches, int attendedTrainings, int id) {
         this.name = name;
         this.address = address;
@@ -32,7 +32,7 @@ public class Player {
         this.ICEtelephone = ICEtelephone;
         this.position = position;
         this.birthday = birthday;
-        this.status = status;
+        this.health = health;
         this.yellowCards = yellowCards;
         this.redCards = redCards;
         this.goalsScored = goalsScored;
@@ -74,8 +74,8 @@ public class Player {
         this.birthday = birthday;
     }
 
-    public String getStatus() { return status; }
-    public void setStatus(String status) { this.status = status; }
+    public int getHealth() { return health; }
+    public void setHealth(int health) { this.health = health; }
 
     public int getYellowCards() {
         return yellowCards;

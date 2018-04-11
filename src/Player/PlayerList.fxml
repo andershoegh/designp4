@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Player.Controller.PlayerListController">
+<AnchorPane styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Player.Controller.PlayerListController">
     <children>
         <HBox styleClass="menubar" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -72,7 +72,7 @@
                     <columns>
                       <TableColumn fx:id="columnName" prefWidth="75.0" text="Navn" />
                       <TableColumn fx:id="columnPosition" prefWidth="75.0" text="Position" />
-                        <TableColumn fx:id="columnEdit" prefWidth="75.0" text="Column X" />
+                        <TableColumn fx:id="columnMotm" prefWidth="75.0" text="MOTM" />
                     </columns>
                      <VBox.margin>
                         <Insets left="50.0" right="50.0" />

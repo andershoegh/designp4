@@ -27,7 +27,7 @@ public class EditPlayerController {
     @FXML private TextField telephone;
     @FXML private TextField mail;
     @FXML private TextField birthday;
-    @FXML private CheckBox status;
+    @FXML private CheckBox health;
 
     // stats display
     @FXML private Label motm;
@@ -40,32 +40,35 @@ public class EditPlayerController {
 
     public void initData(Player player){
         selectedPlayer = player;
+        playerID = selectedPlayer.getId();
+
+        // inputting editable data into text fields
         playerName.setText(selectedPlayer.getName());
-      //  position.setText(selectedPlayer.getPosition());
+        position.setText(selectedPlayer.getPosition());
         address.setText(selectedPlayer.getAddress());
         telephone.setText(Integer.toString(selectedPlayer.getPhone()));
         mail.setText(selectedPlayer.getMail());
 
-        playerID = selectedPlayer.getId();
+        // setting checkbox to fire if status == 1
+        if(selectedPlayer.getHealth() == 1){
+            health.fire();
+        }
 
-        /* Lortet virker ikke helt endnu, upcoming feature
-
+        // inputting displayed stats to labels
+        motm.setText(Integer.toString(selectedPlayer.getMotm()));
         goalsScored.setText(Integer.toString(selectedPlayer.getGoalsScored()));
         assists.setText(Integer.toString(selectedPlayer.getAssists()));
         attendedMatches.setText(Integer.toString(selectedPlayer.getAttendedMatches()));
         attendedTrainings.setText(Integer.toString(selectedPlayer.getAttendedTrainings()));
         yellowCards.setText(Integer.toString(selectedPlayer.getYellowCards()));
         redCards.setText(Integer.toString(selectedPlayer.getRedCards()));
-
-        System.out.println(selectedPlayer.getMotm());
-        */
     }
 
     public void saveButtonClick(){
         try {
             Connection conn = SqlConnection.connectToDB();
 
-            String sql = "UPDATE player SET address = '?', phone = '?', mail = '?', position = '?' WHERE _id = '?'";
+            String sql = "UPDATE player SET address = ?, phone = ?, mail = ?, position = ?, health = ? WHERE _id = ?";
 
             PreparedStatement stmt = conn.prepareStatement(sql);
 
@@ -73,7 +76,8 @@ public class EditPlayerController {
             stmt.setInt(2, Integer.parseInt(telephone.getText()));
             stmt.setString(3, mail.getText());
             stmt.setString(4, position.getText());
-            stmt.setInt(5, playerID);
+            stmt.setInt(5, health.isSelected() ? 1 : 0);
+            stmt.setInt(6, playerID);
 
             stmt.executeUpdate();
 

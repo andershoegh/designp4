@@ -72,7 +72,7 @@
                     <columns>
                       <TableColumn fx:id="columnName" prefWidth="75.0" text="Navn" />
                       <TableColumn fx:id="columnPosition" prefWidth="75.0" text="Position" />
-                        <TableColumn fx:id="columnEdit" prefWidth="75.0" text="Column X" />
+                        <TableColumn fx:id="columnMotm" prefWidth="75.0" text="MOTM" />
                     </columns>
                      <VBox.margin>
                         <Insets left="50.0" right="50.0" />
@@ -88,6 +88,14 @@
                   <HBox alignment="CENTER_RIGHT">
                      <children>
                         <Button alignment="CENTER" minWidth="100.0" mnemonicParsing="false" onAction="#addPlayerButtonClick" styleClass="buttonApprove" text="Tilføj spiller">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <HBox.margin>
+                              <Insets right="20.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button alignment="CENTER" minWidth="150.0" mnemonicParsing="false" onAction="#editPlayerButtonClick" styleClass="buttonApprove" text="Rediger valgt spiller">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
