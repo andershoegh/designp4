@@ -59,7 +59,7 @@
          </font>
       </Text>
       <Line endX="135.0" layoutX="136.0" layoutY="61.0" startX="-100.0" />
-      <Button layoutX="129.0" layoutY="254.0" mnemonicParsing="false" styleClass="greenButton" text="Opret" />
+      <Button fx:id="createButton" layoutX="129.0" layoutY="254.0" mnemonicParsing="false" onAction="#createButton" styleClass="greenButton" text="Opret" />
       <ImageView fitHeight="12.0" fitWidth="12.0" layoutX="261.0" layoutY="30.0">
          <image>
             <Image url="@../../graphics/cross.png" />
