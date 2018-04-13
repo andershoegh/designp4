@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Player.Controller.EditPlayerController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Player.Controller.EditPlayerController">
    <children>
       <HBox layoutX="9.0" layoutY="402.0" prefHeight="346.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
@@ -35,7 +35,7 @@
                         <Label text="Kampens spiller" />
                      </children>
                   </VBox>
-                  <Button mnemonicParsing="false" styleClass="buttonApprove" stylesheets="@../stylesheet.css" text="Gem" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                  <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveButtonClick" styleClass="buttonApprove" stylesheets="@../stylesheet.css" text="Gem" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -105,12 +105,12 @@
                   <Label text="Mail" GridPane.rowIndex="3" />
                   <Label text="Fødselsdag" GridPane.rowIndex="4" />
                   <Label text="Skadet" GridPane.rowIndex="5" />
-                  <CheckBox fx:id="status" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                  <TextField fx:id="placement" GridPane.columnIndex="1" />
+                  <CheckBox fx:id="health" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <TextField fx:id="position" GridPane.columnIndex="1" />
                   <TextField fx:id="mail" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                </children>
             </GridPane>
-            <Label fx:id="playerName" layoutX="136.0" layoutY="25.0" text="Navn" />
+            <Label fx:id="playerName" layoutX="131.0" layoutY="14.0" prefHeight="29.0" prefWidth="379.0" styleClass="pageheadline" stylesheets="@../stylesheet.css" text="Navn" />
          </children>
       </AnchorPane>
    </children>

@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" styleClass="window" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/9.0.4" >
+<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" styleClass="window" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Player.Controller.PlayerListController">
     <children>
       <HBox maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0">
          <children>
@@ -37,13 +37,13 @@
                         <Insets bottom="30.0" />
                      </VBox.margin>
                   </HBox>
-                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" text="Oversigt" />
-                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="Kalender" />
-                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" styleClass="selectedmenu" text="Spillere" />
-                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" text="Kampe" />
-                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" text="Træning" />
-                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" text="Statistik" />
-                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" text="Diverse" />
+                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" onAction="#menuButtonClick" text="Oversigt" />
+                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefHeight="50.0" onAction="#menuButtonClick" prefWidth="200.0" text="Kalender" />
+                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" onAction="#menuButtonClick" styleClass="selectedmenu" text="Spillere" />
+                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" onAction="#menuButtonClick" text="Kampe" />
+                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" onAction="#menuButtonClick" text="Træning" />
+                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" onAction="#menuButtonClick" text="Statistik" />
+                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" onAction="#menuButtonClick" text="Diverse" />
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="1080.0">
