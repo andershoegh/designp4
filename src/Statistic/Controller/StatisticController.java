@@ -180,6 +180,10 @@ public class StatisticController {
 
         SqlConnection.closeConnection();
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 
     // Menu buttons navigation
     MenuController controller = new MenuController();
