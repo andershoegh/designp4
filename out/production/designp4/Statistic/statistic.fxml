@@ -81,7 +81,7 @@
                            <children>
                               <TableView fx:id="stats_players_tableview" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="571.0" prefWidth="354.0" GridPane.rowSpan="2147483647">
                                  <columns>
-                                    <TableColumn fx:id="stats_player_number_tablecolumn1" editable="false" maxWidth="50.0" minWidth="0.0" prefWidth="28.26669156551361" sortable="false" text="Nr." />
+                                    <TableColumn fx:id="stats_player_number_tablecolumn" editable="false" maxWidth="50.0" minWidth="0.0" prefWidth="28.26669156551361" sortable="false" text="Nr." />
                                     <TableColumn fx:id="stats_players_tablecolumn" editable="false" maxWidth="367.2000335454941" minWidth="0.0" prefWidth="172.79995346069336" sortable="false" text="Spillere" />
                                     <TableColumn fx:id="stats_player_goals_tablecolumn" editable="false" maxWidth="106.93336486816406" minWidth="0.0" prefWidth="71.46662902832031" sortable="false" text="Mål" />
                                     <TableColumn fx:id="stats_player_assists_tablecolumn" editable="false" maxWidth="96.79995727539062" minWidth="0.0" prefWidth="61.066650390625" sortable="false" text="Assists" />
@@ -182,7 +182,7 @@
                                        <content>
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                              <children>
-                                                <TableView fx:id="stats_cards_tableview1" layoutX="10.0" layoutY="10.0" prefHeight="166.0" prefWidth="266.0" snapToPixel="false" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                <TableView fx:id="stats_yellowcards_tableview" layoutX="10.0" layoutY="10.0" prefHeight="166.0" prefWidth="266.0" snapToPixel="false" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                    <columns>
                                                       <TableColumn fx:id="stats_yellowcards_number_tablecolumn" editable="false" maxWidth="50.0" minWidth="0.0" prefWidth="28.26669156551361" sortable="false" text="Nr." />
                                                       <TableColumn fx:id="stats_yellowcards_tablecolumn" maxWidth="253.60004270076752" prefWidth="212.00004959106445" text="Spillere med gule kort" />
@@ -203,7 +203,7 @@
                                        <content>
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                              <children>
-                                                <TableView fx:id="stats_cards_tableview" prefHeight="140.0" prefWidth="265.0" snapToPixel="false" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                <TableView fx:id="stats_redcards_tableview" prefHeight="140.0" prefWidth="265.0" snapToPixel="false" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                    <columns>
                                                       <TableColumn fx:id="stats_cards_number_tablecolumn" editable="false" maxWidth="50.0" minWidth="0.0" prefWidth="28.26669156551361" sortable="false" text="Nr." />
                                                       <TableColumn fx:id="stats_redcards_tablecolumn" maxWidth="253.60004270076752" prefWidth="212.00004959106445" text="Spillere med røde kort" />

@@ -1,19 +1,12 @@
 package Player.Controller;
 
-import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.stage.Stage;
 import SQL.SqlConnection;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
-import java.io.IOException;
 import java.sql.Connection;
-
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
@@ -72,7 +65,7 @@ public class addNewPlayerController {
 
     public void cancelButtonClick(){
         // Closing the window and returning to PlayerList.fxml
-            Stage stage = (Stage) cancelButton.getScene().getWindow();
-            stage.close();
+        Stage stage = (Stage) cancelButton.getScene().getWindow();
+        stage.close();
     }
 }
