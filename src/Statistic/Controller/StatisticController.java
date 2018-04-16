@@ -1,9 +1,11 @@
 package Statistic.Controller;
 
+import Controller.MenuController;
 import Player.Player;
 import SQL.SqlConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -68,7 +70,6 @@ public class StatisticController {
 
         SqlConnection.closeConnection();
     }
-}
 
 
     // Menu buttons navigation
