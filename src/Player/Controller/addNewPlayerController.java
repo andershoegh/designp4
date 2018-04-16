@@ -71,7 +71,7 @@ public class addNewPlayerController {
     }
 
     public void cancelButtonClick(){
-        // Switching scene from AddPlayer.FXML to PlayerList.FXML
+        // Closing the window and returning to PlayerList.fxml
             Stage stage = (Stage) cancelButton.getScene().getWindow();
             stage.close();
     }
