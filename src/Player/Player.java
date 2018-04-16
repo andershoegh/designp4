@@ -10,7 +10,7 @@ public class Player {
     private int ICEtelephone;
     private String position;
     private String birthday;
-    private int health; // injured or healthy as a horse
+    private int health; // 1 = injured, 0 = not injured
     private int yellowCards;
     private int redCards;
     private int goalsScored;
