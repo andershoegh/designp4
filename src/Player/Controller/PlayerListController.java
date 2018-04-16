@@ -82,10 +82,14 @@ public class PlayerListController {
         try {
             Parent addPlayerFXML = FXMLLoader.load(getClass().getResource("../AddPlayer.fxml"));
             Scene addPlayerScene = new Scene(addPlayerFXML);
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
 
             stage.setScene(addPlayerScene);
-            stage.show();
+            stage.showAndWait();
+
+            clearTable();
+            initialize();
         } catch (IOException e) {
             e.printStackTrace();
         }

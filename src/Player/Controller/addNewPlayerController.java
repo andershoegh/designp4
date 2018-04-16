@@ -5,6 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.stage.Stage;
 import SQL.SqlConnection;
 import javafx.fxml.FXML;
@@ -26,9 +28,11 @@ public class addNewPlayerController {
     @FXML private TextField ICEphoneInput;
     @FXML private TextField positionInput;
     @FXML private TextField birthdayInput;
-    @FXML private TextField healthInput;
+    @FXML private CheckBox health;
+    @FXML private Button acceptButton;
+    @FXML private Button cancelButton;
 
-    public void acceptButtonClick(ActionEvent event){
+    public void acceptButtonClick(){
 
         Connection conn = SqlConnection.connectToDB();
         String sql = "INSERT INTO player "
@@ -51,38 +55,24 @@ public class addNewPlayerController {
             stmt.setString(5, ICEnameInput.getText());
             stmt.setInt(6, Integer.parseInt(ICEphoneInput.getText())); // String being parsed to int, to give it to DB.
             stmt.setString(7, positionInput.getText());
-            stmt.setString(8, healthInput.getText());
+            stmt.setInt(8, health.isSelected() ? 1 : 0);
 
             // Updates the database
             stmt.executeUpdate();
 
-            // Switching scene from AddPlayer.FXML to PlayerList.FXML
-            Parent addPlayerFXML = FXMLLoader.load(getClass().getResource("../PlayerList.fxml"));
-            Scene addPlayerScene = new Scene(addPlayerFXML);
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            SqlConnection.closeConnection();
 
-            stage.setScene(addPlayerScene);
-            stage.show();
+            // Closing the window and returning to PlayerList.fxml
+            Stage stage = (Stage) acceptButton.getScene().getWindow();
+            stage.close();
         } catch(SQLException e) {
             System.out.println(e.getMessage());
-        } catch(IOException e) {
-            e.printStackTrace();
         }
-
-        SqlConnection.closeConnection();
     }
 
-    public void cancelButtonClick(ActionEvent event){
-        // Switching scene from AddPlayer.FXML to PlayerList.FXML
-        try {
-            Parent addPlayerFXML = FXMLLoader.load(getClass().getResource("../PlayerList.fxml"));
-            Scene addPlayerScene = new Scene(addPlayerFXML);
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-            stage.setScene(addPlayerScene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void cancelButtonClick(){
+        // Closing the window and returning to PlayerList.fxml
+            Stage stage = (Stage) cancelButton.getScene().getWindow();
+            stage.close();
     }
 }

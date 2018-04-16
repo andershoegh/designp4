@@ -81,6 +81,8 @@ public class EditPlayerController {
 
             stmt.executeUpdate();
 
+            SqlConnection.closeConnection();
+
             Stage stage = (Stage) saveButton.getScene().getWindow();
             stage.close();
         } catch (SQLException e) {
