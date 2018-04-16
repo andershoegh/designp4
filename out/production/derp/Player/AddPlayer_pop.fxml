@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -34,16 +35,16 @@
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mail" GridPane.rowIndex="3" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Fødselsdag" GridPane.rowIndex="4" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Position" GridPane.rowIndex="5" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Status" GridPane.rowIndex="6" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Skadet" GridPane.rowIndex="6" />
             <TextField prefHeight="27.0" prefWidth="334.0" GridPane.columnIndex="1" />
             <TextField prefHeight="27.0" prefWidth="334.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <TextField prefHeight="27.0" prefWidth="334.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <TextField prefHeight="27.0" prefWidth="334.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <TextField prefHeight="27.0" prefWidth="334.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
             <TextField prefHeight="27.0" prefWidth="334.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Button maxHeight="5.0" maxWidth="70.0" mnemonicParsing="false" prefHeight="5.0" prefWidth="70.0" styleClass="buttonApprove" text="Opret" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="7" />
             <Button alignment="CENTER" maxHeight="5.0" maxWidth="70.0" mnemonicParsing="false" prefHeight="5.0" prefWidth="70.0" styleClass="buttonCancel" text="Annuller" GridPane.rowIndex="7" />
+            <CheckBox mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="6" />
          </children>
       </GridPane>
       <Text layoutX="57.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Opret spiller">
