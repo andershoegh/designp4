@@ -30,6 +30,7 @@ public class addNewPlayerController {
     @FXML private TextField birthdayInput;
     @FXML private CheckBox health;
     @FXML private Button acceptButton;
+    @FXML private Button cancelButton;
 
     public void acceptButtonClick(){
 
@@ -69,17 +70,9 @@ public class addNewPlayerController {
         }
     }
 
-    public void cancelButtonClick(ActionEvent event){
+    public void cancelButtonClick(){
         // Switching scene from AddPlayer.FXML to PlayerList.FXML
-        try {
-            Parent addPlayerFXML = FXMLLoader.load(getClass().getResource("../PlayerList.fxml"));
-            Scene addPlayerScene = new Scene(addPlayerFXML);
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-            stage.setScene(addPlayerScene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+            Stage stage = (Stage) cancelButton.getScene().getWindow();
+            stage.close();
     }
 }
