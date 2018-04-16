@@ -43,7 +43,7 @@ public class addNewPlayerController {
             // Inserting the values into the database
             stmt.setString(1, nameInput.getText());
             stmt.setString(2, addressInput.getText());
-            stmt.setInt(3, Integer.parseInt(phoneInput.getText()));
+            stmt.setInt(3, Integer.parseInt(phoneInput.getText())); // String being parsed to int, to give it to DB.
             stmt.setString(4, mailInput.getText());
             stmt.setString(5, ICEnameInput.getText());
             stmt.setInt(6, Integer.parseInt(ICEphoneInput.getText())); // String being parsed to int, to give it to DB.
