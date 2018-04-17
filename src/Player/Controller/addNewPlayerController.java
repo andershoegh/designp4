@@ -28,8 +28,8 @@ public class addNewPlayerController {
     public void acceptButtonClick(){
 
         Connection conn = SqlConnection.connectToDB();
-        String sql = "INSERT INTO player "
-                + " (_id, name, address, phone, mail," +
+        String sql = "INSERT INTO players "
+                + " (player_id, name, address, phone, mail," +
                 "iceName, iceTelephone, position, health, " +
                 "yellowCards, redCards, goalScored, assist, motm, " +
                 "attendedMatches, attendedTrainings)" +

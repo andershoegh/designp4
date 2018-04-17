@@ -25,7 +25,7 @@
                             <children>
                                 <ImageView fitHeight="49.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../../graphics/aaif.png" />
+                                        <Image url="file:../../graphics/aaif.png" />
                                     </image>
                                     <HBox.margin>
                                         <Insets left="15.0" top="15.0" />

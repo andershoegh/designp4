@@ -1,4 +1,4 @@
-package Calendar;
+package Calendar.Controller;
 
 import Controller.MenuController;
 import javafx.event.ActionEvent;

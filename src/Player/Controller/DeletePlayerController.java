@@ -29,7 +29,7 @@ public class DeletePlayerController {
         try {
             Connection conn = SqlConnection.connectToDB();
 
-            String sql = "DELETE FROM player WHERE _id=?";
+            String sql = "DELETE FROM players WHERE player_id=?";
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setInt(1, playerId);
             statement.executeUpdate();

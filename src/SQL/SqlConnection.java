@@ -13,7 +13,7 @@ public class SqlConnection {
         try {
             conn = DriverManager.getConnection("jdbc:sqlite:coachDB.db");
             if (conn != null) {
-                System.out.println("Connection to SQLite has been established");
+                System.out.println("--- Connected to coachDB ---");
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -25,7 +25,7 @@ public class SqlConnection {
     public static void closeConnection(){
         try {
             conn.close();
-            System.out.println("Connection to database closed");
+            System.out.println("--- Connection closed ---");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }

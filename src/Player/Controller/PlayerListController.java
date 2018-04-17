@@ -53,7 +53,7 @@ public class PlayerListController {
     private void loadDataFromDB(){
         try {
             Connection conn = SqlConnection.connectToDB();
-            PreparedStatement statement = conn.prepareStatement("SELECT * FROM player");
+            PreparedStatement statement = conn.prepareStatement("SELECT * FROM players");
             ResultSet rs = statement.executeQuery();
 
             while(rs.next()){
@@ -62,7 +62,7 @@ public class PlayerListController {
                         rs.getString("position"), "00/00/00", rs.getInt("health"),
                         rs.getInt("yellowCards"), rs.getInt("redCards"), rs.getInt("goalScored"),
                         rs.getInt("assist"), rs.getInt("motm"), rs.getInt("attendedMatches"),
-                        rs.getInt("attendedTrainings"), rs.getInt("_id"))
+                        rs.getInt("attendedTrainings"), rs.getInt("player_id"))
                 );
             }
         } catch (SQLException e) {
@@ -83,6 +83,7 @@ public class PlayerListController {
             Scene addPlayerScene = new Scene(addPlayerFXML);
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Opret spiller");
 
             stage.setScene(addPlayerScene);
             stage.showAndWait();
@@ -102,6 +103,7 @@ public class PlayerListController {
 
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Redigér spiller");
 
             EditPlayerController controller = loader.getController();
             controller.initData(tablePlayers.getSelectionModel().getSelectedItem());
