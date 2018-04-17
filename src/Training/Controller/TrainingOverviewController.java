@@ -1,11 +1,9 @@
-package Match;
+package Training.Controller;
 
 import Controller.MenuController;
 import javafx.event.ActionEvent;
 
-public class MatchOverviewController {
-
-    // Menu buttons navigation
+public class TrainingOverviewController {
     MenuController controller = new MenuController();
 
     public void menuButtonClick(ActionEvent event){

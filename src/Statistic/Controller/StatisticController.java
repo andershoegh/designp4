@@ -107,6 +107,7 @@ public class StatisticController {
     }
 
     private void loadDataFromDB() {
+        /*
         try {
             Connection conn = SqlConnection.connectToDB();
             PreparedStatement statement = conn.prepareStatement("SELECT * FROM player");
@@ -136,6 +137,7 @@ public class StatisticController {
 
 
         SqlConnection.closeConnection();
+        */
     }
 
     // Menu buttons navigation

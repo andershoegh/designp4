@@ -1,39 +1,37 @@
 package Match;
 
 public class Match {
+    private String opponent;
     private int goalsFor;
     private int goalsAgainst;
-    private int redCards;
-    private int yellowCards;
-    private String playerScored; // playerScored is for the coach, to state which Player scored a goal this Match.
-    private String opponentName;
+    private String season;
+    private String date;
+    private String time;
 
-    // getter and setters
+    public Match(String opponent, int goalsFor, int goalsAgainst, String season, String date, String time) {
+        this.opponent = opponent;
+        this.goalsFor = goalsFor;
+        this.goalsAgainst = goalsAgainst;
+        this.season = season;
+        this.date = date;
+        this.time = time;
+    }
+
+    public String getOpponent() { return opponent; }
+    public void setOpponent(String opponent) { this.opponent = opponent; }
+
     public int getGoalsFor() { return goalsFor; }
     public void setGoalsFor(int goalsFor) { this.goalsFor = goalsFor; }
 
     public int getGoalsAgainst() { return goalsAgainst; }
     public void setGoalsAgainst(int goalsAgainst) { this.goalsAgainst = goalsAgainst; }
 
-    public int getRedCards() { return redCards; }
-    public void setRedCards(int redCards) { this.redCards = redCards; }
+    public String getSeason() { return season; }
+    public void setSeason(String season) { this.season = season; }
 
-    public int getYellowCards() { return yellowCards; }
-    public void setYellowCards(int yellowCards) { this.yellowCards = yellowCards; }
+    public String getDate() { return date; }
+    public void setDate(String date) { this.date = date; }
 
-    public String getPlayerScored() { return playerScored; }
-    public void setPlayerScored(String playerScored) { this.playerScored = playerScored; }
-
-    public String getOpponentName() { return opponentName; }
-    public void setOpponentName(String opponentName) { this.opponentName = opponentName; }
-
-    // Constructor
-    public Match(int goalsFor, int goalsAgainst, int redCards, int yellowCards, String playerScored, String opponentName) {
-        this.goalsFor = goalsFor;
-        this.goalsAgainst = goalsAgainst;
-        this.redCards = redCards;
-        this.yellowCards = yellowCards;
-        this.playerScored = playerScored;
-        this.opponentName = opponentName;
-    }
+    public String getTime() { return time; }
+    public void setTime(String time) { this.time = time; }
 }

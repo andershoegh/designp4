@@ -67,7 +67,7 @@ public class EditPlayerController {
         try {
             Connection conn = SqlConnection.connectToDB();
 
-            String sql = "UPDATE player SET address = ?, phone = ?, mail = ?, position = ?, health = ? WHERE _id = ?";
+            String sql = "UPDATE players SET address = ?, phone = ?, mail = ?, position = ?, health = ? WHERE player_id = ?";
 
             PreparedStatement stmt = conn.prepareStatement(sql);
 

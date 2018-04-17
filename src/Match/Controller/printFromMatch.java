@@ -1,4 +1,4 @@
-package Match;
+package Match.Controller;
 
 import java.sql.*;
 
@@ -9,17 +9,17 @@ public class printFromMatch {
 
         try {
             stmt = conn.createStatement();
-            ResultSet res = stmt.executeQuery("SELECT * FROM match");
+            ResultSet res = stmt.executeQuery("SELECT * FROM matches");
 
             while (res.next()) {
-                String id = res.getString("_id");
+                String id = res.getString("match_id");
+                String opponent = res.getString("opponent");
                 String goalsFor = res.getString("goalsFor");
                 String goalsAgainst = res.getString("goalsAgainst");
-                String redCards = res.getString("redCards");
-                String yellowCards = res.getString("yellowCards");
-                String playerScored = res.getString("playerScored");
-                String opponentName = res.getString("opponentName");
-                System.out.println(id + " " + goalsFor + " " + goalsAgainst + " " + redCards + " " + yellowCards + " " + playerScored + " " + opponentName);
+                String season = res.getString("season");
+                String date = res.getString("date");
+                String time = res.getString("time");
+                System.out.println(id + " " + opponent + " " + goalsFor + " " + goalsAgainst + " " + season + " " + date + " " + time);
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
