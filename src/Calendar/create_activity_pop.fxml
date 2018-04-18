@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXDatePicker?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -31,7 +31,6 @@
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Type" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Dato" wrappingWidth="30.646484375" GridPane.rowIndex="1" />
-            <DatePicker fx:id="dateInput" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tid" wrappingWidth="30.646484375" GridPane.rowIndex="2" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sted" wrappingWidth="30.646484375" GridPane.rowIndex="3" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Noter" wrappingWidth="43.73240661621094" GridPane.rowIndex="4" GridPane.valignment="TOP">
@@ -42,6 +41,7 @@
             <TextField id="timeInput" fx:id="textInput" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <TextField fx:id="locationInput" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <TextField fx:id="notesInput" prefWidth="194.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <JFXDatePicker editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
       <Text layoutX="35.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Opret aktivitet">

@@ -1,20 +1,25 @@
 package Match;
 
+import java.util.Date;
+
 public class Match {
     private String opponent;
     private int goalsFor;
     private int goalsAgainst;
     private String season;
-    private String date;
+    private Date date;
     private String time;
 
-    public Match(String opponent, int goalsFor, int goalsAgainst, String season, String date, String time) {
+    public Match(String opponent, Date date) {
         this.opponent = opponent;
         this.goalsFor = goalsFor;
         this.goalsAgainst = goalsAgainst;
         this.season = season;
         this.date = date;
         this.time = time;
+    }
+
+    public Match(String opponent) {
     }
 
     public String getOpponent() { return opponent; }
@@ -29,8 +34,6 @@ public class Match {
     public String getSeason() { return season; }
     public void setSeason(String season) { this.season = season; }
 
-    public String getDate() { return date; }
-    public void setDate(String date) { this.date = date; }
 
     public String getTime() { return time; }
     public void setTime(String time) { this.time = time; }
