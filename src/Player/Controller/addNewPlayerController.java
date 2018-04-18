@@ -36,12 +36,17 @@ public class addNewPlayerController {
 
                 " VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?, null, null, null, null, null, null, null)";
 
+
         // Connecting to the database
         try {
             PreparedStatement stmt = conn.prepareStatement(sql);
 
-            // Inserting the values into the database
-            stmt.setString(1, nameInput.getText());
+            if (nameInput.equals("")){
+                stmt.setString(String.valueOf(null));
+            } else {
+                stmt.setString(1, nameInput.getText());
+            }
+
             stmt.setString(2, addressInput.getText());
             stmt.setInt(3, Integer.parseInt(phoneInput.getText())); // String being parsed to int, to give it to DB.
             stmt.setString(4, mailInput.getText());
