@@ -18,18 +18,21 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 public class CalendarController {
 
     private ObservableList<Match> matchList;
     private ObservableList<?> trainings;
     private ObservableList<?> others;
-
+    private ObservableList<String> opponentList = FXCollections.observableArrayList();
     private Date date;
-    SimpleDateFormat sdf = new SimpleDateFormat("MMMM yyyy");
+    private SimpleDateFormat sdf = new SimpleDateFormat("MMMM yyyy");
 
     // setting FXML IDs
     @FXML private Label MonthYearLabel;
@@ -42,75 +45,73 @@ public class CalendarController {
 
 
     @FXML
-    public void initialize(){
+    public void initialize() throws ParseException {
 
         date = new Date();
         MonthYearLabel.setText(sdf.format(date).toUpperCase());
-        System.out.println(date);
 
         matchList = FXCollections.observableArrayList();
         loadMatchFromDB();
 
-        //setCellTable();
-        //loadDataFromDB();
-
         trainings = FXCollections.observableArrayList();
-        //setCellTable();
-        //loadDataFromDB();
 
         others = FXCollections.observableArrayList();
-        //setCellTable();
-        //loadDataFromDB();
     }
 
-    private void loadMatchFromDB(){
-       int compMonth= date.getMonth()+1;
-        System.out.println(compMonth);
+    public void clearMatchList(){matchListView.getItems().clear(); }
 
+    private void loadMatchFromDB() throws ParseException {
+        clearMatchList();
+        matchList.clear();
         try {
             Connection conn = SqlConnection.connectToDB();
             PreparedStatement statement = conn.prepareStatement("SELECT * FROM matches");
             ResultSet rs = statement.executeQuery();
 
             while(rs.next()){
-                matchList.add(new Match(rs.getString("opponent")));
+                matchList.add(new Match(rs.getString("opponent"), rs.getString("date")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        System.out.println(matchList.size());
-        ObservableList<String> opponentList = FXCollections.observableArrayList();
-
         for(int i=0; i< matchList.size();i++){
-            System.out.println(matchList.get(i).getOpponent());
-            opponentList.add(matchList.get(i).getOpponent());
+            DateFormat format = new SimpleDateFormat("d/MM/yyyy", Locale.ENGLISH);
+            Date localDate = format.parse(matchList.get(i).getDate());
+
+            if(localDate.getMonth() == date.getMonth()){
+                opponentList.add(matchList.get(i).getOpponent() + " " + matchList.get(i).getDate());
+            }
         }
         // inputting retrieved data from db into table row
         matchListView.setItems(opponentList);
-
         SqlConnection.closeConnection();
     }
 
 
-    public void NextMonthButtonClick(){
+    public void NextMonthButtonClick() throws ParseException {
+        matchList.clear();
+        clearMatchList();
         Calendar c = Calendar.getInstance();
         c.setTime(date);
         c.add(Calendar.MONTH, 1);
         date = c.getTime();
 
         MonthYearLabel.setText(sdf.format(date).toUpperCase());
-        System.out.println(date);
+
+        loadMatchFromDB();
     }
 
-    public void PrevMonthButtonClick(){
+    public void PrevMonthButtonClick() throws ParseException {
+        clearMatchList();
+        matchList.clear();
         Calendar c = Calendar.getInstance();
         c.setTime(date);
         c.add(Calendar.MONTH, -1);
         date = c.getTime();
 
         MonthYearLabel.setText(sdf.format(date).toUpperCase());
-        System.out.println(date);
+        loadMatchFromDB();
     }
 
     public void createEventButtonClick(ActionEvent event){

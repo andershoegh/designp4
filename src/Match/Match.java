@@ -7,15 +7,16 @@ public class Match {
     private int goalsFor;
     private int goalsAgainst;
     private String season;
-    private Date date;
+    private String date;
     private String time;
     private int id;
 
-<<<<<<< HEAD
-    public Match(String opponent, Date date) {
-=======
+    public Match(String opponent, String date) {
+        this.date=date;
+        this.opponent = opponent;
+    }
+
     public Match(String opponent, int goalsFor, int goalsAgainst, String season, String date, String time, int id) {
->>>>>>> master
         this.opponent = opponent;
         this.goalsFor = goalsFor;
         this.goalsAgainst = goalsAgainst;
@@ -26,7 +27,8 @@ public class Match {
     }
 
     public Match(String opponent) {
-    }
+        this.opponent = opponent;
+        }
 
     public String getOpponent() { return opponent; }
     public void setOpponent(String opponent) { this.opponent = opponent; }
@@ -46,4 +48,9 @@ public class Match {
 
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
+
+    public String getDate() {
+        return date;
+    }
 }
+
