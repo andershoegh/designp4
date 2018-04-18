@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Overview.Controller.OverviewController">
+<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Overview.Controller.OverviewController">
    <children>
       <HBox maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0">
          <children>
@@ -24,7 +24,7 @@
                      <children>
                         <ImageView fitHeight="49.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="file:../../graphics/aaif.png" />
+                              <Image url="file:graphics/aaif.png" />
                            </image>
                            <HBox.margin>
                               <Insets left="15.0" top="15.0" />
@@ -63,11 +63,11 @@
                   <Line endX="1080.0" />
                   <AnchorPane prefHeight="651.0" prefWidth="1081.0">
                      <children>
-                        <VBox fx:id="TrainingBox1" layoutX="110.0" layoutY="38.0" prefHeight="252.0" prefWidth="324.0" style="-fx-background-color: white;">
+                        <VBox fx:id="TrainingBox1" layoutX="110.0" layoutY="30.0" prefHeight="275.0" prefWidth="324.0" style="-fx-background-color: white;">
                            <children>
                               <HBox alignment="CENTER" prefHeight="44.0" prefWidth="324.0">
                                  <children>
-                                    <Label fx:id="training1Headline" contentDisplay="CENTER" styleClass="overviewHeadline" stylesheets="@../stylesheet.css" text="Label" />
+                                    <Label fx:id="training1Headline" contentDisplay="CENTER" styleClass="overviewHeadline" stylesheets="@../stylesheet.css" text="Træning" />
                                  </children>
                               </HBox>
                               <Line endX="182.0" startX="-100.0">
@@ -137,11 +137,11 @@
                               <DropShadow color="#aba8a8" height="30.0" offsetX="4.0" offsetY="4.0" radius="14.5" width="30.0" />
                            </effect>
                         </VBox>
-                        <VBox fx:id="TrainingBox2" layoutX="110.0" layoutY="325.0" prefHeight="252.0" prefWidth="324.0" style="-fx-background-color: white;">
+                        <VBox fx:id="TrainingBox2" layoutX="110.0" layoutY="325.0" prefHeight="275.0" prefWidth="324.0" style="-fx-background-color: white;">
                            <children>
                               <HBox alignment="CENTER" prefHeight="50.0" prefWidth="226.0">
                                  <children>
-                                    <Label fx:id="training2Headline" contentDisplay="CENTER" styleClass="overviewHeadline" stylesheets="@../stylesheet.css" text="Label" />
+                                    <Label fx:id="training2Headline" contentDisplay="CENTER" styleClass="overviewHeadline" stylesheets="@../stylesheet.css" text="Træning" />
                                  </children>
                               </HBox>
                               <Line endX="182.0" startX="-100.0">

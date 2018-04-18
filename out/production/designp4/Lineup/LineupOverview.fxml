@@ -27,7 +27,7 @@
                      <children>
                               <ImageView fitHeight="49.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                   <image>
-                                      <Image url="file:../../graphics/aaif.png" />
+                                      <Image url="file:graphics/aaif.png" />
                                   </image>
                                   <HBox.margin>
                                       <Insets left="15.0" top="15.0" />
@@ -84,7 +84,7 @@
                         </VBox>
                         <ImageView fx:id="tacticfield" fitHeight="507.0" fitWidth="348.0" layoutX="581.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="file:../../graphics/Fodboldbane.png" />
+                              <Image url="file:graphics/Fodboldbane.png" />
                            </image>
                         </ImageView>
                         <VBox layoutX="20.0" layoutY="60.0" prefHeight="507.0" prefWidth="255.0">
