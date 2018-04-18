@@ -8,20 +8,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import Player.Player;
-import SQL.SqlConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.cell.PropertyValueFactory;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.Month;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -48,7 +39,7 @@ public class CalendarController {
     public void initialize(){
 
         date = new Date();
-        MonthYearLabel.setText(sdf.format(date).toString().toUpperCase());
+        MonthYearLabel.setText(sdf.format(date).toUpperCase());
 
         matches = FXCollections.observableArrayList();
         //setCellTable();
@@ -63,14 +54,13 @@ public class CalendarController {
         //loadDataFromDB();
     }
 
-
     public void NextMonthButtonClick(){
         Calendar c = Calendar.getInstance();
         c.setTime(date);
         c.add(Calendar.MONTH, 1);
         date = c.getTime();
 
-        MonthYearLabel.setText(sdf.format(date).toString().toUpperCase());
+        MonthYearLabel.setText(sdf.format(date).toUpperCase());
     }
 
     public void PrevMonthButtonClick(){
@@ -79,10 +69,8 @@ public class CalendarController {
         c.add(Calendar.MONTH, -1);
         date = c.getTime();
 
-        MonthYearLabel.setText(sdf.format(date).toString().toUpperCase());
+        MonthYearLabel.setText(sdf.format(date).toUpperCase());
     }
-    
-
 
     public void createEventButtonClick(ActionEvent event){
 
