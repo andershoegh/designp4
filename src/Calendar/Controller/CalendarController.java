@@ -1,13 +1,11 @@
 package Calendar.Controller;
 
 import Controller.MenuController;
-import com.jfoenix.controls.JFXListView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import Player.Player;
@@ -15,8 +13,6 @@ import SQL.SqlConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import java.io.IOException;
 import java.sql.Connection;
@@ -42,9 +38,9 @@ public class CalendarController {
     @FXML private Label MonthYearLabel;
     @FXML private Button PrevMonthButton;
     @FXML private Button NextMonthButton;
-    @FXML private JFXListView<?> matchListView;
-    @FXML private JFXListView<?> TrainingListView;
-    @FXML private JFXListView<?> OtherListView;
+    @FXML private ListView<?> matchListView;
+    @FXML private ListView<?> TrainingListView;
+    @FXML private ListView<?> OtherListView;
     @FXML private Button OpretButton;
 
 
