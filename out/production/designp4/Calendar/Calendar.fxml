@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -11,8 +12,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
 
-<?import javafx.scene.control.ListView?>
-<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Calendar.Controller.CalendarController">
+<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Calendar.Controller.CalendarController">
    <children>
       <HBox maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0">
          <children>
@@ -71,8 +71,8 @@
                                        </image></ImageView>
                                  </graphic>
                               </Button>
-                              <Label fx:id="MonthYearLabel" styleClass="calenderDate" stylesheets="@../stylesheet.css" text="* Month / Year picker goes here *" />
-                              <Button fx:id="NextMonthButton" mnemonicParsing="false" onAction="#NextMonthButtonClick" prefHeight="39.0" prefWidth="45.0" style="-fx-background-color: #383838;">
+                              <Label fx:id="MonthYearLabel" alignment="CENTER" contentDisplay="CENTER" prefWidth="230.0" styleClass="calenderDate" stylesheets="@../stylesheet.css" text="* Month / Year picker goes here *" textAlignment="CENTER" />
+                              <Button fx:id="NextMonthButton" mnemonicParsing="false" onAction="#NextMonthButtonClick" prefHeight="39.0" prefWidth="45.0" style="-fx-background-color: white;">
                                  <graphic>
                                     <ImageView fitHeight="60.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
