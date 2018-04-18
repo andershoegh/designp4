@@ -63,12 +63,11 @@
                      <children>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Button fx:id="PrevMonthButton" mnemonicParsing="false" onAction="#PrevMonthButtonClick" prefHeight="39.0" prefWidth="45.0" style="-fx-background-color: #383838;">
+                              <Button fx:id="PrevMonthButton" mnemonicParsing="false" onAction="#PrevMonthButtonClick" prefHeight="39.0" prefWidth="45.0" style="-fx-background-color: transparent;">
                                  <graphic>
-                                    <ImageView fitHeight="60.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../../graphics/icons8_Back_104px.png" />
-                                       </image></ImageView>
+                                    <ImageView image="" fitHeight="60.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                          <Image url="file:../../graphics/icons8_Back_104px.png" />
+                                    </ImageView>
                                  </graphic>
                               </Button>
                               <Label fx:id="MonthYearLabel" alignment="CENTER" contentDisplay="CENTER" prefWidth="230.0" styleClass="calenderDate" stylesheets="@../stylesheet.css" text="* Month / Year picker goes here *" textAlignment="CENTER" />

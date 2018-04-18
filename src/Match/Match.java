@@ -7,14 +7,16 @@ public class Match {
     private String season;
     private String date;
     private String time;
+    private int id;
 
-    public Match(String opponent, int goalsFor, int goalsAgainst, String season, String date, String time) {
+    public Match(String opponent, int goalsFor, int goalsAgainst, String season, String date, String time, int id) {
         this.opponent = opponent;
         this.goalsFor = goalsFor;
         this.goalsAgainst = goalsAgainst;
         this.season = season;
         this.date = date;
         this.time = time;
+        this.id = id;
     }
 
     public String getOpponent() { return opponent; }
@@ -34,4 +36,7 @@ public class Match {
 
     public String getTime() { return time; }
     public void setTime(String time) { this.time = time; }
+
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
 }

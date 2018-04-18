@@ -35,8 +35,7 @@ public class PlayerListController {
     @FXML private TableColumn<?, ?> columnBirthday;
 
     // Runs when FXML is loaded
-    @FXML
-    public void initialize(){
+    @FXML public void initialize(){
         playerData = FXCollections.observableArrayList();
         setCellTable();
         loadDataFromDB();
@@ -72,14 +71,15 @@ public class PlayerListController {
                         rs.getInt("attendedTrainings"), rs.getInt("player_id"))
                 );
             }
+
+            SqlConnection.closeConnection();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
         // inputting retrieved data from db into table row
         tablePlayers.setItems(playerData);
-
-        SqlConnection.closeConnection();
     }
 
     public void addPlayerButtonClick(ActionEvent event){
