@@ -35,8 +35,7 @@ public class PlayerListController {
     @FXML private TableColumn<?, ?> columnBirthday;
 
     // Runs when FXML is loaded
-    @FXML
-    public void initialize(){
+    @FXML public void initialize(){
         playerData = FXCollections.observableArrayList();
         setCellTable();
         loadDataFromDB();
@@ -54,16 +53,15 @@ public class PlayerListController {
         columnMail.setCellValueFactory(new PropertyValueFactory<>("mail"));
         columnAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
         columnBirthday.setCellValueFactory(new PropertyValueFactory<>("birthday"));
-        columnBirthday.setCellValueFactory(new PropertyValueFactory<>("birthday"));
     }
 
-    private void loadDataFromDB(){
+    private void loadDataFromDB() {
         try {
             Connection conn = SqlConnection.connectToDB();
             PreparedStatement statement = conn.prepareStatement("SELECT * FROM players");
             ResultSet rs = statement.executeQuery();
 
-            while(rs.next()){
+            while (rs.next()) {
                 playerData.add(new Player(rs.getString("name"), rs.getString("address"), rs.getInt("phone"),
                         rs.getString("mail"), rs.getString("iceName"), rs.getInt("iceTelephone"),
                         rs.getString("position"), "00/00/00", rs.getInt("health"),
@@ -72,14 +70,15 @@ public class PlayerListController {
                         rs.getInt("attendedTrainings"), rs.getInt("player_id"))
                 );
             }
+
+            SqlConnection.closeConnection();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
         // inputting retrieved data from db into table row
         tablePlayers.setItems(playerData);
-
-        SqlConnection.closeConnection();
     }
 
     public void addPlayerButtonClick(ActionEvent event){
