@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Calendar.Controller.CalendarController">
+<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Calendar.Controller.CalendarController">
    <children>
       <HBox maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0">
          <children>
@@ -63,19 +63,20 @@
                      <children>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Button fx:id="PrevMonthButton" mnemonicParsing="false" onAction="#PrevMonthButtonClick" prefHeight="39.0" prefWidth="45.0" style="-fx-background-color: transparent;">
-                                 <graphic>
-                                    <ImageView image="" fitHeight="60.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                                          <Image url="file:../../graphics/icons8_Back_104px.png" />
-                                    </ImageView>
-                                 </graphic>
-                              </Button>
-                              <Label fx:id="MonthYearLabel" alignment="CENTER" contentDisplay="CENTER" prefWidth="230.0" styleClass="calenderDate" stylesheets="@../stylesheet.css" text="* Month / Year picker goes here *" textAlignment="CENTER" />
-                              <Button fx:id="NextMonthButton" mnemonicParsing="false" onAction="#NextMonthButtonClick" prefHeight="39.0" prefWidth="45.0" style="-fx-background-color: #383838;">
+                              <Button fx:id="PrevMonthButton" mnemonicParsing="false" onAction="#PrevMonthButtonClick" prefHeight="39.0" prefWidth="45.0" style="-fx-background-color: #e8e8e8;">
                                  <graphic>
                                     <ImageView fitHeight="60.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../graphics/icons8_Forward_104px.png" />
+                                          <Image url="file:../../graphics/icons8_Back_104px.png" />
+                                       </image></ImageView>
+                                 </graphic>
+                              </Button>
+                              <Label fx:id="MonthYearLabel" alignment="CENTER" contentDisplay="CENTER" prefWidth="230.0" styleClass="calenderDate" stylesheets="@../stylesheet.css" text="* Month / Year picker goes here *" textAlignment="CENTER" />
+                              <Button fx:id="NextMonthButton" mnemonicParsing="false" onAction="#NextMonthButtonClick" prefHeight="39.0" prefWidth="45.0" style="-fx-background-color: #e8e8e8;">
+                                 <graphic>
+                                    <ImageView fitHeight="60.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="file:../../graphics/icons8_Forward_104px.png" />
                                        </image></ImageView>
                                  </graphic>
                               </Button>
