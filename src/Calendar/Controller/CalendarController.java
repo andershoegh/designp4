@@ -27,10 +27,10 @@ import java.util.Locale;
 
 public class CalendarController {
 
-    private ObservableList<Match> matchList;
-    private ObservableList<?> trainings;
-    private ObservableList<?> others;
-    private ObservableList<String> opponentList = FXCollections.observableArrayList();
+    private ObservableList<Match> matchList= FXCollections.observableArrayList();
+    private ObservableList<?> trainings = FXCollections.observableArrayList();
+    private ObservableList<?> others = FXCollections.observableArrayList();
+    private ObservableList<String> StrMatchList = FXCollections.observableArrayList();
     private Date date;
     private SimpleDateFormat sdf = new SimpleDateFormat("MMMM yyyy");
 
@@ -46,23 +46,21 @@ public class CalendarController {
 
     @FXML
     public void initialize() throws ParseException {
-
         date = new Date();
         MonthYearLabel.setText(sdf.format(date).toUpperCase());
-
-        matchList = FXCollections.observableArrayList();
         loadMatchFromDB();
-
-        trainings = FXCollections.observableArrayList();
-
-        others = FXCollections.observableArrayList();
     }
 
-    public void clearMatchList(){matchListView.getItems().clear(); }
+
+
+    public void clearMatchList(){matchListView.getItems().clear();}
+
+
 
     private void loadMatchFromDB() throws ParseException {
         clearMatchList();
         matchList.clear();
+
         try {
             Connection conn = SqlConnection.connectToDB();
             PreparedStatement statement = conn.prepareStatement("SELECT * FROM matches");
@@ -80,42 +78,47 @@ public class CalendarController {
             Date localDate = format.parse(matchList.get(i).getDate());
 
             if(localDate.getMonth() == date.getMonth()){
-                opponentList.add(matchList.get(i).getOpponent() + " " + matchList.get(i).getDate());
+                StrMatchList.add(matchList.get(i).getOpponent() + " " + matchList.get(i).getDate());
             }
         }
+
         // inputting retrieved data from db into table row
-        matchListView.setItems(opponentList);
+        matchListView.setItems(StrMatchList);
         SqlConnection.closeConnection();
     }
+
 
 
     public void NextMonthButtonClick() throws ParseException {
         matchList.clear();
         clearMatchList();
+
         Calendar c = Calendar.getInstance();
         c.setTime(date);
         c.add(Calendar.MONTH, 1);
         date = c.getTime();
-
         MonthYearLabel.setText(sdf.format(date).toUpperCase());
 
         loadMatchFromDB();
     }
+
 
     public void PrevMonthButtonClick() throws ParseException {
         clearMatchList();
         matchList.clear();
+
         Calendar c = Calendar.getInstance();
         c.setTime(date);
         c.add(Calendar.MONTH, -1);
         date = c.getTime();
-
         MonthYearLabel.setText(sdf.format(date).toUpperCase());
+
         loadMatchFromDB();
     }
 
-    public void createEventButtonClick(ActionEvent event){
 
+
+    public void createEventButtonClick(ActionEvent event){
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("../create_activity_pop.fxml"));
@@ -132,6 +135,8 @@ public class CalendarController {
             e.printStackTrace();
         }
     }
+
+
 
     // Menu buttons navigation
     MenuController controller = new MenuController();
