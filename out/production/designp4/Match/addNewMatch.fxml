@@ -26,21 +26,19 @@
                   <HBox>
                      <children>
                         <ImageView fitHeight="49.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
-<<<<<<< HEAD
+
                             <image>
                                 <Image url="@../graphics/aaif.png" ></Image>
                             </image>
                             <HBox.margin>
                                 <Insets left="15.0" top="15.0" />
                             </HBox.margin>
-=======
                            <image>
                               <Image url="@../../graphics/aaif.png" />
                            </image>
                            <HBox.margin>
                               <Insets left="15.0" top="15.0" />
                            </HBox.margin>
->>>>>>> master
                         </ImageView>
                         <Label styleClass="teamname" text="AAIF Senior">
                            <HBox.margin>
