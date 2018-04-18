@@ -43,7 +43,7 @@ public class CalendarController {
     @FXML private ListView<?> OtherListView;
     @FXML private Button OpretButton;
 
-
+    //Running methods when scene gets loaded
     @FXML
     public void initialize() throws ParseException {
         date = new Date();
@@ -52,11 +52,11 @@ public class CalendarController {
     }
 
 
-
+    //Clear the list view
     public void clearMatchList(){matchListView.getItems().clear();}
 
 
-
+    //Loads data from Match table in DB
     private void loadMatchFromDB() throws ParseException {
         clearMatchList();
         matchList.clear();
@@ -73,22 +73,25 @@ public class CalendarController {
             e.printStackTrace();
         }
 
+        //looping though the matchList to add the relevant data to a string list (StrMatchList) for the viewList
         for(int i=0; i< matchList.size();i++){
+            //Parsing the date-string-variable to a datatype of date named localDate
             DateFormat format = new SimpleDateFormat("d/MM/yyyy", Locale.ENGLISH);
             Date localDate = format.parse(matchList.get(i).getDate());
 
+            //Checks if the month of the match is equal to the month of the calender
             if(localDate.getMonth() == date.getMonth()){
                 StrMatchList.add(matchList.get(i).getOpponent() + " " + matchList.get(i).getDate());
             }
         }
 
-        // inputting retrieved data from db into table row
+        // inputting retrieved data from db into list view
         matchListView.setItems(StrMatchList);
         SqlConnection.closeConnection();
     }
 
 
-
+    //Sets next month in calender
     public void NextMonthButtonClick() throws ParseException {
         matchList.clear();
         clearMatchList();
@@ -102,7 +105,7 @@ public class CalendarController {
         loadMatchFromDB();
     }
 
-
+    //Sets prev month in calender
     public void PrevMonthButtonClick() throws ParseException {
         clearMatchList();
         matchList.clear();
@@ -117,7 +120,7 @@ public class CalendarController {
     }
 
 
-
+    //Loader Create event pop-up
     public void createEventButtonClick(ActionEvent event){
         try {
             FXMLLoader loader = new FXMLLoader();
