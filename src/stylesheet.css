@@ -32,6 +32,7 @@
     -fx-background-color: #3e3e3e;
     -fx-text-fill: #ffffff;
     -fx-border-radius: 0;
+    -fx-cursor: hand;
 }
 
 .button:pressed{
@@ -134,6 +135,11 @@
 
 .overviewText{
     -fx-font-weight: bold;
+}
+
+.calenderDate{
+    -fx-font-weight: bold;
+    -fx-font-size: 20;
 }
 
 

@@ -10,11 +10,12 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" styleClass="window" stylesheets="@GitHub/designp4/src/stylesheet.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
     <children>
       <HBox maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0">
          <children>
@@ -24,7 +25,7 @@
                      <children>
                               <ImageView fitHeight="49.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                   <image>
-                                      <Image url="@GitHub/designp4/graphics/aaif.png" />
+                                      <Image url="@../../graphics/aaif.png" />
                                   </image>
                                   <HBox.margin>
                                       <Insets left="15.0" top="15.0" />
@@ -70,7 +71,7 @@
                               <Label alignment="CENTER" prefHeight="74.0" prefWidth="246.0" text="til tidspunkt" />
                            </children>
                         </HBox>
-                        <VBox fx:id="bench" layoutX="939.0" layoutY="60.0" prefHeight="539.0" prefWidth="125.0">
+                        <VBox fx:id="bench" layoutX="928.0" layoutY="60.0" prefHeight="507.0" prefWidth="125.0">
                            <children>
                               <HBox prefHeight="78.0" prefWidth="125.0">
                                  <children>
@@ -79,12 +80,12 @@
                               </HBox>
                            </children>
                         </VBox>
-                        <ImageView fx:id="tacticfield" fitHeight="539.0" fitWidth="448.0" layoutX="581.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="tacticfield" fitHeight="507.0" fitWidth="348.0" layoutX="581.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@Fodboldbane.png" />
+                              <Image url="@../../graphics/Fodboldbane.png" />
                            </image>
                         </ImageView>
-                        <VBox layoutX="20.0" layoutY="60.0" prefHeight="539.0" prefWidth="255.0">
+                        <VBox layoutX="20.0" layoutY="60.0" prefHeight="507.0" prefWidth="255.0">
                            <children>
                               <TableView fx:id="players" prefHeight="494.0" prefWidth="255.0">
                                 <columns>
@@ -94,7 +95,7 @@
                               <JFXButton fx:id="addNewPlayer" alignment="CENTER" buttonType="RAISED" prefHeight="50.0" prefWidth="274.0" ripplerFill="#47ab4c" text="Add Player" />
                            </children>
                         </VBox>
-                        <VBox layoutX="286.0" layoutY="60.0" prefHeight="539.0" prefWidth="255.0">
+                        <VBox layoutX="286.0" layoutY="60.0" prefHeight="507.0" prefWidth="255.0">
                            <children>
                               <TableView prefHeight="494.0" prefWidth="255.0">
                                  <columns>
@@ -106,6 +107,26 @@
                         </VBox>
                      </children>
                   </AnchorPane>
+                  <HBox prefHeight="50.0" prefWidth="1081.0">
+                     <children>
+                        <Region prefHeight="79.0" prefWidth="710.0" />
+                        <JFXButton fx:id="exportLineup" prefHeight="24.0" prefWidth="74.0" text="Export">
+                           <HBox.margin>
+                              <Insets left="15.0" top="15.0" />
+                           </HBox.margin>
+                        </JFXButton>
+                        <JFXButton fx:id="printLineup" layoutX="775.0" layoutY="10.0" prefHeight="24.0" prefWidth="74.0" text="Print">
+                           <HBox.margin>
+                              <Insets left="15.0" top="15.0" />
+                           </HBox.margin>
+                        </JFXButton>
+                        <JFXButton fx:id="saveLineup" layoutX="849.0" layoutY="10.0" prefHeight="24.0" prefWidth="74.0" ripplerFill="#a88a8a" text="Save">
+                           <HBox.margin>
+                              <Insets left="15.0" top="15.0" />
+                           </HBox.margin>
+                        </JFXButton>
+                     </children>
+                  </HBox>
                </children>
             </VBox>
          </children>

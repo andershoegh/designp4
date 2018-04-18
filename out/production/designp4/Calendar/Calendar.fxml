@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXListView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -13,7 +12,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Calendar.CalendarController">
+<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Calendar.Controller.CalendarController">
    <children>
       <HBox maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0">
          <children>
@@ -23,7 +22,7 @@
                      <children>
                         <ImageView fitHeight="49.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../graphics/aaif.png" />
+                              <Image url="file:../../graphics/aaif.png" />
                            </image>
                            <HBox.margin>
                               <Insets left="15.0" top="15.0" />
@@ -50,7 +49,7 @@
             </VBox>
             <VBox prefHeight="200.0" prefWidth="1080.0">
                <children>
-                  <HBox prefHeight="71.0" prefWidth="200.0">
+                  <HBox alignment="TOP_CENTER" prefHeight="71.0" prefWidth="200.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="pageheadline" text="Kalender">
                            <HBox.margin>
@@ -60,35 +59,102 @@
                      </children>
                   </HBox>
                   <Line endX="1080.0" />
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                  <VBox prefHeight="650.0" prefWidth="1081.0">
                      <children>
-                        <Label text="* Month / Year picker goes here *" />
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Button fx:id="PrevMonthButton" mnemonicParsing="false" onAction="#PrevMonthButtonClick" prefHeight="39.0" prefWidth="45.0" style="-fx-background-color: #e8e8e8;">
+                                 <graphic>
+                                    <ImageView fitHeight="60.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../graphics/icons8_Back_104px.png" />
+                                       </image></ImageView>
+                                 </graphic>
+                              </Button>
+                              <Label fx:id="MonthYearLabel" styleClass="calenderDate" stylesheets="@../stylesheet.css" text="* Month / Year picker goes here *" />
+                              <Button fx:id="NextMonthButton" mnemonicParsing="false" onAction="#NextMonthButtonClick" prefHeight="39.0" prefWidth="45.0" style="-fx-background-color: #e8e8e8;">
+                                 <graphic>
+                                    <ImageView fitHeight="60.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../graphics/icons8_Forward_104px.png" />
+                                       </image></ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <VBox prefHeight="469.0" prefWidth="1081.0">
+                           <children>
+                              <HBox alignment="TOP_CENTER" prefHeight="63.0" prefWidth="1081.0">
+                                 <children>
+                                    <HBox alignment="CENTER" prefHeight="64.0" prefWidth="270.0" style="-fx-background-color: #383838;">
+                                       <HBox.margin>
+                                          <Insets left="20.0" right="20.0" />
+                                       </HBox.margin>
+                                       <children>
+                                          <Label fx:id="KampeLabel" style="-fx-text-fill: white;" text="Kampe" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER" layoutX="416.0" layoutY="10.0" prefHeight="100.0" prefWidth="270.0" style="-fx-background-color: #383838;">
+                                       <HBox.margin>
+                                          <Insets left="20.0" right="20.0" />
+                                       </HBox.margin>
+                                       <children>
+                                          <Label fx:id="TraeningLabel" style="-fx-text-fill: white;" text="Træning" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER" layoutX="571.0" layoutY="10.0" prefHeight="100.0" prefWidth="270.0" style="-fx-background-color: #383838;">
+                                       <HBox.margin>
+                                          <Insets left="20.0" right="20.0" />
+                                       </HBox.margin>
+                                       <children>
+                                          <Label fx:id="AndetLabel" style="-fx-text-fill: white;" text="Andet" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="TOP_CENTER" prefHeight="240.0" prefWidth="1081.0" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <JFXListView fx:id="matchListView" prefHeight="100.0" prefWidth="270.0">
+                                       <HBox.margin>
+                                          <Insets left="20.0" right="20.0" />
+                                       </HBox.margin>
+                                    </JFXListView>
+                                    <JFXListView fx:id="TrainingListView" layoutX="416.0" layoutY="10.0" prefHeight="100.0" prefWidth="270.0">
+                                       <HBox.margin>
+                                          <Insets left="20.0" right="20.0" />
+                                       </HBox.margin>
+                                    </JFXListView>
+                                    <JFXListView fx:id="OtherListView" layoutX="571.0" layoutY="10.0" prefHeight="100.0" prefWidth="270.0">
+                                       <HBox.margin>
+                                          <Insets left="20.0" right="20.0" />
+                                       </HBox.margin>
+                                    </JFXListView>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="10.0" />
+                                 </padding>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <HBox alignment="CENTER_RIGHT" VBox.vgrow="NEVER">
+                           <children>
+                              <Button fx:id="OpretButton" mnemonicParsing="false" onAction="#createEventButtonClick" text="Opret aktivitet">
+                                 <HBox.margin>
+                                    <Insets bottom="15.0" right="42.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <Button fx:id="ExporterButton" mnemonicParsing="false" text="Eksporter">
+                                 <HBox.margin>
+                                    <Insets bottom="15.0" right="37.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                           <padding>
+                              <Insets top="10.0" />
+                           </padding>
+                        </HBox>
                      </children>
-                  </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-                     <children>
-                        <TableView prefHeight="200.0" prefWidth="200.0">
-                          <columns>
-                            <TableColumn prefWidth="75.0" />
-                            <TableColumn editable="false" prefWidth="75.0" text="C2" />
-                          </columns>
-                        </TableView>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER_RIGHT" VBox.vgrow="NEVER">
-                     <children>
-                        <Button mnemonicParsing="false" text="Opret aktivitet">
-                           <HBox.margin>
-                              <Insets bottom="15.0" right="42.0" />
-                           </HBox.margin>
-                        </Button>
-                        <Button mnemonicParsing="false" text="Eksporter">
-                           <HBox.margin>
-                              <Insets bottom="15.0" right="37.0" />
-                           </HBox.margin>
-                        </Button>
-                     </children>
-                  </HBox>
+                  </VBox>
                </children>
             </VBox>
          </children>

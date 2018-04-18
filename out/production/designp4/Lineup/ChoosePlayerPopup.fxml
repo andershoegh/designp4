@@ -10,16 +10,15 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="249.0" prefWidth="421.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="249.0" prefWidth="421.0" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <HBox layoutY="61.0" prefHeight="63.0" prefWidth="421.0">
+      <HBox layoutY="72.0" prefHeight="63.0" prefWidth="421.0">
          <children>
             <Region prefHeight="65.0" prefWidth="89.0" />
             <Label prefHeight="34.0" prefWidth="129.0" text="Pick players to add:" />
-            <MenuBar prefHeight="28.0" prefWidth="115.0">
+            <MenuBar prefHeight="28.0" prefWidth="112.0">
               <menus>
-                <Menu mnemonicParsing="false" text="Choose Player">
+                <Menu mnemonicParsing="false" text="Choose Players">
                   <items>
                         <MenuItem mnemonicParsing="false">
                            <graphic>
@@ -57,7 +56,7 @@
             </MenuBar>
          </children>
       </HBox>
-      <JFXButton buttonType="RAISED" layoutX="82.0" layoutY="161.0" prefHeight="46.0" prefWidth="100.0" ripplerFill="#37ab33" text="Add" />
-      <JFXButton buttonType="RAISED" layoutX="237.0" layoutY="161.0" prefHeight="46.0" prefWidth="100.0" ripplerFill="#c61212" text="Cancel" />
+      <JFXButton layoutX="82.0" layoutY="161.0" prefHeight="46.0" prefWidth="100.0" ripplerFill="#37ab33" styleClass="buttonApprove" text="Add" />
+      <JFXButton layoutX="237.0" layoutY="161.0" prefHeight="46.0" prefWidth="100.0" ripplerFill="#c61212" styleClass="buttonCancel" text="Cancel" />
    </children>
 </AnchorPane>

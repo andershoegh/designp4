@@ -1,4 +1,4 @@
-package overview.Controller;
+package Overview.Controller;
 
 import Controller.MenuController;
 import javafx.event.ActionEvent;
