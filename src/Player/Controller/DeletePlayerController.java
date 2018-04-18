@@ -6,7 +6,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import Player.Player;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -19,7 +18,6 @@ public class DeletePlayerController {
     @FXML private Button acceptButton;
     @FXML private Button closeButton;
 
-
     // Extracts the name from the selected player
     public void initData(Player player){
         selectedPlayer = player;
@@ -31,7 +29,7 @@ public class DeletePlayerController {
         try {
             Connection conn = SqlConnection.connectToDB();
 
-            String sql = "DELETE FROM player WHERE _id=?";
+            String sql = "DELETE FROM players WHERE player_id=?";
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setInt(1, playerId);
             statement.executeUpdate();
