@@ -29,7 +29,10 @@ public class PlayerListController {
     @FXML private TableView<Player> tablePlayers;
     @FXML private TableColumn<?, ?> columnName;
     @FXML private TableColumn<?, ?> columnPosition;
-    @FXML private TableColumn<?, ?> columnMotm;
+    @FXML private TableColumn<?, ?> columnPhone;
+    @FXML private TableColumn<?, ?> columnMail;
+    @FXML private TableColumn<?, ?> columnAddress;
+    @FXML private TableColumn<?, ?> columnBirthday;
 
     // Runs when FXML is loaded
     @FXML
@@ -47,7 +50,11 @@ public class PlayerListController {
     private void setCellTable(){
         columnName.setCellValueFactory(new PropertyValueFactory<>("name"));
         columnPosition.setCellValueFactory(new PropertyValueFactory<>("position"));
-        columnMotm.setCellValueFactory(new PropertyValueFactory<>("motm"));
+        columnPhone.setCellValueFactory(new PropertyValueFactory<>("phone"));
+        columnMail.setCellValueFactory(new PropertyValueFactory<>("mail"));
+        columnAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
+        columnBirthday.setCellValueFactory(new PropertyValueFactory<>("birthday"));
+        columnBirthday.setCellValueFactory(new PropertyValueFactory<>("birthday"));
     }
 
     private void loadDataFromDB(){

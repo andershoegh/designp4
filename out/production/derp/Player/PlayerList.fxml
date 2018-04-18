@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Player.Controller.PlayerListController">
+<AnchorPane styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Player.Controller.PlayerListController">
     <children>
         <HBox maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0">
             <children>
@@ -41,13 +41,13 @@
                                 <Insets bottom="30.0" />
                             </VBox.margin>
                         </HBox>
-                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" onAction="#menuButtonClick" text="Oversigt" />
-                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefHeight="50.0" onAction="#menuButtonClick" prefWidth="200.0" text="Kalender" />
-                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" onAction="#menuButtonClick" styleClass="selectedmenu" text="Spillere" />
-                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" onAction="#menuButtonClick" text="Kampe" />
-                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" onAction="#menuButtonClick" text="Træning" />
-                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" onAction="#menuButtonClick" text="Statistik" />
-                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" onAction="#menuButtonClick" text="Diverse" />
+                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" text="Oversigt" />
+                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefHeight="50.0" prefWidth="200.0" text="Kalender" />
+                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="selectedmenu" text="Spillere" />
+                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" text="Kampe" />
+                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" text="Træning" />
+                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" text="Statistik" />
+                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" text="Diverse" />
                     </children>
                 </VBox>
                 <VBox prefHeight="200.0" prefWidth="1080.0">
@@ -67,9 +67,12 @@
                                 <Region prefHeight="60.0" prefWidth="200.0" />
                                 <TableView fx:id="tablePlayers">
                                     <columns>
-                                        <TableColumn fx:id="columnName" prefWidth="75.0" text="Navn" />
-                                        <TableColumn fx:id="columnPosition" prefWidth="75.0" text="Position" />
-                                        <TableColumn fx:id="columnMotm" prefWidth="75.0" text="MOTM" />
+                                        <TableColumn fx:id="columnName" prefWidth="194.40003049373627" text="Navn" />
+                                        <TableColumn fx:id="columnPosition" prefWidth="132.00003051757812" text="Position" />
+                              <TableColumn fx:id="columnPhone" prefWidth="75.0" text="Telefon" />
+                              <TableColumn fx:id="columnMail" prefWidth="75.0" text="Mail" />
+                              <TableColumn fx:id="columnAddress" prefWidth="75.0" text="Addresse" />
+                                        <TableColumn fx:id="columnBirthday" prefWidth="75.0" text="Fødselsdag" />
                                     </columns>
                                     <VBox.margin>
                                         <Insets left="50.0" right="50.0" />
