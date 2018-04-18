@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Training.TrainingOverviewController">
+<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Training.Controller.TrainingOverviewController">
     <children>
         <HBox maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0">
             <children>
@@ -21,7 +21,7 @@
                             <children>
                                 <ImageView fitHeight="49.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../graphics/aaif.png" />
+                                        <Image url="file:../../graphics/aaif.png" />
                                     </image>
                                     <HBox.margin>
                                         <Insets left="15.0" top="15.0" />
@@ -50,7 +50,7 @@
                     <children>
                         <HBox prefHeight="71.0" prefWidth="200.0">
                             <children>
-                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="pageheadline" text="Opret spiller">
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="pageheadline" text="Træning">
                                     <HBox.margin>
                                         <Insets left="35.0" top="25.0" />
                                     </HBox.margin>

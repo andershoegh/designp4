@@ -11,7 +11,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("../Overview/Overview.fxml"));
-        primaryStage.setTitle("Coach meister 9001");
+        primaryStage.setTitle("CoachDB");
         primaryStage.setScene(new Scene(root, 1280, 720));
         primaryStage.show();
     }
