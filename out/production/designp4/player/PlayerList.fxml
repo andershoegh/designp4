@@ -95,7 +95,7 @@
                                                 <Insets right="20.0" />
                                             </HBox.margin>
                                         </Button>
-                                        <Button alignment="CENTER" minWidth="150.0" mnemonicParsing="false" onAction="#editPlayerButtonClick" styleClass="buttonApprove" text="Rediger valgt spiller">
+                                        <Button alignment="CENTER" minWidth="99.0" mnemonicParsing="false" onAction="#editPlayerButtonClick" prefHeight="34.0" prefWidth="99.0" styleClass="overviewButtons" text="Vis spiller">
                                             <opaqueInsets>
                                                 <Insets />
                                             </opaqueInsets>
@@ -103,7 +103,7 @@
                                                 <Insets right="20.0" />
                                             </HBox.margin>
                                         </Button>
-                                        <Button minWidth="126.0" mnemonicParsing="false" onAction="#deletePlayerButtonClick" styleClass="buttonCancel" text="Slet valgt spiller">
+                                        <Button minWidth="126.0" mnemonicParsing="false" onAction="#deletePlayerButtonClick" styleClass="buttonCancel" text="Slet spiller">
                                             <HBox.margin>
                                                 <Insets right="50.0" />
                                             </HBox.margin>

@@ -141,6 +141,20 @@
     -fx-font-weight: bold;
     -fx-font-size: 20;
 }
+.textField{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent transparent black transparent;
+    -fx-border-width: 0.3;
+}
 
+.headerTextField{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent transparent green transparent;
+    -fx-border-width: 1;
+}
 
-
+.listView{
+    -fx-background-color: transparent;
+    -fx-border-color: black;
+    -fx-border-width: 0.3;
+}
