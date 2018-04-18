@@ -63,13 +63,13 @@
                   <Line endX="1080.0" />
                   <AnchorPane prefHeight="647.0" prefWidth="1081.0">
                      <children>
-                        <TableView editable="true" fixedCellSize="1.0" layoutX="56.0" layoutY="28.0" prefHeight="456.0" prefWidth="969.0" tableMenuButtonVisible="true">
+                        <TableView fx:id="tableMatches" fixedCellSize="1.0" layoutX="56.0" layoutY="28.0" prefHeight="456.0" prefWidth="969.0">
                            <columns>
                               <TableColumn prefWidth="75.0" text="Runde" />
-                              <TableColumn prefWidth="150.0" text="Tidspunkt" />
-                              <TableColumn prefWidth="230.0" text="Kamp" />
-                              <TableColumn prefWidth="210.0" text="Spillested" />
-                              <TableColumn prefWidth="210.0" text="Resultat" />
+                              <TableColumn fx:id="columnTime" prefWidth="150.0" text="Tidspunkt" />
+                              <TableColumn fx:id="columnOpponent" prefWidth="230.0" text="Kamp" />
+                              <TableColumn fx:id="columnAddress" prefWidth="210.0" text="Spillested" />
+                              <TableColumn fx:id="columnScore" prefWidth="210.0" text="Resultat" />
                               <TableColumn prefWidth="94.8740234375" text="Taktik" />
                            </columns>
                            <columnResizePolicy>

@@ -9,14 +9,20 @@ public class Match {
     private String season;
     private Date date;
     private String time;
+    private int id;
 
+<<<<<<< HEAD
     public Match(String opponent, Date date) {
+=======
+    public Match(String opponent, int goalsFor, int goalsAgainst, String season, String date, String time, int id) {
+>>>>>>> master
         this.opponent = opponent;
         this.goalsFor = goalsFor;
         this.goalsAgainst = goalsAgainst;
         this.season = season;
         this.date = date;
         this.time = time;
+        this.id = id;
     }
 
     public Match(String opponent) {
@@ -37,4 +43,7 @@ public class Match {
 
     public String getTime() { return time; }
     public void setTime(String time) { this.time = time; }
+
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
 }
