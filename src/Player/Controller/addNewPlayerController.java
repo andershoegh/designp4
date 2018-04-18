@@ -6,9 +6,13 @@ import javafx.stage.Stage;
 import SQL.SqlConnection;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+/*
+import org.omg.CORBA.INTERNAL;
+*/
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Types;
 
 public class addNewPlayerController {
 
@@ -41,18 +45,49 @@ public class addNewPlayerController {
         try {
             PreparedStatement stmt = conn.prepareStatement(sql);
 
-            if (nameInput.equals("")){
-                stmt.setString(String.valueOf(null));
+            if (nameInput.getText().equals("")){
+                stmt.setString(1, null);
             } else {
                 stmt.setString(1, nameInput.getText());
             }
 
-            stmt.setString(2, addressInput.getText());
-            stmt.setInt(3, Integer.parseInt(phoneInput.getText())); // String being parsed to int, to give it to DB.
-            stmt.setString(4, mailInput.getText());
-            stmt.setString(5, ICEnameInput.getText());
-            stmt.setInt(6, Integer.parseInt(ICEphoneInput.getText())); // String being parsed to int, to give it to DB.
-            stmt.setString(7, positionInput.getText());
+            if (addressInput.getText().equals("")){
+                stmt.setString(2, null);
+            } else {
+                stmt.setString(2, addressInput.getText());
+            }
+
+            if (phoneInput.getText().equals("")){
+                stmt.setNull(3, Types.INTEGER);
+            } else {
+                stmt.setInt(3, Integer.parseInt(phoneInput.getText())); // String being parsed to int, to give it to DB.
+            }
+
+            if (mailInput.getText().equals("")){
+                stmt.setString(4, null);
+            } else {
+                stmt.setString(4, mailInput.getText());
+            }
+
+            if (ICEnameInput.getText().equals("")){
+                stmt.setString(5, null);
+            } else {
+                stmt.setString(5, ICEnameInput.getText());
+            }
+
+            if (ICEphoneInput.getText().equals("")){
+                stmt.setNull(6, Types.INTEGER);
+            } else {
+                stmt.setInt(6, Integer.parseInt(ICEphoneInput.getText())); // String being parsed to int, to give it to DB.
+            }
+
+            if (positionInput.getText().equals("")){
+                stmt.setString(7, null);
+            } else {
+                stmt.setString(7, positionInput.getText());
+            }
+
+
             stmt.setInt(8, health.isSelected() ? 1 : 0);
 
             // Updates the database

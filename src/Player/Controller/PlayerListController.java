@@ -53,16 +53,15 @@ public class PlayerListController {
         columnMail.setCellValueFactory(new PropertyValueFactory<>("mail"));
         columnAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
         columnBirthday.setCellValueFactory(new PropertyValueFactory<>("birthday"));
-        columnBirthday.setCellValueFactory(new PropertyValueFactory<>("birthday"));
     }
 
-    private void loadDataFromDB(){
+    private void loadDataFromDB() {
         try {
             Connection conn = SqlConnection.connectToDB();
             PreparedStatement statement = conn.prepareStatement("SELECT * FROM players");
             ResultSet rs = statement.executeQuery();
 
-            while(rs.next()){
+            while (rs.next()) {
                 playerData.add(new Player(rs.getString("name"), rs.getString("address"), rs.getInt("phone"),
                         rs.getString("mail"), rs.getString("iceName"), rs.getInt("iceTelephone"),
                         rs.getString("position"), "00/00/00", rs.getInt("health"),
