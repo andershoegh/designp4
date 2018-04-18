@@ -67,12 +67,12 @@
                                 <Region prefHeight="60.0" prefWidth="200.0" />
                                 <TableView fx:id="tablePlayers">
                                     <columns>
-                                        <TableColumn fx:id="columnName" prefWidth="194.40003049373627" text="Navn" />
-                                        <TableColumn fx:id="columnPosition" prefWidth="132.00003051757812" text="Position" />
-                              <TableColumn fx:id="columnPhone" prefWidth="75.0" text="Telefon" />
-                              <TableColumn fx:id="columnMail" prefWidth="75.0" text="Mail" />
-                              <TableColumn fx:id="columnAddress" prefWidth="75.0" text="Addresse" />
-                                        <TableColumn fx:id="columnBirthday" prefWidth="75.0" text="Fødselsdag" />
+                                        <TableColumn fx:id="columnName" editable="false" prefWidth="194.40003049373627" sortable="false" text="Navn" />
+                                        <TableColumn fx:id="columnPosition" editable="false" prefWidth="132.00003051757812" sortable="false" text="Position" />
+                              <TableColumn fx:id="columnPhone" editable="false" prefWidth="75.0" sortable="false" text="Telefon" />
+                              <TableColumn fx:id="columnMail" editable="false" prefWidth="75.0" sortable="false" text="Mail" />
+                              <TableColumn fx:id="columnAddress" editable="false" prefWidth="278.39984130859375" sortable="false" text="Addresse" />
+                                        <TableColumn fx:id="columnBirthday" editable="false" prefWidth="48.0001220703125" sortable="false" text="Fødselsdag" />
                                     </columns>
                                     <VBox.margin>
                                         <Insets left="50.0" right="50.0" />
@@ -95,7 +95,7 @@
                                                 <Insets right="20.0" />
                                             </HBox.margin>
                                         </Button>
-                                        <Button alignment="CENTER" minWidth="150.0" mnemonicParsing="false" onAction="#editPlayerButtonClick" styleClass="buttonApprove" text="Rediger valgt spiller">
+                                        <Button alignment="CENTER" minWidth="99.0" mnemonicParsing="false" onAction="#editPlayerButtonClick" prefHeight="34.0" prefWidth="99.0" styleClass="overviewButtons" text="Vis spiller">
                                             <opaqueInsets>
                                                 <Insets />
                                             </opaqueInsets>
@@ -103,7 +103,7 @@
                                                 <Insets right="20.0" />
                                             </HBox.margin>
                                         </Button>
-                                        <Button minWidth="126.0" mnemonicParsing="false" onAction="#deletePlayerButtonClick" styleClass="buttonCancel" text="Slet valgt spiller">
+                                        <Button minWidth="126.0" mnemonicParsing="false" onAction="#deletePlayerButtonClick" styleClass="buttonCancel" text="Slet spiller">
                                             <HBox.margin>
                                                 <Insets right="50.0" />
                                             </HBox.margin>
