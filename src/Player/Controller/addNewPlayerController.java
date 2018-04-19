@@ -1,14 +1,14 @@
 
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Types;
-            // Inserts data onto the "iceTelephone" field in the database. If there is no data, it will set the string to "null"
-            cancelButtonClick();
-
-        } catch(SQLException e) {
-            System.out.println(e.getMessage());
+import javafx.scene.control.*;
+import javafx.stage.Stage;
+import SQL.SqlConnection;
+import javafx.fxml.FXML;
+/*
+import org.omg.CORBA.INTERNAL;
+*/
+import java.sql.*;
+import java.time.format.DateTimeFormatter;
+import static java.lang.String.valueOf;
 
             } catch (IOException e) {
             //e.printStackTrace();

@@ -64,7 +64,7 @@ public class PlayerListController {
             while (rs.next()) {
                 playerData.add(new Player(rs.getString("name"), rs.getString("address"), rs.getInt("phone"),
                         rs.getString("mail"), rs.getString("iceName"), rs.getInt("iceTelephone"),
-                        rs.getString("position"), "00/00/00", rs.getInt("health"),
+                        rs.getString("position"), "00/00/00", rs.getInt("health"), rs.getString
                         rs.getInt("yellowCards"), rs.getInt("redCards"), rs.getInt("goalScored"),
                         rs.getInt("assist"), rs.getInt("motm"), rs.getInt("attendedMatches"),
                         rs.getInt("attendedTrainings"), rs.getInt("player_id"))
