@@ -7,10 +7,15 @@ import javafx.fxml.FXML;
 /*
 import org.omg.CORBA.INTERNAL;
 */
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Types;
+import java.sql.*;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+
+import static java.lang.String.valueOf;
+import static java.time.LocalDate.*;
+
 
 public class addNewPlayerController {
 
@@ -48,64 +53,74 @@ public class addNewPlayerController {
         Connection conn = SqlConnection.connectToDB();
         String sql = "INSERT INTO players "
                 + " (player_id, name, address, phone, mail," +
-                "iceName, iceTelephone, position, health, " +
+                "iceName, iceTelephone, position, health, birthday, " +
                 "yellowCards, redCards, goalScored, assist, motm, " +
                 "attendedMatches, attendedTrainings)" +
 
-                " VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?, null, null, null, null, null, null, null)";
+                " VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?, ?, null, null, null, null, null, null, null)";
 
 
         // Connecting to the database
         try {
             PreparedStatement stmt = conn.prepareStatement(sql);
 
-            // Inserts data unto the "name" field in the database. If there is no data, it will set the string to "null"
+            // Inserts data into the "name" field in the database. If there is no data, it will set the string to "null"
             if (nameInput.getText().equals("")){
                 stmt.setString(1, null);
             } else {
                 stmt.setString(1, nameInput.getText());
             }
 
-            // Inserts data unto the "address" field in the database. If there is no data, it will set the string to "null"
+            // Inserts data into the "address" field in the database. If there is no data, it will set the string to "null"
             if (addressInput.getText().equals("")){
                 stmt.setString(2, null);
             } else {
                 stmt.setString(2, addressInput.getText());
             }
 
-            // Inserts data unto the "phone" field in the database. If there is no data, it will set the string to "null"
+            // Inserts data into the "phone" field in the database. If there is no data, it will set the string to "null"
             if (phoneInput.getText().equals("")){
                 stmt.setNull(3, Types.INTEGER);
             } else {
                 stmt.setInt(3, Integer.parseInt(phoneInput.getText())); // String being parsed to int, to give it to DB.
             }
 
-            // Inserts data unto the "mail" field in the database. If there is no data, it will set the string to "null"
+            // Inserts data into the "mail" field in the database. If there is no data, it will set the string to "null"
             if (mailInput.getText().equals("")){
                 stmt.setString(4, null);
             } else {
                 stmt.setString(4, mailInput.getText());
             }
 
-            // Inserts data unto the "iceName" field in the database. If there is no data, it will set the string to "null"
+            // Inserts data into the "iceName" field in the database. If there is no data, it will set the string to "null"
             if (ICEnameInput.getText().equals("")){
                 stmt.setString(5, null);
             } else {
                 stmt.setString(5, ICEnameInput.getText());
             }
 
-            // Inserts data unto the "iceTelephone" field in the database. If there is no data, it will set the string to "null"
+            // Inserts data into the "iceTelephone" field in the database. If there is no data, it will set the string to "null"
             if (ICEphoneInput.getText().equals("")){
                 stmt.setNull(6, Types.INTEGER);
             } else {
                 stmt.setInt(6, Integer.parseInt(ICEphoneInput.getText())); // String being parsed to int, to give it to DB.
             }
 
-            // Inserts data unto the "position" field in the database
-            stmt.setString(7, String.valueOf(positionInput.getSelectionModel().getSelectedItem()));
+            // Inserts data into the "position" field in the database
+            stmt.setString(7, valueOf(positionInput.getSelectionModel().getSelectedItem()));
 
-            // Inserts data unto the "health" field in the database
+            // Inserts data into the "health" field in the database
             stmt.setInt(8, health.isSelected() ? 1 : 0);
+
+            // Creates a string, from the birthdayInput, and
+            // inserts data into the "birthday" field in the database.
+            // If there is no data, it will set the string to "null"
+            if(birthdayInput.getValue().equals("")){
+                stmt.setString(9, null);
+            } else {
+                String date = birthdayInput.getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                stmt.setString(9, date);
+            }
 
             // Updates the database
             stmt.executeUpdate();
