@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Match.Controller.MatchOverviewController">
+<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Match.Controller.MatchOverviewController">
    <children>
       <HBox maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0">
          <children>
@@ -24,7 +24,7 @@
                      <children>
                         <ImageView fitHeight="49.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="file:../../graphics/aaif.png" />
+                              <Image url="file:graphics/aaif.png" />
                            </image>
                            <HBox.margin>
                               <Insets left="15.0" top="15.0" />
@@ -63,13 +63,13 @@
                   <Line endX="1080.0" />
                   <AnchorPane prefHeight="647.0" prefWidth="1081.0">
                      <children>
-                        <TableView editable="true" fixedCellSize="1.0" layoutX="56.0" layoutY="28.0" prefHeight="456.0" prefWidth="969.0" tableMenuButtonVisible="true">
+                        <TableView fx:id="tableMatches" fixedCellSize="1.0" layoutX="56.0" layoutY="28.0" prefHeight="456.0" prefWidth="969.0">
                            <columns>
                               <TableColumn prefWidth="75.0" text="Runde" />
-                              <TableColumn prefWidth="150.0" text="Tidspunkt" />
-                              <TableColumn prefWidth="230.0" text="Kamp" />
-                              <TableColumn prefWidth="210.0" text="Spillested" />
-                              <TableColumn prefWidth="210.0" text="Resultat" />
+                              <TableColumn fx:id="columnTime" prefWidth="150.0" text="Tidspunkt" />
+                              <TableColumn fx:id="columnOpponent" prefWidth="230.0" text="Kamp" />
+                              <TableColumn fx:id="columnAddress" prefWidth="210.0" text="Spillested" />
+                              <TableColumn fx:id="columnScore" prefWidth="210.0" text="Resultat" />
                               <TableColumn prefWidth="94.8740234375" text="Taktik" />
                            </columns>
                            <columnResizePolicy>
