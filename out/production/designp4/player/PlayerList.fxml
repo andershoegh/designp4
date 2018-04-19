@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Player.Controller.PlayerListController">
+<AnchorPane styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Player.Controller.PlayerListController">
     <children>
         <HBox maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0">
             <children>
@@ -65,14 +65,14 @@
                         <VBox prefWidth="100.0" BorderPane.alignment="CENTER">
                             <children>
                                 <Region prefHeight="60.0" prefWidth="200.0" />
-                                <TableView fx:id="tablePlayers">
+                                <TableView fx:id="tablePlayers" prefHeight="400.0" prefWidth="902.0">
                                     <columns>
-                                        <TableColumn fx:id="columnName" editable="false" prefWidth="194.40003049373627" sortable="false" text="Navn" />
+                                        <TableColumn fx:id="columnName" editable="false" prefWidth="220.0" resizable="false" sortable="false" text="Navn" />
                                         <TableColumn fx:id="columnPosition" editable="false" prefWidth="132.00003051757812" sortable="false" text="Position" />
-                              <TableColumn fx:id="columnPhone" editable="false" prefWidth="75.0" sortable="false" text="Telefon" />
-                              <TableColumn fx:id="columnMail" editable="false" prefWidth="75.0" sortable="false" text="Mail" />
-                              <TableColumn fx:id="columnAddress" editable="false" prefWidth="278.39984130859375" sortable="false" text="Addresse" />
-                                        <TableColumn fx:id="columnBirthday" editable="false" prefWidth="48.0001220703125" sortable="false" text="Fødselsdag" />
+                              <TableColumn fx:id="columnPhone" editable="false" prefWidth="120.0" resizable="false" sortable="false" text="Telefon" />
+                              <TableColumn fx:id="columnMail" editable="false" prefWidth="180.0" resizable="false" sortable="false" text="Mail" />
+                              <TableColumn fx:id="columnAddress" editable="false" prefWidth="184.0" resizable="false" sortable="false" text="Addresse" />
+                                        <TableColumn fx:id="columnBirthday" editable="false" prefWidth="100.0" resizable="false" sortable="false" text="Fødselsdag" />
                                     </columns>
                                     <VBox.margin>
                                         <Insets left="50.0" right="50.0" />

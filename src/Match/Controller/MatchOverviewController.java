@@ -50,6 +50,7 @@ public class MatchOverviewController {
                 matchData.add(new Match(rs.getString("opponent"), rs.getInt("goalsFor"),
                         rs.getInt("goalsAgainst"), rs.getString("season"),
                         rs.getString("date"), rs.getString("time"), rs.getInt("match_id"))
+
                 );
             }
 
