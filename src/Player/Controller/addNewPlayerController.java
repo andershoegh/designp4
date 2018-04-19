@@ -115,7 +115,7 @@ public class addNewPlayerController {
             // Creates a string, from the birthdayInput, and
             // inserts data into the "birthday" field in the database.
             // If there is no data, it will set the string to "null"
-            if(birthdayInput.getValue().equals("")){
+            if(birthdayInput.getValue() == null){
                 stmt.setString(9, null);
             } else {
                 String date = birthdayInput.getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
