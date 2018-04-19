@@ -1,12 +1,9 @@
 package Player.Controller;
 
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import SQL.SqlConnection;
 import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
 /*
 import org.omg.CORBA.INTERNAL;
 */
@@ -25,7 +22,7 @@ public class addNewPlayerController {
     @FXML private TextField ICEnameInput;
     @FXML private TextField ICEphoneInput;
     @FXML private ChoiceBox positionInput;
-    @FXML private TextField birthdayInput;
+    @FXML private DatePicker birthdayInput;
     @FXML private CheckBox health;
     @FXML private Button acceptButton;
     @FXML private Button cancelButton;
@@ -36,12 +33,12 @@ public class addNewPlayerController {
         positionInput.getItems().addAll(
                 "Angriber",
                 "Central Forsvarsspiller",
+                "Back",
                 "Midtbanespiller",
                 "Midtbanespiller (Offensiv)",
                 "Midtbanespiller (Defensiv)",
                 "Midtbanespiller (Central)",
                 "Midtbanespiller (Kant)",
-                "Back",
                 "Målmand",
                 "Andet");
         positionInput.getSelectionModel().select("Angriber");
