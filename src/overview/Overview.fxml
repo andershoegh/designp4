@@ -4,18 +4,16 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Overview.Controller.OverviewController">
+<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Overview.Controller.OverviewController">
    <children>
       <HBox maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0">
          <children>
@@ -64,7 +62,7 @@
                   <Line endX="1080.0" />
                   <AnchorPane prefHeight="651.0" prefWidth="1081.0">
                      <children>
-                        <VBox fx:id="TrainingBox1" layoutX="110.0" layoutY="30.0" prefHeight="297.0" prefWidth="324.0" style="-fx-background-color: white;">
+                        <VBox fx:id="TrainingBox1" layoutX="110.0" layoutY="30.0" prefWidth="324.0" style="-fx-background-color: white;">
                            <children>
                               <HBox alignment="CENTER" prefHeight="44.0" prefWidth="324.0">
                                  <children>
@@ -78,91 +76,84 @@
                               </Line>
                               <HBox alignment="BOTTOM_LEFT">
                                  <children>
-                                    <Label fx:id="firstTrainingDate" styleClass="overviewText" text="Dato:">
+                                    <Label styleClass="overviewText" text="Dato:">
                                        <HBox.margin>
                                           <Insets left="30.0" right="83.0" />
                                        </HBox.margin>
                                        <padding>
-                                          <Insets top="10.0" />
+                                          <Insets top="15.0" />
                                        </padding>
                                     </Label>
-                                    <Label fx:id="firstTrainingTime" text="Ugedag, dato">
+                                    <Label fx:id="Training1Date" text="Ugedag, dato">
                                        <HBox.margin>
                                           <Insets />
                                        </HBox.margin>
                                     </Label>
                                  </children>
-                                 <padding>
-                                    <Insets top="4.0" />
-                                 </padding>
                               </HBox>
                               <HBox alignment="BOTTOM_LEFT">
                                  <children>
-                                    <Label fx:id="firstTrainingDate1" styleClass="overviewText" text="Tidspunkt:">
+                                    <Label styleClass="overviewText" text="Tidspunkt:">
                                        <HBox.margin>
                                           <Insets left="30.0" right="50.0" />
                                        </HBox.margin>
                                        <padding>
-                                          <Insets top="10.0" />
+                                          <Insets top="15.0" />
                                        </padding>
                                     </Label>
-                                    <Label fx:id="firstTrainingTime1" text="start - slut">
+                                    <Label fx:id="Training1Time" text="Start - slut">
                                        <HBox.margin>
                                           <Insets />
                                        </HBox.margin>
                                     </Label>
                                  </children>
-                                 <padding>
-                                    <Insets top="4.0" />
-                                 </padding>
                               </HBox>
-                              <HBox prefHeight="37.0" prefWidth="324.0">
+                              <HBox alignment="BOTTOM_LEFT" prefWidth="324.0">
                                  <children>
                                     <Label styleClass="overviewText" stylesheets="@../stylesheet.css" text="Antal tilmeldte:">
                                        <HBox.margin>
-                                          <Insets left="30.0" right="10.0" />
+                                          <Insets left="30.0" right="20.0" />
                                        </HBox.margin>
                                        <padding>
-                                          <Insets top="10.0" />
+                                          <Insets top="15.0" />
                                        </padding>
                                     </Label>
-                                    <Label fx:id="training1Attend" text="Label">
+                                    <Label fx:id="training1Attend" text="Antal">
                                        <HBox.margin>
-                                          <Insets left="10.0" right="10.0" />
+                                          <Insets right="20.0" />
                                        </HBox.margin>
-                                       <padding>
-                                          <Insets top="10.0" />
-                                       </padding>
                                     </Label>
+                                    <Label styleClass="labelHyperlink" text="redigér tilmeldte" />
                                  </children>
                                  <VBox.margin>
-                                    <Insets top="4.0" />
+                                    <Insets />
                                  </VBox.margin>
                               </HBox>
-                              <HBox layoutX="10.0" layoutY="54.0" prefHeight="105.0" prefWidth="324.0">
+                              <HBox alignment="BOTTOM_LEFT" layoutX="10.0" layoutY="54.0" prefWidth="324.0">
                                  <children>
-                                    <Label styleClass="overviewText" stylesheets="@../stylesheet.css" text="Afbud:">
+                                    <Label styleClass="overviewText" stylesheets="@../stylesheet.css" text="Antal afbud:">
                                        <HBox.margin>
-                                          <Insets left="30.0" right="30.0" />
+                                          <Insets left="30.0" right="40.0" />
                                        </HBox.margin>
                                        <opaqueInsets>
                                           <Insets />
                                        </opaqueInsets>
                                        <padding>
-                                          <Insets top="10.0" />
+                                          <Insets top="15.0" />
                                        </padding>
                                     </Label>
+                                    <Label fx:id="training1NotAttend" text="Antal" />
                                  </children>
                                  <VBox.margin>
-                                    <Insets top="3.0" />
+                                    <Insets />
                                  </VBox.margin>
                               </HBox>
                               <HBox alignment="CENTER" layoutX="10.0" layoutY="101.0" prefHeight="35.0" prefWidth="324.0">
                                  <children>
-                                    <Button fx:id="training1ProgramButton" mnemonicParsing="false" styleClass="overviewButtons" stylesheets="@../stylesheet.css" text="Program" />
+                                    <Button fx:id="training1ProgramButton" minWidth="135.0" mnemonicParsing="false" styleClass="overviewButtons" stylesheets="@../stylesheet.css" text="Træningsprogram" />
                                  </children>
                                  <VBox.margin>
-                                    <Insets top="15.0" />
+                                    <Insets bottom="30.0" top="35.0" />
                                  </VBox.margin>
                               </HBox>
                            </children>
@@ -170,9 +161,9 @@
                               <DropShadow color="#aba8a8" height="30.0" offsetX="4.0" offsetY="4.0" radius="14.5" width="30.0" />
                            </effect>
                         </VBox>
-                        <VBox fx:id="TrainingBox2" layoutX="110.0" layoutY="325.0" prefHeight="275.0" prefWidth="324.0" style="-fx-background-color: white;">
+                        <VBox fx:id="TrainingBox2" layoutX="110.0" layoutY="350.0" prefWidth="324.0" style="-fx-background-color: white;">
                            <children>
-                              <HBox alignment="CENTER" prefHeight="50.0" prefWidth="226.0">
+                              <HBox alignment="CENTER" prefHeight="44.0" prefWidth="324.0">
                                  <children>
                                     <Label fx:id="training2Headline" contentDisplay="CENTER" styleClass="overviewHeadline" stylesheets="@../stylesheet.css" text="Træning" />
                                  </children>
@@ -182,56 +173,86 @@
                                     <Insets left="20.0" />
                                  </VBox.margin>
                               </Line>
-                              <HBox alignment="CENTER">
+                              <HBox alignment="BOTTOM_LEFT">
                                  <children>
-                                    <Label fx:id="secondTrainingDate" text="ugedag, dato" />
-                                    <Region prefWidth="20.0" />
-                                    <Label fx:id="secondTrainingTime" text="kl. start - kl. slut" />
+                                    <Label styleClass="overviewText" text="Dato:">
+                                       <HBox.margin>
+                                          <Insets left="30.0" right="83.0" />
+                                       </HBox.margin>
+                                       <padding>
+                                          <Insets top="15.0" />
+                                       </padding>
+                                    </Label>
+                                    <Label fx:id="training2Date" text="Ugedag, dato">
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </Label>
                                  </children>
-                                 <padding>
-                                    <Insets top="4.0" />
-                                 </padding>
                               </HBox>
-                              <HBox prefHeight="26.0" prefWidth="324.0">
+                              <HBox alignment="BOTTOM_LEFT">
                                  <children>
-                                    <Label styleClass="overviewText" stylesheets="@../stylesheet.css" text="Antal tilmdelte:">
+                                    <Label styleClass="overviewText" text="Tidspunkt:">
                                        <HBox.margin>
-                                          <Insets left="30.0" right="10.0" />
+                                          <Insets left="30.0" right="50.0" />
+                                       </HBox.margin>
+                                       <padding>
+                                          <Insets top="15.0" />
+                                       </padding>
+                                    </Label>
+                                    <Label fx:id="training2Time" text="Start - slut">
+                                       <HBox.margin>
+                                          <Insets />
                                        </HBox.margin>
                                     </Label>
-                                    <Label fx:id="training2Attend" text="Label">
+                                 </children>
+                              </HBox>
+                              <HBox alignment="BOTTOM_LEFT" prefWidth="324.0">
+                                 <children>
+                                    <Label styleClass="overviewText" stylesheets="@../stylesheet.css" text="Antal tilmeldte:">
                                        <HBox.margin>
-                                          <Insets left="10.0" right="10.0" />
+                                          <Insets left="30.0" right="20.0" />
+                                       </HBox.margin>
+                                       <padding>
+                                          <Insets top="15.0" />
+                                       </padding>
+                                    </Label>
+                                    <Label fx:id="training2Attend" text="Antal">
+                                       <HBox.margin>
+                                          <Insets right="20.0" />
                                        </HBox.margin>
                                     </Label>
+                                    <Label styleClass="labelHyperlink" text="redigér tilmeldte" />
                                  </children>
                                  <VBox.margin>
-                                    <Insets top="10.0" />
+                                    <Insets />
                                  </VBox.margin>
                               </HBox>
-                              <HBox layoutX="10.0" layoutY="54.0" prefHeight="105.0" prefWidth="324.0">
+                              <HBox alignment="BOTTOM_LEFT" layoutX="10.0" layoutY="54.0" prefWidth="324.0">
                                  <children>
-                                    <Label styleClass="overviewText" stylesheets="@../stylesheet.css" text="Afbud:">
+                                    <Label styleClass="overviewText" stylesheets="@../stylesheet.css" text="Antal afbud:">
                                        <HBox.margin>
-                                          <Insets left="30.0" right="30.0" top="10.0" />
+                                          <Insets left="30.0" right="40.0" />
                                        </HBox.margin>
                                        <opaqueInsets>
                                           <Insets />
                                        </opaqueInsets>
+                                       <padding>
+                                          <Insets top="15.0" />
+                                       </padding>
                                     </Label>
-                                    <ListView fx:id="training2Cancel" prefHeight="200.0" prefWidth="200.0">
-                                       <HBox.margin>
-                                          <Insets top="5.0" />
-                                       </HBox.margin>
-                                    </ListView>
+                                    <Label fx:id="training2NotAttend" text="Antal" />
                                  </children>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
                               </HBox>
                               <HBox alignment="CENTER" layoutX="10.0" layoutY="101.0" prefHeight="35.0" prefWidth="324.0">
                                  <children>
-                                    <Button fx:id="training2ProgramButton" mnemonicParsing="false" styleClass="overviewButtons" stylesheets="@../stylesheet.css" text="Program" />
+                                    <Button fx:id="training2ProgramButton" minWidth="135.0" mnemonicParsing="false" styleClass="overviewButtons" stylesheets="@../stylesheet.css" text="Træningsprogram" />
                                  </children>
                                  <VBox.margin>
-                                    <Insets top="15.0" />
+                                    <Insets bottom="30.0" top="35.0" />
                                  </VBox.margin>
                               </HBox>
                            </children>
@@ -239,7 +260,7 @@
                               <DropShadow color="#aba8a8" height="30.0" offsetX="4.0" offsetY="4.0" radius="14.5" width="30.0" />
                            </effect>
                         </VBox>
-                        <VBox fx:id="matchBox" layoutX="619.0" layoutY="51.0" prefHeight="479.0" prefWidth="324.0" style="-fx-background-color: white;">
+                        <VBox fx:id="matchBox" layoutX="600.0" layoutY="30.0" prefWidth="324.0" style="-fx-background-color: white;">
                            <children>
                               <HBox alignment="CENTER" prefHeight="50.0" prefWidth="226.0">
                                  <children>
@@ -263,7 +284,7 @@
                                     </Label>
                                     <Label fx:id="matchDate" text="Label">
                                        <HBox.margin>
-                                          <Insets left="30.0" right="10.0" />
+                                          <Insets left="43.0" right="10.0" />
                                        </HBox.margin>
                                     </Label>
                                  </children>
@@ -283,14 +304,14 @@
                                     </Label>
                                     <Label fx:id="matchPlace" text="Label">
                                        <HBox.margin>
-                                          <Insets left="30.0" right="10.0" />
+                                          <Insets left="45.0" right="10.0" />
                                        </HBox.margin>
                                     </Label>
                                  </children>
                               </HBox>
                               <HBox layoutX="10.0" layoutY="54.0" prefHeight="108.0" prefWidth="324.0">
                                  <children>
-                                    <Label alignment="TOP_LEFT" styleClass="overviewText" stylesheets="@../stylesheet.css" text="Afbud:">
+                                    <Label alignment="TOP_LEFT" styleClass="overviewText" stylesheets="@../stylesheet.css" text="Tilmeldte:">
                                        <HBox.margin>
                                           <Insets top="5.0" />
                                        </HBox.margin>
@@ -298,43 +319,64 @@
                                           <Insets left="30.0" />
                                        </padding>
                                     </Label>
-                                    <ListView fx:id="matchCancel" prefHeight="200.0" prefWidth="200.0">
+                                    <ListView fx:id="matchAttending" prefHeight="200.0" prefWidth="200.0">
                                        <HBox.margin>
                                           <Insets left="15.0" />
                                        </HBox.margin>
                                     </ListView>
                                  </children>
                               </HBox>
-                              <HBox prefHeight="181.0" prefWidth="324.0">
-                                 <children>
-                                    <Label styleClass="overviewText" stylesheets="@../stylesheet.css" text="Noter:">
-                                       <HBox.margin>
-                                          <Insets top="5.0" />
-                                       </HBox.margin>
-                                       <padding>
-                                          <Insets left="30.0" />
-                                       </padding>
-                                    </Label>
-                                    <TextArea fx:id="matchNotes" prefHeight="200.0" prefWidth="200.0">
-                                       <HBox.margin>
-                                          <Insets left="15.0" />
-                                       </HBox.margin>
-                                    </TextArea>
-                                 </children>
-                                 <padding>
-                                    <Insets top="8.0" />
-                                 </padding>
-                                 <VBox.margin>
-                                    <Insets top="5.0" />
-                                 </VBox.margin>
-                              </HBox>
                               <HBox alignment="CENTER" layoutX="10.0" layoutY="101.0" prefHeight="38.0" prefWidth="324.0">
                                  <children>
                                     <Button fx:id="matchTacticButton" mnemonicParsing="false" styleClass="overviewButtons" stylesheets="@../stylesheet.css" text="Taktik" />
                                  </children>
                                  <VBox.margin>
-                                    <Insets top="13.0" />
+                                    <Insets bottom="30.0" top="35.0" />
                                  </VBox.margin>
+                              </HBox>
+                           </children>
+                           <effect>
+                              <DropShadow color="#aba8a8" height="30.0" offsetX="4.0" offsetY="4.0" radius="14.5" width="30.0" />
+                           </effect>
+                        </VBox>
+                        <VBox fx:id="birthdayBox" layoutX="600.0" layoutY="410.0" prefWidth="324.0" style="-fx-background-color: white;">
+                           <children>
+                              <HBox alignment="CENTER" prefHeight="50.0" prefWidth="226.0">
+                                 <children>
+                                    <Label contentDisplay="CENTER" styleClass="overviewHeadline" stylesheets="@../stylesheet.css" text="Kommende fødselsdag" />
+                                 </children>
+                              </HBox>
+                              <Line endX="182.0" startX="-100.0">
+                                 <VBox.margin>
+                                    <Insets left="20.0" />
+                                 </VBox.margin>
+                              </Line>
+                              <HBox prefHeight="30.0" prefWidth="324.0">
+                                 <children>
+                                    <Label fx:id="birthdayDate" styleClass="overviewText" stylesheets="@../stylesheet.css" text="Ugedag, dato">
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                       <padding>
+                                          <Insets left="30.0" />
+                                       </padding>
+                                    </Label>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="15.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox layoutX="10.0" layoutY="60.0" prefHeight="35.0" prefWidth="324.0">
+                                 <children>
+                                    <Label fx:id="birthdayPlayer" styleClass="overviewText" stylesheets="@../stylesheet.css" text="Spillernavn">
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                       <padding>
+                                          <Insets left="30.0" />
+                                       </padding>
+                                    </Label>
+                                 </children>
                               </HBox>
                            </children>
                            <effect>
