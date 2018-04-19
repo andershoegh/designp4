@@ -54,7 +54,7 @@
                     <children>
                         <HBox prefHeight="71.0" prefWidth="200.0">
                             <children>
-                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="pageheadline" text="Opret spiller">
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="pageheadline" text="Spillere">
                                     <HBox.margin>
                                         <Insets left="35.0" top="25.0" />
                                     </HBox.margin>

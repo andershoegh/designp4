@@ -2,6 +2,7 @@ package Match.Controller;
 
 import Controller.MenuController;
 import Match.Match;
+import SQL.InnerJoinDB;
 import SQL.SqlConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,10 +22,14 @@ public class MatchOverviewController {
     private ObservableList<Match> matchData;
 
     @FXML private TableView<Match> tableMatches;
-    @FXML private TableColumn<?, ?> columnTime;
     @FXML private TableColumn<?, ?> columnOpponent;
-    @FXML private TableColumn<?, ?> columnAddress;
     @FXML private TableColumn<?, ?> columnScore;
+    @FXML private TableColumn<?, ?> columnGoalsFor;
+    @FXML private TableColumn<?, ?> columnGoalsAgainst;
+    @FXML private TableColumn<?, ?> columnDate;
+    @FXML private TableColumn<?, ?> columnTime;
+    @FXML private TableColumn<?, ?> columnAddress;
+    @FXML private TableColumn<?, ?> columnTactic;
 
     @FXML public void initialize(){
         matchData = FXCollections.observableArrayList();
@@ -34,10 +39,12 @@ public class MatchOverviewController {
 
     // Retrieves data from appropriate player class constructor
     private void setCellTable(){
-        //columnTime.setCellValueFactory(new PropertyValueFactory<>("time"));
         columnOpponent.setCellValueFactory(new PropertyValueFactory<>("opponent"));
-        //columnAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
-        //columnScore.setCellValueFactory(new PropertyValueFactory<>("goalsFor"));
+        columnGoalsFor.setCellValueFactory(new PropertyValueFactory<>("goalsFor"));
+        columnGoalsAgainst.setCellValueFactory(new PropertyValueFactory<>("goalsAgainst"));
+        columnDate.setCellValueFactory(new PropertyValueFactory<>("date"));
+        columnTime.setCellValueFactory(new PropertyValueFactory<>("time"));
+        columnAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
     }
 
     public void loadDataFromDB(){
@@ -49,8 +56,8 @@ public class MatchOverviewController {
             while(rs.next()){
                 matchData.add(new Match(rs.getString("opponent"), rs.getInt("goalsFor"),
                         rs.getInt("goalsAgainst"), rs.getString("season"),
-                        rs.getString("date"), rs.getString("time"), rs.getInt("match_id"))
-
+                        rs.getString("date"), rs.getString("time"), rs.getInt("match_id"),
+                        rs.getString("address"),0)
                 );
             }
 
