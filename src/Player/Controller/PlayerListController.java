@@ -20,6 +20,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 
 public class PlayerListController {
 
@@ -109,7 +110,7 @@ public class PlayerListController {
 
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setTitle("Redigér spiller");
+            stage.setTitle("Vis spiller");
 
             EditPlayerController controller = loader.getController();
             controller.initData(tablePlayers.getSelectionModel().getSelectedItem());
@@ -122,6 +123,28 @@ public class PlayerListController {
             initialize();
         } catch (IOException e){
             e.printStackTrace();
+        }
+    }
+
+    private Player temp;
+    private Date lastClickTime;
+    @FXML
+    private void handleRowSelect() {
+        Player row = tablePlayers.getSelectionModel().getSelectedItem();
+        if (row == null)
+            return;
+        if(row != temp){
+            temp = row;
+            lastClickTime = new Date();
+        } else if(row == temp) {
+            Date now = new Date();
+            long diff = now.getTime() - lastClickTime.getTime();
+            if (diff < 300){ //another click registered in 300 millis
+                System.out.println("Edit dialog");
+                editPlayerButtonClick();
+            } else {
+                lastClickTime = new Date();
+            }
         }
     }
 
