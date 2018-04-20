@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Match.Controller.MatchOverviewController">
+   <children>
+      <HBox maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0">
+         <children>
+            <VBox prefHeight="720.0" prefWidth="200.0" styleClass="menubar">
+               <children>
+                  <HBox>
+                     <children>
+                        <ImageView fitHeight="49.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="file:graphics/aaif.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="15.0" top="15.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label styleClass="teamname" text="AAIF Senior">
+                           <HBox.margin>
+                              <Insets left="20.0" top="30.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="30.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" text="Oversigt" />
+                  <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefHeight="50.0" prefWidth="200.0" text="Kalender" />
+                  <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" text="Spillere" />
+                  <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="selectedmenu" text="Kampe" />
+                  <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" text="Træning" />
+                  <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" text="Statistik" />
+                  <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" text="Diverse" />
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="1080.0">
+               <children>
+                  <HBox prefHeight="71.0" prefWidth="200.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="pageheadline" text="Kampe">
+                           <HBox.margin>
+                              <Insets left="35.0" top="25.0" />
+                           </HBox.margin>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <Line endX="1080.0" />
+                  <AnchorPane prefHeight="647.0" prefWidth="1081.0">
+                     <children>
+                        <TableView fx:id="tableMatches" layoutX="120.0" layoutY="18.0" prefHeight="482.0">
+                          <columns>
+                            <TableColumn prefWidth="70.0" text="Runde" />
+                            <TableColumn fx:id="columnOpponent" prefWidth="220.0" text="Kamp" />
+                              <TableColumn fx:id="columnScore" prefWidth="100.0" text="Resultat">
+                                 <columns>
+                                    <TableColumn fx:id="columnGoalsFor" prefWidth="75.0" text="Os" />
+                                    <TableColumn fx:id="columnGoalsAgainst" prefWidth="75.0" text="Dem" />
+                                 </columns>
+                              </TableColumn>
+                              <TableColumn prefWidth="220.0" text="Tidspunkt">
+                                 <columns>
+                                    <TableColumn fx:id="columnDate" prefWidth="100.0" text="Dato" />
+                                    <TableColumn fx:id="columnTime" prefWidth="100.0" text="Start" />
+                                 </columns>
+                              </TableColumn>
+                              <TableColumn fx:id="columnAddress" prefWidth="220.0" text="Spillested" />
+                          </columns>
+                           <padding>
+                              <Insets top="20.0" />
+                           </padding>
+                        </TableView>
+                        <HBox layoutX="61.0" layoutY="511.0" prefHeight="100.0" prefWidth="960.0">
+                           <children>
+                              <Button mnemonicParsing="false" prefHeight="23.0" prefWidth="92.0" styleClass="greenButton" text="Ny sæson">
+                                 <HBox.margin>
+                                    <Insets left="700.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <ComboBox fx:id="seasonSelector" prefWidth="150.0" styleClass="greenButton">
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </ComboBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
