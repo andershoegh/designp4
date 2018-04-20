@@ -8,6 +8,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -23,13 +24,13 @@ public class MatchOverviewController {
 
     @FXML private TableView<Match> tableMatches;
     @FXML private TableColumn<?, ?> columnOpponent;
-    @FXML private TableColumn<?, ?> columnScore;
     @FXML private TableColumn<?, ?> columnGoalsFor;
     @FXML private TableColumn<?, ?> columnGoalsAgainst;
     @FXML private TableColumn<?, ?> columnDate;
     @FXML private TableColumn<?, ?> columnTime;
     @FXML private TableColumn<?, ?> columnAddress;
-    @FXML private TableColumn<?, ?> columnTactic;
+
+    @FXML private ComboBox<?> seasonSelector;
 
     @FXML public void initialize(){
         matchData = FXCollections.observableArrayList();
@@ -55,9 +56,9 @@ public class MatchOverviewController {
 
             while(rs.next()){
                 matchData.add(new Match(rs.getString("opponent"), rs.getInt("goalsFor"),
-                        rs.getInt("goalsAgainst"), rs.getString("season"),
+                        rs.getInt("goalsAgainst"), rs.getString("season_id"),
                         rs.getString("date"), rs.getString("time"), rs.getInt("match_id"),
-                        rs.getString("address"),0)
+                        rs.getString("address"), rs.getInt("tactic_id"))
                 );
             }
 

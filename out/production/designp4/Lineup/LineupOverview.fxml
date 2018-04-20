@@ -17,7 +17,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Lineup.LineupController">
+<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Lineup.LineupController">
     <children>
       <HBox maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0">
          <children>
@@ -89,9 +89,9 @@
                         </ImageView>
                         <VBox layoutX="20.0" layoutY="60.0" prefHeight="507.0" prefWidth="255.0">
                            <children>
-                              <TableView fx:id="players" prefHeight="452.0" prefWidth="255.0">
+                              <TableView fx:id="playersTable" prefHeight="452.0" prefWidth="255.0">
                                 <columns>
-                                  <TableColumn prefWidth="254.0" text="Players" />
+                                  <TableColumn fx:id="columnPlayers" prefWidth="254.0" text="Players" />
                                 </columns>
                               </TableView>
                               <Button fx:id="addNewPlayer" alignment="CENTER" prefHeight="50.0" prefWidth="274.0" text="Add Player" />
@@ -131,7 +131,7 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <ImageView fx:id="iv24" fitHeight="43.0" fitWidth="50.0" onDragDropped="#handleDrop" onDragOver="#handleDragOver" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                              <ImageView fx:id="iv24" fitHeight="43.0" fitWidth="50.0" onDragDetected="#handleDragDetection" onDragDropped="#handleDrop" onDragOver="#handleDragOver" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="4" />
                               <ImageView fitHeight="49.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" />
                               <ImageView fitHeight="45.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" />
                               <ImageView fitHeight="49.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" />

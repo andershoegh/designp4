@@ -20,7 +20,7 @@ public class Player {
     private int attendedTrainings;
     private int id;
 
-    // constructor
+    // constructors
     public Player(String name, String address, int phone, String mail, String ICEname, int ICEtelephone, String position,
                   int health, String birthday, int yellowCards, int redCards, int goalsScored, int assists,
                   int motm, int attendedMatches, int attendedTrainings, int id) {
@@ -41,6 +41,11 @@ public class Player {
         this.attendedMatches = attendedMatches;
         this.attendedTrainings = attendedTrainings;
         this.id = id;
+    }
+
+    public Player(int id, String name){
+        this.id = id;
+        this.name = name;
     }
 
     // Getters and Setters
