@@ -20,11 +20,7 @@
    <children>
       <VBox prefHeight="474.0" prefWidth="365.0">
          <children>
-            <Label styleClass="pageheadline" text="Opret spiller">
-               <padding>
-                  <Insets bottom="15.0" left="60.0" top="15.0" />
-               </padding>
-            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="70.0" prefWidth="366.0" styleClass="pageheadline" text="Opret spiller" textAlignment="CENTER" />
             <GridPane prefHeight="318.0" prefWidth="330.0" vgap="8.0">
               <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="201.5999755859375" minWidth="86.39998779296874" prefWidth="124.79996337890626" />

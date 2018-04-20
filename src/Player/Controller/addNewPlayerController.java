@@ -25,8 +25,8 @@ public class addNewPlayerController {
     @FXML private TextField mailInput;
     @FXML private TextField ICEnameInput;
     @FXML private TextField ICEphoneInput;
-    @FXML private ChoiceBox positionInput;
     @FXML private DatePicker birthdayInput;
+    @FXML private ChoiceBox positionInput;
     @FXML private CheckBox health;
     @FXML private Button acceptButton;
     @FXML private Button cancelButton;

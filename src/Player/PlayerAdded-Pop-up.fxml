@@ -5,10 +5,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="149.0" prefWidth="400.0" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Player.Controller.PlayerAddedPopController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="149.0" prefWidth="294.0" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Player.Controller.PlayerAddedPopController">
    <children>
+<<<<<<< HEAD
+      <Text layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="er nu oprettet i systemet!" textAlignment="CENTER" wrappingWidth="294.0" />
+      <Button fx:id="acceptButton" layoutX="112.0" layoutY="96.0" mnemonicParsing="false" onAction="#acceptButton" prefWidth="109.0" styleClass="overviewButtons" text="Ok" />
+      <Label fx:id="playerName" alignment="CENTER" layoutY="22.0" prefHeight="35.0" prefWidth="294.0" styleClass="pageheadline" text="Spiller" textAlignment="CENTER" />
+=======
       <Text layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="er nu oprettet i systemet!" textAlignment="CENTER" textOrigin="CENTER" wrappingWidth="399.9999986588955" />
       <Button fx:id="acceptButton" layoutX="164.0" layoutY="94.0" mnemonicParsing="false" onAction="#acceptButton" prefWidth="109.0" styleClass="overviewButtons" text="Ok" />
       <Label fx:id="playerName" alignment="CENTER" contentDisplay="CENTER" layoutX="-1.0" layoutY="24.0" prefHeight="29.0" prefWidth="400.0" styleClass="pageheadline" text="Label" textAlignment="CENTER" />
+>>>>>>> master
    </children>
 </AnchorPane>

@@ -65,7 +65,7 @@
                         <VBox prefWidth="100.0" BorderPane.alignment="CENTER">
                             <children>
                                 <Region prefHeight="60.0" prefWidth="200.0" />
-                                <TableView fx:id="tablePlayers" prefHeight="400.0" prefWidth="902.0">
+                                <TableView fx:id="tablePlayers" onMouseClicked="#handleRowSelect" prefHeight="400.0" prefWidth="902.0">
                                     <columns>
                                         <TableColumn fx:id="columnName" editable="false" prefWidth="220.0" resizable="false" sortable="false" text="Navn" />
                                         <TableColumn fx:id="columnPosition" editable="false" prefWidth="132.00003051757812" sortable="false" text="Position" />
