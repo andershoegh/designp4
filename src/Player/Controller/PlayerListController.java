@@ -20,6 +20,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.util.Date;
 
 public class PlayerListController {
 
@@ -41,6 +43,28 @@ public class PlayerListController {
         loadDataFromDB();
     }
 
+    private Player temp;
+    private Date lastClickTime;
+    @FXML
+    private void handleRowSelect() {
+        Player row = tablePlayers.getSelectionModel().getSelectedItem();
+        if (row == null)
+            return;
+        if(row != temp){
+            temp = row;
+            lastClickTime = new Date();
+        } else if(row == temp) {
+            Date now = new Date();
+            long diff = now.getTime() - lastClickTime.getTime();
+            if (diff < 300){ //another click registered in 300 millis
+                System.out.println("Double Clicked! Will open edit window.");
+                editPlayerButtonClick();
+            } else {
+                lastClickTime = new Date();
+            }
+        }
+    }
+
     public void clearTable(){
         tablePlayers.getItems().clear();
     }
@@ -49,7 +73,7 @@ public class PlayerListController {
     private void setCellTable(){
         columnName.setCellValueFactory(new PropertyValueFactory<>("name"));
         columnPosition.setCellValueFactory(new PropertyValueFactory<>("position"));
-        columnPhone.setCellValueFactory(new PropertyValueFactory<>("phone"));
+        columnPhone.setCellValueFactory(new PhonePropertyValueFactory<>("phone"));
         columnMail.setCellValueFactory(new PropertyValueFactory<>("mail"));
         columnAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
         columnBirthday.setCellValueFactory(new PropertyValueFactory<>("birthday"));
@@ -82,7 +106,6 @@ public class PlayerListController {
     }
 
     public void addPlayerButtonClick(ActionEvent event){
-
         // Switching scene from PlayerList.FXML to AddPlayer.FXML
         try {
             Parent addPlayerFXML = FXMLLoader.load(getClass().getResource("../AddPlayer.fxml"));
@@ -109,7 +132,7 @@ public class PlayerListController {
 
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setTitle("Redigér spiller");
+            stage.setTitle("Vis spiller");
 
             EditPlayerController controller = loader.getController();
             controller.initData(tablePlayers.getSelectionModel().getSelectedItem());
@@ -121,6 +144,9 @@ public class PlayerListController {
             clearTable();
             initialize();
         } catch (IOException e){
+            e.printStackTrace();
+
+        } catch (ParseException e) {
             e.printStackTrace();
         }
     }

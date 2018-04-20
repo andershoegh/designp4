@@ -78,10 +78,16 @@
     -fx-background-color: #787878;
 }
 
+.table-row-cell:empty {
+    -fx-background-color: transparent;
+}
+
 .table-row-cell:selected {
     -fx-text-fill: #e8e8e8;
     -fx-background-color: #585858;
 }
+
+.headerVisibility .column-header-background{ visibility: hidden; }
 
 .table-view {
     -fx-background-color: transparent;
