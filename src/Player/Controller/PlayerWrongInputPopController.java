@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-public class PlayerWrongInputPopController {
+    public class PlayerWrongInputPopController {
 
     @FXML private Button acceptButton;
 
