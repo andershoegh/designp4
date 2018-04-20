@@ -1,11 +1,19 @@
 package Match.Controller;
 
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+
 import java.sql.*;
 import java.util.Scanner;
 
-class insertToMatch {
+class inputMatchResultsController {
 
-    public static void insertMatch(Connection conn) throws SQLException {
+    @FXML private Label opponent;
+
+   /*
+   public static void insertMatch(){
 
         String season = null, date = null, time = null;
 
@@ -49,4 +57,5 @@ class insertToMatch {
         // Updates the database
         stmt.executeUpdate();
     }
+    */
 }

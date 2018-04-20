@@ -20,9 +20,9 @@ public class Player {
     private int attendedTrainings;
     private int id;
 
-    // constructor
-    public Player(String name, String address, int phone, String mail, String ICEname, int ICEtelephone, String position, String birthday,
-                  int health, int yellowCards, int redCards, int goalsScored, int assists,
+    // constructors
+    public Player(String name, String address, int phone, String mail, String ICEname, int ICEtelephone, String position,
+                  int health, String birthday, int yellowCards, int redCards, int goalsScored, int assists,
                   int motm, int attendedMatches, int attendedTrainings, int id) {
         this.name = name;
         this.address = address;
@@ -31,8 +31,8 @@ public class Player {
         this.ICEname = ICEname;
         this.ICEtelephone = ICEtelephone;
         this.position = position;
-        this.birthday = birthday;
         this.health = health;
+        this.birthday = birthday;
         this.yellowCards = yellowCards;
         this.redCards = redCards;
         this.goalsScored = goalsScored;
@@ -41,6 +41,11 @@ public class Player {
         this.attendedMatches = attendedMatches;
         this.attendedTrainings = attendedTrainings;
         this.id = id;
+    }
+
+    public Player(int id, String name){
+        this.id = id;
+        this.name = name;
     }
 
     // Getters and Setters
