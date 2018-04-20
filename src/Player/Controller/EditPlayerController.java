@@ -159,21 +159,21 @@ public class EditPlayerController {
                 stmt.setInt(6, Integer.parseInt(ICEphoneInput.getText())); // String being parsed to int, to give it to DB.
             }
 
-            // Inserts data into the "position" field in the database
-            stmt.setString(7, valueOf(position.getSelectionModel().getSelectedItem()));
-
-            // Inserts data into the "health" field in the database
-            stmt.setInt(8, health.isSelected() ? 1 : 0);
-
             // Creates a string, from the birthdayInput, and
             // inserts data into the "birthday" field in the database.
             // If there is no data, it will set the string to "null"
             if(birthday.getValue() == null){
-                stmt.setString(9, null);
+                stmt.setString(7, null);
             } else {
                 String date = birthday.getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-                stmt.setString(9, date);
+                stmt.setString(7, date);
             }
+            // Inserts data into the "position" field in the database
+            stmt.setString(8, valueOf(position.getSelectionModel().getSelectedItem()));
+
+            // Inserts data into the "health" field in the database
+            stmt.setInt(9, health.isSelected() ? 1 : 0);
+
             stmt.setInt(10, playerID);
 
             stmt.executeUpdate();
