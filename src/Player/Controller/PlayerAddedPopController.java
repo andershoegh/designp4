@@ -10,7 +10,6 @@ public class PlayerAddedPopController {
     @FXML private Label playerName;
     @FXML private Button acceptButton;
 
-
     public void setText(String name){
         playerName.setText(name);
     }

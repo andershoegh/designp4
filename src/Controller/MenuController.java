@@ -21,7 +21,7 @@ public class MenuController {
         } else if(event.getSource().toString().contains("Kampe")){
             sceneChange(event, "../Match/MatchOverview.fxml");
         } else if(event.getSource().toString().contains("Træning")){
-            System.out.println("FXML er ikke lavet endnu.. Kom i gang!");
+            sceneChange(event, "../Lineup/LineupOverview.fxml");
         } else if(event.getSource().toString().contains("Statistik")){
             sceneChange(event, "../Statistic/Statistic.fxml");
         } else if(event.getSource().toString().contains("Diverse")){
