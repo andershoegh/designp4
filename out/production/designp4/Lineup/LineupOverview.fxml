@@ -131,7 +131,7 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <ImageView fx:id="iv24" fitHeight="43.0" fitWidth="50.0" onDragDropped="#handleDrop" onDragOver="#handleDragOver" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                              <ImageView fx:id="iv24" fitHeight="43.0" fitWidth="50.0" onDragDetected="#handleDragDetection" onDragDropped="#handleDrop" onDragOver="#handleDragOver" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="4" />
                               <ImageView fitHeight="49.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" />
                               <ImageView fitHeight="45.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" />
                               <ImageView fitHeight="49.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" />

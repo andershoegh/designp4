@@ -70,4 +70,16 @@ public class LineupController {
         Image img = new Image(new FileInputStream(files.get(0)));
         iv24.setImage(img);
     }
+
+    @FXML
+    private void handleDragDetection (DragEvent event) {
+        Dragboard db = iv24.startDragAndDrop(TransferMode.ANY);
+
+        ClipboardContent cb = new ClipboardContent();
+        cb.putImage(iv24.getImage());
+
+        db.setContent(cb);
+
+        event.consume();
+    }
 }

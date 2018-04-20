@@ -30,6 +30,7 @@ public class CalendarController {
     private ObservableList<Match> matchList= FXCollections.observableArrayList();
     private ObservableList<?> trainings = FXCollections.observableArrayList();
     private ObservableList<?> others = FXCollections.observableArrayList();
+
     private ObservableList<String> StrMatchList = FXCollections.observableArrayList();
     private Date date;
     private SimpleDateFormat sdf = new SimpleDateFormat("MMMM yyyy");
@@ -38,9 +39,9 @@ public class CalendarController {
     @FXML private Label MonthYearLabel;
     @FXML private Button PrevMonthButton;
     @FXML private Button NextMonthButton;
-    @FXML private ListView<String> matchListView;
-    @FXML private ListView<?> TrainingListView;
-    @FXML private ListView<?> OtherListView;
+    @FXML private TableView<?>OtherTableView;
+    @FXML private TableView<?>matchTableView;
+    @FXML private TableView<?>TrainingTableView;
     @FXML private Button OpretButton;
 
     //Running methods when scene gets loaded
@@ -52,8 +53,9 @@ public class CalendarController {
     }
 
 
-    //Clear the list view
-    public void clearMatchList(){matchListView.getItems().clear();}
+    //Clear the table view
+    public void clearMatchList(){matchTableView.getItems().clear();}
+
 
 
     //Loads data from Match table in DB
@@ -86,7 +88,7 @@ public class CalendarController {
         }
 
         // inputting retrieved data from db into list view
-        matchListView.setItems(StrMatchList);
+       // matchTableView.setItems(StrMatchList);
         SqlConnection.closeConnection();
     }
 
