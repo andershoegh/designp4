@@ -41,6 +41,7 @@ public class PlayerListController {
         loadDataFromDB();
     }
 
+
     public void clearTable(){
         tablePlayers.getItems().clear();
     }
