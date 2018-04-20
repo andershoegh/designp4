@@ -129,6 +129,18 @@
     -fx-pref-height: 30;
 }
 
+.choice-box:hover {
+    -fx-cursor: hand;
+}
+
+.choice-box .label {
+    -fx-text-fill: white;
+}
+
+.choice-box .menu-item .label {
+    -fx-text-fill: black;
+}
+
 .overviewButtons{
     -fx-pref-height: 35;
     -fx-pref-width: 70;
