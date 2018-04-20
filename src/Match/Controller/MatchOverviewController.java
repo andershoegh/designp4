@@ -2,7 +2,6 @@ package Match.Controller;
 
 import Controller.MenuController;
 import Match.Match;
-import SQL.InnerJoinDB;
 import SQL.SqlConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,7 +11,6 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,6 +19,7 @@ import java.sql.SQLException;
 public class MatchOverviewController {
 
     private ObservableList<Match> matchData;
+    private ObservableList<String> seasonData;
 
     @FXML private TableView<Match> tableMatches;
     @FXML private TableColumn<?, ?> columnOpponent;
@@ -30,10 +29,11 @@ public class MatchOverviewController {
     @FXML private TableColumn<?, ?> columnTime;
     @FXML private TableColumn<?, ?> columnAddress;
 
-    @FXML private ComboBox<?> seasonSelector;
+    @FXML private ComboBox<String> seasonSelector;
 
     @FXML public void initialize(){
         matchData = FXCollections.observableArrayList();
+        seasonData = FXCollections.observableArrayList();
         setCellTable();
         loadDataFromDB();
     }
@@ -49,25 +49,40 @@ public class MatchOverviewController {
     }
 
     public void loadDataFromDB(){
+        Connection conn = SqlConnection.connectToDB();
+
         try {
-            Connection conn = SqlConnection.connectToDB();
-            PreparedStatement statement = conn.prepareStatement("SELECT * FROM matches");
-            ResultSet rs = statement.executeQuery();
+            PreparedStatement seasonStatement = conn.prepareStatement("SELECT * FROM seasons");
+            ResultSet rsSeason = seasonStatement.executeQuery();
 
-            while(rs.next()){
-                matchData.add(new Match(rs.getString("opponent"), rs.getInt("goalsFor"),
-                        rs.getInt("goalsAgainst"), rs.getString("season_id"),
-                        rs.getString("date"), rs.getString("time"), rs.getInt("match_id"),
-                        rs.getString("address"), rs.getInt("tactic_id"))
-                );
-            }
-
-            SqlConnection.closeConnection();
+            while (rsSeason.next()){ seasonData.addAll(rsSeason.getString("name")); }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
+        try {
+            PreparedStatement matchStatement = conn.prepareStatement("SELECT * FROM matches");
+            ResultSet rsMatch = matchStatement.executeQuery();
+
+            while(rsMatch.next()){
+                matchData.add(new Match(rsMatch.getString("opponent"),
+                        rsMatch.getInt("goalsFor"),
+                        rsMatch.getInt("goalsAgainst"),
+                        rsMatch.getString("season_id"),
+                        rsMatch.getString("date"),
+                        rsMatch.getString("time"),
+                        rsMatch.getInt("match_id"),
+                        rsMatch.getString("address"),
+                        rsMatch.getInt("tactic_id")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        seasonSelector.setItems(seasonData);
         tableMatches.setItems(matchData);
+
+        SqlConnection.closeConnection();
     }
 
 
