@@ -4,18 +4,9 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 import SQL.SqlConnection;
 import javafx.fxml.FXML;
-/*
-import org.omg.CORBA.INTERNAL;
-*/
 import java.sql.*;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
-
 import static java.lang.String.valueOf;
-import static java.time.LocalDate.*;
-
 
 public class addNewPlayerController {
 

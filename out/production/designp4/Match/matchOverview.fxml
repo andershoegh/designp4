@@ -63,18 +63,27 @@
                   <Line endX="1080.0" />
                   <AnchorPane prefHeight="647.0" prefWidth="1081.0">
                      <children>
-                        <TableView fx:id="tableMatches" fixedCellSize="1.0" layoutX="56.0" layoutY="28.0" prefHeight="456.0" prefWidth="969.0">
-                           <columns>
-                              <TableColumn prefWidth="75.0" text="Runde" />
-                              <TableColumn fx:id="columnTime" prefWidth="150.0" text="Tidspunkt" />
-                              <TableColumn fx:id="columnOpponent" prefWidth="230.0" text="Kamp" />
-                              <TableColumn fx:id="columnAddress" prefWidth="210.0" text="Spillested" />
-                              <TableColumn fx:id="columnScore" prefWidth="210.0" text="Resultat" />
-                              <TableColumn prefWidth="94.8740234375" text="Taktik" />
-                           </columns>
-                           <columnResizePolicy>
-                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                           </columnResizePolicy>
+                        <TableView fx:id="tableMatches" layoutX="95.0" layoutY="14.0" prefHeight="482.0">
+                          <columns>
+                            <TableColumn prefWidth="75.0" text="Runde" />
+                            <TableColumn fx:id="columnOpponent" prefWidth="220.0" text="Kamp" />
+                              <TableColumn fx:id="columnScore" prefWidth="100.0" text="Resultat">
+                                 <columns>
+                                    <TableColumn fx:id="columnGoalsFor" prefWidth="75.0" text="Os" />
+                                    <TableColumn fx:id="columnGoalsAgainst" prefWidth="75.0" text="Dem" />
+                                 </columns>
+                              </TableColumn>
+                              <TableColumn prefWidth="220.0" text="Tidspunkt">
+                                 <columns>
+                                    <TableColumn fx:id="columnDate" prefWidth="100.0" text="Dato" />
+                                    <TableColumn fx:id="columnTime" prefWidth="100.0" text="Start" />
+                                 </columns>
+                              </TableColumn>
+                              <TableColumn fx:id="columnAddress" prefWidth="240.0" text="Spillested" />
+                          </columns>
+                           <padding>
+                              <Insets top="20.0" />
+                           </padding>
                         </TableView>
                         <HBox layoutX="61.0" layoutY="511.0" prefHeight="100.0" prefWidth="960.0">
                            <children>

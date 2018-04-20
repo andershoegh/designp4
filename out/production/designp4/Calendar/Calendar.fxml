@@ -63,9 +63,9 @@
                      <children>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Button mnemonicParsing="false">
+                              <Button mnemonicParsing="false" fx:id="PrevMonthButton" onMouseClicked="#PrevMonthButtonClick">
                                  <graphic>
-                                    <ImageView fx:id="PrevMonthButton" fitHeight="60.0" fitWidth="40.0" onDragDetected="#PrevMonthButtonClick" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="60.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="file:graphics/icons8_Back_104px.png" />
                                        </image>
@@ -73,9 +73,9 @@
                                  </graphic>
                               </Button>
                               <Label fx:id="MonthYearLabel" alignment="CENTER" contentDisplay="CENTER" prefWidth="230.0" styleClass="calenderDate" stylesheets="@../stylesheet.css" text="* Month / Year picker goes here *" textAlignment="CENTER" />
-                              <Button mnemonicParsing="false">
+                              <Button mnemonicParsing="false" fx:id="NextMonthButton" onMouseClicked="#NextMonthButtonClick">
                                  <graphic>
-                                    <ImageView fx:id="NextMonthButton" fitHeight="60.0" fitWidth="40.0" onDragDetected="#NextMonthButtonClick" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="60.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="file:graphics/icons8_Forward_104px.png" />
                                        </image>

@@ -153,8 +153,18 @@
     -fx-border-width: 1;
 }
 
-.listView{
-    -fx-background-color: transparent;
-    -fx-border-color: black;
-    -fx-border-width: 0.3;
+.list-view{
+    -fx-background-color: #e8e8e8;
+    -fx-border-color: #d8d8d8;
+}
+
+.labelHyperlink{
+    -fx-text-fill: #585858;
+    -fx-font-size: 9px;
+}
+
+.labelHyperlink:hover{
+    -fx-cursor: hand;
+    -fx-underline: true;
+    -fx-text-fill: #787878;
 }
