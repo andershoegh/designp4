@@ -122,9 +122,8 @@
                                  <children>
                                     <TableView fx:id="matchTableView" prefHeight="200.0" prefWidth="300.0">
                                       <columns>
-                                        <TableColumn prefWidth="60.0" text="Dag i måned" />
-                                        <TableColumn prefWidth="190.0" text="KampTitel og tidspunkt" />
-                                          <TableColumn prefWidth="50.0" text="Slet" />
+                                        <TableColumn prefWidth="90.0" text="Dag i måned" />
+                                        <TableColumn prefWidth="196.0" text="KampTitel og tidspunkt" />
                                       </columns>
                                        <HBox.margin>
                                           <Insets left="20.0" right="20.0" />
@@ -133,9 +132,7 @@
                                     <TableView fx:id="TrainingTableView" prefHeight="200.0" prefWidth="300.0">
                                       <columns>
                                         <TableColumn prefWidth="60.0" text="Dag i Måned" />
-                                        <TableColumn prefWidth="120.0" text="Dato og tid" />
-                                          <TableColumn prefWidth="75.0" text="Program" />
-                                          <TableColumn prefWidth="50.0" text="Slet" />
+                                        <TableColumn prefWidth="239.0" text="Dato og tid" />
                                       </columns>
                                        <HBox.margin>
                                           <Insets left="20.0" right="20.0" />
@@ -143,9 +140,8 @@
                                     </TableView>
                                     <TableView fx:id="OtherTableView" prefHeight="200.0" prefWidth="300.0">
                                       <columns>
-                                        <TableColumn prefWidth="60.0" text="Dag i måned" />
-                                        <TableColumn prefWidth="190.0" text="Titel og tidspunkt" />
-                                          <TableColumn minWidth="0.0" prefWidth="50.0" text="Slet" />
+                                        <TableColumn prefWidth="89.0" text="Dag i måned" />
+                                        <TableColumn prefWidth="210.0" text="Titel og tidspunkt" />
                                       </columns>
                                        <HBox.margin>
                                           <Insets left="20.0" right="20.0" />

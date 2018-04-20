@@ -91,7 +91,7 @@
                                     <Insets left="700.0" />
                                  </HBox.margin>
                               </Button>
-                              <ComboBox prefWidth="150.0" styleClass="greenButton">
+                              <ComboBox prefWidth="150.0" styleClass="greenButton" fx:id="seasonSelector">
                                  <HBox.margin>
                                     <Insets left="10.0" />
                                  </HBox.margin>

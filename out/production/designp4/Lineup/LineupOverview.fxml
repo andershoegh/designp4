@@ -107,7 +107,7 @@
                               <Button fx:id="addNewTactic" alignment="CENTER" prefHeight="50.0" prefWidth="274.0" text="New tactic" />
                            </children>
                         </VBox>
-                        <GridPane fx:id="gridPane" layoutX="575.0" layoutY="80.0" onDragDropped="#handleDrop" onDragOver="#handleDragOver" prefHeight="467.0" prefWidth="334.0">
+                        <GridPane fx:id="gridPane" layoutX="575.0" layoutY="80.0" onDragDetected="#handle" onDragDone="#handle" onDragDropped="#handle" onDragOver="#handle" prefHeight="467.0" prefWidth="334.0">
                           <columnConstraints>
                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
