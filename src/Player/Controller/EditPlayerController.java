@@ -80,16 +80,14 @@ public class EditPlayerController {
         mail.setText(selectedPlayer.getMail());
         ICEnameInput.setText(selectedPlayer.getICEname());
         ICEphoneInput.setText(Integer.toString(selectedPlayer.getICEtelephone()));
-
         DateFormat format = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
         if (selectedPlayer.getBirthday() == null){
-
+            birthday.setValue(localDate);
         } else {
             Date d = format.parse(selectedPlayer.getBirthday());
             LocalDate localDate = d.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             birthday.setValue(localDate);
         }
-
         position.setValue(selectedPlayer.getPosition());
 
         // setting checkbox to fire if status == 1
