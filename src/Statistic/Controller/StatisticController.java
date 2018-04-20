@@ -116,7 +116,7 @@ public class StatisticController {
             while (rs.next()) {
                 goalsData.add(new Player(rs.getString("name"), rs.getString("address"), rs.getInt("phone"),
                         rs.getString("mail"), rs.getString("iceName"), rs.getInt("iceTelephone"),
-                        rs.getString("position"), "00/00/00", rs.getInt("health"),
+                        rs.getString("position"),  rs.getInt("health"), rs.getString("birthday"),
                         rs.getInt("yellowCards"), rs.getInt("redCards"), rs.getInt("goalScored"),
                         rs.getInt("assist"), rs.getInt("motm"), rs.getInt("attendedMatches"),
                         rs.getInt("attendedTrainings"), rs.getInt("player_id")));
@@ -135,7 +135,7 @@ public class StatisticController {
             while (rs.next()) {
                 matchData.add(new Player(rs.getString("name"), rs.getString("address"), rs.getInt("phone"),
                         rs.getString("mail"), rs.getString("iceName"), rs.getInt("iceTelephone"),
-                        rs.getString("position"), "00/00/00", rs.getInt("health"),
+                        rs.getString("position"),  rs.getInt("health"), rs.getString("birthday"),
                         rs.getInt("yellowCards"), rs.getInt("redCards"), rs.getInt("goalScored"),
                         rs.getInt("assist"), rs.getInt("motm"), rs.getInt("attendedMatches"),
                         rs.getInt("attendedTrainings"), rs.getInt("player_id")));
@@ -153,7 +153,7 @@ public class StatisticController {
             while (rs.next()) {
                 assistsData.add(new Player(rs.getString("name"), rs.getString("address"), rs.getInt("phone"),
                         rs.getString("mail"), rs.getString("iceName"), rs.getInt("iceTelephone"),
-                        rs.getString("position"), "00/00/00", rs.getInt("health"),
+                        rs.getString("position"),  rs.getInt("health"), rs.getString("birthday"),
                         rs.getInt("yellowCards"), rs.getInt("redCards"), rs.getInt("goalScored"),
                         rs.getInt("assist"), rs.getInt("motm"), rs.getInt("attendedMatches"),
                         rs.getInt("attendedTrainings"), rs.getInt("player_id")));
@@ -171,7 +171,7 @@ public class StatisticController {
             while (rs.next()) {
                 motmData.add(new Player(rs.getString("name"), rs.getString("address"), rs.getInt("phone"),
                         rs.getString("mail"), rs.getString("iceName"), rs.getInt("iceTelephone"),
-                        rs.getString("position"), "00/00/00", rs.getInt("health"),
+                        rs.getString("position"),  rs.getInt("health"), rs.getString("birthday"),
                         rs.getInt("yellowCards"), rs.getInt("redCards"), rs.getInt("goalScored"),
                         rs.getInt("assist"), rs.getInt("motm"), rs.getInt("attendedMatches"),
                         rs.getInt("attendedTrainings"), rs.getInt("player_id")));
@@ -189,7 +189,7 @@ public class StatisticController {
             while (rs.next()) {
                 trainingsData.add(new Player(rs.getString("name"), rs.getString("address"), rs.getInt("phone"),
                         rs.getString("mail"), rs.getString("iceName"), rs.getInt("iceTelephone"),
-                        rs.getString("position"), "00/00/00", rs.getInt("health"),
+                        rs.getString("position"),  rs.getInt("health"), rs.getString("birthday"),
                         rs.getInt("yellowCards"), rs.getInt("redCards"), rs.getInt("goalScored"),
                         rs.getInt("assist"), rs.getInt("motm"), rs.getInt("attendedMatches"),
                         rs.getInt("attendedTrainings"), rs.getInt("player_id")));
@@ -207,7 +207,7 @@ public class StatisticController {
             while (rs.next()) {
                 yellowData.add(new Player(rs.getString("name"), rs.getString("address"), rs.getInt("phone"),
                         rs.getString("mail"), rs.getString("iceName"), rs.getInt("iceTelephone"),
-                        rs.getString("position"), "00/00/00", rs.getInt("health"),
+                        rs.getString("position"),  rs.getInt("health"), rs.getString("birthday"),
                         rs.getInt("yellowCards"), rs.getInt("redCards"), rs.getInt("goalScored"),
                         rs.getInt("assist"), rs.getInt("motm"), rs.getInt("attendedMatches"),
                         rs.getInt("attendedTrainings"), rs.getInt("player_id")));
@@ -225,7 +225,7 @@ public class StatisticController {
             while (rs.next()) {
                 redData.add(new Player(rs.getString("name"), rs.getString("address"), rs.getInt("phone"),
                         rs.getString("mail"), rs.getString("iceName"), rs.getInt("iceTelephone"),
-                        rs.getString("position"), "00/00/00", rs.getInt("health"),
+                        rs.getString("position"),  rs.getInt("health"), rs.getString("birthday"),
                         rs.getInt("yellowCards"), rs.getInt("redCards"), rs.getInt("goalScored"),
                         rs.getInt("assist"), rs.getInt("motm"), rs.getInt("attendedMatches"),
                         rs.getInt("attendedTrainings"), rs.getInt("player_id")));

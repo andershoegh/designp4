@@ -4,22 +4,9 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 import SQL.SqlConnection;
 import javafx.fxml.FXML;
-/*
-import org.omg.CORBA.INTERNAL;
-*/
 import java.sql.*;
-<<<<<<< HEAD
 import java.time.format.DateTimeFormatter;
 import static java.lang.String.valueOf;
-=======
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
-
-import static java.lang.String.valueOf;
-import static java.time.LocalDate.*;
-
 
 public class addNewPlayerController {
 
@@ -74,7 +61,6 @@ public class addNewPlayerController {
             } else {
                 stmt.setString(1, nameInput.getText());
             }
->>>>>>> master
 
             // Inserts data into the "address" field in the database. If there is no data, it will set the string to "null"
             if (addressInput.getText().equals("")){
@@ -120,7 +106,7 @@ public class addNewPlayerController {
             // Creates a string, from the birthdayInput, and
             // inserts data into the "birthday" field in the database.
             // If there is no data, it will set the string to "null"
-            if(birthdayInput.getValue().equals("")){
+            if(birthdayInput.getValue() == null){
                 stmt.setString(9, null);
             } else {
                 String date = birthdayInput.getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
