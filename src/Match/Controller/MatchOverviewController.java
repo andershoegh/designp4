@@ -80,6 +80,8 @@ public class MatchOverviewController {
         }
 
         seasonSelector.setItems(seasonData);
+        seasonSelector.getSelectionModel().selectLast();
+
         tableMatches.setItems(matchData);
 
         SqlConnection.closeConnection();
