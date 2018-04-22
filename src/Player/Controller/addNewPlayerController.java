@@ -1,9 +1,17 @@
 package Player.Controller;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import SQL.SqlConnection;
 import javafx.fxml.FXML;
+
+import java.io.IOException;
 import java.sql.*;
 import java.time.format.DateTimeFormatter;
 import static java.lang.String.valueOf;
@@ -17,8 +25,8 @@ public class addNewPlayerController {
     @FXML private TextField mailInput;
     @FXML private TextField ICEnameInput;
     @FXML private TextField ICEphoneInput;
-    @FXML private ChoiceBox positionInput;
     @FXML private DatePicker birthdayInput;
+    @FXML private ChoiceBox positionInput;
     @FXML private CheckBox health;
     @FXML private Button acceptButton;
     @FXML private Button cancelButton;
@@ -38,9 +46,19 @@ public class addNewPlayerController {
                 "Målmand",
                 "Andet");
         positionInput.getSelectionModel().select("Angriber");
+
+        phoneInput.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    phoneInput.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+            }
+        });
     }
 
-    public void acceptButtonClick(){
+    public void acceptButtonClick() throws IOException {
         Connection conn = SqlConnection.connectToDB();
         String sql = "INSERT INTO players "
                 + " (player_id, name, address, phone, mail," +
@@ -119,12 +137,37 @@ public class addNewPlayerController {
             // Closes the connected database
             SqlConnection.closeConnection();
 
-            // Closing the window and returning to PlayerList.fxml
-            Stage stage = (Stage) acceptButton.getScene().getWindow();
+            //PlayerAddedPopController sendName = new PlayerAddedPopController();
+            //sendName.setText(nameInput.getText());
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../PlayerAdded-Pop-up.fxml"));
+            Parent playerAddedPopFXML = loader.load();
+            PlayerAddedPopController cont = loader.getController();
+
+            cont.setText(nameInput.getText());
+            Scene playerAddedScene = new Scene(playerAddedPopFXML);
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Spiller tilføjet");
+            stage.setScene(playerAddedScene);
+            stage.showAndWait();
             stage.close();
+            // Closing the window and returning to PlayerList.fxml
+            //Stage stage2 = (Stage) acceptButton.getScene().getWindow();
+            //stage.close();
 
         } catch(SQLException e) {
             System.out.println(e.getMessage());
+        } catch (NumberFormatException e) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../PlayerWrongInput-Pop-up.fxml"));
+            Parent wrongInputFXML = loader.load();
+            Scene wrongInputScene = new Scene(wrongInputFXML);
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Forkert input");
+            stage.setScene(wrongInputScene);
+            stage.showAndWait();
+            stage.close();
         }
     }
 
