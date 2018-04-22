@@ -16,6 +16,8 @@ public class MatchTitelPropertyValueFactory<S,T> implements Callback<TableColumn
     @Override
     public ObservableValue<T> call(TableColumn.CellDataFeatures<S, T> param) {
         Match m = (Match) param.getValue();
+        if(m.ge){}
+
         String st = m.getOpponent();
         st = (st.equals("0"))? "" : st;
         T val = (T) st;
