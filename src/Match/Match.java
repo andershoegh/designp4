@@ -10,6 +10,7 @@ public class Match {
     private int id;
     private String address;
     private int tactic;
+    private boolean home_away;
 
     public Match(String opponent, String date){
         this.opponent = opponent;
@@ -32,6 +33,10 @@ public class Match {
     public Match(String opponent) {
         this.opponent = opponent;
         }
+
+    public Match(String opponent, String date, String time, boolean home_away) {
+
+    }
 
     public String getOpponent() { return opponent; }
     public void setOpponent(String opponent) { this.opponent = opponent; }
@@ -61,5 +66,13 @@ public class Match {
 
     public int getTactic() { return tactic; }
     public void setTactic(int tactic) { this.tactic = tactic; }
+
+    public boolean isHome_away() {
+        return home_away;
+    }
+
+    public void setHome_away(boolean home_away) {
+        this.home_away = home_away;
+    }
 }
 

@@ -2,12 +2,14 @@ package Calendar.Controller;
 
 import Controller.MenuController;
 import Match.Match;
+import Player.Controller.PhonePropertyValueFactory;
 import SQL.SqlConnection;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.collections.FXCollections;
@@ -31,7 +33,8 @@ public class CalendarController {
     private ObservableList<?> trainings = FXCollections.observableArrayList();
     private ObservableList<?> others = FXCollections.observableArrayList();
 
-    private ObservableList<String> StrMatchList = FXCollections.observableArrayList();
+    private ObservableList<Match> FiltMatchList = FXCollections.observableArrayList();
+
     private Date date;
     private SimpleDateFormat sdf = new SimpleDateFormat("MMMM yyyy");
 
@@ -45,7 +48,7 @@ public class CalendarController {
     @FXML private TableColumn<?,?>OtherTitel;
     @FXML private TableColumn<?,?>OtherTime;
 
-    @FXML private TableView<?>matchTableView;
+    @FXML private TableView<Match>matchTableView;
     @FXML private TableColumn<?,?>MDayInMonth;
     @FXML private TableColumn<?,?>matchTitel;
     @FXML private TableColumn<?,?>matchDate;
@@ -59,11 +62,13 @@ public class CalendarController {
 
     @FXML private Button OpretButton;
 
+
     //Running methods when scene gets loaded
     @FXML
     public void initialize() throws ParseException {
         date = new Date();
         MonthYearLabel.setText(sdf.format(date).toUpperCase());
+        setCellTable();
         loadMatchFromDB();
     }
 
@@ -84,7 +89,10 @@ public class CalendarController {
             ResultSet rs = statement.executeQuery();
 
             while(rs.next()){
-                matchList.add(new Match(rs.getString("opponent"), rs.getString("date")));
+                matchList.add(new Match(rs.getString("opponent"),
+                                        rs.getString("date"),
+                                        rs.getString("time"),
+                                        rs.getBoolean("home_away")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -98,13 +106,23 @@ public class CalendarController {
 
             //Checks if the month of the match is equal to the month of the calender
             if(localDate.getMonth() == date.getMonth()){
-                StrMatchList.add(matchList.get(i).getOpponent() + " " + matchList.get(i).getDate());
+                FiltMatchList.add(matchList.get(i));
             }
         }
 
         // inputting retrieved data from db into list view
-       // matchTableView.setItems(StrMatchList);
+        matchTableView.setItems(FiltMatchList);
         SqlConnection.closeConnection();
+    }
+
+
+
+    // Retrieves data from appropriate player class constructor
+    private void setCellTable(){
+        MDayInMonth.setCellValueFactory(new PropertyValueFactory<>("date"));
+        matchTitel.setCellValueFactory(new MatchTitelPropertyValueFactory<>("opponent"));
+        matchDate.setCellValueFactory(new PhonePropertyValueFactory<>("date"));
+        matchTime.setCellValueFactory(new PropertyValueFactory<>("time"));
     }
 
 
@@ -112,6 +130,7 @@ public class CalendarController {
     public void NextMonthButtonClick() throws ParseException {
         matchList.clear();
         clearMatchList();
+        setCellTable();
 
         Calendar c = Calendar.getInstance();
         c.setTime(date);
@@ -126,6 +145,7 @@ public class CalendarController {
     public void PrevMonthButtonClick() throws ParseException {
         clearMatchList();
         matchList.clear();
+        setCellTable();
 
         Calendar c = Calendar.getInstance();
         c.setTime(date);

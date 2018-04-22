@@ -16,10 +16,13 @@ public class MatchTitelPropertyValueFactory<S,T> implements Callback<TableColumn
     @Override
     public ObservableValue<T> call(TableColumn.CellDataFeatures<S, T> param) {
         Match m = (Match) param.getValue();
-        if(m.ge){}
-
-        String st = m.getOpponent();
-        st = (st.equals("0"))? "" : st;
+        String st;
+        if(m.isHome_away()){
+            st = "AAIF vs " + m.getOpponent();
+        }
+        else{
+            st = m.getOpponent() + "vs AAIF";
+        }
         T val = (T) st;
         return new ReadOnlyObjectWrapper<T>(val);
     }
