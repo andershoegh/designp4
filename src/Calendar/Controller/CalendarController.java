@@ -39,9 +39,24 @@ public class CalendarController {
     @FXML private Label MonthYearLabel;
     @FXML private Button PrevMonthButton;
     @FXML private Button NextMonthButton;
+
     @FXML private TableView<?>OtherTableView;
+    @FXML private TableColumn<?,?>ODayInMonth;
+    @FXML private TableColumn<?,?>OtherTitel;
+    @FXML private TableColumn<?,?>OtherTime;
+
     @FXML private TableView<?>matchTableView;
+    @FXML private TableColumn<?,?>MDayInMonth;
+    @FXML private TableColumn<?,?>matchTitel;
+    @FXML private TableColumn<?,?>matchDate;
+    @FXML private TableColumn<?,?>matchTime;
+
     @FXML private TableView<?>TrainingTableView;
+    @FXML private TableColumn<?,?>TDayInMonth;
+    @FXML private TableColumn<?,?>TrainingWeekDay;
+    @FXML private TableColumn<?,?>TrainingDate;
+    @FXML private TableColumn<?,?>TrainingTime;
+
     @FXML private Button OpretButton;
 
     //Running methods when scene gets loaded
