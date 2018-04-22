@@ -110,7 +110,7 @@ public class StatisticController {
         // Tager data fra "goalScored" og sætter det op i Descending order."
         try {
             Connection conn = SqlConnection.connectToDB();
-            PreparedStatement statement = conn.prepareStatement("SELECT * FROM players ORDER BY goalScored DESC, name ASC  ");
+            PreparedStatement statement = conn.prepareStatement("SELECT * FROM players ORDER BY goalScored DESC, name ASC LIMIT 5 ");
             ResultSet rs = statement.executeQuery();
 
             while (rs.next()) {
@@ -129,7 +129,7 @@ public class StatisticController {
         // Tager data fra "attendedMatches" og sætter det op i Descending order."
         try {
             Connection conn = SqlConnection.connectToDB();
-            PreparedStatement statement = conn.prepareStatement("SELECT * FROM players ORDER BY attendedMatches DESC, name ASC  ");
+            PreparedStatement statement = conn.prepareStatement("SELECT * FROM players ORDER BY attendedMatches DESC, name ASC LIMIT 5");
             ResultSet rs = statement.executeQuery();
 
             while (rs.next()) {
@@ -147,7 +147,7 @@ public class StatisticController {
         // Tager data fra "assist" og sætter det op i Descending order."
         try {
             Connection conn = SqlConnection.connectToDB();
-            PreparedStatement statement = conn.prepareStatement("SELECT * FROM players ORDER BY assist DESC, name ASC  ");
+            PreparedStatement statement = conn.prepareStatement("SELECT * FROM players ORDER BY assist DESC, name ASC LIMIT 5");
             ResultSet rs = statement.executeQuery();
 
             while (rs.next()) {
@@ -165,7 +165,7 @@ public class StatisticController {
         // Tager data fra "motm" og sætter det op i Descending order."
         try {
             Connection conn = SqlConnection.connectToDB();
-            PreparedStatement statement = conn.prepareStatement("SELECT * FROM players ORDER BY motm DESC, name ASC ");
+            PreparedStatement statement = conn.prepareStatement("SELECT * FROM players ORDER BY motm DESC, name ASC LIMIT 5");
             ResultSet rs = statement.executeQuery();
 
             while (rs.next()) {
@@ -183,7 +183,7 @@ public class StatisticController {
         // Tager data fra "attendedTrainings" og sætter det op i Descending order."
         try {
             Connection conn = SqlConnection.connectToDB();
-            PreparedStatement statement = conn.prepareStatement("SELECT * FROM players ORDER BY attendedTrainings DESC, name ASC  ");
+            PreparedStatement statement = conn.prepareStatement("SELECT * FROM players ORDER BY attendedTrainings DESC, name ASC LIMIT 5");
             ResultSet rs = statement.executeQuery();
 
             while (rs.next()) {
@@ -201,7 +201,7 @@ public class StatisticController {
         // Tager data fra "yellowCards" og sætter det op i Descending order."
         try {
             Connection conn = SqlConnection.connectToDB();
-            PreparedStatement statement = conn.prepareStatement("SELECT * FROM players ORDER BY yellowCards DESC, name ASC  ");
+            PreparedStatement statement = conn.prepareStatement("SELECT * FROM players ORDER BY yellowCards DESC, name ASC LIMIT 5");
             ResultSet rs = statement.executeQuery();
 
             while (rs.next()) {
@@ -219,7 +219,7 @@ public class StatisticController {
         // Tager data fra "redCards" og sætter det op i Descending order."
         try {
             Connection conn = SqlConnection.connectToDB();
-            PreparedStatement statement = conn.prepareStatement("SELECT * FROM players ORDER BY redCards DESC, name ASC  ");
+            PreparedStatement statement = conn.prepareStatement("SELECT * FROM players ORDER BY redCards DESC, name ASC LIMIT 5");
             ResultSet rs = statement.executeQuery();
 
             while (rs.next()) {

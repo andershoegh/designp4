@@ -101,51 +101,51 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <TextField fx:id="address" prefWidth="300.0" promptText="Spillerens addresse" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                     <GridPane.margin>
-                        <Insets />
-                     </GridPane.margin></TextField>
-                  <TextField fx:id="telephone" prefHeight="26.0" prefWidth="156.0" promptText="45454545" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                     <GridPane.margin>
-                        <Insets left="40.0" />
-                     </GridPane.margin></TextField>
                   <Label alignment="TOP_LEFT" contentDisplay="CENTER" text="Position" GridPane.rowIndex="7" />
                   <Label text="Adresse" GridPane.rowIndex="1" />
                   <Label text="Telefon" GridPane.rowIndex="2" />
                   <Label text="Mail" GridPane.rowIndex="3" />
                   <Label text="Fødselsdag" GridPane.rowIndex="6" />
                   <Label text="Skadet" GridPane.rowIndex="8" />
-                  <CheckBox fx:id="health" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                  <TextField fx:id="mail" prefWidth="300.0" promptText="email@example.dk" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                     <GridPane.margin>
-                        <Insets />
-                     </GridPane.margin></TextField>
                   <Label text="+45" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <GridPane.margin>
                         <Insets left="10.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label text="Ja, spilleren er skadet" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                  <Label prefHeight="18.0" prefWidth="262.0" text="Ja, spilleren er skadet" GridPane.columnIndex="1" GridPane.rowIndex="8">
                      <padding>
                         <Insets left="30.0" />
                      </padding>
                   </Label>
-                  <ChoiceBox fx:id="position" prefHeight="28.0" prefWidth="217.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                  <DatePicker fx:id="birthday" prefHeight="26.0" prefWidth="218.0" promptText="10/10/1990" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <Label styleClass="window" text="Navn" />
+                  <Label styleClass="window" text="Kontaktperson navn" GridPane.rowIndex="4" />
+                  <Label styleClass="window" text="Kontaktperson telefon" GridPane.rowIndex="5" />
                   <TextField fx:id="nameInput" prefWidth="300.0" promptText="Spillerens fornavn og efternavn" GridPane.columnIndex="1">
                      <GridPane.margin>
                         <Insets />
                      </GridPane.margin>
                   </TextField>
-                  <Label styleClass="window" text="Navn" />
-                  <Label styleClass="window" text="Kontaktperson navn" GridPane.rowIndex="4" />
-                  <Label styleClass="window" text="Kontaktperson telefon" GridPane.rowIndex="5" />
+                  <TextField fx:id="address" prefWidth="300.0" promptText="Spillerens addresse" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin></TextField>
+                  <TextField fx:id="telephone" prefHeight="26.0" prefWidth="156.0" promptText="00 00 00 00" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets left="40.0" />
+                     </GridPane.margin></TextField>
+                  <TextField fx:id="mail" prefWidth="300.0" promptText="email@example.dk" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin></TextField>
                   <TextField fx:id="ICEnameInput" prefWidth="300.0" promptText="Navn på f. eks. forældre" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                   <TextField fx:id="ICEphoneInput" prefWidth="300.0" promptText="00 00 00 00 " GridPane.columnIndex="1" GridPane.rowIndex="5">
                      <GridPane.margin>
                         <Insets left="40.0" />
                      </GridPane.margin>
                   </TextField>
+                  <DatePicker fx:id="birthday" prefHeight="26.0" prefWidth="218.0" promptText="10/10/1990" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <ChoiceBox fx:id="position" prefHeight="28.0" prefWidth="217.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                  <CheckBox fx:id="health" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="8" />
                   <Label text="+45" GridPane.columnIndex="1" GridPane.rowIndex="5">
                      <GridPane.margin>
                         <Insets left="10.0" />
