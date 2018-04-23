@@ -159,16 +159,16 @@ public class CalendarController {
     //Loader Create event pop-up
     public void createEventButtonClick(ActionEvent event){
         try {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("../create_activity_pop.fxml"));
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../create_activity_pop.fxml"));
             Parent createEventFXML = loader.load();
 
+            Scene createActivityScene = new Scene(createEventFXML);
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
 
-            Scene createEventScene = new Scene(createEventFXML);
-            stage.setScene(createEventScene);
-            stage.showAndWait();
+            stage.setScene(createActivityScene);
+            stage.show();
 
         } catch (IOException e){
             e.printStackTrace();
