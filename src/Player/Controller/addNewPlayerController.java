@@ -145,6 +145,7 @@ public class addNewPlayerController {
             // Closes the connected database
             SqlConnection.closeConnection();
 
+            // Opens new window, so the player can see feedback, and closes the "Add Player" window, after the user clicks "Ok."
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../PlayerAdded-Pop-up.fxml"));
             Parent playerAddedPopFXML = loader.load();
             PlayerAddedPopController cont = loader.getController();
@@ -156,10 +157,10 @@ public class addNewPlayerController {
             stage.setTitle("Spiller tilføjet");
             stage.setScene(playerAddedScene);
             stage.showAndWait();
+            // Closing the window and returning to addPlayerFXML.fxm
             stage.close();
             // Closing the window and returning to PlayerList.fxml
-            //Stage stage2 = (Stage) acceptButton.getScene().getWindow();
-            //stage.close();
+            cancelButtonClick();
 
         } catch(SQLException e) {
             System.out.println(e.getMessage());
