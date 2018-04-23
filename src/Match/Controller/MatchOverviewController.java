@@ -26,7 +26,6 @@ public class MatchOverviewController {
 
     private ObservableList<Match> matchData = FXCollections.observableArrayList();
     private ObservableList<Season> seasonData = FXCollections.observableArrayList();
-    private ObservableList<Match> filtMatchData = FXCollections.observableArrayList();
 
     @FXML private TableView<Match> tableMatches;
     @FXML private TableColumn<?, ?> columnOpponent;
@@ -55,6 +54,7 @@ public class MatchOverviewController {
         loadDataFromDB();
         seasonSelector.setConverter(converter);
 
+        // Listens for changes made in the choicebox selection and updates the table.
         seasonSelector.getSelectionModel()
                 .selectedItemProperty()
                 .addListener(new ChangeListener<Season>() {
@@ -116,11 +116,11 @@ public class MatchOverviewController {
 
         SqlConnection.closeConnection();
 
+        // Selects the last seasonDB entry as default in choicebox
         seasonSelector.getSelectionModel().selectLast();
-        updateTable(seasonSelector.getValue().getId());
-    }
 
-    public void seasonSelectorClicked(){
+        // inputs matches corresponding to the season into table
+        updateTable(seasonSelector.getValue().getId());
     }
 
     private void updateTable(int newSeason){
@@ -129,10 +129,7 @@ public class MatchOverviewController {
 
     // Menu buttons navigation
     MenuController controller = new MenuController();
-
-    public void menuButtonClick(ActionEvent event){
-        controller.menuNavigation(event);
-    }
+    public void menuButtonClick(ActionEvent event){ controller.menuNavigation(event); }
 
     @Override
     public boolean equals(Object o) {
@@ -143,8 +140,5 @@ public class MatchOverviewController {
     }
 
     @Override
-    public int hashCode() {
-
-        return Objects.hash(seasonData);
-    }
+    public int hashCode() { return Objects.hash(seasonData); }
 }

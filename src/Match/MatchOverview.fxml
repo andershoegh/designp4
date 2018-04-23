@@ -91,7 +91,7 @@
                                     <Insets left="700.0" />
                                  </HBox.margin>
                               </Button>
-                              <ChoiceBox fx:id="seasonSelector" prefWidth="150.0" styleClass="greenButton" onMouseClicked="#seasonSelectorClicked">
+                              <ChoiceBox fx:id="seasonSelector" prefWidth="150.0" styleClass="greenButton">
                                  <HBox.margin>
                                     <Insets left="10.0" />
                                  </HBox.margin>
