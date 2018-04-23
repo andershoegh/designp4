@@ -41,6 +41,7 @@ public class EditPlayerController {
     @FXML private DatePicker birthday;
     @FXML private ChoiceBox position;
     @FXML private CheckBox health;
+    @FXML private Label health_label;
 
     // stats display
     @FXML private Label motm;
@@ -50,6 +51,7 @@ public class EditPlayerController {
     @FXML private Label attendedTrainings;
     @FXML private Label yellowCards;
     @FXML private Label redCards;
+
 
     @FXML
     public void initialize() throws ParseException {
@@ -128,6 +130,11 @@ public class EditPlayerController {
         attendedTrainings.setText(Integer.toString(selectedPlayer.getAttendedTrainings()));
         yellowCards.setText(Integer.toString(selectedPlayer.getYellowCards()));
         redCards.setText(Integer.toString(selectedPlayer.getRedCards()));
+    }
+
+    public void health_label_clicked(){
+        System.out.println("--- Health label is clicked, and therefore the 'Health' is activated/deactivated. ---");
+        health.fire();
     }
 
     public void saveButtonClick(){
