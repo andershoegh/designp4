@@ -65,7 +65,7 @@ public class PlayerListController {
         }
     }
 
-    public void clearTable(){
+    private void clearTable(){
         tablePlayers.getItems().clear();
     }
 
