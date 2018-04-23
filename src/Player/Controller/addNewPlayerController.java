@@ -30,6 +30,7 @@ public class addNewPlayerController {
     @FXML private CheckBox health;
     @FXML private Button acceptButton;
     @FXML private Button cancelButton;
+    @FXML private Label label_health;
 
     @FXML
     public void initialize() {
@@ -56,6 +57,11 @@ public class addNewPlayerController {
                 }
             }
         });
+    }
+
+    public void handleLabel_health(){
+            System.out.println("--- Health label is clicked, and therefore the 'Health' is activated/deactivated. ---");
+            health.fire();
     }
 
     public void acceptButtonClick() throws IOException {
