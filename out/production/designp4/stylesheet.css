@@ -186,3 +186,7 @@
     -fx-underline: true;
     -fx-text-fill: #787878;
 }
+
+.choice-box .label {
+    -fx-text-fill: black; 
+}

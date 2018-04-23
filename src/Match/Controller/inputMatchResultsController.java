@@ -2,6 +2,7 @@ package Match.Controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
@@ -10,7 +11,9 @@ import java.util.Scanner;
 
 class inputMatchResultsController {
 
-    @FXML private Label opponent;
+    @FXML private Label matchLabel;
+    @FXML private Label dateLabel;
+    @FXML private ListView listPlayers;
 
    /*
    public static void insertMatch(){
