@@ -2,7 +2,6 @@ package Calendar.Controller;
 
 import Controller.MenuController;
 import Match.Match;
-import Player.Controller.PhonePropertyValueFactory;
 import SQL.SqlConnection;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -121,7 +120,7 @@ public class CalendarController {
     private void setCellTable(){
         MDayInMonth.setCellValueFactory(new PropertyValueFactory<>("date"));
         matchTitel.setCellValueFactory(new MatchTitelPropertyValueFactory<>("opponent"));
-        matchDate.setCellValueFactory(new PhonePropertyValueFactory<>("date"));
+        matchDate.setCellValueFactory(new PropertyValueFactory<>("date"));
         matchTime.setCellValueFactory(new PropertyValueFactory<>("time"));
     }
 

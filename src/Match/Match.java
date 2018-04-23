@@ -35,6 +35,10 @@ public class Match {
         }
 
     public Match(String opponent, String date, String time, boolean home_away) {
+        this.opponent = opponent;
+        this.date = date;
+        this.time = time;
+        this.home_away = home_away;
 
     }
 
