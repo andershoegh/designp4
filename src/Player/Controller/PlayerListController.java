@@ -57,7 +57,7 @@ public class PlayerListController {
             Date now = new Date();
             long diff = now.getTime() - lastClickTime.getTime();
             if (diff < 300){ //another click registered in 300 millis
-                System.out.println("Double Clicked! Will open edit window.");
+                System.out.println("--- Double Clicked on a row! Will open edit window. ---");
                 editPlayerButtonClick();
             } else {
                 lastClickTime = new Date();
@@ -101,7 +101,7 @@ public class PlayerListController {
             e.printStackTrace();
         }
 
-        // inputting retrieved data from db into table row
+        // Inputs retrieved data from the database into rows
         tablePlayers.setItems(playerData);
     }
 

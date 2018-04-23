@@ -68,18 +68,42 @@ public class EditPlayerController {
         position.getSelectionModel().select("Angriber");
     }
 
+    // Inputting editable data into text fields
     public void initData(Player player) throws ParseException {
         selectedPlayer = player;
         playerID = selectedPlayer.getId();
-
-        // inputting editable data into text fields
+        // TITLE NAME
         playerName.setText(selectedPlayer.getName());
+        // NAME
         nameInput.setText(selectedPlayer.getName());
+        // ADDRESS
         address.setText(selectedPlayer.getAddress());
-        telephone.setText(Integer.toString(selectedPlayer.getPhone()));
+        // TELEPHONE
+        // If the value from the database is set to "null" the phone-field will display
+        // "0" in the textfield. This if-statement says, that if the value is "0", then
+        // display nothing. If the value is not null, then display the phonenumber.
+        if (selectedPlayer.getPhone() == 0){
+            telephone.setText("");
+        } else {
+            telephone.setText(Integer.toString(selectedPlayer.getPhone()));
+        }
+        // MAIL
         mail.setText(selectedPlayer.getMail());
+        // IN-CASE-OF-EMERGENCY NAME
         ICEnameInput.setText(selectedPlayer.getICEname());
-        ICEphoneInput.setText(Integer.toString(selectedPlayer.getICEtelephone()));
+        // IN-CASE-OF-EMERGENCY PHONE
+        // If the value from the database is set to "null" the phone-field will display
+        // "0" in the textfield. This if-statement says, that if the value is "0", then
+        // display nothing. If the value is not null, then display the phonenumber.
+        if (selectedPlayer.getICEtelephone() == 0){
+            ICEphoneInput.setText("");
+        } else {
+            ICEphoneInput.setText(Integer.toString(selectedPlayer.getICEtelephone()));
+        }
+        // BIRTHDAY
+        // This function formats the data from the "birthday" field in the database
+        // and displays it the correct way. If there is no data, the field will be
+        // empty. But if there is a value, it will be displayed as "dd/mm/yyyy"
         DateFormat format = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
         if (selectedPlayer.getBirthday() == null){
             birthday.setValue(localDate);
@@ -88,9 +112,10 @@ public class EditPlayerController {
             LocalDate localDate = d.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             birthday.setValue(localDate);
         }
+        // POSITION
         position.setValue(selectedPlayer.getPosition());
-
-        // setting checkbox to fire if status == 1
+        // HEALTH
+        // Setting checkbox to fire if status == 1
         if(selectedPlayer.getHealth() == 1){
             health.fire();
         }
@@ -117,67 +142,52 @@ public class EditPlayerController {
 
             PreparedStatement stmt = conn.prepareStatement(sql);
 
-            // Inserts data into the "name" field in the database. If there is no data, it will set the string to "null"
-            if (nameInput.getText().equals("")){
-                stmt.setString(1, null);
-            } else {
-                stmt.setString(1, nameInput.getText());
-            }
-
-            // Inserts data into the "address" field in the database. If there is no data, it will set the string to "null"
-            if (address.getText().equals("")){
-                stmt.setString(2, null);
-            } else {
-                stmt.setString(2, address.getText());
-            }
-
+            // NAME
+            stmt.setString(1, nameInput.getText());
+            // ADDRESS
+            stmt.setString(2, address.getText());
+            // PHONE
             // Inserts data into the "phone" field in the database. If there is no data, it will set the string to "null"
             if (telephone.getText().equals("")){
                 stmt.setNull(3, Types.INTEGER);
             } else {
                 stmt.setInt(3, Integer.parseInt(telephone.getText())); // String being parsed to int, to give it to DB.
             }
-
-            // Inserts data into the "mail" field in the database. If there is no data, it will set the string to "null"
-            if (mail.getText().equals("")){
-                stmt.setString(4, null);
-            } else {
-                stmt.setString(4, mail.getText());
-            }
-
-            // Inserts data into the "iceName" field in the database. If there is no data, it will set the string to "null"
-            if (ICEnameInput.getText().equals("")){
-                stmt.setString(5, null);
-            } else {
+            // MAIL
+            stmt.setString(4, mail.getText());
+            // IN-CASE-OF-EMERGENCY NAME
                 stmt.setString(5, ICEnameInput.getText());
-            }
-
+            // IN-CASE-OF-EMERGENCY PHONE
             // Inserts data into the "iceTelephone" field in the database. If there is no data, it will set the string to "null"
             if (ICEphoneInput.getText().equals("")){
                 stmt.setNull(6, Types.INTEGER);
             } else {
                 stmt.setInt(6, Integer.parseInt(ICEphoneInput.getText())); // String being parsed to int, to give it to DB.
             }
-
-            // Inserts data into the "position" field in the database
-            stmt.setString(7, valueOf(position.getSelectionModel().getSelectedItem()));
-
-            // Inserts data into the "health" field in the database
-            stmt.setInt(8, health.isSelected() ? 1 : 0);
-
+            // BIRTHDAY
             // Creates a string, from the birthdayInput, and
             // inserts data into the "birthday" field in the database.
             // If there is no data, it will set the string to "null"
             if(birthday.getValue() == null){
-                stmt.setString(9, null);
+                stmt.setString(7, null);
             } else {
                 String date = birthday.getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-                stmt.setString(9, date);
+                stmt.setString(7, date);
             }
+            // POSITION
+            if(position.getValue() == null){
+                stmt.setString(8, null);
+            } else {
+                stmt.setString(8, valueOf(position.getSelectionModel().getSelectedItem()));
+            }
+            // HEALTH
+            stmt.setInt(9, health.isSelected() ? 1 : 0);
+            // PLAYER ID
             stmt.setInt(10, playerID);
 
+            // Updates the database
             stmt.executeUpdate();
-
+            // Closes the connection to the database
             SqlConnection.closeConnection();
 
             Stage stage = (Stage) saveButton.getScene().getWindow();
