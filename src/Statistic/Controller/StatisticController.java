@@ -95,7 +95,7 @@ public class StatisticController {
         Connection conn = SqlConnection.connectToDB();
 
         try {
-            PreparedStatement statement = conn.prepareStatement("SELECT * FROM players ORDER BY goalScored DESC, name ASC  ");
+            PreparedStatement statement = conn.prepareStatement("SELECT * FROM players ORDER BY goalScored DESC, name ASC LIMIT 5");
             ResultSet rs = statement.executeQuery();
 
             while (rs.next()) {
@@ -108,12 +108,12 @@ public class StatisticController {
 
             }
         } catch (SQLException e) {
-            System.out.println("problemer med mål");
+            System.out.println("--- Problems with loading 'Mål' ---");
         }
 
         // Tager data fra "attendedMatches" og sætter det op i Descending order."
         try {
-            PreparedStatement statement = conn.prepareStatement("SELECT * FROM players ORDER BY attendedMatches DESC, name ASC  ");
+            PreparedStatement statement = conn.prepareStatement("SELECT * FROM players ORDER BY attendedMatches DESC, name ASC LIMIT 5");
             ResultSet rs = statement.executeQuery();
 
             while (rs.next()) {
@@ -125,12 +125,12 @@ public class StatisticController {
                         rs.getInt("attendedTrainings"), rs.getInt("player_id")));
             }
         } catch (SQLException e) {
-            System.out.println("problemer med kampe spillet");
+            System.out.println("--- Problems with loading 'Kampe Spillet' ---");
         }
 
         // Tager data fra "assist" og sætter det op i Descending order."
         try {
-            PreparedStatement statement = conn.prepareStatement("SELECT * FROM players ORDER BY assist DESC, name ASC  ");
+            PreparedStatement statement = conn.prepareStatement("SELECT * FROM players ORDER BY assist DESC, name ASC LIMIT 5");
             ResultSet rs = statement.executeQuery();
 
             while (rs.next()) {
@@ -142,12 +142,12 @@ public class StatisticController {
                         rs.getInt("attendedTrainings"), rs.getInt("player_id")));
             }
         } catch (SQLException e) {
-            System.out.println("problemer med assists");
+            System.out.println("--- Problems with loading 'Assists' ---");
         }
 
         // Tager data fra "motm" og sætter det op i Descending order."
         try {
-            PreparedStatement statement = conn.prepareStatement("SELECT * FROM players ORDER BY motm DESC, name ASC ");
+            PreparedStatement statement = conn.prepareStatement("SELECT * FROM players ORDER BY motm DESC, name ASC LIMIT 5");
             ResultSet rs = statement.executeQuery();
 
             while (rs.next()) {
@@ -159,12 +159,12 @@ public class StatisticController {
                         rs.getInt("attendedTrainings"), rs.getInt("player_id")));
             }
         } catch (SQLException e) {
-            System.out.println("problemer med motm");
+            System.out.println("--- Problems with loading 'Man Of The Match' ---");
         }
 
         // Tager data fra "attendedTrainings" og sætter det op i Descending order."
         try {
-            PreparedStatement statement = conn.prepareStatement("SELECT * FROM players ORDER BY attendedTrainings DESC, name ASC  ");
+            PreparedStatement statement = conn.prepareStatement("SELECT * FROM players ORDER BY attendedTrainings DESC, name ASC LIMIT 5");
             ResultSet rs = statement.executeQuery();
 
             while (rs.next()) {
@@ -176,12 +176,12 @@ public class StatisticController {
                         rs.getInt("attendedTrainings"), rs.getInt("player_id")));
             }
         } catch (SQLException e) {
-            System.out.println("problemer med træninger");
+            System.out.println("--- Problems with loading 'Antal Træninger' ---");
         }
 
         // Tager data fra "yellowCards" og sætter det op i Descending order."
         try {
-            PreparedStatement statement = conn.prepareStatement("SELECT * FROM players ORDER BY yellowCards DESC, name ASC  ");
+            PreparedStatement statement = conn.prepareStatement("SELECT * FROM players ORDER BY yellowCards DESC, name ASC LIMIT 5");
             ResultSet rs = statement.executeQuery();
 
             while (rs.next()) {
@@ -193,12 +193,12 @@ public class StatisticController {
                         rs.getInt("attendedTrainings"), rs.getInt("player_id")));
             }
         } catch (SQLException e) {
-            System.out.println("problemer med gule kort");
+            System.out.println("--- Problems with loading 'Gule Kort' ---");
         }
 
         // Tager data fra "redCards" og sætter det op i Descending order."
         try {
-            PreparedStatement statement = conn.prepareStatement("SELECT * FROM players ORDER BY redCards DESC, name ASC  ");
+            PreparedStatement statement = conn.prepareStatement("SELECT * FROM players ORDER BY redCards DESC, name ASC LIMIT 5");
             ResultSet rs = statement.executeQuery();
 
             while (rs.next()) {
@@ -210,7 +210,7 @@ public class StatisticController {
                         rs.getInt("attendedTrainings"), rs.getInt("player_id")));
             }
         } catch (SQLException e) {
-            System.out.println("problemer med røde kort");
+            System.out.println("--- Problems with loading 'Røde Kort' ---");
         }
 
         // inputting retrieved data from db into table row
