@@ -31,7 +31,7 @@ public class CreateActivityController {
         typeInput.getSelectionModel().select("Kamp");
     }
 
-    public void acceptButtonClick() throws IOException {
+    public void acceptButtonClick() {
         Connection conn = SqlConnection.connectToDB();
         String sql = "INSERT INTO matches " +
                 "(match_id, opponent, goalsFor, goalsAgainst, season_id, date, time, home_away, tactic_id, note)" +
@@ -60,7 +60,7 @@ public class CreateActivityController {
         } catch (SQLException e){
             System.out.println(e.getMessage());
         }
-//        if(typeInput.getSelectionModel().getSelectedItem() == "Kamp"){
+//        if(valueOf(typeInput.getSelectionModel().getSelectedItem() == "Kamp"){
 //            passToDB();
 //
 //        } else if(typeInput.getSelectionModel().getSelectedItem() == "Træning"){
