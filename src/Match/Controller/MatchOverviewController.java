@@ -61,7 +61,6 @@ public class MatchOverviewController {
                     @Override
                     public void changed(ObservableValue<? extends Season> observable, Season oldValue, Season newValue) {
                         if(newValue != null){
-                            System.out.println(newValue.getName());
                             updateTable(newValue.getId());
                         }
                     }
@@ -76,7 +75,7 @@ public class MatchOverviewController {
         columnDate.setCellValueFactory(new PropertyValueFactory<>("date"));
         columnTime.setCellValueFactory(new PropertyValueFactory<>("time"));
     }
-    
+
     private void loadDataFromDB(){
         Connection conn = SqlConnection.connectToDB();
 
@@ -125,8 +124,7 @@ public class MatchOverviewController {
     }
 
     private void updateTable(int newSeason){
-        filtMatchData = matchData.filtered(match -> match.getSeason() == newSeason);
-        tableMatches.setItems(filtMatchData);
+        tableMatches.setItems(matchData.filtered(match -> match.getSeason() == newSeason));
     }
 
     // Menu buttons navigation
