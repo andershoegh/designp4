@@ -15,11 +15,6 @@ import java.time.format.DateTimeFormatter;
 
 public class CreateActivityController {
 
-    private ObservableList<String> typeInputList = FXCollections.observableArrayList(
-            "Kamp",
-            "Træning",
-            "Diverse");
-
     @FXML private ChoiceBox<String> typeInput;
     @FXML private DatePicker dateInput;
     @FXML private TextField timeInput;
@@ -28,15 +23,19 @@ public class CreateActivityController {
 
     @FXML
     private void initialize(){
-        typeInput.setValue("Kamp");
-        typeInput.setItems(typeInputList);
+        typeInput.getItems().removeAll(typeInput.getItems());
+        typeInput.getItems().addAll(
+                "Kamp",
+                "Træning",
+                "Diverse");
+        typeInput.getSelectionModel().select("Kamp");
     }
 
     public void acceptButtonClick() throws IOException {
         Connection conn = SqlConnection.connectToDB();
         String sql = "INSERT INTO matches " +
-                "(match_id, opponent, goalsFor, goalsAgainst, season, date, time, home_away, note)" +
-                "VALUES (null, null, null, null, null,  ?, ?, ?, ?)";
+                "(match_id, opponent, goalsFor, goalsAgainst, season_id, date, time, home_away, tactic_id, note)" +
+                "VALUES (null, null, null , null, null,  ?, ?, ?, null, ?)";
         try{
             PreparedStatement stmt = conn.prepareStatement(sql);
 
