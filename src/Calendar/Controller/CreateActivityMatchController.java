@@ -24,7 +24,7 @@ public class CreateActivityMatchController {
 
     public void createButtonClick() {
         String sql = "INSERT INTO matches " +
-                "(match_id, opponent, goalsFor, goalsAgainst, season, date, time, home_away, note)" +
+                "(match_id, opponent, goalsFor, goalsAgainst, season, date, time, isHome, note)" +
                 "VALUES (null, ?, null , null, null,  ?, ?, ?, ?)";
         try {
             Connection conn = SqlConnection.connectToDB();
