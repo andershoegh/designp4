@@ -273,4 +273,50 @@ public class CalendarController {
     public void menuButtonClick(ActionEvent event){
         controller.menuNavigation(event);
     }
+
+
+
+    public void deletePlayerButtonClick(){
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("../DeleteEvent.fxml"));
+            Parent deletePlayerFXML = loader.load();
+
+            Stage stage = new Stage();
+            // Prevents user interaction with other windows while popup is open
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Slet event");
+
+            // Passes selected player info to DeletePlayerController.java
+            DeleteEventController controller = loader.getController();
+
+            if(matchTableView.getSelectionModel().getSelectedItem() != null){
+                controller.initData();
+            }
+            else if (TrainingTableView.getSelectionModel().getSelectedItem() != null){
+                controller.initData();
+            }
+            else {
+                System.out.println("none selected");
+            }
+
+
+            Scene deletePlayerScene = new Scene(deleteEventFXML);
+            stage.setScene(deleteEventScene);
+            stage.showAndWait();
+
+            clearTrainingTable();
+            clearMatchTable();
+            initialize();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+
+
 }
