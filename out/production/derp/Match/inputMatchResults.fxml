@@ -37,13 +37,13 @@
                                 <Insets bottom="30.0" />
                             </VBox.margin>
                         </HBox>
-                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" text="Oversigt" />
-                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="Kalender" />
-                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" text="Spillere" />
-                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" text="Kampe" />
-                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" styleClass="selectedmenu" text="Træning" />
-                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" text="Statistik" />
-                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" text="Diverse" />
+                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" text="Oversigt" />
+                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefHeight="50.0" prefWidth="200.0" text="Kalender" />
+                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" text="Spillere" />
+                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="selectedmenu" text="Kampe" />
+                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" text="Træning" />
+                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" text="Statistik" />
+                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" text="Diverse" />
                     </children>
                 </VBox>
                 <VBox prefHeight="200.0" prefWidth="1080.0">
@@ -58,8 +58,6 @@
                             </children>
                         </HBox>
                         <Line endX="1080.0" />
-<<<<<<< HEAD
-=======
                   <HBox alignment="BOTTOM_LEFT" prefWidth="200.0">
                      <children>
                         <Label styleClass="overviewHeadline" text="Kamp:">
@@ -111,7 +109,7 @@
                         </HBox>
                         <Label layoutX="420.0" layoutY="128.0" text="Målscorer" />
                         <Label layoutX="420.0" layoutY="321.0" text="Assists" />
-                        <Button fx:id="acceptButton" layoutX="952.0" layoutY="526.0" mnemonicParsing="false" styleClass="buttonApprove" text="Gem" />
+                        <Button layoutX="952.0" layoutY="526.0" mnemonicParsing="false" styleClass="buttonApprove" text="Gem" />
                         <Label layoutX="800.0" layoutY="31.0" text="Gule kort" />
                         <Label layoutX="800.0" layoutY="111.0" text="Røde kort" />
                         <Label layoutX="800.0" layoutY="203.0" text="Man of the Match" />
@@ -119,7 +117,6 @@
                         <TextField fx:id="textFieldNote" layoutX="800.0" layoutY="306.0" prefHeight="197.0" prefWidth="243.0" />
                      </children>
                   </AnchorPane>
->>>>>>> master
                     </children>
                 </VBox>
             </children>
