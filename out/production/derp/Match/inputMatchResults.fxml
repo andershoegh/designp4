@@ -58,6 +58,68 @@
                             </children>
                         </HBox>
                         <Line endX="1080.0" />
+<<<<<<< HEAD
+=======
+                  <HBox alignment="BOTTOM_LEFT" prefWidth="200.0">
+                     <children>
+                        <Label styleClass="overviewHeadline" text="Kamp:">
+                           <HBox.margin>
+                              <Insets left="35.0" right="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label fx:id="matchLabel" styleClass="overviewHeadline" text="Label">
+                           <HBox.margin>
+                              <Insets right="35.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label text="Dato:">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label fx:id="dateLabel" text="Label" />
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="20.0" top="20.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <AnchorPane prefHeight="584.0" prefWidth="1081.0">
+                     <children>
+                        <Label layoutX="39.0" layoutY="31.0" styleClass="overviewText" text="Spillere" />
+                        <ListView fx:id="listPlayers" layoutX="38.0" layoutY="56.0" prefHeight="400.0" prefWidth="200.0" />
+                        <Label layoutX="420.0" layoutY="31.0" styleClass="overviewText" text="Resultat" />
+                        <HBox alignment="CENTER_LEFT" layoutX="420.0" layoutY="57.0" prefHeight="28.0" prefWidth="201.0">
+                           <children>
+                              <Label fx:id="labelHomeTeam" text="Hjem">
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <TextField fx:id="textFieldHomeScore" prefHeight="23.0" prefWidth="20.0" />
+                              <Label text="-">
+                                 <HBox.margin>
+                                    <Insets left="10.0" right="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <TextField fx:id="textFieldGuestScore" prefHeight="23.0" prefWidth="20.0" />
+                              <Label fx:id="labelGuestTeam" text="Ude">
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <Label layoutX="420.0" layoutY="128.0" text="Målscorer" />
+                        <Label layoutX="420.0" layoutY="321.0" text="Assists" />
+                        <Button fx:id="acceptButton" layoutX="952.0" layoutY="526.0" mnemonicParsing="false" styleClass="buttonApprove" text="Gem" />
+                        <Label layoutX="800.0" layoutY="31.0" text="Gule kort" />
+                        <Label layoutX="800.0" layoutY="111.0" text="Røde kort" />
+                        <Label layoutX="800.0" layoutY="203.0" text="Man of the Match" />
+                        <Label layoutX="800.0" layoutY="282.0" text="Noter" />
+                        <TextField fx:id="textFieldNote" layoutX="800.0" layoutY="306.0" prefHeight="197.0" prefWidth="243.0" />
+                     </children>
+                  </AnchorPane>
+>>>>>>> master
                     </children>
                 </VBox>
             </children>

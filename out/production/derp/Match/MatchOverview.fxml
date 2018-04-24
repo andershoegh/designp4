@@ -92,7 +92,11 @@
                                     <Insets left="700.0" />
                                  </HBox.margin>
                               </Button>
+<<<<<<< HEAD
                               <ChoiceBox prefWidth="150.0" styleClass="greenButton" fx:id="seasonSelector">
+=======
+                              <ChoiceBox fx:id="seasonSelector" prefWidth="150.0" styleClass="greenButton">
+>>>>>>> master
                                  <HBox.margin>
                                     <Insets left="10.0" />
                                  </HBox.margin>
