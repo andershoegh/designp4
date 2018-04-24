@@ -115,6 +115,7 @@ public class PlayerListController {
             Parent addPlayerFXML = FXMLLoader.load(getClass().getResource("../AddPlayer.fxml"));
             Scene addPlayerScene = new Scene(addPlayerFXML);
             Stage stage = new Stage();
+            stage.setResizable(false);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle("Opret spiller");
 
@@ -135,6 +136,7 @@ public class PlayerListController {
             Parent editPlayerFXML = loader.load();
 
             Stage stage = new Stage();
+            stage.setResizable(false);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle("Vis spiller");
 
@@ -162,6 +164,7 @@ public class PlayerListController {
             Parent deletePlayerFXML = loader.load();
 
             Stage stage = new Stage();
+            stage.setResizable(false);
             // Prevents user interaction with other windows while popup is open
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle("Slet spiller");

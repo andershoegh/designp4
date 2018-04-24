@@ -61,6 +61,7 @@ public class addNewPlayerController {
         });
     }
 
+
     public void handleLabel_health(){
         System.out.println("--- Health label is clicked, and therefore the 'Health' is activated/deactivated. ---");
         health.fire();
@@ -153,6 +154,7 @@ public class addNewPlayerController {
             cont.setText(nameInput.getText());
             Scene playerAddedScene = new Scene(playerAddedPopFXML);
             Stage stage = new Stage();
+            stage.setResizable(false);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle("Spiller tilføjet");
             stage.setScene(playerAddedScene);
@@ -160,6 +162,7 @@ public class addNewPlayerController {
             // Closing the window and returning to addPlayerFXML.fxm
             stage.close();
             // Closing the window and returning to PlayerList.fxml
+            cancelButtonClick();
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());

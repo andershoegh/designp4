@@ -187,7 +187,7 @@
                                 <Label text="Røde kort" />
                             </children>
                         </VBox>
-                        <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#saveButtonClick" styleClass="buttonCancel" stylesheets="@../stylesheet.css" text="Afbryd" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                        <Button fx:id="cancelButton_EDIT" mnemonicParsing="false" onAction="#cancelButtonClick_EDIT" styleClass="buttonCancel" stylesheets="@../stylesheet.css" text="Afbryd" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                             <font>
                                 <Font size="16.0" />
                             </font>

@@ -18,7 +18,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class MatchOverviewController {
-
+/*
     private ObservableList<Match> matchData;
     private ObservableList<String> seasonData;
 
@@ -111,4 +111,5 @@ public class MatchOverviewController {
 
     @Override
     public int hashCode() { return Objects.hash(seasonData); }
+    */
 }
