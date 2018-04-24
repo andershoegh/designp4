@@ -1,13 +1,6 @@
 package Match;
 
-import Controller.DeleteAble;
-import SQL.SqlConnection;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-
-public class Match implements DeleteAble{
+public class Match {
     private String opponent;
     private int goalsFor;
     private int goalsAgainst;
@@ -17,7 +10,7 @@ public class Match implements DeleteAble{
     private int id;
     private String address;
     private int tactic;
-    private boolean isHome;
+    private boolean home_away;
 
     public Match(String opponent, String date){
         this.opponent = opponent;
@@ -41,11 +34,12 @@ public class Match implements DeleteAble{
         this.opponent = opponent;
         }
 
-    public Match(String opponent, String date, String time, boolean isHome) {
+    public Match(String opponent, String date, String time, boolean home_away) {
         this.opponent = opponent;
         this.date = date;
         this.time = time;
-        this.isHome = isHome;
+        this.home_away = home_away;
+
     }
 
     public String getOpponent() { return opponent; }
@@ -77,29 +71,12 @@ public class Match implements DeleteAble{
     public int getTactic() { return tactic; }
     public void setTactic(int tactic) { this.tactic = tactic; }
 
-    public boolean getIsHome() {
-        return isHome;
+    public boolean isHome_away() {
+        return home_away;
     }
 
-    public void setIsHome(boolean isHome) {
-        this.isHome = isHome;
-    }
-
-    @Override
-    public void delete() {
-        try {
-            Connection conn = SqlConnection.connectToDB();
-
-            String sql = "DELETE FROM matches WHERE match_id=?";
-            PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setInt(1, this.id);
-            statement.executeUpdate();
-
-            SqlConnection.closeConnection();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+    public void setHome_away(boolean home_away) {
+        this.home_away = home_away;
     }
 }
 

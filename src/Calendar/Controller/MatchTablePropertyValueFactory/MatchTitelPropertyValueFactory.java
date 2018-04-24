@@ -17,7 +17,7 @@ public class MatchTitelPropertyValueFactory<S,T> implements Callback<TableColumn
     public ObservableValue<T> call(TableColumn.CellDataFeatures<S, T> param) {
         Match m = (Match) param.getValue();
         String st;
-        if(m.getIsHome()){
+        if(m.isHome_away()){
             st = "AAIF vs " + m.getOpponent();
         }
         else{
