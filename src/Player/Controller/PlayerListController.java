@@ -5,8 +5,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Tooltip;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import Player.Player;
@@ -17,7 +15,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -38,7 +35,6 @@ public class PlayerListController {
     @FXML private TableColumn<?, ?> columnMail;
     @FXML private TableColumn<?, ?> columnAddress;
     @FXML private TableColumn<?, ?> columnBirthday;
-    @FXML private Button show_player_btn;
 
     // Runs when FXML is loaded
     @FXML public void initialize(){
@@ -69,7 +65,7 @@ public class PlayerListController {
         }
     }
 
-    private void clearTable(){
+    public void clearTable(){
         tablePlayers.getItems().clear();
     }
 
@@ -128,7 +124,7 @@ public class PlayerListController {
         }
     }
 
-    public void editPlayerButtonClick() {
+    public void editPlayerButtonClick(){
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("../EditPlayer-Pop-up.fxml"));
@@ -147,7 +143,7 @@ public class PlayerListController {
 
             clearTable();
             initialize();
-        } catch (IOException e) {
+        } catch (IOException e){
             e.printStackTrace();
 
         } catch (ParseException e) {

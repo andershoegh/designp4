@@ -5,7 +5,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -84,9 +83,6 @@
                                     <opaqueInsets>
                                         <Insets />
                                     </opaqueInsets>
-                           <tooltip>
-                              <Tooltip text="Liste af alle spillere" />
-                           </tooltip>
                                 </TableView>
                                 <Region prefHeight="20.0" prefWidth="200.0" />
                                 <HBox alignment="CENTER_RIGHT" prefHeight="67.0" prefWidth="1082.0">
@@ -98,28 +94,19 @@
                                             <HBox.margin>
                                                 <Insets right="20.0" />
                                             </HBox.margin>
-                                 <tooltip>
-                                    <Tooltip text="Klik på knappen, for at tilføje ny spiller" />
-                                 </tooltip>
                                         </Button>
-                                        <Button fx:id="show_player_btn" alignment="CENTER" minWidth="99.0" mnemonicParsing="false" onAction="#editPlayerButtonClick" prefHeight="34.0" prefWidth="99.0" styleClass="overviewButtons" text="Vis spiller">
+                                        <Button alignment="CENTER" minWidth="99.0" mnemonicParsing="false" onAction="#editPlayerButtonClick" prefHeight="34.0" prefWidth="99.0" styleClass="overviewButtons" text="Vis spiller">
                                             <opaqueInsets>
                                                 <Insets />
                                             </opaqueInsets>
                                             <HBox.margin>
                                                 <Insets right="20.0" />
                                             </HBox.margin>
-                                 <tooltip>
-                                    <Tooltip text="Vælg spiller på listen, for at vise/ændre spiller" />
-                                 </tooltip>
                                         </Button>
                                         <Button minWidth="126.0" mnemonicParsing="false" onAction="#deletePlayerButtonClick" styleClass="buttonCancel" text="Slet spiller">
                                             <HBox.margin>
                                                 <Insets right="50.0" />
                                             </HBox.margin>
-                                 <tooltip>
-                                    <Tooltip text="Vælg spiller på listen, for at slette valgte spiller" />
-                                 </tooltip>
                                         </Button>
                                     </children>
                                 </HBox>
