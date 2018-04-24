@@ -17,9 +17,8 @@ public class Training implements DeleteAble {
     private String endTime;
     private int programID;
 
-    public Training(int id, String weekday, String date, String startTime, String endTime, int programID) {
+    public Training(int id, String date, String startTime, String endTime, int programID) {
         this.id = id;
-        this.weekday = weekday;
         this.date = date;
         this.startTime = startTime;
         this.endTime = endTime;

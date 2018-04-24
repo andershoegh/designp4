@@ -171,7 +171,6 @@ public class CalendarController {
 
             while(rs.next()){
                 trainingList.add(new Training(rs.getInt("training_id"),
-                        rs.getString("weekday"),
                         rs.getString("date"),
                         rs.getString("start_time"),
                         rs.getString("end_time"),
@@ -276,32 +275,32 @@ public class CalendarController {
 
 
 
-    public void deletePlayerButtonClick(){
+    /*public void deleteEventButtonClick(){
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("../DeleteEvent.fxml"));
-            Parent deletePlayerFXML = loader.load();
+            Parent deleteEventFXML = loader.load();
 
             Stage stage = new Stage();
             // Prevents user interaction with other windows while popup is open
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle("Slet event");
 
-            // Passes selected player info to DeletePlayerController.java
-            DeleteEventController controller = loader.getController();
+
+            // Passes selected event info to DeleteEventController.java
 
             if(matchTableView.getSelectionModel().getSelectedItem() != null){
-                controller.initData();
+                DeleteEventController<Match> controller = loader.getController();
+                controller.initData(matchTableView.getSelectionModel().getSelectedItem());
             }
             else if (TrainingTableView.getSelectionModel().getSelectedItem() != null){
-                controller.initData();
+                controller.initData(TrainingTableView.getSelectionModel().getSelectedItem());
             }
             else {
                 System.out.println("none selected");
             }
 
-
-            Scene deletePlayerScene = new Scene(deleteEventFXML);
+            Scene deleteEventScene = new Scene(deleteEventFXML);
             stage.setScene(deleteEventScene);
             stage.showAndWait();
 
@@ -313,10 +312,7 @@ public class CalendarController {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-    }
-
-
-
+    }*/
 
 
 }
