@@ -61,9 +61,10 @@ public class addNewPlayerController {
         });
     }
 
+
     public void handleLabel_health(){
-            System.out.println("--- Health label is clicked, and therefore the 'Health' is activated/deactivated. ---");
-            health.fire();
+        System.out.println("--- Health label is clicked, and therefore the 'Health' is activated/deactivated. ---");
+        health.fire();
     }
 
     public void acceptButtonClick() throws IOException {
@@ -74,7 +75,7 @@ public class addNewPlayerController {
                 "yellowCards, redCards, goalScored, assist, motm, " +
                 "attendedMatches, attendedTrainings)" +
 
-                " VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?, ?, null, null, null, null, null, null, null)";
+                " VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, NULL, NULL, NULL, NULL, NULL, NULL, NULL)";
 
 
         // Connecting to the database
@@ -82,42 +83,42 @@ public class addNewPlayerController {
             PreparedStatement stmt = conn.prepareStatement(sql);
 
             // Inserts data into the "name" field in the database. If there is no data, it will set the string to "null"
-            if (nameInput.getText().equals("")){
+            if (nameInput.getText().equals("")) {
                 stmt.setString(1, null);
             } else {
                 stmt.setString(1, nameInput.getText());
             }
 
             // Inserts data into the "address" field in the database. If there is no data, it will set the string to "null"
-            if (addressInput.getText().equals("")){
+            if (addressInput.getText().equals("")) {
                 stmt.setString(2, null);
             } else {
                 stmt.setString(2, addressInput.getText());
             }
 
             // Inserts data into the "phone" field in the database. If there is no data, it will set the string to "null"
-            if (phoneInput.getText().equals("")){
+            if (phoneInput.getText().equals("")) {
                 stmt.setNull(3, Types.INTEGER);
             } else {
                 stmt.setInt(3, Integer.parseInt(phoneInput.getText())); // String being parsed to int, to give it to DB.
             }
 
             // Inserts data into the "mail" field in the database. If there is no data, it will set the string to "null"
-            if (mailInput.getText().equals("")){
+            if (mailInput.getText().equals("")) {
                 stmt.setString(4, null);
             } else {
                 stmt.setString(4, mailInput.getText());
             }
 
             // Inserts data into the "iceName" field in the database. If there is no data, it will set the string to "null"
-            if (ICEnameInput.getText().equals("")){
+            if (ICEnameInput.getText().equals("")) {
                 stmt.setString(5, null);
             } else {
                 stmt.setString(5, ICEnameInput.getText());
             }
 
             // Inserts data into the "iceTelephone" field in the database. If there is no data, it will set the string to "null"
-            if (ICEphoneInput.getText().equals("")){
+            if (ICEphoneInput.getText().equals("")) {
                 stmt.setNull(6, Types.INTEGER);
             } else {
                 stmt.setInt(6, Integer.parseInt(ICEphoneInput.getText())); // String being parsed to int, to give it to DB.
@@ -132,7 +133,7 @@ public class addNewPlayerController {
             // Creates a string, from the birthdayInput, and
             // inserts data into the "birthday" field in the database.
             // If there is no data, it will set the string to "null"
-            if(birthdayInput.getValue() == null){
+            if (birthdayInput.getValue() == null) {
                 stmt.setString(9, null);
             } else {
                 String date = birthdayInput.getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
@@ -153,6 +154,7 @@ public class addNewPlayerController {
             cont.setText(nameInput.getText());
             Scene playerAddedScene = new Scene(playerAddedPopFXML);
             Stage stage = new Stage();
+            stage.setResizable(false);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle("Spiller tilføjet");
             stage.setScene(playerAddedScene);
@@ -162,10 +164,19 @@ public class addNewPlayerController {
             // Closing the window and returning to PlayerList.fxml
             cancelButtonClick();
 
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
+        } catch (NumberFormatException e) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../PlayerWrongInput-Pop-up.fxml"));
+            Parent wrongInputFXML = loader.load();
+            Scene wrongInputScene = new Scene(wrongInputFXML);
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Forkert input");
+            stage.setScene(wrongInputScene);
+            stage.showAndWait();
+            stage.close();
         }
-
     }
 
     public void cancelButtonClick(){

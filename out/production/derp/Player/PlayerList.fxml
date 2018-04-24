@@ -70,9 +70,9 @@
                                     <columns>
                                         <TableColumn fx:id="columnName" editable="false" prefWidth="196.80002439022064" resizable="false" sortable="false" text="Navn" />
                                         <TableColumn fx:id="columnPosition" editable="false" prefWidth="204.0" sortable="false" text="Position" />
-                              <TableColumn fx:id="columnPhone" editable="false" minWidth="0.0" prefWidth="93.60003662109375" resizable="false" sortable="false" text="Telefon" />
-                              <TableColumn fx:id="columnMail" editable="false" prefWidth="174.39993286132812" resizable="false" sortable="false" text="Mail" />
-                              <TableColumn fx:id="columnAddress" editable="false" prefWidth="200.0" resizable="false" sortable="false" text="Addresse" />
+                                        <TableColumn fx:id="columnPhone" editable="false" minWidth="0.0" prefWidth="93.60003662109375" resizable="false" sortable="false" text="Telefon" />
+                                        <TableColumn fx:id="columnMail" editable="false" prefWidth="174.39993286132812" resizable="false" sortable="false" text="Mail" />
+                                        <TableColumn fx:id="columnAddress" editable="false" prefWidth="200.0" resizable="false" sortable="false" text="Addresse" />
                                         <TableColumn fx:id="columnBirthday" editable="false" prefWidth="129.5999755859375" resizable="false" sortable="false" text="Fødselsdag" />
                                     </columns>
                                     <VBox.margin>
@@ -84,9 +84,9 @@
                                     <opaqueInsets>
                                         <Insets />
                                     </opaqueInsets>
-                           <tooltip>
-                              <Tooltip text="Liste af alle spillere" />
-                           </tooltip>
+                                    <tooltip>
+                                        <Tooltip text="Liste af alle spillere" />
+                                    </tooltip>
                                 </TableView>
                                 <Region prefHeight="20.0" prefWidth="200.0" />
                                 <HBox alignment="CENTER_RIGHT" prefHeight="67.0" prefWidth="1082.0">
@@ -98,9 +98,9 @@
                                             <HBox.margin>
                                                 <Insets right="20.0" />
                                             </HBox.margin>
-                                 <tooltip>
-                                    <Tooltip text="Klik på knappen, for at tilføje ny spiller" />
-                                 </tooltip>
+                                            <tooltip>
+                                                <Tooltip text="Klik på knappen, for at tilføje ny spiller" />
+                                            </tooltip>
                                         </Button>
                                         <Button fx:id="show_player_btn" alignment="CENTER" minWidth="99.0" mnemonicParsing="false" onAction="#editPlayerButtonClick" prefHeight="34.0" prefWidth="99.0" styleClass="overviewButtons" text="Vis spiller">
                                             <opaqueInsets>
@@ -109,17 +109,17 @@
                                             <HBox.margin>
                                                 <Insets right="20.0" />
                                             </HBox.margin>
-                                 <tooltip>
-                                    <Tooltip text="Vælg spiller på listen, for at vise/ændre spiller" />
-                                 </tooltip>
+                                            <tooltip>
+                                                <Tooltip text="Vælg spiller på listen, for at vise/ændre spiller" />
+                                            </tooltip>
                                         </Button>
                                         <Button minWidth="126.0" mnemonicParsing="false" onAction="#deletePlayerButtonClick" styleClass="buttonCancel" text="Slet spiller">
                                             <HBox.margin>
                                                 <Insets right="50.0" />
                                             </HBox.margin>
-                                 <tooltip>
-                                    <Tooltip text="Vælg spiller på listen, for at slette valgte spiller" />
-                                 </tooltip>
+                                            <tooltip>
+                                                <Tooltip text="Vælg spiller på listen, for at slette valgte spiller" />
+                                            </tooltip>
                                         </Button>
                                     </children>
                                 </HBox>

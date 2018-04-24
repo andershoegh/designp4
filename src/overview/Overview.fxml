@@ -339,11 +339,11 @@
                               <DropShadow color="#aba8a8" height="30.0" offsetX="4.0" offsetY="4.0" radius="14.5" width="30.0" />
                            </effect>
                         </VBox>
-                        <VBox fx:id="birthdayBox" layoutX="385.0" layoutY="389.0" prefHeight="210.0" prefWidth="324.0" style="-fx-background-color: white;">
+                        <VBox fx:id="birthdayBox" layoutX="385.0" layoutY="389.0" prefHeight="211.0" prefWidth="324.0" style="-fx-background-color: white;">
                            <children>
                               <ImageView fitHeight="57.0" fitWidth="88.0">
                                  <image>
-                                    <Image url="file:graphics/dannebrog.gif" />
+                                    <Image url="file:graphics/dannebrog.png" />
                                  </image>
                                  <VBox.margin>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

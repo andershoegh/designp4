@@ -1,4 +1,4 @@
-package Calendar.Controller;
+package Calendar.Controller.MatchTablePropertyValueFactory;
 
 import Match.Match;
 import javafx.beans.property.ReadOnlyObjectWrapper;
@@ -17,11 +17,11 @@ public class MatchTitelPropertyValueFactory<S,T> implements Callback<TableColumn
     public ObservableValue<T> call(TableColumn.CellDataFeatures<S, T> param) {
         Match m = (Match) param.getValue();
         String st;
-        if(m.isHome_away()){
+        if(m.getIsHome()){
             st = "AAIF vs " + m.getOpponent();
         }
         else{
-            st = m.getOpponent() + "vs AAIF";
+            st = m.getOpponent() + " vs AAIF";
         }
         T val = (T) st;
         return new ReadOnlyObjectWrapper<T>(val);

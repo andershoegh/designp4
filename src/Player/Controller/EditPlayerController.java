@@ -2,6 +2,8 @@ package Player.Controller;
 
 import Player.Player;
 import SQL.SqlConnection;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -34,50 +36,30 @@ public class EditPlayerController {
     private SimpleDateFormat sdf = new SimpleDateFormat("MMMM yyyy");
 
 
-    @FXML
-    Button saveButton;
-    @FXML
-    Button cancelButton;
+    @FXML Button saveButton;
+    @FXML Button cancelButton_EDIT;
 
     // editable
-    @FXML
-    private Label playerName;
-    @FXML
-    private TextField nameInput;
-    @FXML
-    private TextField address;
-    @FXML
-    private TextField telephone;
-    @FXML
-    private TextField mail;
-    @FXML
-    private TextField ICEnameInput;
-    @FXML
-    private TextField ICEphoneInput;
-    @FXML
-    private DatePicker birthday;
-    @FXML
-    private ChoiceBox position;
-    @FXML
-    private CheckBox health;
-    @FXML
-    private Label health_label;
+    @FXML private Label playerName;
+    @FXML private TextField nameInput;
+    @FXML private TextField address;
+    @FXML private TextField telephone;
+    @FXML private TextField mail;
+    @FXML private TextField ICEnameInput;
+    @FXML private TextField ICEphoneInput;
+    @FXML private DatePicker birthday;
+    @FXML private ChoiceBox position;
+    @FXML private CheckBox health;
+    @FXML private Label health_label;
 
     // stats display
-    @FXML
-    private Label motm;
-    @FXML
-    private Label goalsScored;
-    @FXML
-    private Label assists;
-    @FXML
-    private Label attendedMatches;
-    @FXML
-    private Label attendedTrainings;
-    @FXML
-    private Label yellowCards;
-    @FXML
-    private Label redCards;
+    @FXML private Label motm;
+    @FXML private Label goalsScored;
+    @FXML private Label assists;
+    @FXML private Label attendedMatches;
+    @FXML private Label attendedTrainings;
+    @FXML private Label yellowCards;
+    @FXML private Label redCards;
 
 
     @FXML
@@ -95,6 +77,17 @@ public class EditPlayerController {
                 "Målmand",
                 "Andet");
         position.getSelectionModel().select("Angriber");
+
+        // Forces input in phone field to only accept numerical values
+        telephone.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    telephone.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+            }
+        });
     }
 
     // Inputting editable data into text fields
@@ -224,6 +217,7 @@ public class EditPlayerController {
             // Closes the connection to the database
             SqlConnection.closeConnection();
 
+
             // Opens new window, so the player can see feedback, and closes the "Edit window", after the user clicks "Ok."
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../EditPlayer-Edited-Pop-up.fxml"));
             Parent editPlayerFXML = loader.load();
@@ -232,6 +226,7 @@ public class EditPlayerController {
             cont.setText(nameInput.getText());
             Scene playerEditedScene = new Scene(editPlayerFXML);
             Stage stage = new Stage();
+            stage.setResizable(false);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle("Spiller ændret");
             stage.setScene(playerEditedScene);
@@ -239,16 +234,16 @@ public class EditPlayerController {
             // Closing the window and returning to addPlayerFXML.fxml
             stage.close();
             // Closing the window and returning to PlayerList.fxml
-            cancelButtonClick();
+            cancelButtonClick_EDIT();
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public void cancelButtonClick(){
+    public void cancelButtonClick_EDIT() {
         // Closing the window and returning to PlayerList.fxml
-        Stage stage = (Stage) cancelButton.getScene().getWindow();
+        Stage stage = (Stage) cancelButton_EDIT.getScene().getWindow();
         stage.close();
     }
 }
