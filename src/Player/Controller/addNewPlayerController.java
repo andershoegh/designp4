@@ -174,3 +174,4 @@ public class addNewPlayerController {
         stage.close();
     }
 }
+

@@ -78,7 +78,7 @@ public class CalendarController {
 
 
     //Loads data from Match table in DB
-    private void loadMatchFromDB() throws ParseException {
+    public void loadMatchFromDB() throws ParseException {
         clearMatchList();
         matchList.clear();
 
@@ -160,7 +160,7 @@ public class CalendarController {
     public void createEventButtonClick(ActionEvent event){
         try {
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../create_activity_pop.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../createActivityMenu.fxml"));
             Parent createEventFXML = loader.load();
 
             Scene createActivityScene = new Scene(createEventFXML);

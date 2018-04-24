@@ -236,7 +236,7 @@ public class EditPlayerController {
             stage.setTitle("Spiller ændret");
             stage.setScene(playerEditedScene);
             stage.showAndWait();
-            // Closing the window and returning to addPlayerFXML.fxm
+            // Closing the window and returning to addPlayerFXML.fxml
             stage.close();
             // Closing the window and returning to PlayerList.fxml
             cancelButtonClick();
