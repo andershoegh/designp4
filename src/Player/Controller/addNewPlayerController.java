@@ -30,6 +30,7 @@ public class addNewPlayerController {
     @FXML private CheckBox health;
     @FXML private Button acceptButton;
     @FXML private Button cancelButton;
+    @FXML private Label label_health;
 
     @FXML
     public void initialize() {
@@ -47,6 +48,8 @@ public class addNewPlayerController {
                 "Andet");
         positionInput.getSelectionModel().select("Angriber");
 
+
+        // Forces input in phone field to only accept numerical values
         phoneInput.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue,
@@ -56,6 +59,11 @@ public class addNewPlayerController {
                 }
             }
         });
+    }
+
+    public void handleLabel_health(){
+            System.out.println("--- Health label is clicked, and therefore the 'Health' is activated/deactivated. ---");
+            health.fire();
     }
 
     public void acceptButtonClick() throws IOException {
@@ -137,9 +145,7 @@ public class addNewPlayerController {
             // Closes the connected database
             SqlConnection.closeConnection();
 
-            //PlayerAddedPopController sendName = new PlayerAddedPopController();
-            //sendName.setText(nameInput.getText());
-
+            // Opens new window, so the player can see feedback, and closes the "Add Player" window, after the user clicks "Ok."
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../PlayerAdded-Pop-up.fxml"));
             Parent playerAddedPopFXML = loader.load();
             PlayerAddedPopController cont = loader.getController();
@@ -151,24 +157,15 @@ public class addNewPlayerController {
             stage.setTitle("Spiller tilføjet");
             stage.setScene(playerAddedScene);
             stage.showAndWait();
+            // Closing the window and returning to addPlayerFXML.fxm
             stage.close();
             // Closing the window and returning to PlayerList.fxml
-            //Stage stage2 = (Stage) acceptButton.getScene().getWindow();
-            //stage.close();
+            cancelButtonClick();
 
         } catch(SQLException e) {
             System.out.println(e.getMessage());
-        } catch (NumberFormatException e) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../PlayerWrongInput-Pop-up.fxml"));
-            Parent wrongInputFXML = loader.load();
-            Scene wrongInputScene = new Scene(wrongInputFXML);
-            Stage stage = new Stage();
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setTitle("Forkert input");
-            stage.setScene(wrongInputScene);
-            stage.showAndWait();
-            stage.close();
         }
+
     }
 
     public void cancelButtonClick(){
