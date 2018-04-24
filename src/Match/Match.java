@@ -11,10 +11,11 @@ public class Match implements DeleteAble{
     private String opponent;
     private int goalsFor;
     private int goalsAgainst;
-    private int season;
+    private String season;
     private String date;
     private String time;
     private int id;
+    private String address;
     private int tactic;
     private boolean isHome;
 
@@ -23,8 +24,8 @@ public class Match implements DeleteAble{
         this.date = date;
     }
 
-    public Match(String opponent, int goalsFor, int goalsAgainst, int season,
-                 String date, String time, int id, int tactic, boolean isHome) {
+    public Match(String opponent, int goalsFor, int goalsAgainst, String season,
+                 String date, String time, int id, String address, int tactic) {
         this.opponent = opponent;
         this.goalsFor = goalsFor;
         this.goalsAgainst = goalsAgainst;
@@ -32,8 +33,8 @@ public class Match implements DeleteAble{
         this.date = date;
         this.time = time;
         this.id = id;
+        this.address = address;
         this.tactic = tactic;
-        this.isHome = isHome;
     }
 
     public Match(String opponent) {
@@ -56,8 +57,8 @@ public class Match implements DeleteAble{
     public int getGoalsAgainst() { return goalsAgainst; }
     public void setGoalsAgainst(int goalsAgainst) { this.goalsAgainst = goalsAgainst; }
 
-    public int getSeason() { return season; }
-    public void setSeason(int season) { this.season = season; }
+    public String getSeason() { return season; }
+    public void setSeason(String season) { this.season = season; }
 
     public String getDate() {
         return date;
@@ -69,6 +70,9 @@ public class Match implements DeleteAble{
 
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
+
+    public String getAddress() { return address; }
+    public void setAddress(String address) { this.address = address; }
 
     public int getTactic() { return tactic; }
     public void setTactic(int tactic) { this.tactic = tactic; }

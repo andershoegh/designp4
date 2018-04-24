@@ -1,5 +1,6 @@
 package Main;
 
+import SQL.InnerJoinDB;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

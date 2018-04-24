@@ -7,7 +7,6 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -39,39 +38,22 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <TextField fx:id="nameInput" prefWidth="300.0" promptText="Spillerens fornavn og efternavn" GridPane.columnIndex="1">
-                     <tooltip>
-                        <Tooltip text="Skriv spillerens fornavn og efternavn.  Dette kan altid ændres under &quot;Vis spiller.&quot;" />
-                     </tooltip></TextField>
-                  <TextField fx:id="addressInput" prefWidth="300.0" promptText="Spillerens addresse" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                     <tooltip>
-                        <Tooltip text="Skriv spillerens addresse f.eks. Spillervej 3, lejl. 3, 9000 Aalborg.  Dette kan altid ændres under &quot;Vis spiller.&quot;" />
-                     </tooltip></TextField>
+                  <TextField fx:id="nameInput" prefWidth="300.0" promptText="Spillerens fornavn og efternavn" GridPane.columnIndex="1" />
+                  <TextField fx:id="addressInput" prefWidth="300.0" promptText="Spillerens addresse" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <TextField fx:id="phoneInput" prefHeight="26.0" prefWidth="125.0" promptText="00 00 00 00 " GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
                      <GridPane.margin>
                         <Insets left="45.0" />
-                     </GridPane.margin>
-                     <tooltip>
-                        <Tooltip text="Skriv spillerens telefon nummer. Det virker kun med 8 tal eller mindre.  Dette kan altid ændres under &quot;Vis spiller.&quot;" />
-                     </tooltip></TextField>
-                  <TextField fx:id="mailInput" prefWidth="300.0" promptText="email@example.dk" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                     <tooltip>
-                        <Tooltip text="Skriv spillerens mail. Dette kan altid ændres under &quot;Vis spiller.&quot;" />
-                     </tooltip></TextField>
-                  <TextField fx:id="ICEnameInput" prefWidth="300.0" promptText="Navn på f. eks. forældre" GridPane.columnIndex="1" GridPane.rowIndex="4">
-                     <tooltip>
-                        <Tooltip text="Skriv f.eks. navn på forældre. Dette bruges ofte, hvis spillerne f.eks. er børn.  Dette kan altid ændres under &quot;Vis spiller.&quot;" />
-                     </tooltip></TextField>
+                     </GridPane.margin></TextField>
+                  <TextField fx:id="mailInput" prefWidth="300.0" promptText="email@example.dk" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <TextField fx:id="ICEnameInput" prefWidth="300.0" promptText="Navn på f. eks. forældre" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                   <TextField fx:id="ICEphoneInput" prefWidth="300.0" promptText="00 00 00 00 " GridPane.columnIndex="1" GridPane.rowIndex="5">
                      <GridPane.margin>
                         <Insets left="45.0" />
-                     </GridPane.margin>
-                     <tooltip>
-                        <Tooltip text="Skriv f.eks. spillerens forældres telefon nummer. Det virker kun med 8 tal eller mindre.  Dette kan altid ændres under &quot;Vis spiller.&quot;" />
-                     </tooltip></TextField>
+                     </GridPane.margin></TextField>
+                  <CheckBox fx:id="health" mnemonicParsing="false" prefHeight="18.0" prefWidth="27.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
                   <Label styleClass="window" text="Navn" />
                   <Label styleClass="window" text="Addresse" GridPane.rowIndex="1" />
                   <Label styleClass="window" text="Telefon" GridPane.rowIndex="2" />
@@ -97,26 +79,13 @@
                         <Insets left="10.0" />
                      </GridPane.margin>
                   </Label>
-                  <DatePicker fx:id="birthdayInput" prefHeight="26.0" prefWidth="201.0" promptText="10/10/1990" GridPane.columnIndex="1" GridPane.rowIndex="6">
-                     <tooltip>
-                        <Tooltip text="Vælg spillerens fødselsdag.  Dette kan altid ændres under &quot;Vis spiller.&quot;" />
-                     </tooltip></DatePicker>
-                  <ChoiceBox fx:id="positionInput" prefHeight="26.0" prefWidth="198.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
-                     <tooltip>
-                        <Tooltip text="Vælg hvilken position spilleren spiller på. Hvis spilleren spiller flere steder, vælg så &quot;Andet.&quot;  Dette kan altid ændres under &quot;Vis spiller.&quot;" />
-                     </tooltip></ChoiceBox>
-                  <CheckBox fx:id="health" mnemonicParsing="false" prefHeight="18.0" prefWidth="27.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
-                     <tooltip>
-                        <Tooltip text="Vælges, hvis spiller er skadet. Dette kan altid ændres under &quot;Vis spiller&quot;" />
-                     </tooltip></CheckBox>
-                  <Label fx:id="label_health" onMouseClicked="#handleLabel_health" text="Ja, spilleren er skadet" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                  <ChoiceBox fx:id="positionInput" prefHeight="26.0" prefWidth="198.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                  <Label text="Ja, spilleren er skadet" GridPane.columnIndex="1" GridPane.rowIndex="8">
                      <GridPane.margin>
                         <Insets left="25.0" />
                      </GridPane.margin>
-                     <tooltip>
-                        <Tooltip text="Vælges, hvis spiller er skadet. Dette kan altid ændres under &quot;Vis spiller&quot;" />
-                     </tooltip>
                   </Label>
+                  <DatePicker fx:id="birthdayInput" prefHeight="26.0" prefWidth="201.0" promptText="10/10/1990" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                </children>
                <VBox.margin>
                   <Insets left="20.0" right="20.0" top="10.0" />
@@ -124,18 +93,12 @@
             </GridPane>
             <HBox alignment="CENTER_RIGHT" prefWidth="354.0">
                <children>
-                  <Button fx:id="acceptButton" mnemonicParsing="false" onAction="#acceptButtonClick" styleClass="buttonApprove" text="Godkend">
-                     <tooltip>
-                        <Tooltip text="Klik for at oprette spiller." />
-                     </tooltip></Button>
+                  <Button fx:id="acceptButton" mnemonicParsing="false" onAction="#acceptButtonClick" styleClass="buttonApprove" text="Godkend" />
                   <Region prefWidth="25.0" />
                   <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancelButtonClick" styleClass="buttonCancel" text="Annuller">
                      <HBox.margin>
                         <Insets right="20.0" />
                      </HBox.margin>
-                     <tooltip>
-                        <Tooltip text="Klik for at lukke &quot;Opret spiller.&quot;" />
-                     </tooltip>
                   </Button>
                </children>
                <VBox.margin>
