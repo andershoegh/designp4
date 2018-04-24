@@ -39,13 +39,13 @@
                                 <Insets bottom="30.0" />
                             </VBox.margin>
                         </HBox>
-                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" text="Oversigt" />
-                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="Kalender" />
-                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" text="Spillere" />
-                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" text="Kampe" />
-                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" styleClass="selectedmenu" text="Træning" />
-                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" text="Statistik" />
-                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" text="Diverse" />
+                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" text="Oversigt" />
+                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefHeight="50.0" prefWidth="200.0" text="Kalender" />
+                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" text="Spillere" />
+                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="selectedmenu" text="Kampe" />
+                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" text="Træning" />
+                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" text="Statistik" />
+                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" text="Diverse" />
                     </children>
                 </VBox>
                 <VBox prefHeight="200.0" prefWidth="1080.0">
@@ -83,12 +83,12 @@
                         <Insets bottom="20.0" top="20.0" />
                      </VBox.margin>
                   </HBox>
-                  <AnchorPane prefHeight="470.0" prefWidth="1081.0">
+                  <AnchorPane prefHeight="584.0" prefWidth="1081.0">
                      <children>
                         <Label layoutX="39.0" layoutY="31.0" styleClass="overviewText" text="Spillere" />
                         <ListView fx:id="listPlayers" layoutX="38.0" layoutY="56.0" prefHeight="400.0" prefWidth="200.0" />
-                        <Label layoutX="318.0" layoutY="31.0" styleClass="overviewText" text="Resultat" />
-                        <HBox alignment="CENTER_LEFT" layoutX="318.0" layoutY="57.0" prefHeight="28.0" prefWidth="201.0">
+                        <Label layoutX="420.0" layoutY="31.0" styleClass="overviewText" text="Resultat" />
+                        <HBox alignment="CENTER_LEFT" layoutX="420.0" layoutY="57.0" prefHeight="28.0" prefWidth="201.0">
                            <children>
                               <Label fx:id="labelHomeTeam" text="Hjem">
                                  <HBox.margin>
@@ -109,6 +109,14 @@
                               </Label>
                            </children>
                         </HBox>
+                        <Label layoutX="420.0" layoutY="128.0" text="Målscorer" />
+                        <Label layoutX="420.0" layoutY="321.0" text="Assists" />
+                        <Button layoutX="952.0" layoutY="526.0" mnemonicParsing="false" styleClass="buttonApprove" text="Gem" />
+                        <Label layoutX="800.0" layoutY="31.0" text="Gule kort" />
+                        <Label layoutX="800.0" layoutY="111.0" text="Røde kort" />
+                        <Label layoutX="800.0" layoutY="203.0" text="Man of the Match" />
+                        <Label layoutX="800.0" layoutY="282.0" text="Noter" />
+                        <TextField fx:id="textFieldNote" layoutX="800.0" layoutY="306.0" prefHeight="197.0" prefWidth="243.0" />
                      </children>
                   </AnchorPane>
                     </children>

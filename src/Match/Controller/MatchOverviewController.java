@@ -129,6 +129,13 @@ public class MatchOverviewController {
         controller.menuNavigation(event);
     }
 
+    public void inputMatchResults(ActionEvent event){
+        inputMatchResultsController matchResultsController = new inputMatchResultsController();
+        matchResultsController.initData(tableMatches.getSelectionModel().getSelectedItem());
+
+        controller.sceneChange(event, "../Match/inputMatchResults.fxml");
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

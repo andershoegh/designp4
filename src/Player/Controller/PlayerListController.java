@@ -184,7 +184,5 @@ public class PlayerListController {
     // Menu buttons navigation
     MenuController controller = new MenuController();
 
-    public void menuButtonClick(ActionEvent event){
-        controller.menuNavigation(event);
-    }
+    public void menuButtonClick(ActionEvent event){ controller.menuNavigation(event); }
 }

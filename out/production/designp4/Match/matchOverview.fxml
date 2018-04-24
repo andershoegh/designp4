@@ -84,18 +84,23 @@
                               <Insets top="20.0" />
                            </padding>
                         </TableView>
-                        <HBox layoutX="61.0" layoutY="511.0" prefHeight="100.0" prefWidth="960.0">
+                        <HBox alignment="TOP_RIGHT" layoutX="61.0" layoutY="511.0" prefHeight="100.0" prefWidth="960.0">
                            <children>
                               <Button mnemonicParsing="false" prefHeight="23.0" prefWidth="92.0" styleClass="greenButton" text="Ny sæson">
                                  <HBox.margin>
-                                    <Insets left="700.0" />
+                                    <Insets />
                                  </HBox.margin>
                               </Button>
-                              <ChoiceBox fx:id="seasonSelector" prefWidth="150.0" styleClass="greenButton" onMouseClicked="#seasonSelectorClicked">
+                              <ChoiceBox fx:id="seasonSelector" prefWidth="150.0" styleClass="greenButton">
                                  <HBox.margin>
                                     <Insets left="10.0" />
                                  </HBox.margin>
                               </ChoiceBox>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="40.0" layoutY="511.0" prefHeight="100.0" prefWidth="288.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#inputMatchResults" prefWidth="163.0" styleClass="greenButton" text="Indtast kampresultat" />
                            </children>
                         </HBox>
                      </children>
