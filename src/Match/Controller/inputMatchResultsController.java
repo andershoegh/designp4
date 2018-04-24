@@ -19,8 +19,9 @@ class inputMatchResultsController {
 
     public void initData(Match match){
         selectedMatch = match;
-        if(selectedMatch)
-        matchLabel.setText(selectedMatch.getOpponent());
+        if(selectedMatch.getIsHome()) {
+            matchLabel.setText(selectedMatch.getOpponent());
+        }
     }
 
 

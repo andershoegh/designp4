@@ -9,7 +9,7 @@ public class Match {
     private String time;
     private int id;
     private int tactic;
-    private boolean home_away;
+    private boolean isHome;
 
     public Match(String opponent, String date){
         this.opponent = opponent;
@@ -17,7 +17,7 @@ public class Match {
     }
 
     public Match(String opponent, int goalsFor, int goalsAgainst, int season,
-                 String date, String time, int id, int tactic, boolean home_away) {
+                 String date, String time, int id, int tactic, boolean isHome) {
         this.opponent = opponent;
         this.goalsFor = goalsFor;
         this.goalsAgainst = goalsAgainst;
@@ -26,18 +26,18 @@ public class Match {
         this.time = time;
         this.id = id;
         this.tactic = tactic;
-        this.home_away = home_away;
+        this.isHome = isHome;
     }
 
     public Match(String opponent) {
         this.opponent = opponent;
         }
 
-    public Match(String opponent, String date, String time, boolean home_away) {
+    public Match(String opponent, String date, String time, boolean isHome) {
         this.opponent = opponent;
         this.date = date;
         this.time = time;
-        this.home_away = home_away;
+        this.isHome = isHome;
 
     }
 
@@ -67,11 +67,11 @@ public class Match {
     public int getTactic() { return tactic; }
     public void setTactic(int tactic) { this.tactic = tactic; }
 
-    public boolean isHome_away() {
-        return home_away;
+    public boolean getIsHome() {
+        return isHome;
     }
-    public void setHome_away(boolean home_away) {
-        this.home_away = home_away;
+    public void setIsHome(boolean isHome) {
+        this.isHome = isHome;
     }
 }
 
