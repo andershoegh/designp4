@@ -17,7 +17,7 @@ class inputMatchResultsController {
     @FXML private TextField textFieldGuestScore;
     @FXML private TextField textFieldNote;
 
-    public void initData(Match match){
+   /* public void initData(Match match){
         selectedMatch = match;
 
         if(selectedMatch.getIsHome()) {
@@ -25,7 +25,9 @@ class inputMatchResultsController {
         } else {
             matchLabel.setText(selectedMatch.getOpponent() + "vs AAIF");
         }
-    }
+
+        dateLabel.setText(selectedMatch.);
+    }*/
 
 
    /*
