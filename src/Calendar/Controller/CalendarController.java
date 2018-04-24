@@ -117,7 +117,7 @@ public class CalendarController {
                 matchList.add(new Match(rs.getString("opponent"),
                                         rs.getString("date"),
                                         rs.getString("time"),
-                                        rs.getBoolean("home_away")));
+                                        rs.getBoolean("isHome")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -139,8 +139,6 @@ public class CalendarController {
         matchTableView.setItems(FiltMatchList);
         SqlConnection.closeConnection();
     }
-
-
 
 
 
