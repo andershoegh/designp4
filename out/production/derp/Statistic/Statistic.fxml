@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -94,6 +95,9 @@
                                  <padding>
                                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                  </padding>
+                                 <tooltip>
+                                    <Tooltip text="Top 5 spillere, der har skoret flest mål." />
+                                 </tooltip>
                               </TableView>
                               <TableView fx:id="stats_match_tableview" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="180.0" prefWidth="385.0" snapToPixel="false" GridPane.rowIndex="1">
                                  <columns>
@@ -112,6 +116,9 @@
                                  <padding>
                                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                  </padding>
+                                 <tooltip>
+                                    <Tooltip text="Top 5 spillere, der har været med til flest kampe." />
+                                 </tooltip>
                               </TableView>
                               <TableView fx:id="stats_assists_tableview" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="180.0" prefWidth="385.0" snapToPixel="false" GridPane.columnIndex="1">
                                  <columns>
@@ -130,6 +137,9 @@
                                  <padding>
                                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                  </padding>
+                                 <tooltip>
+                                    <Tooltip text="Top 5 spillere, der har assistet flest gange." />
+                                 </tooltip>
                               </TableView>
                               <TableView fx:id="stats_trainings_tableview" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="180.0" prefWidth="385.0" snapToPixel="false" GridPane.rowIndex="2" GridPane.rowSpan="2147483647">
                                  <columns>
@@ -148,6 +158,9 @@
                                  <padding>
                                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                  </padding>
+                                 <tooltip>
+                                    <Tooltip text="Top 5 spillere, der har været med til flest træninger." />
+                                 </tooltip>
                               </TableView>
                               <TableView fx:id="stats_mofm_tableview" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="180.0" prefWidth="385.0" snapToPixel="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                  <columns>
@@ -166,6 +179,9 @@
                                  <padding>
                                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                  </padding>
+                                 <tooltip>
+                                    <Tooltip text="Empty Tooltip" />
+                                 </tooltip>
                               </TableView>
                               <TableView fx:id="stats_redcards_tableview" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="180.0" prefWidth="385.0" snapToPixel="false" GridPane.columnIndex="2">
                                  <columns>
@@ -184,6 +200,9 @@
                                  <padding>
                                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                  </padding>
+                                 <tooltip>
+                                    <Tooltip text="Top 5 spillere, der har fået flest røde kort." />
+                                 </tooltip>
                               </TableView>
                               <TableView fx:id="stats_yellowcards_tableview" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="180.0" prefWidth="385.0" snapToPixel="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                  <columns>
@@ -199,7 +218,21 @@
                                  <padding>
                                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                  </padding>
+                                 <tooltip>
+                                    <Tooltip text="Top 5 spillere, der har fået flest gule kort." />
+                                 </tooltip>
                               </TableView>
+                              <Label prefHeight="23.0" prefWidth="294.0" text="Statistikken vist på den her side, kommer direkte" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                              <Label prefHeight="23.0" prefWidth="294.0" text="fra trænerens eget input efter kampe og diverse," GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                 <GridPane.margin>
+                                    <Insets top="40.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label layoutX="767.0" layoutY="550.0" prefHeight="23.0" prefWidth="294.0" text="og kan ikke ændres direkte på denne side." GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                 <GridPane.margin>
+                                    <Insets top="80.0" />
+                                 </GridPane.margin>
+                              </Label>
                            </children>
                            <padding>
                               <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
