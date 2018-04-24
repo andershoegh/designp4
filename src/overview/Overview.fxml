@@ -264,7 +264,7 @@
                            <children>
                               <HBox alignment="CENTER" prefHeight="50.0" prefWidth="226.0">
                                  <children>
-                                    <Label fx:id="matchHeadline" contentDisplay="CENTER" styleClass="overviewHeadline" stylesheets="@../stylesheet.css" text="Label" />
+                                    <Label fx:id="matchHeadline" contentDisplay="CENTER" styleClass="overviewHeadline" stylesheets="@../stylesheet.css" text="Kampe" />
                                  </children>
                               </HBox>
                               <Line endX="182.0" startX="-100.0">
@@ -341,7 +341,7 @@
                         </VBox>
                         <VBox fx:id="birthdayBox" layoutX="385.0" layoutY="389.0" prefHeight="211.0" prefWidth="324.0" style="-fx-background-color: white;">
                            <children>
-                              <ImageView fitHeight="57.0" fitWidth="88.0">
+                              <ImageView fitHeight="33.0" fitWidth="51.0">
                                  <image>
                                     <Image url="file:graphics/dannebrog.png" />
                                  </image>
