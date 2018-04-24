@@ -3,24 +3,31 @@ package Match.Controller;
 import Controller.MenuController;
 import Match.Match;
 import SQL.SqlConnection;
+import Season.Season;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
+import javafx.util.StringConverter;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Objects;
 
 public class MatchOverviewController {
 
-    private ObservableList<Match> matchData;
-    private ObservableList<String> seasonData;
+    private ObservableList<Match> matchData = FXCollections.observableArrayList();
+    private ObservableList<Season> seasonData = FXCollections.observableArrayList();
 
     @FXML private TableView<Match> tableMatches;
     @FXML private TableColumn<?, ?> columnOpponent;
@@ -28,15 +35,38 @@ public class MatchOverviewController {
     @FXML private TableColumn<?, ?> columnGoalsAgainst;
     @FXML private TableColumn<?, ?> columnDate;
     @FXML private TableColumn<?, ?> columnTime;
-    @FXML private TableColumn<?, ?> columnAddress;
+    @FXML private ChoiceBox<Season> seasonSelector;
+    @FXML private Button inputButton;
 
-    @FXML private ChoiceBox<String> seasonSelector;
+    // Converts seasonData to Season name to be displayed in the Choicebox
+    StringConverter<Season> converter = new StringConverter<>() {
+        @Override
+        public String toString(Season season) {
+            return season.getName();
+        }
+
+        @Override
+        public Season fromString(String id) {
+            return null;
+        }
+    };
 
     @FXML public void initialize(){
-        matchData = FXCollections.observableArrayList();
-        seasonData = FXCollections.observableArrayList();
         setCellTable();
         loadDataFromDB();
+
+        seasonSelector.setConverter(converter);
+
+        seasonSelector.getSelectionModel()
+                .selectedItemProperty()
+                .addListener(new ChangeListener<Season>() {
+                    @Override
+                    public void changed(ObservableValue<? extends Season> observable, Season oldValue, Season newValue) {
+                        if(newValue != null){
+                            updateTable(newValue.getId());
+                        }
+                    }
+                });
     }
 
     // Retrieves data from appropriate player class constructor
@@ -46,7 +76,6 @@ public class MatchOverviewController {
         columnGoalsAgainst.setCellValueFactory(new PropertyValueFactory<>("goalsAgainst"));
         columnDate.setCellValueFactory(new PropertyValueFactory<>("date"));
         columnTime.setCellValueFactory(new PropertyValueFactory<>("time"));
-        columnAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
     }
 
     public void loadDataFromDB(){
@@ -56,7 +85,7 @@ public class MatchOverviewController {
             PreparedStatement seasonStatement = conn.prepareStatement("SELECT * FROM seasons");
             ResultSet rsSeason = seasonStatement.executeQuery();
 
-            while (rsSeason.next()){ seasonData.addAll(rsSeason.getString("name")); }
+            while (rsSeason.next()){ seasonData.addAll(new Season(rsSeason.getString("name"), rsSeason.getInt("season_id"))); }
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -69,23 +98,27 @@ public class MatchOverviewController {
                 matchData.add(new Match(rsMatch.getString("opponent"),
                         rsMatch.getInt("goalsFor"),
                         rsMatch.getInt("goalsAgainst"),
-                        rsMatch.getString("season_id"),
+                        rsMatch.getInt("season_id"),
                         rsMatch.getString("date"),
                         rsMatch.getString("time"),
-                        rsMatch.getInt("match_id"),
-                        rsMatch.getString("address"),
-                        rsMatch.getInt("tactic_id")));
+                        rsMatch.getInt("match_id"), 0,
+                        rsMatch.getBoolean("isHome")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
         seasonSelector.setItems(seasonData);
-        tableMatches.setItems(matchData);
 
         SqlConnection.closeConnection();
+
+        seasonSelector.getSelectionModel().selectLast();
+        updateTable(seasonSelector.getValue().getId());
     }
 
+    private void updateTable(int newSeason){
+        tableMatches.setItems(matchData.filtered(match -> match.getSeason() == newSeason));
+    }
 
     // Menu buttons navigation
     MenuController controller = new MenuController();
@@ -94,11 +127,24 @@ public class MatchOverviewController {
         controller.menuNavigation(event);
     }
 
-    public void inputMatchResults(ActionEvent event){
-        inputMatchResultsController matchResultsController = new inputMatchResultsController();
-        matchResultsController.initData(tableMatches.getSelectionModel().getSelectedItem());
+    public void inputMatchResults(){
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("../inputMatchResults.fxml"));
+            Parent inputResultsFXML = loader.load();
 
-        controller.sceneChange(event, "../Match/inputMatchResults.fxml");
+            inputMatchResultsController matchResultsController = loader.getController();
+            matchResultsController.initData(tableMatches.getSelectionModel().getSelectedItem());
+            matchResultsController.loadDataFromDB();
+
+            Stage stage = (Stage) inputButton.getScene().getWindow();
+
+            Scene inputResultsScene = new Scene(inputResultsFXML);
+            stage.setScene(inputResultsScene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

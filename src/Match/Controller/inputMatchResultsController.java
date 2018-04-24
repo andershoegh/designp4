@@ -3,8 +3,8 @@ package Match.Controller;
 import Controller.MenuController;
 import Match.Match;
 import Player.Player;
-import SQL.InnerJoinDB;
 import SQL.SqlConnection;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,7 +19,7 @@ public class inputMatchResultsController {
     private Match selectedMatch;
     private int goalsFor;
     private int goalsAgainst;
-    private ObservableList<Player> availablePlayers;
+    private ObservableList<Player> availablePlayers = FXCollections.observableArrayList();
 
     MenuController controller = new MenuController();
 
@@ -32,23 +32,15 @@ public class inputMatchResultsController {
     @FXML private TextField textFieldGuestScore;
     @FXML private TextField textFieldNote;
 
-    @FXML public void initialize(){
-
-    }
-
-    public void setCellTable(){
-       
-    }
-
     public void initData(Match match){
         selectedMatch = match;
 
         if(selectedMatch.getIsHome()) {
-            matchLabel.setText("AAIF vs" + selectedMatch.getOpponent());
+            matchLabel.setText("AAIF vs " + selectedMatch.getOpponent());
             labelHomeTeam.setText("AAIF");
             labelGuestTeam.setText(selectedMatch.getOpponent());
         } else {
-            matchLabel.setText(selectedMatch.getOpponent() + "vs AAIF");
+            matchLabel.setText(selectedMatch.getOpponent() + " vs AAIF");
             labelHomeTeam.setText(selectedMatch.getOpponent());
             labelGuestTeam.setText("AAIF");
         }
@@ -57,17 +49,25 @@ public class inputMatchResultsController {
     }
 
     public void loadDataFromDB(){
-        SqlConnection.connectToDB();
-        ResultSet rs = InnerJoinDB.extractDataFromForeign("players", "match_tactic_player", "name");
+        Connection conn = SqlConnection.connectToDB();
+
+        String sqlQuery = "SELECT *, players.name FROM match_tactic_player INNER JOIN players " +
+                "ON match_tactic_player.player_id = players.player_id WHERE match_tactic_player.match_id = " +
+                Integer.toString(selectedMatch.getId());
 
         try {
+        PreparedStatement stmt = conn.prepareStatement(sqlQuery);
+
+        ResultSet rs = stmt.executeQuery();
+
             while(rs.next()){
-                System.out.println(rs.getString("player_id"));
-                System.out.println(rs.getString("name"));
+                availablePlayers.addAll(new Player(rs.getInt("player_id"), rs.getString("name")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+        listPlayers.setItems(availablePlayers);
 
         SqlConnection.closeConnection();
     }
@@ -86,15 +86,11 @@ public class inputMatchResultsController {
 
         // Inserting data into matches table
         try {
-        String sqlMatch = "INSERT INTO matches " +
-                "(goalsFor, goalsAgainst, note)" +
-                " VALUES (?, ?, ?)" +
-                "WHERE ? = match_id";
+        String sqlMatch = "INSERT INTO matches (goalsFor, goalsAgainst, note) " +
+                "VALUES (?, ?, ?) WHERE match_id = ?";
 
-            // Connecting to the database
             PreparedStatement stmt = conn.prepareStatement(sqlMatch);
 
-            // Inserting the values into the database
             stmt.setInt(1, goalsFor);
             stmt.setInt(2, goalsAgainst);
             stmt.setString(3, textFieldNote.getText());
@@ -107,6 +103,7 @@ public class inputMatchResultsController {
         }
 
         // Inserting data into players table
+        // * Good code goes here *
 
 
         SqlConnection.closeConnection();
@@ -114,5 +111,6 @@ public class inputMatchResultsController {
         controller.sceneChange(event, "../Match/MatchOverview.fxml");
     }
 
+    // Menu navigation
     public void menuButtonClick(ActionEvent event){ controller.menuNavigation(event); }
 }
