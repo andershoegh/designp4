@@ -19,8 +19,11 @@ class inputMatchResultsController {
 
     public void initData(Match match){
         selectedMatch = match;
+
         if(selectedMatch.getIsHome()) {
-            matchLabel.setText(selectedMatch.getOpponent());
+            matchLabel.setText("AAIF vs" + selectedMatch.getOpponent());
+        } else {
+            matchLabel.setText(selectedMatch.getOpponent() + "vs AAIF");
         }
     }
 
