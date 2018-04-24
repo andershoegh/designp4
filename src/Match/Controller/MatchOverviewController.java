@@ -157,5 +157,4 @@ public class MatchOverviewController {
 
     @Override
     public int hashCode() { return Objects.hash(seasonData); }
-    */
 }
