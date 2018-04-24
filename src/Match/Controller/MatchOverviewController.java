@@ -26,7 +26,6 @@ public class MatchOverviewController {
 
     private ObservableList<Match> matchData = FXCollections.observableArrayList();
     private ObservableList<Season> seasonData = FXCollections.observableArrayList();
-    private ObservableList<Match> filtMatchData = FXCollections.observableArrayList();
 
     @FXML private TableView<Match> tableMatches;
     @FXML private TableColumn<?, ?> columnOpponent;
@@ -40,9 +39,7 @@ public class MatchOverviewController {
     // Converts seasonData to Season name to be displayed in the Choicebox
     StringConverter<Season> converter = new StringConverter<>() {
         @Override
-        public String toString(Season season) {
-            return season.getName();
-        }
+        public String toString(Season season) { return season.getName(); }
 
         @Override
         public Season fromString(String id) {
@@ -106,7 +103,7 @@ public class MatchOverviewController {
                         rsMatch.getString("time"),
                         rsMatch.getInt("match_id"),
                         rsMatch.getInt("tactic_id"),
-                        rsMatch.getBoolean("home_away")));
+                        rsMatch.getBoolean("is_home")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -116,11 +113,10 @@ public class MatchOverviewController {
 
         SqlConnection.closeConnection();
 
+        // Selects the last entry in Seasons as the default option in choicebox
         seasonSelector.getSelectionModel().selectLast();
-        updateTable(seasonSelector.getValue().getId());
-    }
 
-    public void seasonSelectorClicked(){
+        updateTable(seasonSelector.getValue().getId());
     }
 
     private void updateTable(int newSeason){
@@ -129,7 +125,6 @@ public class MatchOverviewController {
 
     // Menu buttons navigation
     MenuController controller = new MenuController();
-
     public void menuButtonClick(ActionEvent event){
         controller.menuNavigation(event);
     }
@@ -143,8 +138,5 @@ public class MatchOverviewController {
     }
 
     @Override
-    public int hashCode() {
-
-        return Objects.hash(seasonData);
-    }
+    public int hashCode() { return Objects.hash(seasonData); }
 }

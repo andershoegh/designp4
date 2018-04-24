@@ -1,19 +1,28 @@
 package Match.Controller;
 
+import Match.Match;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-
-import java.sql.*;
-import java.util.Scanner;
+import javafx.scene.control.*;
 
 class inputMatchResultsController {
+
+    private Match selectedMatch;
 
     @FXML private Label matchLabel;
     @FXML private Label dateLabel;
     @FXML private ListView listPlayers;
+    @FXML private Label labelHomeTeam;
+    @FXML private Label labelGuestTeam;
+    @FXML private TextField textFieldHomeScore;
+    @FXML private TextField textFieldGuestScore;
+    @FXML private TextField textFieldNote;
+
+    public void initData(Match match){
+        selectedMatch = match;
+        if(selectedMatch)
+        matchLabel.setText(selectedMatch.getOpponent());
+    }
+
 
    /*
    public static void insertMatch(){
