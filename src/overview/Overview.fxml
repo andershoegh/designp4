@@ -62,7 +62,7 @@
                   <Line endX="1080.0" />
                   <AnchorPane prefHeight="651.0" prefWidth="1081.0">
                      <children>
-                        <VBox fx:id="TrainingBox1" layoutX="110.0" layoutY="30.0" prefWidth="324.0" style="-fx-background-color: white;">
+                        <VBox fx:id="TrainingBox1" layoutX="44.0" layoutY="30.0" prefWidth="324.0" style="-fx-background-color: white;">
                            <children>
                               <HBox alignment="CENTER" prefHeight="44.0" prefWidth="324.0">
                                  <children>
@@ -161,7 +161,7 @@
                               <DropShadow color="#aba8a8" height="30.0" offsetX="4.0" offsetY="4.0" radius="14.5" width="30.0" />
                            </effect>
                         </VBox>
-                        <VBox fx:id="TrainingBox2" layoutX="110.0" layoutY="350.0" prefWidth="324.0" style="-fx-background-color: white;">
+                        <VBox fx:id="TrainingBox2" layoutX="44.0" layoutY="325.0" prefWidth="324.0" style="-fx-background-color: white;">
                            <children>
                               <HBox alignment="CENTER" prefHeight="44.0" prefWidth="324.0">
                                  <children>
@@ -260,7 +260,7 @@
                               <DropShadow color="#aba8a8" height="30.0" offsetX="4.0" offsetY="4.0" radius="14.5" width="30.0" />
                            </effect>
                         </VBox>
-                        <VBox fx:id="matchBox" layoutX="600.0" layoutY="30.0" prefWidth="324.0" style="-fx-background-color: white;">
+                        <VBox fx:id="matchBox" layoutX="385.0" layoutY="30.0" prefWidth="324.0" style="-fx-background-color: white;">
                            <children>
                               <HBox alignment="CENTER" prefHeight="50.0" prefWidth="226.0">
                                  <children>
@@ -339,8 +339,16 @@
                               <DropShadow color="#aba8a8" height="30.0" offsetX="4.0" offsetY="4.0" radius="14.5" width="30.0" />
                            </effect>
                         </VBox>
-                        <VBox fx:id="birthdayBox" layoutX="600.0" layoutY="410.0" prefWidth="324.0" style="-fx-background-color: white;">
+                        <VBox fx:id="birthdayBox" layoutX="385.0" layoutY="389.0" prefHeight="211.0" prefWidth="324.0" style="-fx-background-color: white;">
                            <children>
+                              <ImageView fitHeight="57.0" fitWidth="88.0">
+                                 <image>
+                                    <Image url="file:graphics/dannebrog.png" />
+                                 </image>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </VBox.margin>
+                              </ImageView>
                               <HBox alignment="CENTER" prefHeight="50.0" prefWidth="226.0">
                                  <children>
                                     <Label contentDisplay="CENTER" styleClass="overviewHeadline" stylesheets="@../stylesheet.css" text="Kommende fødselsdag" />
@@ -366,7 +374,7 @@
                                     <Insets top="15.0" />
                                  </VBox.margin>
                               </HBox>
-                              <HBox layoutX="10.0" layoutY="60.0" prefHeight="35.0" prefWidth="324.0">
+                              <HBox layoutX="10.0" layoutY="60.0" prefHeight="15.0" prefWidth="324.0">
                                  <children>
                                     <Label fx:id="birthdayPlayer" styleClass="overviewText" stylesheets="@../stylesheet.css" text="Spillernavn">
                                        <HBox.margin>
