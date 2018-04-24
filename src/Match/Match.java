@@ -1,6 +1,13 @@
 package Match;
 
-public class Match {
+import Controller.DeleteAble;
+import SQL.SqlConnection;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class Match implements DeleteAble{
     private String opponent;
     private int goalsFor;
     private int goalsAgainst;
@@ -10,7 +17,7 @@ public class Match {
     private int id;
     private String address;
     private int tactic;
-    private boolean home_away;
+    private boolean isHome;
 
     public Match(String opponent, String date){
         this.opponent = opponent;
@@ -34,12 +41,11 @@ public class Match {
         this.opponent = opponent;
         }
 
-    public Match(String opponent, String date, String time, boolean home_away) {
+    public Match(String opponent, String date, String time, boolean isHome) {
         this.opponent = opponent;
         this.date = date;
         this.time = time;
-        this.home_away = home_away;
-
+        this.isHome = isHome;
     }
 
     public String getOpponent() { return opponent; }
@@ -71,12 +77,29 @@ public class Match {
     public int getTactic() { return tactic; }
     public void setTactic(int tactic) { this.tactic = tactic; }
 
-    public boolean isHome_away() {
-        return home_away;
+    public boolean getIsHome() {
+        return isHome;
     }
 
-    public void setHome_away(boolean home_away) {
-        this.home_away = home_away;
+    public void setIsHome(boolean isHome) {
+        this.isHome = isHome;
+    }
+
+    @Override
+    public void delete() {
+        try {
+            Connection conn = SqlConnection.connectToDB();
+
+            String sql = "DELETE FROM matches WHERE match_id=?";
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setInt(1, this.id);
+            statement.executeUpdate();
+
+            SqlConnection.closeConnection();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
 

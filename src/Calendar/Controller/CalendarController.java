@@ -6,8 +6,10 @@ import Calendar.Controller.MatchTablePropertyValueFactory.MatchTitelPropertyValu
 import Calendar.Controller.TrainingTablePropertyValueFactory.TDatePropertyValueFactory;
 import Calendar.Controller.TrainingTablePropertyValueFactory.TDayOfMonthPropertyValueFactory;
 import Calendar.Controller.TrainingTablePropertyValueFactory.TTimePropertyValueFactory;
+import Controller.DeleteAble;
 import Controller.MenuController;
 import Match.Match;
+import Player.Controller.DeletePlayerController;
 import SQL.SqlConnection;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -47,6 +49,8 @@ public class CalendarController {
 
     private Date date;
     private SimpleDateFormat sdf = new SimpleDateFormat("MMMM yyyy");
+
+    private DeleteAble selectedItem = null;
 
     // setting FXML IDs
     @FXML private Label MonthYearLabel;
@@ -117,7 +121,7 @@ public class CalendarController {
                 matchList.add(new Match(rs.getString("opponent"),
                                         rs.getString("date"),
                                         rs.getString("time"),
-                                        rs.getBoolean("home_away")));
+                                        rs.getBoolean("isHome")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -273,4 +277,54 @@ public class CalendarController {
     public void menuButtonClick(ActionEvent event){
         controller.menuNavigation(event);
     }
+
+
+
+    public void deletePlayerButtonClick(){
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("../DeleteEvent.fxml"));
+            Parent deletePlayerFXML = loader.load();
+
+            Stage stage = new Stage();
+            // Prevents user interaction with other windows while popup is open
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Slet event");
+
+            // Passes selected player info to DeletePlayerController.java
+            DeleteEventController controller = loader.getController();
+
+            if(matchTableView.getSelectionModel().getSelectedItem() != null){
+                controller.initData();
+            }
+            else if (TrainingTableView.getSelectionModel().getSelectedItem() != null){
+                controller.initData();
+            }
+            else {
+                System.out.println("none selected");
+            }
+
+
+            Scene deletePlayerScene = new Scene(deleteEventFXML);
+            stage.setScene(deleteEventScene);
+            stage.showAndWait();
+
+            clearTrainingTable();
+            clearMatchTable();
+            initialize();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+    }
+
+
+
+
+
 }
+
+
+
