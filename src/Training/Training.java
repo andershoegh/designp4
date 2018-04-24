@@ -1,6 +1,14 @@
 package Training;
 
-public class Training {
+import Controller.DeleteAble;
+import SQL.SqlConnection;
+import javafx.stage.Stage;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class Training implements DeleteAble {
 
     private int id;
     private String weekday;
@@ -57,5 +65,23 @@ public class Training {
 
     public int getProgramID() {
         return programID;
+    }
+
+    @Override
+    public void delete() {
+
+        try {
+            Connection conn = SqlConnection.connectToDB();
+
+            String sql = "DELETE FROM trainings WHERE training_id=?";
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setInt(1, this.id);
+            statement.executeUpdate();
+
+            SqlConnection.closeConnection();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

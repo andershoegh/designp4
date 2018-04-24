@@ -134,8 +134,8 @@
                                     <TableView fx:id="TrainingTableView" prefHeight="200.0" prefWidth="300.0">
                                       <columns>
                                         <TableColumn fx:id="TDayInMonth" prefWidth="60.0" text="Dag i Måned" />
-                                          <TableColumn fx:id="TrainingDate" prefWidth="116.0" text="Dato" />
-                                          <TableColumn fx:id="TrainingTime" prefWidth="122.0" text="Tidspunkt" />
+                                          <TableColumn fx:id="TrainingDate" prefWidth="115.0" text="Dato" />
+                                          <TableColumn fx:id="TrainingTime" prefWidth="124.0" text="Tidspunkt" />
                                       </columns>
                                        <HBox.margin>
                                           <Insets left="20.0" right="20.0" />
@@ -162,7 +162,7 @@
                                     <Insets bottom="15.0" right="42.0" />
                                  </HBox.margin>
                               </Button>
-                              <Button fx:id="ExporterButton" mnemonicParsing="false" text="Eksporter">
+                              <Button fx:id="DeleteButton" mnemonicParsing="false" prefWidth="95.0" style="-fx-background-color: #ab4642;" text="Slet">
                                  <HBox.margin>
                                     <Insets bottom="15.0" right="37.0" />
                                  </HBox.margin>
