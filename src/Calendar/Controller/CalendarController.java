@@ -245,8 +245,7 @@ public class CalendarController {
     //Loader Create event pop-up
     public void createEventButtonClick(ActionEvent event){
         try {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("../create_activity_pop.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../createActivityMenu.fxml"));
             Parent createEventFXML = loader.load();
 
             Stage stage = new Stage();
