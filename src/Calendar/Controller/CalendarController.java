@@ -110,8 +110,30 @@ public class CalendarController {
                         TrainingTableView.getSelectionModel().clearSelection();
                     }
                 });
+    }/*
+    // Checks for double clicks.
+    private Match temp;
+    private Date lastClickTime;
+    @FXML
+    private void handleRowSelect() {
+        Match row = matchTableView.getSelectionModel().getSelectedItem();
+        if (row == null)
+            return;
+        if(row != temp){
+            temp = row;
+            lastClickTime = new Date();
+        } else if(row == temp) {
+            Date now = new Date();
+            long diff = now.getTime() - lastClickTime.getTime();
+            if (diff < 300){ //another click registered in 300 millis
+                System.out.println("--- Double Clicked on a row! Will open edit window. ---");
+                editPlayerButtonClick();
+            } else {
+                lastClickTime = new Date();
+            }
+        }
     }
-
+*/
 
     //Clear the table view
     public void clearMatchTable(){matchTableView.getItems().clear();}
