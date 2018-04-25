@@ -40,13 +40,10 @@ public class MatchOverviewController {
 
     // Converts seasonData to Season name to be displayed in the Choicebox
     StringConverter<Season> converter = new StringConverter<>() {
-        @Override
-        public String toString(Season season) {
+        @Override public String toString(Season season) {
             return season.getName();
         }
-
-        @Override
-        public Season fromString(String id) {
+        @Override public Season fromString(String id) {
             return null;
         }
     };

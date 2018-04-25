@@ -9,6 +9,9 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.ChoiceBoxTableCell;
+import javafx.util.Callback;
+import javafx.util.StringConverter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -26,11 +29,59 @@ public class inputMatchResultsController {
     @FXML private Label matchLabel;
     @FXML private Label dateLabel;
     @FXML private ListView listPlayers;
+
     @FXML private Label labelHomeTeam;
-    @FXML private Label labelGuestTeam;
     @FXML private TextField textFieldHomeScore;
+
+    @FXML private Label labelGuestTeam;
     @FXML private TextField textFieldGuestScore;
+
+    @FXML private ChoiceBox<Player> choiceboxMOTM;
     @FXML private TextField textFieldNote;
+
+    @FXML private TableView<Player> tableGoals;
+    @FXML private TableColumn<Player, ChoiceBox<Player>> columnGoalsName;
+    @FXML private TableColumn<?, ?> columnGoalsAmount;
+
+    @FXML private TableView<Player> tableAssists;
+    @FXML private TableColumn<?, ?> columnAssistsName;
+    @FXML private TableColumn<?, ?> columnAssistsAmount;
+
+    @FXML private TableView<Player> tableYellowCards;
+    @FXML private TableColumn<?, ?> columnYellowName;
+    @FXML private TableColumn<?, ?> columnYellowAmount;
+
+    @FXML private TableView<Player> tableRedCards;
+    @FXML private TableColumn<?, ?> columnRedName;
+    @FXML private TableColumn<?, ?> columnRedAmount;
+
+    StringConverter<Player> converter = new StringConverter<Player>() {
+        @Override public String toString(Player object) { return object.getName(); }
+        @Override public Player fromString(String string) { return null; }
+    };
+
+    @FXML public void initialize(){
+        choiceboxMOTM.setConverter(converter);
+
+        listPlayers.setCellFactory(new Callback<ListView, ListCell>() {
+            @Override public ListCell call(ListView param) {
+                ListCell<Player> cell = new ListCell<>() {
+                    @Override protected void updateItem(Player p, boolean b) {
+                        super.updateItem(p, b);
+                        if (p != null) { setText(p.getName()); }
+                    }
+                };
+
+                return cell;
+            }
+        });
+    }
+
+    /*
+    private void setCellTable(){
+        columnGoalsName.setCellFactory(ChoiceBoxTableCell.forTableColumn(availablePlayers));
+    }
+    */
 
     public void initData(Match match){
         selectedMatch = match;
@@ -68,8 +119,16 @@ public class inputMatchResultsController {
         }
 
         listPlayers.setItems(availablePlayers);
+        choiceboxMOTM.setItems(availablePlayers);
 
         SqlConnection.closeConnection();
+    }
+
+    public void addRowButtonClick(ActionEvent event){
+        Hyperlink text = (Hyperlink) event.getSource();
+        System.out.println(text.getId());
+
+        //ChoiceBox<Player> box = new ChoiceBox<>();
     }
 
     public void acceptButtonClick(ActionEvent event){
