@@ -140,11 +140,6 @@ public class CalendarController {
     }
 
 
-
-
-
-
-
     //Clear the table view
     public void clearTrainingTable(){TrainingTableView.getItems().clear();}
 
