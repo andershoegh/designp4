@@ -6,15 +6,18 @@ import Calendar.Controller.MatchTablePropertyValueFactory.MatchTitelPropertyValu
 import Calendar.Controller.TrainingTablePropertyValueFactory.TDatePropertyValueFactory;
 import Calendar.Controller.TrainingTablePropertyValueFactory.TDayOfMonthPropertyValueFactory;
 import Calendar.Controller.TrainingTablePropertyValueFactory.TTimePropertyValueFactory;
+import Controller.DeleteAble;
 import Controller.MenuController;
 import Match.Match;
 import SQL.SqlConnection;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.collections.FXCollections;
@@ -44,7 +47,7 @@ public class CalendarController {
 
     private ObservableList<?> others = FXCollections.observableArrayList();
 
-
+    private DeleteAble selectedItem = null;
     private Date date;
     private SimpleDateFormat sdf = new SimpleDateFormat("MMMM yyyy");
 
@@ -87,6 +90,26 @@ public class CalendarController {
         clearTrainingTable();
         TSetCellTable();
         loadTrainingFromDB();
+
+        TrainingTableView
+                .getSelectionModel()
+                .selectedItemProperty()
+                .addListener((observable, oldValue, newValue) -> {
+                    if (newValue != null) {
+                        selectedItem = newValue;
+                        matchTableView.getSelectionModel().clearSelection();
+                    }
+                });
+
+        matchTableView
+                .getSelectionModel()
+                .selectedItemProperty()
+                .addListener((observable, oldValue, newValue) -> {
+                    if (newValue != null) {
+                        selectedItem = newValue;
+                        TrainingTableView.getSelectionModel().clearSelection();
+                    }
+                });
     }
 
 
@@ -283,14 +306,10 @@ public class CalendarController {
 
             DeleteEventController controller = loader.getController();
 
-            if(matchTableView.getSelectionModel().getSelectedItem() != null){
+
+            if(selectedItem != null){
                 if(controller.getConfirmValue()){
-                    matchTableView.getSelectionModel().getSelectedItem().delete();
-                }
-            }
-            else if (TrainingTableView.getSelectionModel().getSelectedItem() != null){
-                if(controller.getConfirmValue()){
-                    TrainingTableView.getSelectionModel().getSelectedItem().delete();
+                    selectedItem.delete();
                 }
             }
             else {
