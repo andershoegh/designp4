@@ -162,7 +162,7 @@
                                     <Insets bottom="15.0" right="42.0" />
                                  </HBox.margin>
                               </Button>
-                              <Button fx:id="DeleteButton" mnemonicParsing="false" prefWidth="95.0" style="-fx-background-color: #ab4642;" text="Slet">
+                              <Button fx:id="DeleteButton" mnemonicParsing="false" onAction="#deleteEventButtonClick" prefWidth="95.0" style="-fx-background-color: #ab4642;" text="Slet">
                                  <HBox.margin>
                                     <Insets bottom="15.0" right="37.0" />
                                  </HBox.margin>

@@ -41,11 +41,12 @@ public class Match implements DeleteAble{
         this.opponent = opponent;
         }
 
-    public Match(String opponent, String date, String time, boolean isHome) {
+    public Match(int id, String opponent, String date, String time, boolean isHome) {
         this.opponent = opponent;
         this.date = date;
         this.time = time;
         this.isHome = isHome;
+        this.id = id;
 
     }
 

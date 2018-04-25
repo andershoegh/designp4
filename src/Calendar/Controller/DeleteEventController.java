@@ -7,30 +7,29 @@ import javafx.stage.Stage;
 
 import java.sql.SQLException;
 
-/*public class DeleteEventController<T> {
+public class DeleteEventController {
 
-    private T selectedEvent;
+    private boolean confirmDeletion;
+
     @FXML private Label eventNameLabel;
     @FXML private Button acceptButton;
     @FXML private Button closeButton;
 
-    public <T> void initData(T eventType){
-
-        selectedEvent = eventType;
-    }
-
-
     public void confirmButtonClick(){
-        try {
-            selectedEvent.delete();
+        confirmDeletion = true;
+        Stage stage = (Stage) acceptButton.getScene().getWindow();
+        stage.close();
+    }
 
-            Stage stage = (Stage) acceptButton.getScene().getWindow();
-            stage.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+    public void closeButtonClick(){
+        confirmDeletion = false;
+        Stage stage = (Stage) closeButton.getScene().getWindow();
+        stage.close();
+    }
+
+    public boolean getConfirmValue(){
+        return this.confirmDeletion;
     }
 
 
-
-}*/
+}

@@ -90,8 +90,6 @@ public class CalendarController {
     }
 
 
-
-
     //Clear the table view
     public void clearMatchTable(){matchTableView.getItems().clear();}
 
@@ -114,7 +112,8 @@ public class CalendarController {
             ResultSet rs = statement.executeQuery();
 
             while(rs.next()){
-                matchList.add(new Match(rs.getString("opponent"),
+                matchList.add(new Match(rs.getInt("match_id"),
+                                        rs.getString("opponent"),
                                         rs.getString("date"),
                                         rs.getString("time"),
                                         rs.getBoolean("isHome")));
@@ -273,7 +272,7 @@ public class CalendarController {
 
 
 
-    /*public void deleteEventButtonClick(){
+    public void deleteEventButtonClick() throws ParseException {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("../DeleteEvent.fxml"));
@@ -284,33 +283,35 @@ public class CalendarController {
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle("Slet event");
 
-
-            // Passes selected event info to DeleteEventController.java
-
-            if(matchTableView.getSelectionModel().getSelectedItem() != null){
-                DeleteEventController<Match> controller = loader.getController();
-                controller.initData(matchTableView.getSelectionModel().getSelectedItem());
-            }
-            else if (TrainingTableView.getSelectionModel().getSelectedItem() != null){
-                controller.initData(TrainingTableView.getSelectionModel().getSelectedItem());
-            }
-            else {
-                System.out.println("none selected");
-            }
-
             Scene deleteEventScene = new Scene(deleteEventFXML);
             stage.setScene(deleteEventScene);
             stage.showAndWait();
 
-            clearTrainingTable();
-            clearMatchTable();
-            initialize();
+            DeleteEventController controller = loader.getController();
+
+            if(matchTableView.getSelectionModel().getSelectedItem() != null){
+                if(controller.getConfirmValue()){
+                    matchTableView.getSelectionModel().getSelectedItem().delete();
+                }
+            }
+            else if (TrainingTableView.getSelectionModel().getSelectedItem() != null){
+                if(controller.getConfirmValue()){
+                    TrainingTableView.getSelectionModel().getSelectedItem().delete();
+                }
+            }
+            else {
+                System.out.println("none selected or deleted");
+            }
         } catch (IOException e) {
             e.printStackTrace();
-        } catch (ParseException e) {
-            e.printStackTrace();
         }
-    }*/
+        finally {
+            clearTrainingTable();
+            clearMatchTable();
+            loadTrainingFromDB();
+            loadMatchFromDB();
+        }
+    }
 
 
 }
