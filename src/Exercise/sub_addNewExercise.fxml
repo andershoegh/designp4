@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.TextField ?>
+
+<fx:root type="javafx.scene.layout.GridPane" fx:controller="Exercise.Controller.subController">
+    <children>
+        <TextField fx:id="exerciseDuration" GridPane.columnIndex="0" GridPane.rowIndex="$rowIndex"/>
+        <TextField fx:id="exerciseName" GridPane.columnIndex="1" GridPane.rowIndex="$rowIndex"/>
+    </children>
+</fx:root>

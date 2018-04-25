@@ -126,7 +126,12 @@
 .greenButton{
     -fx-background-color: #a1b56c;
     -fx-text-fill: white;
-    -fx-pref-height: 30;
+    -fx-pref-width: 90px;
+    -fx-pref-height: 35px;
+}
+
+.greenButton:hover{
+    -fx-background-color: #b9c891;
 }
 
 .overviewButtons{
@@ -174,3 +179,4 @@
     -fx-underline: true;
     -fx-text-fill: #787878;
 }
+
