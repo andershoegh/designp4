@@ -1,4 +1,4 @@
-package Exercise.Controller;
+package Training.Controller;
 
 import javafx.fxml.FXML;
 import javafx.event.ActionEvent;
@@ -6,7 +6,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.TextField;
 import Controller.MenuController;
 
-public class AddNewExerciseController {
+public class AddNewTrainingProgramController {
 
     @FXML private TextField trainingNameInput;
     @FXML private GridPane trainingExercises;
@@ -17,8 +17,8 @@ public class AddNewExerciseController {
 
     @FXML private Button acceptButton;
     @FXML private Button printButton;
-    @FMXL private Button addExercise;
-    @FMXL private Button removeExercise;
+    @FXML private Button addExercise;
+    @FXML private Button removeExercise;
 
 
     @FXML
