@@ -37,6 +37,7 @@ public class MenuController {
             Scene newScene = new Scene(parent);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
+
             stage.setScene(newScene);
             stage.show();
         } catch (IOException e) {
