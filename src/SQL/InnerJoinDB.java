@@ -15,6 +15,7 @@ public class InnerJoinDB {
         String query = "SELECT *, " + table + "." + column + " FROM " + foreignTable + " INNER JOIN " +
                 table + " ON " + foreignTable + "." + tableId + "_id = " + table + "." + tableId + "_id";
 
+        System.out.println(query);
         try {
             Connection conn = SqlConnection.connectToDB();
             PreparedStatement statement = conn.prepareStatement(query);

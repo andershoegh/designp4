@@ -122,8 +122,10 @@
                                  <children>
                                     <TableView fx:id="matchTableView" prefHeight="200.0" prefWidth="300.0">
                                       <columns>
-                                        <TableColumn prefWidth="90.0" text="Dag i måned" />
-                                        <TableColumn prefWidth="196.0" text="KampTitel og tidspunkt" />
+                                        <TableColumn fx:id="MDayInMonth" prefWidth="49.0" text="Dag i måned" />
+                                        <TableColumn fx:id="matchTitel" prefWidth="118.0" text="Kamp" />
+                                          <TableColumn fx:id="matchDate" prefWidth="59.0" text="Ugedag" />
+                                          <TableColumn fx:id="matchTime" prefWidth="73.0" text="Tidspunkt" />
                                       </columns>
                                        <HBox.margin>
                                           <Insets left="20.0" right="20.0" />
@@ -131,8 +133,9 @@
                                     </TableView>
                                     <TableView fx:id="TrainingTableView" prefHeight="200.0" prefWidth="300.0">
                                       <columns>
-                                        <TableColumn prefWidth="60.0" text="Dag i Måned" />
-                                        <TableColumn prefWidth="239.0" text="Dato og tid" />
+                                        <TableColumn fx:id="TDayInMonth" prefWidth="60.0" text="Dag i Måned" />
+                                          <TableColumn fx:id="TrainingDate" prefWidth="115.0" text="Dato" />
+                                          <TableColumn fx:id="TrainingTime" prefWidth="124.0" text="Tidspunkt" />
                                       </columns>
                                        <HBox.margin>
                                           <Insets left="20.0" right="20.0" />
@@ -140,8 +143,9 @@
                                     </TableView>
                                     <TableView fx:id="OtherTableView" prefHeight="200.0" prefWidth="300.0">
                                       <columns>
-                                        <TableColumn prefWidth="89.0" text="Dag i måned" />
-                                        <TableColumn prefWidth="210.0" text="Titel og tidspunkt" />
+                                        <TableColumn fx:id="ODayInMonth" prefWidth="83.0" text="Dag i måned" />
+                                        <TableColumn fx:id="OtherTitel" prefWidth="110.0" text="Titel" />
+                                          <TableColumn fx:id="OtherTime" prefWidth="106.0" text="Tidspunkt" />
                                       </columns>
                                        <HBox.margin>
                                           <Insets left="20.0" right="20.0" />
@@ -158,7 +162,7 @@
                                     <Insets bottom="15.0" right="42.0" />
                                  </HBox.margin>
                               </Button>
-                              <Button fx:id="ExporterButton" mnemonicParsing="false" text="Eksporter">
+                              <Button fx:id="DeleteButton" mnemonicParsing="false" onAction="#deleteEventButtonClick" prefWidth="95.0" style="-fx-background-color: #ab4642;" text="Slet">
                                  <HBox.margin>
                                     <Insets bottom="15.0" right="37.0" />
                                  </HBox.margin>

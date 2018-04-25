@@ -2,9 +2,17 @@ package Player.Controller;
 
 import Player.Player;
 import SQL.SqlConnection;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -29,6 +37,7 @@ public class EditPlayerController {
 
 
     @FXML Button saveButton;
+    @FXML Button cancelButton_EDIT;
 
     // editable
     @FXML private Label playerName;
@@ -41,6 +50,7 @@ public class EditPlayerController {
     @FXML private DatePicker birthday;
     @FXML private ChoiceBox position;
     @FXML private CheckBox health;
+    @FXML private Label health_label;
 
     // stats display
     @FXML private Label motm;
@@ -50,6 +60,7 @@ public class EditPlayerController {
     @FXML private Label attendedTrainings;
     @FXML private Label yellowCards;
     @FXML private Label redCards;
+
 
     @FXML
     public void initialize() throws ParseException {
@@ -66,32 +77,68 @@ public class EditPlayerController {
                 "Målmand",
                 "Andet");
         position.getSelectionModel().select("Angriber");
+
+        // Forces input in phone field to only accept numerical values
+        telephone.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    telephone.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+            }
+        });
     }
 
+    // Inputting editable data into text fields
     public void initData(Player player) throws ParseException {
         selectedPlayer = player;
         playerID = selectedPlayer.getId();
-
-        // inputting editable data into text fields
+        // TITLE NAME
         playerName.setText(selectedPlayer.getName());
+        // NAME
         nameInput.setText(selectedPlayer.getName());
+        // ADDRESS
         address.setText(selectedPlayer.getAddress());
-        telephone.setText(Integer.toString(selectedPlayer.getPhone()));
+        // TELEPHONE
+        // If the value from the database is set to "null" the phone-field will display
+        // "0" in the textfield. This if-statement says, that if the value is "0", then
+        // display nothing. If the value is not null, then display the phonenumber.
+        if (selectedPlayer.getPhone() == 0) {
+            telephone.setText("");
+        } else {
+            telephone.setText(Integer.toString(selectedPlayer.getPhone()));
+        }
+        // MAIL
         mail.setText(selectedPlayer.getMail());
+        // IN-CASE-OF-EMERGENCY NAME
         ICEnameInput.setText(selectedPlayer.getICEname());
-        ICEphoneInput.setText(Integer.toString(selectedPlayer.getICEtelephone()));
+        // IN-CASE-OF-EMERGENCY PHONE
+        // If the value from the database is set to "null" the phone-field will display
+        // "0" in the textfield. This if-statement says, that if the value is "0", then
+        // display nothing. If the value is not null, then display the phonenumber.
+        if (selectedPlayer.getICEtelephone() == 0) {
+            ICEphoneInput.setText("");
+        } else {
+            ICEphoneInput.setText(Integer.toString(selectedPlayer.getICEtelephone()));
+        }
+        // BIRTHDAY
+        // This function formats the data from the "birthday" field in the database
+        // and displays it the correct way. If there is no data, the field will be
+        // empty. But if there is a value, it will be displayed as "dd/mm/yyyy"
         DateFormat format = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
-        if (selectedPlayer.getBirthday() == null){
+        if (selectedPlayer.getBirthday() == null) {
             birthday.setValue(localDate);
         } else {
             Date d = format.parse(selectedPlayer.getBirthday());
             LocalDate localDate = d.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             birthday.setValue(localDate);
         }
+        // POSITION
         position.setValue(selectedPlayer.getPosition());
-
-        // setting checkbox to fire if status == 1
-        if(selectedPlayer.getHealth() == 1){
+        // HEALTH
+        // Setting checkbox to fire if status == 1
+        if (selectedPlayer.getHealth() == 1) {
             health.fire();
         }
 
@@ -105,7 +152,12 @@ public class EditPlayerController {
         redCards.setText(Integer.toString(selectedPlayer.getRedCards()));
     }
 
-    public void saveButtonClick(){
+    public void health_label_clicked() {
+        System.out.println("--- Health label is clicked, and therefore the 'Health' is activated/deactivated. ---");
+        health.fire();
+    }
+
+    public void saveButtonClick() throws IOException {
         try {
             Connection conn = SqlConnection.connectToDB();
 
@@ -117,73 +169,81 @@ public class EditPlayerController {
 
             PreparedStatement stmt = conn.prepareStatement(sql);
 
-            // Inserts data into the "name" field in the database. If there is no data, it will set the string to "null"
-            if (nameInput.getText().equals("")){
-                stmt.setString(1, null);
-            } else {
-                stmt.setString(1, nameInput.getText());
-            }
-
-            // Inserts data into the "address" field in the database. If there is no data, it will set the string to "null"
-            if (address.getText().equals("")){
-                stmt.setString(2, null);
-            } else {
-                stmt.setString(2, address.getText());
-            }
-
+            // NAME
+            stmt.setString(1, nameInput.getText());
+            // ADDRESS
+            stmt.setString(2, address.getText());
+            // PHONE
             // Inserts data into the "phone" field in the database. If there is no data, it will set the string to "null"
-            if (telephone.getText().equals("")){
+            if (telephone.getText().equals("")) {
                 stmt.setNull(3, Types.INTEGER);
             } else {
                 stmt.setInt(3, Integer.parseInt(telephone.getText())); // String being parsed to int, to give it to DB.
             }
-
-            // Inserts data into the "mail" field in the database. If there is no data, it will set the string to "null"
-            if (mail.getText().equals("")){
-                stmt.setString(4, null);
-            } else {
-                stmt.setString(4, mail.getText());
-            }
-
-            // Inserts data into the "iceName" field in the database. If there is no data, it will set the string to "null"
-            if (ICEnameInput.getText().equals("")){
-                stmt.setString(5, null);
-            } else {
-                stmt.setString(5, ICEnameInput.getText());
-            }
-
+            // MAIL
+            stmt.setString(4, mail.getText());
+            // IN-CASE-OF-EMERGENCY NAME
+            stmt.setString(5, ICEnameInput.getText());
+            // IN-CASE-OF-EMERGENCY PHONE
             // Inserts data into the "iceTelephone" field in the database. If there is no data, it will set the string to "null"
-            if (ICEphoneInput.getText().equals("")){
+            if (ICEphoneInput.getText().equals("")) {
                 stmt.setNull(6, Types.INTEGER);
             } else {
                 stmt.setInt(6, Integer.parseInt(ICEphoneInput.getText())); // String being parsed to int, to give it to DB.
             }
-
+            // BIRTHDAY
             // Creates a string, from the birthdayInput, and
             // inserts data into the "birthday" field in the database.
             // If there is no data, it will set the string to "null"
-            if(birthday.getValue() == null){
+            if (birthday.getValue() == null) {
                 stmt.setString(7, null);
             } else {
                 String date = birthday.getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
                 stmt.setString(7, date);
             }
-            // Inserts data into the "position" field in the database
-            stmt.setString(8, valueOf(position.getSelectionModel().getSelectedItem()));
-
-            // Inserts data into the "health" field in the database
+            // POSITION
+            if (position.getValue() == null) {
+                stmt.setString(8, null);
+            } else {
+                stmt.setString(8, valueOf(position.getSelectionModel().getSelectedItem()));
+            }
+            // HEALTH
             stmt.setInt(9, health.isSelected() ? 1 : 0);
-
+            // PLAYER ID
             stmt.setInt(10, playerID);
 
+            // Updates the database
             stmt.executeUpdate();
-
+            // Closes the connection to the database
             SqlConnection.closeConnection();
 
-            Stage stage = (Stage) saveButton.getScene().getWindow();
+
+            // Opens new window, so the player can see feedback, and closes the "Edit window", after the user clicks "Ok."
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../EditPlayer-Edited-Pop-up.fxml"));
+            Parent editPlayerFXML = loader.load();
+            PlayerEditedPopController cont = loader.getController();
+
+            cont.setText(nameInput.getText());
+            Scene playerEditedScene = new Scene(editPlayerFXML);
+            Stage stage = new Stage();
+            stage.setResizable(false);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Spiller ændret");
+            stage.setScene(playerEditedScene);
+            stage.showAndWait();
+            // Closing the window and returning to addPlayerFXML.fxml
             stage.close();
+            // Closing the window and returning to PlayerList.fxml
+            cancelButtonClick_EDIT();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public void cancelButtonClick_EDIT() {
+        // Closing the window and returning to PlayerList.fxml
+        Stage stage = (Stage) cancelButton_EDIT.getScene().getWindow();
+        stage.close();
     }
 }

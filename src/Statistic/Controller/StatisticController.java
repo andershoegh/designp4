@@ -17,59 +17,50 @@ import java.sql.SQLException;
 
 public class StatisticController {
 
-    private ObservableList<Player> goalsData;
     //Mål
+    private ObservableList<Player> goalsData;
     @FXML private TableView<Player> stats_goals_tableview;
-    /*@FXML private TableColumn<?, ?> stats_goals_number_tablecolumn;*/
     @FXML private TableColumn<? , ?> stats_goals_tablecolumn;
     @FXML private TableColumn<?, ?> stats_goals_amount_tablecolumn;
 
-    private ObservableList<Player> matchData;
     // Kampe spillet
+    private ObservableList<Player> matchData;
     @FXML private TableView<Player> stats_match_tableview;
-    /*@FXML private TableColumn<?, ?> stats_match_number_tablecolumn;*/
     @FXML private TableColumn<?, ?> stats_match_tablecolumn;
     @FXML private TableColumn<?, ?> stats_match_amount_tablecolumn;
 
-    private ObservableList<Player> assistsData;
     // Assists
+    private ObservableList<Player> assistsData;
     @FXML private TableView<Player> stats_assists_tableview;
-    /*@FXML private TableColumn<?, ?> stats_assists_number_tablecolumn;*/
     @FXML private TableColumn<?, ?> stats_assists_tablecolumn;
     @FXML private TableColumn<?, ?> stats_assists_amount_tablecolumn;
 
-    private ObservableList<Player> motmData;
     // Man of the match
+    private ObservableList<Player> motmData;
     @FXML private TableView<Player> stats_mofm_tableview;
-    /*@FXML private TableColumn<?, ?> stats_mofm_number_tablecolumn;*/
     @FXML private TableColumn<?, ?> stats_mofm_tablecolumn;
     @FXML private TableColumn<?, ?> stats_mofm_amount_tablecolumn;
 
-    private ObservableList<Player> trainingsData;
     // Træninger
+    private ObservableList<Player> trainingsData;
     @FXML private TableView<Player> stats_trainings_tableview;
-    /*@FXML private TableColumn<?, ?> stats_trainings_number_tablecolumn;*/
     @FXML private TableColumn<?, ?> stats_trainings_tablecolumn;
     @FXML private TableColumn<?, ?> stats_trainings_amount_tablecolumn;
 
-    private ObservableList<Player> yellowData;
     // Gule kort
+    private ObservableList<Player> yellowData;
     @FXML private TableView<Player> stats_yellowcards_tableview;
-    /*@FXML private TableColumn<?, ?> stats_yellowcards_number_tablecolumn;*/
     @FXML private TableColumn<?, ?> stats_yellowcards_tablecolumn;
     @FXML private TableColumn<?, ?> stats_yellowcards_amount_tablecolumn;
 
-    private ObservableList<Player> redData;
     // Røde kort
+    private ObservableList<Player> redData;
     @FXML private TableView<Player> stats_redcards_tableview;
-    /*@FXML private TableColumn<?, ?> stats_cards_number_tablecolumn;*/
     @FXML private TableColumn<?, ?> stats_redcards_tablecolumn;
     @FXML private TableColumn<?, ?> stats_redcards_amount_tablecolumn;
 
-
     // Runs when FXML is loaded
-    @FXML
-    public void initialize() {
+    @FXML public void initialize() {
         goalsData = FXCollections.observableArrayList();
         matchData = FXCollections.observableArrayList();
         assistsData = FXCollections.observableArrayList();
@@ -83,34 +74,28 @@ public class StatisticController {
 
     // Retrieves data from appropriate player class constructor
     private void setCellTable() {
-        //stats_goals_number_tablecolumn.setCellValueFactory(new PropertyValueFactory<>("number"));
         stats_goals_tablecolumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         stats_goals_amount_tablecolumn.setCellValueFactory(new PropertyValueFactory<>("goalsScored"));
-        //stats_goals_number_tablecolumn.setCellValueFactory(new PropertyValueFactory<>("number"));
         stats_match_tablecolumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         stats_match_amount_tablecolumn.setCellValueFactory(new PropertyValueFactory<>("attendedMatches"));
-        //stats_yellowcards_number_tablecolumn.setCellValueFactory(new PropertyValueFactory<>("number"));
         stats_yellowcards_tablecolumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         stats_yellowcards_amount_tablecolumn.setCellValueFactory(new PropertyValueFactory<>("yellowCards"));
-        //stats_cards_number_tablecolumn.setCellValueFactory(new PropertyValueFactory<>("number"));
         stats_redcards_tablecolumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         stats_redcards_amount_tablecolumn.setCellValueFactory(new PropertyValueFactory<>("redCards"));
-        //stats_assists_number_tablecolumn.setCellValueFactory(new PropertyValueFactory<>("number"));
         stats_assists_tablecolumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         stats_assists_amount_tablecolumn.setCellValueFactory(new PropertyValueFactory<>("assists"));
-        //stats_mofm_number_tablecolumn.setCellValueFactory(new PropertyValueFactory<>("number"));
         stats_mofm_tablecolumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         stats_mofm_amount_tablecolumn.setCellValueFactory(new PropertyValueFactory<>("motm"));
-        //stats_trainings_number_tablecolumn.setCellValueFactory(new PropertyValueFactory<>("number"));
         stats_trainings_tablecolumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         stats_trainings_amount_tablecolumn.setCellValueFactory(new PropertyValueFactory<>("attendedTrainings"));
     }
 
     private void loadDataFromDB() {
         // Tager data fra "goalScored" og sætter det op i Descending order."
+        Connection conn = SqlConnection.connectToDB();
+
         try {
-            Connection conn = SqlConnection.connectToDB();
-            PreparedStatement statement = conn.prepareStatement("SELECT * FROM players ORDER BY goalScored DESC, name ASC  ");
+            PreparedStatement statement = conn.prepareStatement("SELECT * FROM players ORDER BY goalScored DESC, name ASC LIMIT 5");
             ResultSet rs = statement.executeQuery();
 
             while (rs.next()) {
@@ -123,13 +108,12 @@ public class StatisticController {
 
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println("--- Problems with loading 'Mål' ---");
         }
 
         // Tager data fra "attendedMatches" og sætter det op i Descending order."
         try {
-            Connection conn = SqlConnection.connectToDB();
-            PreparedStatement statement = conn.prepareStatement("SELECT * FROM players ORDER BY attendedMatches DESC, name ASC  ");
+            PreparedStatement statement = conn.prepareStatement("SELECT * FROM players ORDER BY attendedMatches DESC, name ASC LIMIT 5");
             ResultSet rs = statement.executeQuery();
 
             while (rs.next()) {
@@ -141,13 +125,12 @@ public class StatisticController {
                         rs.getInt("attendedTrainings"), rs.getInt("player_id")));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println("--- Problems with loading 'Kampe Spillet' ---");
         }
 
         // Tager data fra "assist" og sætter det op i Descending order."
         try {
-            Connection conn = SqlConnection.connectToDB();
-            PreparedStatement statement = conn.prepareStatement("SELECT * FROM players ORDER BY assist DESC, name ASC  ");
+            PreparedStatement statement = conn.prepareStatement("SELECT * FROM players ORDER BY assist DESC, name ASC LIMIT 5");
             ResultSet rs = statement.executeQuery();
 
             while (rs.next()) {
@@ -159,13 +142,12 @@ public class StatisticController {
                         rs.getInt("attendedTrainings"), rs.getInt("player_id")));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println("--- Problems with loading 'Assists' ---");
         }
 
         // Tager data fra "motm" og sætter det op i Descending order."
         try {
-            Connection conn = SqlConnection.connectToDB();
-            PreparedStatement statement = conn.prepareStatement("SELECT * FROM players ORDER BY motm DESC, name ASC ");
+            PreparedStatement statement = conn.prepareStatement("SELECT * FROM players ORDER BY motm DESC, name ASC LIMIT 5");
             ResultSet rs = statement.executeQuery();
 
             while (rs.next()) {
@@ -177,13 +159,12 @@ public class StatisticController {
                         rs.getInt("attendedTrainings"), rs.getInt("player_id")));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println("--- Problems with loading 'Man Of The Match' ---");
         }
 
         // Tager data fra "attendedTrainings" og sætter det op i Descending order."
         try {
-            Connection conn = SqlConnection.connectToDB();
-            PreparedStatement statement = conn.prepareStatement("SELECT * FROM players ORDER BY attendedTrainings DESC, name ASC  ");
+            PreparedStatement statement = conn.prepareStatement("SELECT * FROM players ORDER BY attendedTrainings DESC, name ASC LIMIT 5");
             ResultSet rs = statement.executeQuery();
 
             while (rs.next()) {
@@ -195,13 +176,12 @@ public class StatisticController {
                         rs.getInt("attendedTrainings"), rs.getInt("player_id")));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println("--- Problems with loading 'Antal Træninger' ---");
         }
 
         // Tager data fra "yellowCards" og sætter det op i Descending order."
         try {
-            Connection conn = SqlConnection.connectToDB();
-            PreparedStatement statement = conn.prepareStatement("SELECT * FROM players ORDER BY yellowCards DESC, name ASC  ");
+            PreparedStatement statement = conn.prepareStatement("SELECT * FROM players ORDER BY yellowCards DESC, name ASC LIMIT 5");
             ResultSet rs = statement.executeQuery();
 
             while (rs.next()) {
@@ -213,13 +193,12 @@ public class StatisticController {
                         rs.getInt("attendedTrainings"), rs.getInt("player_id")));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println("--- Problems with loading 'Gule Kort' ---");
         }
 
         // Tager data fra "redCards" og sætter det op i Descending order."
         try {
-            Connection conn = SqlConnection.connectToDB();
-            PreparedStatement statement = conn.prepareStatement("SELECT * FROM players ORDER BY redCards DESC, name ASC  ");
+            PreparedStatement statement = conn.prepareStatement("SELECT * FROM players ORDER BY redCards DESC, name ASC LIMIT 5");
             ResultSet rs = statement.executeQuery();
 
             while (rs.next()) {
@@ -231,9 +210,8 @@ public class StatisticController {
                         rs.getInt("attendedTrainings"), rs.getInt("player_id")));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println("--- Problems with loading 'Røde Kort' ---");
         }
-
 
         // inputting retrieved data from db into table row
         stats_goals_tableview.setItems(goalsData);
@@ -244,13 +222,11 @@ public class StatisticController {
         stats_yellowcards_tableview.setItems(yellowData);
         stats_redcards_tableview.setItems(redData);
 
-
         SqlConnection.closeConnection();
     }
 
     // Menu buttons navigation
     MenuController controller = new MenuController();
-
     public void menuButtonClick(ActionEvent event){
         controller.menuNavigation(event);
     }
