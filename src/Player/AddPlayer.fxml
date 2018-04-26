@@ -55,7 +55,7 @@
                                 <Insets left="45.0" />
                             </GridPane.margin>
                             <tooltip>
-                                <Tooltip text="Skriv spillerens telefon nummer. Det virker kun med 8 tal eller mindre.  Dette kan altid ændres under &quot;Vis spiller.&quot;" />
+                                <Tooltip text="Skriv spillerens telefon nummer. Dette kan altid ændres under &quot;Vis spiller.&quot;" />
                             </tooltip></TextField>
                         <TextField fx:id="mailInput" prefWidth="300.0" promptText="email@example.dk" GridPane.columnIndex="1" GridPane.rowIndex="3">
                             <tooltip>
@@ -70,7 +70,7 @@
                                 <Insets left="45.0" />
                             </GridPane.margin>
                             <tooltip>
-                                <Tooltip text="Skriv f.eks. spillerens forældres telefon nummer. Det virker kun med 8 tal eller mindre.  Dette kan altid ændres under &quot;Vis spiller.&quot;" />
+                                <Tooltip text="Skriv f.eks. spillerens forældres telefon nummer.  Dette kan altid ændres under &quot;Vis spiller.&quot;" />
                             </tooltip></TextField>
                         <Label styleClass="window" text="Navn" />
                         <Label styleClass="window" text="Addresse" GridPane.rowIndex="1" />
