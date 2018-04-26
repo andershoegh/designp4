@@ -3,7 +3,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -12,7 +13,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Calendar.Controller.CalendarController">
+<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Calendar.Controller.CalendarController">
    <children>
       <HBox maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0">
          <children>
@@ -63,7 +64,7 @@
                      <children>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Button mnemonicParsing="false" fx:id="PrevMonthButton" onMouseClicked="#PrevMonthButtonClick">
+                              <Button fx:id="PrevMonthButton" mnemonicParsing="false" onMouseClicked="#PrevMonthButtonClick" style="-fx-background-color: #e8e8e8;">
                                  <graphic>
                                     <ImageView fitHeight="60.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -73,7 +74,7 @@
                                  </graphic>
                               </Button>
                               <Label fx:id="MonthYearLabel" alignment="CENTER" contentDisplay="CENTER" prefWidth="230.0" styleClass="calenderDate" stylesheets="@../stylesheet.css" text="* Month / Year picker goes here *" textAlignment="CENTER" />
-                              <Button mnemonicParsing="false" fx:id="NextMonthButton" onMouseClicked="#NextMonthButtonClick">
+                              <Button fx:id="NextMonthButton" mnemonicParsing="false" onMouseClicked="#NextMonthButtonClick" style="-fx-background-color: #e8e8e8;">
                                  <graphic>
                                     <ImageView fitHeight="60.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -88,7 +89,7 @@
                            <children>
                               <HBox alignment="TOP_CENTER" prefHeight="63.0" prefWidth="1081.0">
                                  <children>
-                                    <HBox alignment="CENTER" prefHeight="64.0" prefWidth="270.0" style="-fx-background-color: #383838;">
+                                    <HBox alignment="CENTER" prefHeight="64.0" prefWidth="300.0" style="-fx-background-color: #383838;">
                                        <HBox.margin>
                                           <Insets left="20.0" right="20.0" />
                                        </HBox.margin>
@@ -96,7 +97,7 @@
                                           <Label fx:id="KampeLabel" style="-fx-text-fill: white;" text="Kampe" />
                                        </children>
                                     </HBox>
-                                    <HBox alignment="CENTER" layoutX="416.0" layoutY="10.0" prefHeight="100.0" prefWidth="270.0" style="-fx-background-color: #383838;">
+                                    <HBox alignment="CENTER" layoutX="416.0" layoutY="10.0" prefHeight="100.0" prefWidth="300.0" style="-fx-background-color: #383838;">
                                        <HBox.margin>
                                           <Insets left="20.0" right="20.0" />
                                        </HBox.margin>
@@ -104,7 +105,7 @@
                                           <Label fx:id="TraeningLabel" style="-fx-text-fill: white;" text="Træning" />
                                        </children>
                                     </HBox>
-                                    <HBox alignment="CENTER" layoutX="571.0" layoutY="10.0" prefHeight="100.0" prefWidth="270.0" style="-fx-background-color: #383838;">
+                                    <HBox alignment="CENTER" layoutX="571.0" layoutY="10.0" prefHeight="100.0" prefWidth="300.0" style="-fx-background-color: #383838;">
                                        <HBox.margin>
                                           <Insets left="20.0" right="20.0" />
                                        </HBox.margin>
@@ -115,26 +116,42 @@
                                  </children>
                               </HBox>
                               <HBox alignment="TOP_CENTER" prefHeight="240.0" prefWidth="1081.0" VBox.vgrow="ALWAYS">
-                                 <children>
-                                    <ListView fx:id="matchListView" prefHeight="100.0" prefWidth="270.0">
-                                       <HBox.margin>
-                                          <Insets left="20.0" right="20.0" />
-                                       </HBox.margin>
-                                    </ListView>
-                                    <ListView fx:id="TrainingListView" layoutX="416.0" layoutY="10.0" prefHeight="100.0" prefWidth="270.0">
-                                       <HBox.margin>
-                                          <Insets left="20.0" right="20.0" />
-                                       </HBox.margin>
-                                    </ListView>
-                                    <ListView fx:id="OtherListView" layoutX="571.0" layoutY="10.0" prefHeight="100.0" prefWidth="270.0">
-                                       <HBox.margin>
-                                          <Insets left="20.0" right="20.0" />
-                                       </HBox.margin>
-                                    </ListView>
-                                 </children>
                                  <padding>
                                     <Insets bottom="10.0" />
                                  </padding>
+                                 <children>
+                                    <TableView fx:id="matchTableView" prefHeight="200.0" prefWidth="300.0">
+                                      <columns>
+                                        <TableColumn fx:id="MDayInMonth" prefWidth="49.0" text="Dag i måned" />
+                                        <TableColumn fx:id="matchTitel" prefWidth="118.0" text="Kamp" />
+                                          <TableColumn fx:id="matchDate" prefWidth="59.0" text="Ugedag" />
+                                          <TableColumn fx:id="matchTime" prefWidth="73.0" text="Tidspunkt" />
+                                      </columns>
+                                       <HBox.margin>
+                                          <Insets left="20.0" right="20.0" />
+                                       </HBox.margin>
+                                    </TableView>
+                                    <TableView fx:id="TrainingTableView" prefHeight="200.0" prefWidth="300.0">
+                                      <columns>
+                                        <TableColumn fx:id="TDayInMonth" prefWidth="60.0" text="Dag i Måned" />
+                                          <TableColumn fx:id="TrainingDate" prefWidth="115.0" text="Dato" />
+                                          <TableColumn fx:id="TrainingTime" prefWidth="124.0" text="Tidspunkt" />
+                                      </columns>
+                                       <HBox.margin>
+                                          <Insets left="20.0" right="20.0" />
+                                       </HBox.margin>
+                                    </TableView>
+                                    <TableView fx:id="OtherTableView" prefHeight="200.0" prefWidth="300.0">
+                                      <columns>
+                                        <TableColumn fx:id="ODayInMonth" prefWidth="83.0" text="Dag i måned" />
+                                        <TableColumn fx:id="OtherTitel" prefWidth="110.0" text="Titel" />
+                                          <TableColumn fx:id="OtherTime" prefWidth="106.0" text="Tidspunkt" />
+                                      </columns>
+                                       <HBox.margin>
+                                          <Insets left="20.0" right="20.0" />
+                                       </HBox.margin>
+                                    </TableView>
+                                 </children>
                               </HBox>
                            </children>
                         </VBox>
@@ -145,7 +162,7 @@
                                     <Insets bottom="15.0" right="42.0" />
                                  </HBox.margin>
                               </Button>
-                              <Button fx:id="ExporterButton" mnemonicParsing="false" text="Eksporter">
+                              <Button fx:id="DeleteButton" mnemonicParsing="false" onAction="#deleteEventButtonClick" prefWidth="95.0" style="-fx-background-color: #ab4642;" text="Slet">
                                  <HBox.margin>
                                     <Insets bottom="15.0" right="37.0" />
                                  </HBox.margin>

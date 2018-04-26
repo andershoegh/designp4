@@ -9,11 +9,12 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="198.0" prefWidth="265.0" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Player.Controller.DeletePlayerController">
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="198.0" prefWidth="265.0" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Calendar.Controller.DeleteEventController">
    <children>
       <VBox alignment="CENTER" prefWidth="273.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label text="Ønsker du at slette spiller?">
+            <Label text="Ønsker du at slette event?">
                <VBox.margin>
                   <Insets bottom="5.0" top="37.0" />
                </VBox.margin>
@@ -21,7 +22,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="playerNameLabel" text="Label" />
+            <Label fx:id="eventNameLabel" text="Label" />
             <Region prefHeight="28.0" prefWidth="266.0" />
             <HBox alignment="CENTER_RIGHT" prefWidth="200.0">
                <children>

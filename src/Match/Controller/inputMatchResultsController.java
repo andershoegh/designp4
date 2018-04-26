@@ -8,10 +8,17 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.ChoiceBoxTableCell;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
+
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -23,6 +30,10 @@ public class inputMatchResultsController {
     private int goalsFor;
     private int goalsAgainst;
     private ObservableList<Player> availablePlayers = FXCollections.observableArrayList();
+    private ObservableList<String> playerGoals = FXCollections.observableArrayList();
+    private ObservableList<String> playerAssists = FXCollections.observableArrayList();
+    private ObservableList<String> playerYellow = FXCollections.observableArrayList();
+    private ObservableList<String> playerRed = FXCollections.observableArrayList();
 
     MenuController controller = new MenuController();
 
@@ -39,21 +50,10 @@ public class inputMatchResultsController {
     @FXML private ChoiceBox<Player> choiceboxMOTM;
     @FXML private TextField textFieldNote;
 
-    @FXML private TableView<Player> tableGoals;
-    @FXML private TableColumn<Player, ChoiceBox<Player>> columnGoalsName;
-    @FXML private TableColumn<?, ?> columnGoalsAmount;
-
-    @FXML private TableView<Player> tableAssists;
-    @FXML private TableColumn<?, ?> columnAssistsName;
-    @FXML private TableColumn<?, ?> columnAssistsAmount;
-
-    @FXML private TableView<Player> tableYellowCards;
-    @FXML private TableColumn<?, ?> columnYellowName;
-    @FXML private TableColumn<?, ?> columnYellowAmount;
-
-    @FXML private TableView<Player> tableRedCards;
-    @FXML private TableColumn<?, ?> columnRedName;
-    @FXML private TableColumn<?, ?> columnRedAmount;
+    @FXML private ListView<String> listGoals;
+    @FXML private ListView<String> listAssists;
+    @FXML private ListView<String> listYellow;
+    @FXML private ListView<String> listRed;
 
     StringConverter<Player> converter = new StringConverter<Player>() {
         @Override public String toString(Player object) { return object.getName(); }
@@ -62,6 +62,7 @@ public class inputMatchResultsController {
 
     @FXML public void initialize(){
         choiceboxMOTM.setConverter(converter);
+        loadDataFromDB();
 
         listPlayers.setCellFactory(new Callback<ListView, ListCell>() {
             @Override public ListCell call(ListView param) {
@@ -77,12 +78,6 @@ public class inputMatchResultsController {
         });
     }
 
-    /*
-    private void setCellTable(){
-        columnGoalsName.setCellFactory(ChoiceBoxTableCell.forTableColumn(availablePlayers));
-    }
-    */
-
     public void initData(Match match){
         selectedMatch = match;
 
@@ -97,6 +92,11 @@ public class inputMatchResultsController {
         }
 
         dateLabel.setText(selectedMatch.getDate());
+
+        listGoals.setItems(playerGoals);
+        listAssists.setItems(playerAssists);
+        listYellow.setItems(playerYellow);
+        listRed.setItems(playerRed);
     }
 
     public void loadDataFromDB(){
@@ -124,11 +124,23 @@ public class inputMatchResultsController {
         SqlConnection.closeConnection();
     }
 
-    public void addRowButtonClick(ActionEvent event){
-        Hyperlink text = (Hyperlink) event.getSource();
-        System.out.println(text.getId());
+    public void addButtonClick(){
+        addResultEntryController controller = new addResultEntryController();
+        controller.initData(availablePlayers);
 
-        //ChoiceBox<Player> box = new ChoiceBox<>();
+        try {
+            Parent addResultFXML = FXMLLoader.load(getClass().getResource("../addResultEntry.fxml"));
+            Scene addResultScene = new Scene(addResultFXML);
+            Stage stage = new Stage();
+            stage.setResizable(false);
+            stage.initModality(Modality.APPLICATION_MODAL);
+
+
+            stage.setScene(addResultScene);
+            stage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void acceptButtonClick(ActionEvent event){
@@ -145,8 +157,7 @@ public class inputMatchResultsController {
 
         // Inserting data into matches table
         try {
-        String sqlMatch = "INSERT INTO matches (goalsFor, goalsAgainst, note) " +
-                "VALUES (?, ?, ?) WHERE match_id = ?";
+        String sqlMatch = "INSERT INTO matches (goalsFor, goalsAgainst, note) VALUES(?, ?, ?) WHERE match_id = ?";
 
             PreparedStatement stmt = conn.prepareStatement(sqlMatch);
 
