@@ -11,6 +11,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
+import javafx.scene.layout.GridPane;
+import javafx.scene.text.Text;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -26,12 +29,21 @@ public class LineupController {
 
     @FXML private TableView<Player> playersTable;
     @FXML private TableColumn<?, ?> columnPlayers;
-    @FXML private ImageView iv24;
+    @FXML private ImageView imageView;
+    @FXML private GridPane gridPane;
+    @FXML private Text text3;
 
     @FXML public void initialize(){
         playerData = FXCollections.observableArrayList();
         setCellTable();
         loadDataFromDB();
+/*
+        for(int i = 0; i<7; i++) {
+            for(int j = 0; j<11; j++) {
+                gridPane.add(new ImageView());
+            }
+        }
+*/
     }
 
     private void setCellTable(){
@@ -58,21 +70,19 @@ public class LineupController {
     }
 
     @FXML
-    private void handleDragOver(DragEvent event) {
-        if(event.getDragboard().hasFiles()) {
-            event.acceptTransferModes(TransferMode.ANY);
+    private void handleDragDetection (MouseEvent event) {
+
+        System.out.println("dragdetected");
+        Player selected = playersTable.getSelectionModel().getSelectedItem();
+        if(selected != null) {
+            Dragboard db = playersTable.startDragAndDrop(TransferMode.MOVE);
+            ClipboardContent content = new ClipboardContent();
+            content.putString(selected.getName());
+            db.setContent(content);
+            System.out.println(selected.getName());
+            event.consume();
         }
-    }
-
-    @FXML
-    private void handleDrop(DragEvent event) throws FileNotFoundException {
-        List<File> files = event.getDragboard().getFiles();
-        Image img = new Image(new FileInputStream(files.get(0)));
-        iv24.setImage(img);
-    }
-
-    @FXML
-    private void handleDragDetection (DragEvent event) {
+        /*
         Dragboard db = iv24.startDragAndDrop(TransferMode.ANY);
 
         ClipboardContent cb = new ClipboardContent();
@@ -80,6 +90,46 @@ public class LineupController {
 
         db.setContent(cb);
 
+        event.consume(); */
+    }
+
+    @FXML
+    private void handleDragOver(DragEvent event) {
+        System.out.println("dragover detected");
+        Dragboard db = event.getDragboard();
+        if(event.getDragboard().hasString()) {
+            event.acceptTransferModes(TransferMode.MOVE);
+        }
         event.consume();
+    }
+
+    @FXML
+    private void handleDragDropped(DragEvent event) {
+        System.out.println("dragdropped detected");
+        Dragboard db = event.getDragboard();
+        boolean success = false;
+        if(event.getDragboard().hasString()) {
+            //String text1 = db.getString();
+            text3.setText(db.getString());
+
+            playersTable.setItems(playerData);
+            success = true;
+        }
+
+        event.setDropCompleted(success);
+        event.consume();
+        /*
+        List<File> files = event.getDragboard().getFiles();
+        Image img = new Image(new FileInputStream(files.get(0)));
+        iv24.setImage(img); */
+    }
+
+    @FXML
+    private void handleMouseClicked (MouseEvent event) {
+        System.out.println("selection detected");
+        Player selected = playersTable.getSelectionModel().getSelectedItem();
+        if(selected != null) {
+            System.out.println("select : " +selected.getName());
+        }
     }
 }
