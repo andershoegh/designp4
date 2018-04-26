@@ -5,6 +5,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Tooltip;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import Player.Player;
@@ -15,11 +17,14 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.util.Date;
 
 public class PlayerListController {
 
@@ -33,12 +38,36 @@ public class PlayerListController {
     @FXML private TableColumn<?, ?> columnMail;
     @FXML private TableColumn<?, ?> columnAddress;
     @FXML private TableColumn<?, ?> columnBirthday;
+    @FXML private Button show_player_btn;
 
     // Runs when FXML is loaded
     @FXML public void initialize(){
         playerData = FXCollections.observableArrayList();
         setCellTable();
         loadDataFromDB();
+    }
+
+    // Checks for double clicks, and opens edit window accordingly.
+    private Player temp;
+    private Date lastClickTime;
+    @FXML
+    private void handleRowSelect() {
+        Player row = tablePlayers.getSelectionModel().getSelectedItem();
+        if (row == null)
+            return;
+        if(row != temp){
+            temp = row;
+            lastClickTime = new Date();
+        } else if(row == temp) {
+            Date now = new Date();
+            long diff = now.getTime() - lastClickTime.getTime();
+            if (diff < 300){ //another click registered in 300 millis
+                System.out.println("--- Double Clicked on a row! Will open edit window. ---");
+                editPlayerButtonClick();
+            } else {
+                lastClickTime = new Date();
+            }
+        }
     }
 
     public void clearTable(){
@@ -49,7 +78,7 @@ public class PlayerListController {
     private void setCellTable(){
         columnName.setCellValueFactory(new PropertyValueFactory<>("name"));
         columnPosition.setCellValueFactory(new PropertyValueFactory<>("position"));
-        columnPhone.setCellValueFactory(new PropertyValueFactory<>("phone"));
+        columnPhone.setCellValueFactory(new PhonePropertyValueFactory<>("phone"));
         columnMail.setCellValueFactory(new PropertyValueFactory<>("mail"));
         columnAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
         columnBirthday.setCellValueFactory(new PropertyValueFactory<>("birthday"));
@@ -77,17 +106,17 @@ public class PlayerListController {
             e.printStackTrace();
         }
 
-        // inputting retrieved data from db into table row
+        // Inputs retrieved data from the database into rows
         tablePlayers.setItems(playerData);
     }
 
     public void addPlayerButtonClick(ActionEvent event){
-
         // Switching scene from PlayerList.FXML to AddPlayer.FXML
         try {
             Parent addPlayerFXML = FXMLLoader.load(getClass().getResource("../AddPlayer.fxml"));
             Scene addPlayerScene = new Scene(addPlayerFXML);
             Stage stage = new Stage();
+            stage.setResizable(false);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle("Opret spiller");
 
@@ -101,15 +130,16 @@ public class PlayerListController {
         }
     }
 
-    public void editPlayerButtonClick(){
+    public void editPlayerButtonClick() {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("../EditPlayer-Pop-up.fxml"));
             Parent editPlayerFXML = loader.load();
 
             Stage stage = new Stage();
+            stage.setResizable(false);
             stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setTitle("Redigér spiller");
+            stage.setTitle("Vis spiller");
 
             EditPlayerController controller = loader.getController();
             controller.initData(tablePlayers.getSelectionModel().getSelectedItem());
@@ -120,7 +150,10 @@ public class PlayerListController {
 
             clearTable();
             initialize();
-        } catch (IOException e){
+        } catch (IOException e) {
+            e.printStackTrace();
+
+        } catch (ParseException e) {
             e.printStackTrace();
         }
     }
@@ -132,6 +165,7 @@ public class PlayerListController {
             Parent deletePlayerFXML = loader.load();
 
             Stage stage = new Stage();
+            stage.setResizable(false);
             // Prevents user interaction with other windows while popup is open
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle("Slet spiller");
