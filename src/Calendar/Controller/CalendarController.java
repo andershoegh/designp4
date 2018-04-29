@@ -3,21 +3,21 @@ package Calendar.Controller;
 import Calendar.Controller.MatchTablePropertyValueFactory.MDatePropertyValueFactory;
 import Calendar.Controller.MatchTablePropertyValueFactory.MDayOfMonthPropertyValueFactory;
 import Calendar.Controller.MatchTablePropertyValueFactory.MatchTitelPropertyValueFactory;
+import Calendar.Controller.OtherTablePropertyValueFactory.ODayOfMonthPropertyValueFactory;
 import Calendar.Controller.TrainingTablePropertyValueFactory.TDatePropertyValueFactory;
 import Calendar.Controller.TrainingTablePropertyValueFactory.TDayOfMonthPropertyValueFactory;
 import Calendar.Controller.TrainingTablePropertyValueFactory.TTimePropertyValueFactory;
 import Controller.DeleteAble;
 import Controller.MenuController;
 import Match.Match;
+import Other_Event.Other;
 import SQL.SqlConnection;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.collections.FXCollections;
@@ -44,8 +44,8 @@ public class CalendarController {
     private ObservableList<Training> trainingList = FXCollections.observableArrayList();
     private ObservableList<Training> FiltTrainingList = FXCollections.observableArrayList();
 
-
-    private ObservableList<?> others = FXCollections.observableArrayList();
+    private ObservableList<Other> otherList = FXCollections.observableArrayList();
+    private ObservableList<Other> FiltOtherList = FXCollections.observableArrayList();
 
     private DeleteAble selectedItem = null;
     private Date date;
@@ -56,10 +56,10 @@ public class CalendarController {
     @FXML private Button PrevMonthButton;
     @FXML private Button NextMonthButton;
 
-    @FXML private TableView<?>OtherTableView;
+    @FXML private TableView<Other>otherTableView;
     @FXML private TableColumn<?,?>ODayInMonth;
-    @FXML private TableColumn<?,?>OtherTitel;
-    @FXML private TableColumn<?,?>OtherTime;
+    @FXML private TableColumn<?,?>otherTitel;
+    @FXML private TableColumn<?,?>otherTime;
 
     @FXML private TableView<Match>matchTableView;
     @FXML private TableColumn<?,?>MDayInMonth;
@@ -67,10 +67,10 @@ public class CalendarController {
     @FXML private TableColumn<?,?>matchDate;
     @FXML private TableColumn<?,?>matchTime;
 
-    @FXML private TableView<Training> TrainingTableView;
+    @FXML private TableView<Training> trainingTableView;
     @FXML private TableColumn<?,?>TDayInMonth;
-    @FXML private TableColumn<?,?>TrainingDate;
-    @FXML private TableColumn<?,?>TrainingTime;
+    @FXML private TableColumn<?,?> trainingDate;
+    @FXML private TableColumn<?,?> trainingTime;
 
     @FXML private Button OpretButton;
 
@@ -91,13 +91,19 @@ public class CalendarController {
         TSetCellTable();
         loadTrainingFromDB();
 
-        TrainingTableView
+        otherList.clear();
+        clearOtherTable();
+        OSetCellTable();
+        loadOtherFromDB();
+
+        trainingTableView
                 .getSelectionModel()
                 .selectedItemProperty()
                 .addListener((observable, oldValue, newValue) -> {
                     if (newValue != null) {
                         selectedItem = newValue;
                         matchTableView.getSelectionModel().clearSelection();
+                        otherTableView.getSelectionModel().clearSelection();
                     }
                 });
 
@@ -107,10 +113,26 @@ public class CalendarController {
                 .addListener((observable, oldValue, newValue) -> {
                     if (newValue != null) {
                         selectedItem = newValue;
-                        TrainingTableView.getSelectionModel().clearSelection();
+                        trainingTableView.getSelectionModel().clearSelection();
+                        otherTableView.getSelectionModel().clearSelection();
                     }
                 });
-    }/*
+
+
+        otherTableView
+                .getSelectionModel()
+                .selectedItemProperty()
+                .addListener((observable, oldValue, newValue) -> {
+                    if (newValue != null) {
+                        selectedItem = newValue;
+                        trainingTableView.getSelectionModel().clearSelection();
+                        matchTableView.getSelectionModel().clearSelection();
+                    }
+                });
+    }
+
+
+    /*
     // Checks for double clicks.
     private Match temp;
     private Date lastClickTime;
@@ -186,15 +208,15 @@ public class CalendarController {
 
 
     //Clear the table view
-    public void clearTrainingTable(){TrainingTableView.getItems().clear();}
+    public void clearTrainingTable(){
+        trainingTableView.getItems().clear();}
 
     // Retrieves data from appropriate training class constructor
     private void TSetCellTable(){
         TDayInMonth.setCellValueFactory(new TDayOfMonthPropertyValueFactory<>("date"));
-        TrainingDate.setCellValueFactory(new TDatePropertyValueFactory<>("date"));
-        TrainingTime.setCellValueFactory(new TTimePropertyValueFactory<>("startTime"));
+        trainingDate.setCellValueFactory(new TDatePropertyValueFactory<>("date"));
+        trainingTime.setCellValueFactory(new TTimePropertyValueFactory<>("startTime"));
     }
-
 
     //Loads data from trainings table in DB
     private void loadTrainingFromDB() throws ParseException {
@@ -230,11 +252,58 @@ public class CalendarController {
         }
 
         // inputting retrieved data from db into table view
-        TrainingTableView.setItems(FiltTrainingList);
+        trainingTableView.setItems(FiltTrainingList);
         SqlConnection.closeConnection();
     }
 
 
+
+    //Clear the table view
+    public void clearOtherTable(){otherTableView.getItems().clear();}
+
+    // Retrieves data from appropriate training class constructor
+    private void OSetCellTable(){
+        ODayInMonth.setCellValueFactory(new ODayOfMonthPropertyValueFactory<>("date"));
+        otherTitel.setCellValueFactory(new PropertyValueFactory<>("name"));
+        otherTime.setCellValueFactory(new PropertyValueFactory<>("time"));
+    }
+
+    //Loads data from trainings table in DB
+    private void loadOtherFromDB() throws ParseException {
+        clearOtherTable();
+        otherList.clear();
+
+        try {
+            Connection conn = SqlConnection.connectToDB();
+            PreparedStatement statement = conn.prepareStatement("SELECT * FROM otherEvents");
+            ResultSet rs = statement.executeQuery();
+
+            while(rs.next()){
+                otherList.add(new Other(rs.getInt("other_id"),
+                        rs.getString("name"),
+                        rs.getString("date"),
+                        rs.getString("time")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        //looping though the trainingList to add the relevant data to a filtered list, FiltTrainingList, for the tableView
+        for(int i=0; i< otherList.size();i++){
+            //Parsing the date-string-variable to a datatype of date named localDate
+            DateFormat format = new SimpleDateFormat("d/MM/yyyy", Locale.ENGLISH);
+            Date localDate = format.parse(otherList.get(i).getDate());
+
+            //Checks if the month and year of the training is equal to the month and year of the calender
+            if(localDate.getMonth() == date.getMonth() && localDate.getYear() == date.getYear()){
+                FiltOtherList.add(otherList.get(i));
+            }
+        }
+
+        // inputting retrieved data from db into table view
+        otherTableView.setItems(FiltOtherList);
+        SqlConnection.closeConnection();
+    }
 
 
 
@@ -243,11 +312,12 @@ public class CalendarController {
     public void NextMonthButtonClick() throws ParseException {
         matchList.clear();
         clearMatchTable();
-        MSetCellTable();
 
         trainingList.clear();
         clearTrainingTable();
-        TSetCellTable();
+
+        otherList.clear();
+        clearOtherTable();
 
 
         Calendar c = Calendar.getInstance();
@@ -258,6 +328,7 @@ public class CalendarController {
 
         loadMatchFromDB();
         loadTrainingFromDB();
+        loadOtherFromDB();
     }
 
     //Sets prev month in calender
@@ -270,6 +341,10 @@ public class CalendarController {
         trainingList.clear();
         TSetCellTable();
 
+        otherList.clear();
+        clearOtherTable();
+        OSetCellTable();
+
         Calendar c = Calendar.getInstance();
         c.setTime(date);
         c.add(Calendar.MONTH, -1);
@@ -278,6 +353,7 @@ public class CalendarController {
 
         loadMatchFromDB();
         loadTrainingFromDB();
+        loadOtherFromDB();
     }
 
 
@@ -300,17 +376,7 @@ public class CalendarController {
         }
     }
 
-
-
-    // Menu buttons navigation
-    MenuController controller = new MenuController();
-
-    public void menuButtonClick(ActionEvent event){
-        controller.menuNavigation(event);
-    }
-
-
-
+    //Loader delete event pop-up
     public void deleteEventButtonClick() throws ParseException {
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -343,9 +409,19 @@ public class CalendarController {
         finally {
             clearTrainingTable();
             clearMatchTable();
+            clearOtherTable();
             loadTrainingFromDB();
             loadMatchFromDB();
+            loadOtherFromDB();
         }
+    }
+
+
+    // Menu buttons navigation
+    MenuController controller = new MenuController();
+
+    public void menuButtonClick(ActionEvent event){
+        controller.menuNavigation(event);
     }
 
 

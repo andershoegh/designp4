@@ -89,6 +89,11 @@
 
 .headerVisibility .column-header-background{ visibility: hidden; }
 
+
+.scrollBarVisibility .scroll-bar:horizontal{
+    visibility: hidden;
+}
+
 .table-view {
     -fx-background-color: transparent;
     -fx-border-color: none;
