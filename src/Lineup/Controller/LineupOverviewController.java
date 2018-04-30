@@ -1,7 +1,9 @@
 package Lineup.Controller;
 
+import Controller.MenuController;
 import SQL.InnerJoinDB;
 import SQL.SqlConnection;
+import javafx.event.ActionEvent;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
