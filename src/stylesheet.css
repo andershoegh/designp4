@@ -195,11 +195,3 @@
 .hyperlink {
     -fx-text-fill: #a1b56c;
 }
-
-.delete.hyperlink {
-    -fx-text-fill: #ab4642;
-}
-
-.delete.hyperlink:hover {
-    -fx-text-fill: #c07471;
-}
