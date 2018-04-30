@@ -120,32 +120,32 @@
                                     <Insets bottom="10.0" />
                                  </padding>
                                  <children>
-                                    <TableView fx:id="matchTableView" prefHeight="200.0" prefWidth="300.0">
+                                    <TableView fx:id="matchTableView" prefHeight="200.0" prefWidth="300.0" styleClass="headerVisibility">
                                       <columns>
                                         <TableColumn fx:id="MDayInMonth" prefWidth="49.0" text="Dag i måned" />
                                         <TableColumn fx:id="matchTitel" prefWidth="118.0" text="Kamp" />
-                                          <TableColumn fx:id="matchDate" prefWidth="59.0" text="Ugedag" />
-                                          <TableColumn fx:id="matchTime" prefWidth="73.0" text="Tidspunkt" />
+                                          <TableColumn fx:id="matchDate" prefWidth="49.0" text="Ugedag" />
+                                          <TableColumn fx:id="matchTime" prefWidth="81.0" text="Tidspunkt" />
                                       </columns>
                                        <HBox.margin>
                                           <Insets left="20.0" right="20.0" />
                                        </HBox.margin>
                                     </TableView>
-                                    <TableView fx:id="TrainingTableView" prefHeight="200.0" prefWidth="300.0">
+                                    <TableView fx:id="trainingTableView" prefHeight="200.0" prefWidth="300.0" styleClass="headerVisibility">
                                       <columns>
                                         <TableColumn fx:id="TDayInMonth" prefWidth="60.0" text="Dag i Måned" />
-                                          <TableColumn fx:id="TrainingDate" prefWidth="115.0" text="Dato" />
-                                          <TableColumn fx:id="TrainingTime" prefWidth="124.0" text="Tidspunkt" />
+                                          <TableColumn fx:id="trainingDate" prefWidth="115.0" text="Dato" />
+                                          <TableColumn fx:id="trainingTime" prefWidth="120.0" text="Tidspunkt" />
                                       </columns>
                                        <HBox.margin>
                                           <Insets left="20.0" right="20.0" />
                                        </HBox.margin>
                                     </TableView>
-                                    <TableView fx:id="OtherTableView" prefHeight="200.0" prefWidth="300.0">
+                                    <TableView fx:id="otherTableView" prefHeight="200.0" prefWidth="300.0" styleClass="headerVisibility">
                                       <columns>
                                         <TableColumn fx:id="ODayInMonth" prefWidth="83.0" text="Dag i måned" />
-                                        <TableColumn fx:id="OtherTitel" prefWidth="110.0" text="Titel" />
-                                          <TableColumn fx:id="OtherTime" prefWidth="106.0" text="Tidspunkt" />
+                                        <TableColumn fx:id="otherTitel" prefWidth="110.0" text="Titel" />
+                                          <TableColumn fx:id="otherTime" prefWidth="102.0" text="Tidspunkt" />
                                       </columns>
                                        <HBox.margin>
                                           <Insets left="20.0" right="20.0" />

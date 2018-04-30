@@ -6,7 +6,7 @@
 }
 
 .window{
-    -fx-font-family: Montserrat;
+    -fx-font-family: "Montserrat";
     -fx-font-size: 12px;
     -fx-background-color: #e8e8e8;
 }
@@ -78,10 +78,16 @@
     -fx-background-color: #787878;
 }
 
+.table-row-cell:empty {
+    -fx-background-color: transparent;
+}
+
 .table-row-cell:selected {
     -fx-text-fill: #e8e8e8;
     -fx-background-color: #585858;
 }
+
+.headerVisibility .column-header-background{ visibility: hidden; }
 
 .table-view {
     -fx-background-color: transparent;
@@ -121,6 +127,18 @@
     -fx-background-color: #a1b56c;
     -fx-text-fill: white;
     -fx-pref-height: 30;
+}
+
+.choice-box:hover {
+    -fx-cursor: hand;
+}
+
+.choice-box .label {
+    -fx-text-fill: white;
+}
+
+.choice-box .menu-item .label {
+    -fx-text-fill: black;
 }
 
 .overviewButtons{
@@ -167,4 +185,16 @@
     -fx-cursor: hand;
     -fx-underline: true;
     -fx-text-fill: #787878;
+}
+
+.hyperlink {
+    -fx-text-fill: #a1b56c;
+}
+
+.delete.hyperlink {
+    -fx-text-fill: #ab4642;
+}
+
+.delete.hyperlink:hover {
+    -fx-text-fill: #c07471;
 }
