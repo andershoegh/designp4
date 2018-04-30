@@ -28,24 +28,18 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
+
 import Training.Training;
 
 public class CalendarController {
 
     private ObservableList<Match> matchList= FXCollections.observableArrayList();
-    private ObservableList<Match> FiltMatchList = FXCollections.observableArrayList();
-
     private ObservableList<Training> trainingList = FXCollections.observableArrayList();
-    private ObservableList<Training> FiltTrainingList = FXCollections.observableArrayList();
-
     private ObservableList<Other> otherList = FXCollections.observableArrayList();
-    private ObservableList<Other> FiltOtherList = FXCollections.observableArrayList();
 
     private DeleteAble selectedItem = null;
     private Date date;
@@ -53,8 +47,6 @@ public class CalendarController {
 
     // setting FXML IDs
     @FXML private Label MonthYearLabel;
-    @FXML private Button PrevMonthButton;
-    @FXML private Button NextMonthButton;
 
     @FXML private TableView<Other>otherTableView;
     @FXML private TableColumn<?,?>ODayInMonth;
@@ -72,8 +64,6 @@ public class CalendarController {
     @FXML private TableColumn<?,?> trainingDate;
     @FXML private TableColumn<?,?> trainingTime;
 
-    @FXML private Button OpretButton;
-
 
     //Running methods when scene gets loaded
     @FXML
@@ -81,20 +71,17 @@ public class CalendarController {
         date = new Date();
         MonthYearLabel.setText(sdf.format(date).toUpperCase());
 
-        matchList.clear();
-        clearMatchTable();
         MSetCellTable();
         loadMatchFromDB();
+        updateMatchTable();
 
-        trainingList.clear();
-        clearTrainingTable();
         TSetCellTable();
         loadTrainingFromDB();
+        updateTrainingTable();
 
-        otherList.clear();
-        clearOtherTable();
         OSetCellTable();
         loadOtherFromDB();
+        updateOtherTable();
 
         trainingTableView
                 .getSelectionModel()
@@ -157,9 +144,7 @@ public class CalendarController {
     }
 */
 
-    //Clear the table view
-    public void clearMatchTable(){matchTableView.getItems().clear();}
-
+    //Match-table methods
     // Retrieves data from appropriate match class constructor
     private void MSetCellTable(){
         MDayInMonth.setCellValueFactory(new MDayOfMonthPropertyValueFactory<>("date"));
@@ -170,9 +155,7 @@ public class CalendarController {
 
     //Loads data from Match table in DB
     private void loadMatchFromDB() throws ParseException {
-        clearMatchTable();
         matchList.clear();
-
         try {
             Connection conn = SqlConnection.connectToDB();
             PreparedStatement statement = conn.prepareStatement("SELECT * FROM matches");
@@ -188,29 +171,18 @@ public class CalendarController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-        //looping though the matchList to add the relevant data to a filtered list, FiltMatchList, for the tableList
-        for(int i=0; i< matchList.size();i++){
-            //Parsing the date-string-variable to a datatype of date named localDate
-            DateFormat format = new SimpleDateFormat("d/MM/yyyy", Locale.ENGLISH);
-            Date localDate = format.parse(matchList.get(i).getDate());
-
-            //Checks if the month and year of the match is equal to the month and year of the calender
-            if(localDate.getMonth() == date.getMonth() && localDate.getYear() == date.getYear()){
-                FiltMatchList.add(matchList.get(i));
-            }
-        }
-
-        // inputting retrieved data from db into table view
-        matchTableView.setItems(FiltMatchList);
         SqlConnection.closeConnection();
     }
 
+    // inputting retrieved data from db into table view
+    private void updateMatchTable(){
+        matchTableView.setItems(matchList.filtered(match -> match.getConvertedDate().getMonth() == date.getMonth()
+                && match.getConvertedDate().getYear() == date.getYear()));
+    }
 
-    //Clear the table view
-    public void clearTrainingTable(){
-        trainingTableView.getItems().clear();}
 
+
+    //Training-table methods
     // Retrieves data from appropriate training class constructor
     private void TSetCellTable(){
         TDayInMonth.setCellValueFactory(new TDayOfMonthPropertyValueFactory<>("date"));
@@ -220,9 +192,7 @@ public class CalendarController {
 
     //Loads data from trainings table in DB
     private void loadTrainingFromDB() throws ParseException {
-        clearTrainingTable();
         trainingList.clear();
-
         try {
             Connection conn = SqlConnection.connectToDB();
             PreparedStatement statement = conn.prepareStatement("SELECT * FROM trainings");
@@ -238,29 +208,17 @@ public class CalendarController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-        //looping though the trainingList to add the relevant data to a filtered list, FiltTrainingList, for the tableView
-        for(int i=0; i< trainingList.size();i++){
-            //Parsing the date-string-variable to a datatype of date named localDate
-            DateFormat format = new SimpleDateFormat("d/MM/yyyy", Locale.ENGLISH);
-            Date localDate = format.parse(trainingList.get(i).getDate());
-
-            //Checks if the month and year of the training is equal to the month and year of the calender
-            if(localDate.getMonth() == date.getMonth() && localDate.getYear() == date.getYear()){
-                FiltTrainingList.add(trainingList.get(i));
-            }
-        }
-
-        // inputting retrieved data from db into table view
-        trainingTableView.setItems(FiltTrainingList);
         SqlConnection.closeConnection();
     }
 
+    // inputting retrieved data from db into table view
+    private void updateTrainingTable(){
+        trainingTableView.setItems(trainingList.filtered(training -> training.getConvertedDate().getMonth() == date.getMonth()
+                && training.getConvertedDate().getYear() == date.getYear()));
+    }
 
 
-    //Clear the table view
-    public void clearOtherTable(){otherTableView.getItems().clear();}
-
+    //OtherEvents-table methods
     // Retrieves data from appropriate training class constructor
     private void OSetCellTable(){
         ODayInMonth.setCellValueFactory(new ODayOfMonthPropertyValueFactory<>("date"));
@@ -270,9 +228,7 @@ public class CalendarController {
 
     //Loads data from trainings table in DB
     private void loadOtherFromDB() throws ParseException {
-        clearOtherTable();
         otherList.clear();
-
         try {
             Connection conn = SqlConnection.connectToDB();
             PreparedStatement statement = conn.prepareStatement("SELECT * FROM otherEvents");
@@ -287,73 +243,41 @@ public class CalendarController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-        //looping though the trainingList to add the relevant data to a filtered list, FiltTrainingList, for the tableView
-        for(int i=0; i< otherList.size();i++){
-            //Parsing the date-string-variable to a datatype of date named localDate
-            DateFormat format = new SimpleDateFormat("d/MM/yyyy", Locale.ENGLISH);
-            Date localDate = format.parse(otherList.get(i).getDate());
-
-            //Checks if the month and year of the training is equal to the month and year of the calender
-            if(localDate.getMonth() == date.getMonth() && localDate.getYear() == date.getYear()){
-                FiltOtherList.add(otherList.get(i));
-            }
-        }
-
-        // inputting retrieved data from db into table view
-        otherTableView.setItems(FiltOtherList);
         SqlConnection.closeConnection();
     }
 
+    // inputting retrieved data from db into table view
+    private void updateOtherTable(){
+        otherTableView.setItems(otherList.filtered(other -> other.getConvertedDate().getMonth() == date.getMonth()
+                && other.getConvertedDate().getYear() == date.getYear()));
+    }
 
 
 
     //Sets next month in calender
     public void NextMonthButtonClick() throws ParseException {
-        matchList.clear();
-        clearMatchTable();
-
-        trainingList.clear();
-        clearTrainingTable();
-
-        otherList.clear();
-        clearOtherTable();
-
-
         Calendar c = Calendar.getInstance();
         c.setTime(date);
         c.add(Calendar.MONTH, 1);
         date = c.getTime();
         MonthYearLabel.setText(sdf.format(date).toUpperCase());
 
-        loadMatchFromDB();
-        loadTrainingFromDB();
-        loadOtherFromDB();
+        updateMatchTable();
+        updateTrainingTable();
+        updateOtherTable();
     }
 
     //Sets prev month in calender
     public void PrevMonthButtonClick() throws ParseException {
-        clearMatchTable();
-        matchList.clear();
-        MSetCellTable();
-
-        clearTrainingTable();
-        trainingList.clear();
-        TSetCellTable();
-
-        otherList.clear();
-        clearOtherTable();
-        OSetCellTable();
-
         Calendar c = Calendar.getInstance();
         c.setTime(date);
         c.add(Calendar.MONTH, -1);
         date = c.getTime();
         MonthYearLabel.setText(sdf.format(date).toUpperCase());
 
-        loadMatchFromDB();
-        loadTrainingFromDB();
-        loadOtherFromDB();
+        updateMatchTable();
+        updateTrainingTable();
+        updateOtherTable();
     }
 
 
@@ -394,10 +318,16 @@ public class CalendarController {
 
             DeleteEventController controller = loader.getController();
 
-
             if(selectedItem != null){
                 if(controller.getConfirmValue()){
                     selectedItem.delete();
+
+                    loadOtherFromDB();
+                    loadMatchFromDB();
+                    loadTrainingFromDB();
+                    updateOtherTable();
+                    updateTrainingTable();
+                    updateMatchTable();
                 }
             }
             else {
@@ -406,23 +336,13 @@ public class CalendarController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        finally {
-            clearTrainingTable();
-            clearMatchTable();
-            clearOtherTable();
-            loadTrainingFromDB();
-            loadMatchFromDB();
-            loadOtherFromDB();
-        }
     }
 
 
-    // Menu buttons navigation
-    MenuController controller = new MenuController();
+    //    // Menu buttons navigation
+    private MenuController controller = new MenuController();
 
     public void menuButtonClick(ActionEvent event){
         controller.menuNavigation(event);
     }
-
-
 }

@@ -9,7 +9,9 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.HPos;
 import javafx.geometry.Pos;
+import javafx.geometry.VPos;
 import javafx.scene.Node;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -17,6 +19,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.scene.input.MouseEvent;
@@ -26,7 +30,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Objects;
 import java.util.ResourceBundle;
+import java.util.Stack;
 
 public class LineupController3 implements Initializable {
     @FXML
@@ -40,6 +46,8 @@ public class LineupController3 implements Initializable {
     public Text[][] textfield;
     @FXML
     public GridPane gridPane;
+    @FXML
+    public GridPane gridBench;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -48,12 +56,12 @@ public class LineupController3 implements Initializable {
         for (int i = 0; i < 7; i++) {
             for (int j = 0; j < 11; j++) {
                 textfield[i][j] = new Text();
-                //textfield[i][j].setText("test");
                 gridPane.add(textfield[i][j], i, j);
             }
         }
 
         final GridPane target = gridPane;
+        final GridPane bench = gridBench;
         //ImageView source = imageView();
         final TableView<Player> source = playersTable;
 
@@ -72,17 +80,17 @@ public class LineupController3 implements Initializable {
             }
         });
 
-        target.setOnDragDetected(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                System.out.println("Drag detected");
-                Dragboard db = target.startDragAndDrop(TransferMode.MOVE);
-                ClipboardContent content = new ClipboardContent();
-                content.putString(target.toString());
-                db.setContent(content);
-                event.consume();
-            }
-        });
+//        target.setOnDragDetected(new EventHandler<MouseEvent>() {
+//            @Override
+//            public void handle(MouseEvent event) {
+//                System.out.println("Drag detected");
+//                Dragboard db = target.startDragAndDrop(TransferMode.MOVE);
+//                ClipboardContent content = new ClipboardContent();
+//                content.putString(target.toString());
+//                db.setContent(content);
+//                event.consume();
+//            }
+//        });
 
         target.setOnDragOver(new EventHandler<DragEvent>() {
             @Override
@@ -116,7 +124,6 @@ public class LineupController3 implements Initializable {
                     int x = cIndex == null ? 0 : cIndex;
                     int y = rIndex == null ? 0 : rIndex;
                     Text text = new Text(db.getString());
-//                    text.setTextAlignment(TextAlignment.CENTER);
                     ImageView image = new ImageView("file:../../graphics/player.png");
                     image.setPreserveRatio(true);
                     image.setFitWidth(30);
@@ -124,6 +131,16 @@ public class LineupController3 implements Initializable {
 
                     gridPane.add(text, x, y, 1, 1);
                     gridPane.add(image,x,y,1,1);
+                    GridPane.setHalignment(text, HPos.CENTER);
+                    GridPane.setValignment(text, VPos.BOTTOM);
+                    GridPane.setValignment(image, VPos.TOP);
+                    GridPane.setHalignment(image, HPos.CENTER);
+
+                    image.setOnMouseClicked(e-> {
+                        gridPane.getChildren().remove(text);
+                        gridPane.getChildren().remove(image);
+                    });
+
                     success = true;
                     System.out.println("Drop Successful!! to col: " + x + " and row: " + y);
                 }
@@ -133,11 +150,6 @@ public class LineupController3 implements Initializable {
             }
         });
 
-        target.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
-            System.out.println(String.valueOf(e.getSceneX()));
-            System.out.println(String.valueOf(e.getSceneY()));
-
-        });
         target.setOnDragExited(new EventHandler<DragEvent>() {
             @Override
             public void handle(DragEvent event) {

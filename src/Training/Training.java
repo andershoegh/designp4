@@ -2,11 +2,15 @@ package Training;
 
 import Controller.DeleteAble;
 import SQL.SqlConnection;
-import javafx.stage.Stage;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class Training implements DeleteAble {
 
@@ -73,5 +77,15 @@ public class Training implements DeleteAble {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public Date getConvertedDate() {
+        DateFormat format = new SimpleDateFormat("d/MM/yyyy", Locale.ENGLISH);
+        try {
+            return format.parse(this.getDate());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

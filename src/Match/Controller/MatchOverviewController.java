@@ -15,6 +15,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
 import java.io.IOException;
@@ -144,14 +145,21 @@ public class MatchOverviewController {
         }
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        MatchOverviewController that = (MatchOverviewController) o;
-        return Objects.equals(seasonData, that.seasonData);
+    public void createSeasonButtonClick(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../newSeasonPop.fxml"));
+            Parent createEventFXML = loader.load();
+
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+
+            Scene createEventScene = new Scene(createEventFXML);
+            stage.setScene(createEventScene);
+            stage.showAndWait();
+
+        } catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
-    @Override
-    public int hashCode() { return Objects.hash(seasonData); }
 }
