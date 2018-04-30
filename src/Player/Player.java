@@ -50,6 +50,15 @@ public class Player {
         this.name = name;
     }
 
+    public Player(int id, String name, int goalsScored, int assists, int yellowCards, int redCards){
+        this.id = id;
+        this.name = name;
+        this.goalsScored = goalsScored;
+        this.assists = assists;
+        this.yellowCards = yellowCards;
+        this.redCards = redCards;
+    }
+
     // Getters and Setters
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }

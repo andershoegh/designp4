@@ -4,6 +4,7 @@ import Controller.MenuController;
 import Match.Match;
 import Player.Player;
 import SQL.SqlConnection;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -12,29 +13,34 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.ChoiceBoxTableCell;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
-
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Objects;
 
 public class inputMatchResultsController {
 
     private Match selectedMatch;
+    int i;
     private int matchId;
     private int goalsFor;
     private int goalsAgainst;
+    private static String tempTable;
+    private static Player tempPlayer;
+    private static int tempAmount;
     private ObservableList<Player> availablePlayers = FXCollections.observableArrayList();
-    private ObservableList<String> playerGoals = FXCollections.observableArrayList();
-    private ObservableList<String> playerAssists = FXCollections.observableArrayList();
-    private ObservableList<String> playerYellow = FXCollections.observableArrayList();
-    private ObservableList<String> playerRed = FXCollections.observableArrayList();
+    private ObservableList<Player> playerGoals = FXCollections.observableArrayList();
+    private ObservableList<Player> playerAssists = FXCollections.observableArrayList();
+    private ObservableList<Player> playerYellow = FXCollections.observableArrayList();
+    private ObservableList<Player> playerRed = FXCollections.observableArrayList();
+    private ObservableList<Player> updatedPlayers = FXCollections.observableArrayList();
 
     MenuController controller = new MenuController();
 
@@ -51,10 +57,25 @@ public class inputMatchResultsController {
     @FXML private ChoiceBox<Player> choiceboxMOTM;
     @FXML private TextField textFieldNote;
 
-    @FXML private ListView<String> listGoals;
-    @FXML private ListView<String> listAssists;
-    @FXML private ListView<String> listYellow;
-    @FXML private ListView<String> listRed;
+    @FXML private TableView<Player> tableGoals;
+    @FXML private TableColumn<?, ?> columnGoalsName;
+    @FXML private TableColumn<?, ?> columnGoalsAmount;
+    @FXML private Hyperlink Goals;
+
+    @FXML private TableView<Player> tableAssists;
+    @FXML private TableColumn<?, ?> columnAssistsName;
+    @FXML private TableColumn<?, ?> columnAssistsAmount;
+    @FXML private Hyperlink Assists;
+
+    @FXML private TableView<Player> tableYellow;
+    @FXML private TableColumn<?, ?> columnYellowName;
+    @FXML private TableColumn<?, ?> columnYellowAmount;
+    @FXML private Hyperlink Yellow;
+
+    @FXML private TableView<Player> tableRed;
+    @FXML private TableColumn<?, ?> columnRedName;
+    @FXML private TableColumn<?, ?> columnRedAmount;
+    @FXML private Hyperlink Red;
 
     StringConverter<Player> converter = new StringConverter<Player>() {
         @Override public String toString(Player object) { return object.getName(); }
@@ -62,6 +83,7 @@ public class inputMatchResultsController {
     };
 
     @FXML public void initialize(){
+        setCellTable();
         choiceboxMOTM.setConverter(converter);
         loadDataFromDB();
 
@@ -77,6 +99,22 @@ public class inputMatchResultsController {
                 return cell;
             }
         });
+
+        tableGoals.setItems(playerGoals);
+        tableAssists.setItems(playerAssists);
+        tableYellow.setItems(playerYellow);
+        tableRed.setItems(playerRed);
+    }
+
+    public void setCellTable(){
+        columnGoalsName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        columnGoalsAmount.setCellValueFactory(new PropertyValueFactory<>("goalsScored"));
+        columnAssistsName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        columnAssistsAmount.setCellValueFactory(new PropertyValueFactory<>("assists"));
+        columnYellowName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        columnYellowAmount.setCellValueFactory(new PropertyValueFactory<>("yellowCards"));
+        columnRedName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        columnRedAmount.setCellValueFactory(new PropertyValueFactory<>("redCards"));
     }
 
     public void initData(Match match){
@@ -96,16 +134,18 @@ public class inputMatchResultsController {
 
         dateLabel.setText(selectedMatch.getDate());
 
-        listGoals.setItems(playerGoals);
-        listAssists.setItems(playerAssists);
-        listYellow.setItems(playerYellow);
-        listRed.setItems(playerRed);
+        tableGoals.setItems(playerGoals);
+        tableAssists.setItems(playerAssists);
+        tableYellow.setItems(playerYellow);
+        tableRed.setItems(playerRed);
     }
 
     public void loadDataFromDB(){
         Connection conn = SqlConnection.connectToDB();
 
-        String sqlQuery = "SELECT *, players.name FROM match_tactic_player INNER JOIN players " +
+        String sqlQuery = "SELECT *, " +
+                "players.name, players.goalScored, players.assist, players.yellowCards, players.redCards " +
+                "FROM match_tactic_player INNER JOIN players " +
                 "ON match_tactic_player.player_id = players.player_id WHERE match_tactic_player.match_id = ?";
 
         try {
@@ -115,7 +155,8 @@ public class inputMatchResultsController {
         ResultSet rs = stmt.executeQuery();
 
             while(rs.next()){
-                availablePlayers.addAll(new Player(rs.getInt("player_id"), rs.getString("name")));
+                availablePlayers.addAll(new Player(rs.getInt("player_id"),
+                        rs.getString("name")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -127,10 +168,55 @@ public class inputMatchResultsController {
         SqlConnection.closeConnection();
     }
 
-    public void addButtonClick(){
-        addResultEntryController addResultController = new addResultEntryController();
-        addResultController.initData(availablePlayers);
+    public void storeSelectedEntry(String table, Player player, int amount){
+        tempTable = table;
+        tempPlayer = player;
+        tempAmount = amount;
+    }
 
+    public void updateObsList(String table, Player player, int amount){
+        switch (table){
+            case "Goals":
+                player.setGoalsScored(amount);
+                playerGoals.add(player);
+                break;
+            case "Assists":
+                player.setAssists(amount);
+                playerAssists.add(player);
+                break;
+            case "Yellow":
+                player.setYellowCards(amount);
+                playerYellow.add(player);
+                break;
+            case "Red":
+                player.setRedCards(amount);
+                playerRed.add(player);
+                break;
+        }
+        tempTable = null;
+        tempPlayer = null;
+    }
+
+    public void addButtonClick(ActionEvent event){
+        String table = ((Hyperlink) event.getSource()).getId();
+
+        addResultEntryController addResultController = new addResultEntryController();
+        switch (table){
+            case "Goals":
+                addResultController.initData(availablePlayers.filtered(player -> !playerGoals.contains(player)), table);
+                break;
+            case "Assists":
+                addResultController.initData(availablePlayers.filtered(player -> !playerAssists.contains(player)), table);
+                break;
+            case "Yellow":
+                addResultController.initData(availablePlayers.filtered(player -> !playerYellow.contains(player)), table);
+                break;
+            case "Red":
+                addResultController.initData(availablePlayers.filtered(player -> !playerRed.contains(player)), table);
+                break;
+            default:
+                break;
+        }
 
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -144,12 +230,14 @@ public class inputMatchResultsController {
             Scene addResultScene = new Scene(addResultFXML);
             stage.setScene(addResultScene);
             stage.showAndWait();
+
+            updateObsList(tempTable, tempPlayer, tempAmount);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void acceptButtonClick(ActionEvent event){
+    public void saveButtonClick(ActionEvent event){
 
         if(selectedMatch.getIsHome()){
             goalsFor = Integer.parseInt(textFieldHomeScore.getText());
@@ -179,8 +267,42 @@ public class inputMatchResultsController {
         }
 
         // Inserting data into players table
-        // * Good code goes here *
+        // Combines separate table lists into one list
+        updatedPlayers.addAll(tableGoals.getItems().filtered(player -> !updatedPlayers.contains(player)));
+        updatedPlayers.addAll(tableAssists.getItems().filtered(player -> !updatedPlayers.contains(player)));
+        updatedPlayers.addAll(tableYellow.getItems().filtered(player -> !updatedPlayers.contains(player)));
+        updatedPlayers.addAll(tableRed.getItems().filtered(player -> !updatedPlayers.contains(player)));
 
+        // Checks whether motm-selected player is in the updated list, and updates value
+        if(!updatedPlayers.contains(choiceboxMOTM.getValue())) {
+            choiceboxMOTM.getValue().setMotm(+1);
+            updatedPlayers.add(choiceboxMOTM.getValue());
+        } else {
+            choiceboxMOTM.getValue().setMotm(+1);
+        }
+
+        // Updates the database for each player in the updatedPlayers list
+        for(i=0; i<updatedPlayers.size(); i++){
+            try {
+                String sqlPlayer = "UPDATE players SET goalScored = goalScored + ?, " +
+                        "assist = assist + ?, yellowCards = yellowCards + ?, " +
+                        "redCards = redCards + ?, motm = motm + ?" +
+                        "WHERE player_id = ?";
+
+                PreparedStatement stmt = conn.prepareStatement(sqlPlayer);
+
+                stmt.setInt(1, updatedPlayers.get(i).getGoalsScored());
+                stmt.setInt(2, updatedPlayers.get(i).getAssists());
+                stmt.setInt(3, updatedPlayers.get(i).getYellowCards());
+                stmt.setInt(4, updatedPlayers.get(i).getRedCards());
+                stmt.setInt(5, updatedPlayers.get(i).getMotm());
+                stmt.setInt(6, updatedPlayers.get(i).getId());
+
+                stmt.executeUpdate();
+            } catch (SQLException e){
+                e.printStackTrace();
+            }
+        }
 
         SqlConnection.closeConnection();
 
