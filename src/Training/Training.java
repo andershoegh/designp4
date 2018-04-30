@@ -11,7 +11,6 @@ import java.sql.SQLException;
 public class Training implements DeleteAble {
 
     private int id;
-    private String weekday;
     private String date;
     private String startTime;
     private String endTime;
@@ -28,14 +27,6 @@ public class Training implements DeleteAble {
 
     public int getId() {
         return id;
-    }
-
-    public String getWeekday() {
-        return weekday;
-    }
-
-    public void setWeekday(String weekday) {
-        this.weekday = weekday;
     }
 
     public String getDate() {

@@ -1,9 +1,11 @@
 package Lineup;
 
+import Controller.MenuController;
 import Player.Player;
 import SQL.SqlConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -171,4 +173,14 @@ public class LineupController3 implements Initializable {
 
         SqlConnection.closeConnection();
     }
+
+
+    // Menu buttons navigation
+    MenuController controller = new MenuController();
+
+    public void menuButtonClick(ActionEvent event){
+        controller.menuNavigation(event);
+    }
+
+
 }
