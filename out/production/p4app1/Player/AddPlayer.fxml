@@ -4,8 +4,10 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -15,100 +17,132 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="450.0" maxWidth="600.0" minHeight="450.0" minWidth="600.0" styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Player.Controller.addNewPlayerController">
-   <children>
-      <VBox prefHeight="450.0" prefWidth="600.0">
-         <children>
-            <Label styleClass="pageheadline" text="Opret spiller">
-               <padding>
-                  <Insets bottom="15.0" left="60.0" top="15.0" />
-               </padding>
-            </Label>
-            <GridPane prefHeight="318.0" prefWidth="515.0" vgap="8.0">
-              <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="201.5999755859375" minWidth="138.39996337890625" prefWidth="173.5999755859375" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="400.0" minWidth="60.0" prefWidth="341.8000244140625" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                  <TextField fx:id="nameInput" prefWidth="300.0" promptText="Navn på spiller" GridPane.columnIndex="1" />
-                  <TextField fx:id="addressInput" prefWidth="300.0" promptText="Spillerens addresse" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <TextField fx:id="phoneInput" prefHeight="26.0" prefWidth="306.0" promptText="00 00 00 00 " GridPane.columnIndex="1" GridPane.rowIndex="2">
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <GridPane.margin>
-                        <Insets left="45.0" />
-                     </GridPane.margin></TextField>
-                  <TextField fx:id="mailInput" prefWidth="300.0" promptText="email@example.dk" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <TextField fx:id="ICEnameInput" prefWidth="300.0" promptText="Navn på f. eks. forældre" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <TextField fx:id="ICEphoneInput" prefWidth="300.0" promptText="Telefon nummer hos f. eks. forældre" GridPane.columnIndex="1" GridPane.rowIndex="5">
-                     <GridPane.margin>
-                        <Insets left="45.0" />
-                     </GridPane.margin></TextField>
-                  <TextField fx:id="birthdayInput" prefWidth="286.0" promptText="20/10/1990" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                  <CheckBox fx:id="health" mnemonicParsing="false" prefHeight="18.0" prefWidth="27.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                  <Label styleClass="window" text="Navn" />
-                  <Label styleClass="window" text="Addresse" GridPane.rowIndex="1" />
-                  <Label styleClass="window" text="Telefon" GridPane.rowIndex="2" />
-                  <Label styleClass="window" text="Mail" GridPane.rowIndex="3" />
-                  <Label styleClass="window" text="Kontaktperson navn" GridPane.rowIndex="4" />
-                  <Label styleClass="window" text="Kontaktperson telefon" GridPane.rowIndex="5" />
-                  <Label styleClass="window" text="Fødselsdag" GridPane.rowIndex="6" />
-                  <Label styleClass="window" text="Position" GridPane.rowIndex="7" />
-                  <Label text="Skadet" GridPane.rowIndex="8" />
-                  <Label prefHeight="13.0" prefWidth="24.0" styleClass="window" text="+45" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                     <GridPane.margin>
-                        <Insets left="10.0" />
-                     </GridPane.margin>
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <Label prefHeight="13.0" prefWidth="24.0" styleClass="window" text="+45" GridPane.columnIndex="1" GridPane.rowIndex="5">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                     <GridPane.margin>
-                        <Insets left="10.0" />
-                     </GridPane.margin>
-                  </Label>
-                  <ChoiceBox fx:id="positionInput" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                  <Label text="Ja, spilleren er skadet" GridPane.columnIndex="1" GridPane.rowIndex="8">
-                     <GridPane.margin>
-                        <Insets left="25.0" />
-                     </GridPane.margin>
-                  </Label>
-               </children>
-               <VBox.margin>
-                  <Insets left="60.0" right="25.0" />
-               </VBox.margin>
-            </GridPane>
-            <HBox alignment="CENTER_RIGHT" prefWidth="200.0">
-               <children>
-                  <Button fx:id="acceptButton" mnemonicParsing="false" onAction="#acceptButtonClick" styleClass="buttonApprove" text="Godkend" />
-                  <Region prefWidth="25.0" />
-                  <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancelButtonClick" styleClass="buttonCancel" text="Annuller">
-                     <HBox.margin>
-                        <Insets right="20.0" />
-                     </HBox.margin>
-                  </Button>
-               </children>
-               <VBox.margin>
-                  <Insets top="20.0" />
-               </VBox.margin>
-            </HBox>
-         </children>
-      </VBox>
-   </children>
+<AnchorPane maxHeight="476.0" maxWidth="600.0" minHeight="450.0" minWidth="346.0" prefHeight="476.0" prefWidth="365.0" styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Player.Controller.addNewPlayerController">
+    <children>
+        <VBox prefHeight="474.0" prefWidth="365.0">
+            <children>
+                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="70.0" prefWidth="366.0" styleClass="pageheadline" text="Opret spiller" textAlignment="CENTER" />
+                <GridPane prefHeight="318.0" prefWidth="330.0" vgap="8.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="201.5999755859375" minWidth="86.39998779296874" prefWidth="124.79996337890626" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="429.6000122070312" minWidth="60.0" prefWidth="195.80003662109377" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <TextField fx:id="nameInput" prefWidth="300.0" promptText="Spillerens fornavn og efternavn" GridPane.columnIndex="1">
+                            <tooltip>
+                                <Tooltip text="Skriv spillerens fornavn og efternavn.  Dette kan altid ændres under &quot;Vis spiller.&quot;" />
+                            </tooltip></TextField>
+                        <TextField fx:id="addressInput" prefWidth="300.0" promptText="Spillerens addresse" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                            <tooltip>
+                                <Tooltip text="Skriv spillerens addresse f.eks. Spillervej 3, lejl. 3, 9000 Aalborg.  Dette kan altid ændres under &quot;Vis spiller.&quot;" />
+                            </tooltip></TextField>
+                        <TextField fx:id="phoneInput" prefHeight="26.0" prefWidth="125.0" promptText="00 00 00 00 " GridPane.columnIndex="1" GridPane.rowIndex="2">
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                            <GridPane.margin>
+                                <Insets left="45.0" />
+                            </GridPane.margin>
+                            <tooltip>
+                                <Tooltip text="Skriv spillerens telefon nummer. Dette kan altid ændres under &quot;Vis spiller.&quot;" />
+                            </tooltip></TextField>
+                        <TextField fx:id="mailInput" prefWidth="300.0" promptText="email@example.dk" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                            <tooltip>
+                                <Tooltip text="Skriv spillerens mail. Dette kan altid ændres under &quot;Vis spiller.&quot;" />
+                            </tooltip></TextField>
+                        <TextField fx:id="ICEnameInput" prefWidth="300.0" promptText="Navn på f. eks. forældre" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                            <tooltip>
+                                <Tooltip text="Skriv f.eks. navn på forældre. Dette bruges ofte, hvis spillerne f.eks. er børn.  Dette kan altid ændres under &quot;Vis spiller.&quot;" />
+                            </tooltip></TextField>
+                        <TextField fx:id="ICEphoneInput" prefWidth="300.0" promptText="00 00 00 00 " GridPane.columnIndex="1" GridPane.rowIndex="5">
+                            <GridPane.margin>
+                                <Insets left="45.0" />
+                            </GridPane.margin>
+                            <tooltip>
+                                <Tooltip text="Skriv f.eks. spillerens forældres telefon nummer.  Dette kan altid ændres under &quot;Vis spiller.&quot;" />
+                            </tooltip></TextField>
+                        <Label styleClass="window" text="Navn" />
+                        <Label styleClass="window" text="Addresse" GridPane.rowIndex="1" />
+                        <Label styleClass="window" text="Telefon" GridPane.rowIndex="2" />
+                        <Label styleClass="window" text="Mail" GridPane.rowIndex="3" />
+                        <Label styleClass="window" text="Kontaktperson navn" GridPane.rowIndex="4" />
+                        <Label styleClass="window" text="Kontaktperson telefon" GridPane.rowIndex="5" />
+                        <Label styleClass="window" text="Fødselsdag" GridPane.rowIndex="6" />
+                        <Label styleClass="window" text="Position" GridPane.rowIndex="7" />
+                        <Label text="Skadet" GridPane.rowIndex="8" />
+                        <Label prefHeight="13.0" prefWidth="24.0" styleClass="window" text="+45" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                            <GridPane.margin>
+                                <Insets left="10.0" />
+                            </GridPane.margin>
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font>
+                        </Label>
+                        <Label prefHeight="13.0" prefWidth="24.0" styleClass="window" text="+45" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font>
+                            <GridPane.margin>
+                                <Insets left="10.0" />
+                            </GridPane.margin>
+                        </Label>
+                        <DatePicker fx:id="birthdayInput" prefHeight="26.0" prefWidth="201.0" promptText="10/10/1990" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                            <tooltip>
+                                <Tooltip text="Vælg spillerens fødselsdag.  Dette kan altid ændres under &quot;Vis spiller.&quot;" />
+                            </tooltip></DatePicker>
+                        <ChoiceBox fx:id="positionInput" prefHeight="26.0" prefWidth="198.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                            <tooltip>
+                                <Tooltip text="Vælg hvilken position spilleren spiller på. Hvis spilleren spiller flere steder, vælg så &quot;Andet.&quot;  Dette kan altid ændres under &quot;Vis spiller.&quot;" />
+                            </tooltip></ChoiceBox>
+                        <CheckBox fx:id="health" mnemonicParsing="false" prefHeight="18.0" prefWidth="27.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                            <tooltip>
+                                <Tooltip text="Vælges, hvis spiller er skadet. Dette kan altid ændres under &quot;Vis spiller&quot;" />
+                            </tooltip></CheckBox>
+                        <Label fx:id="label_health" onMouseClicked="#handleLabel_health" text="Ja, spilleren er skadet" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                            <GridPane.margin>
+                                <Insets left="25.0" />
+                            </GridPane.margin>
+                            <tooltip>
+                                <Tooltip text="Vælges, hvis spiller er skadet. Dette kan altid ændres under &quot;Vis spiller&quot;" />
+                            </tooltip>
+                        </Label>
+                    </children>
+                    <VBox.margin>
+                        <Insets left="20.0" right="20.0" top="10.0" />
+                    </VBox.margin>
+                </GridPane>
+                <HBox alignment="CENTER_RIGHT" prefWidth="354.0">
+                    <children>
+                        <Button fx:id="acceptButton" mnemonicParsing="false" onAction="#acceptButtonClick" styleClass="buttonApprove" text="Godkend">
+                            <tooltip>
+                                <Tooltip text="Klik for at oprette spiller." />
+                            </tooltip></Button>
+                        <Region prefWidth="25.0" />
+                        <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancelButtonClick" styleClass="buttonCancel" text="Annuller">
+                            <HBox.margin>
+                                <Insets right="20.0" />
+                            </HBox.margin>
+                            <tooltip>
+                                <Tooltip text="Klik for at lukke &quot;Opret spiller.&quot;" />
+                            </tooltip>
+                        </Button>
+                    </children>
+                    <VBox.margin>
+                        <Insets top="20.0" />
+                    </VBox.margin>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
 </AnchorPane>

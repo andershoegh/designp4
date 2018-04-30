@@ -2,16 +2,19 @@ package Training;
 
 import Controller.DeleteAble;
 import SQL.SqlConnection;
-import javafx.stage.Stage;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class Training implements DeleteAble {
 
     private int id;
-    private String weekday;
     private String date;
     private String startTime;
     private String endTime;
@@ -28,14 +31,6 @@ public class Training implements DeleteAble {
 
     public int getId() {
         return id;
-    }
-
-    public String getWeekday() {
-        return weekday;
-    }
-
-    public void setWeekday(String weekday) {
-        this.weekday = weekday;
     }
 
     public String getDate() {
@@ -82,5 +77,15 @@ public class Training implements DeleteAble {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public Date getConvertedDate() {
+        DateFormat format = new SimpleDateFormat("d/MM/yyyy", Locale.ENGLISH);
+        try {
+            return format.parse(this.getDate());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

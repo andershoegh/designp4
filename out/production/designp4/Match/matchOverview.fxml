@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Match.Controller.MatchOverviewController">
+<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Match.Controller.MatchOverviewController">
    <children>
       <HBox maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0">
          <children>
@@ -86,7 +86,7 @@
                         </TableView>
                         <HBox alignment="TOP_RIGHT" layoutX="61.0" layoutY="511.0" prefHeight="100.0" prefWidth="960.0">
                            <children>
-                              <Button mnemonicParsing="false" prefHeight="23.0" prefWidth="92.0" styleClass="greenButton" text="Ny sæson">
+                              <Button mnemonicParsing="false" onAction="#createSeasonButtonClick" prefHeight="23.0" prefWidth="92.0" styleClass="greenButton" text="Ny sæson">
                                  <HBox.margin>
                                     <Insets />
                                  </HBox.margin>

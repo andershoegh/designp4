@@ -47,6 +47,7 @@ public class PlayerListController {
         loadDataFromDB();
     }
 
+    // Checks for double clicks, and opens edit window accordingly.
     private Player temp;
     private Date lastClickTime;
     @FXML

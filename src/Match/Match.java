@@ -6,6 +6,11 @@ import SQL.SqlConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class Match implements DeleteAble{
     private String opponent;
@@ -83,6 +88,17 @@ public class Match implements DeleteAble{
     }
 
 
+    public Date getConvertedDate() {
+        DateFormat format = new SimpleDateFormat("d/MM/yyyy", Locale.ENGLISH);
+        try {
+            return format.parse(this.getDate());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
     @Override
     public void delete() {
         try {
@@ -99,5 +115,8 @@ public class Match implements DeleteAble{
             e.printStackTrace();
         }
     }
+
+
+
 }
 

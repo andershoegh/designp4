@@ -6,7 +6,7 @@
 }
 
 .window{
-    -fx-font-family: Montserrat;
+    -fx-font-family: "Montserrat";
     -fx-font-size: 12px;
     -fx-background-color: #e8e8e8;
 }
@@ -88,6 +88,11 @@
 }
 
 .headerVisibility .column-header-background{ visibility: hidden; }
+
+
+.scrollBarVisibility .scroll-bar:horizontal{
+    visibility: hidden;
+}
 
 .table-view {
     -fx-background-color: transparent;
@@ -192,3 +197,6 @@
     -fx-text-fill: #787878;
 }
 
+.hyperlink {
+    -fx-text-fill: #a1b56c;
+}

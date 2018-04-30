@@ -3,21 +3,21 @@ package Calendar.Controller;
 import Calendar.Controller.MatchTablePropertyValueFactory.MDatePropertyValueFactory;
 import Calendar.Controller.MatchTablePropertyValueFactory.MDayOfMonthPropertyValueFactory;
 import Calendar.Controller.MatchTablePropertyValueFactory.MatchTitelPropertyValueFactory;
+import Calendar.Controller.OtherTablePropertyValueFactory.ODayOfMonthPropertyValueFactory;
 import Calendar.Controller.TrainingTablePropertyValueFactory.TDatePropertyValueFactory;
 import Calendar.Controller.TrainingTablePropertyValueFactory.TDayOfMonthPropertyValueFactory;
 import Calendar.Controller.TrainingTablePropertyValueFactory.TTimePropertyValueFactory;
 import Controller.DeleteAble;
 import Controller.MenuController;
 import Match.Match;
+import Other_Event.Other;
 import SQL.SqlConnection;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.collections.FXCollections;
@@ -28,24 +28,18 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
+
 import Training.Training;
 
 public class CalendarController {
 
     private ObservableList<Match> matchList= FXCollections.observableArrayList();
-    private ObservableList<Match> FiltMatchList = FXCollections.observableArrayList();
-
     private ObservableList<Training> trainingList = FXCollections.observableArrayList();
-    private ObservableList<Training> FiltTrainingList = FXCollections.observableArrayList();
-
-
-    private ObservableList<?> others = FXCollections.observableArrayList();
+    private ObservableList<Other> otherList = FXCollections.observableArrayList();
 
     private DeleteAble selectedItem = null;
     private Date date;
@@ -53,13 +47,11 @@ public class CalendarController {
 
     // setting FXML IDs
     @FXML private Label MonthYearLabel;
-    @FXML private Button PrevMonthButton;
-    @FXML private Button NextMonthButton;
 
-    @FXML private TableView<?>OtherTableView;
+    @FXML private TableView<Other>otherTableView;
     @FXML private TableColumn<?,?>ODayInMonth;
-    @FXML private TableColumn<?,?>OtherTitel;
-    @FXML private TableColumn<?,?>OtherTime;
+    @FXML private TableColumn<?,?>otherTitel;
+    @FXML private TableColumn<?,?>otherTime;
 
     @FXML private TableView<Match>matchTableView;
     @FXML private TableColumn<?,?>MDayInMonth;
@@ -67,12 +59,10 @@ public class CalendarController {
     @FXML private TableColumn<?,?>matchDate;
     @FXML private TableColumn<?,?>matchTime;
 
-    @FXML private TableView<Training> TrainingTableView;
+    @FXML private TableView<Training> trainingTableView;
     @FXML private TableColumn<?,?>TDayInMonth;
-    @FXML private TableColumn<?,?>TrainingDate;
-    @FXML private TableColumn<?,?>TrainingTime;
-
-    @FXML private Button OpretButton;
+    @FXML private TableColumn<?,?> trainingDate;
+    @FXML private TableColumn<?,?> trainingTime;
 
 
     //Running methods when scene gets loaded
@@ -81,23 +71,26 @@ public class CalendarController {
         date = new Date();
         MonthYearLabel.setText(sdf.format(date).toUpperCase());
 
-        matchList.clear();
-        clearMatchTable();
         MSetCellTable();
         loadMatchFromDB();
+        updateMatchTable();
 
-        trainingList.clear();
-        clearTrainingTable();
         TSetCellTable();
         loadTrainingFromDB();
+        updateTrainingTable();
 
-        TrainingTableView
+        OSetCellTable();
+        loadOtherFromDB();
+        updateOtherTable();
+
+        trainingTableView
                 .getSelectionModel()
                 .selectedItemProperty()
                 .addListener((observable, oldValue, newValue) -> {
                     if (newValue != null) {
                         selectedItem = newValue;
                         matchTableView.getSelectionModel().clearSelection();
+                        otherTableView.getSelectionModel().clearSelection();
                     }
                 });
 
@@ -107,15 +100,51 @@ public class CalendarController {
                 .addListener((observable, oldValue, newValue) -> {
                     if (newValue != null) {
                         selectedItem = newValue;
-                        TrainingTableView.getSelectionModel().clearSelection();
+                        trainingTableView.getSelectionModel().clearSelection();
+                        otherTableView.getSelectionModel().clearSelection();
+                    }
+                });
+
+
+        otherTableView
+                .getSelectionModel()
+                .selectedItemProperty()
+                .addListener((observable, oldValue, newValue) -> {
+                    if (newValue != null) {
+                        selectedItem = newValue;
+                        trainingTableView.getSelectionModel().clearSelection();
+                        matchTableView.getSelectionModel().clearSelection();
                     }
                 });
     }
 
 
-    //Clear the table view
-    public void clearMatchTable(){matchTableView.getItems().clear();}
+    /*
+    // Checks for double clicks.
+    private Match temp;
+    private Date lastClickTime;
+    @FXML
+    private void handleRowSelect() {
+        Match row = matchTableView.getSelectionModel().getSelectedItem();
+        if (row == null)
+            return;
+        if(row != temp){
+            temp = row;
+            lastClickTime = new Date();
+        } else if(row == temp) {
+            Date now = new Date();
+            long diff = now.getTime() - lastClickTime.getTime();
+            if (diff < 300){ //another click registered in 300 millis
+                System.out.println("--- Double Clicked on a row! Will open edit window. ---");
+                editPlayerButtonClick();
+            } else {
+                lastClickTime = new Date();
+            }
+        }
+    }
+*/
 
+    //Match-table methods
     // Retrieves data from appropriate match class constructor
     private void MSetCellTable(){
         MDayInMonth.setCellValueFactory(new MDayOfMonthPropertyValueFactory<>("date"));
@@ -126,9 +155,7 @@ public class CalendarController {
 
     //Loads data from Match table in DB
     private void loadMatchFromDB() throws ParseException {
-        clearMatchTable();
         matchList.clear();
-
         try {
             Connection conn = SqlConnection.connectToDB();
             PreparedStatement statement = conn.prepareStatement("SELECT * FROM matches");
@@ -144,41 +171,28 @@ public class CalendarController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-        //looping though the matchList to add the relevant data to a filtered list, FiltMatchList, for the tableList
-        for(int i=0; i< matchList.size();i++){
-            //Parsing the date-string-variable to a datatype of date named localDate
-            DateFormat format = new SimpleDateFormat("d/MM/yyyy", Locale.ENGLISH);
-            Date localDate = format.parse(matchList.get(i).getDate());
-
-            //Checks if the month and year of the match is equal to the month and year of the calender
-            if(localDate.getMonth() == date.getMonth() && localDate.getYear() == date.getYear()){
-                FiltMatchList.add(matchList.get(i));
-            }
-        }
-
-        // inputting retrieved data from db into table view
-        matchTableView.setItems(FiltMatchList);
         SqlConnection.closeConnection();
     }
 
-
-    //Clear the table view
-    public void clearTrainingTable(){TrainingTableView.getItems().clear();}
-
-    // Retrieves data from appropriate training class constructor
-    private void TSetCellTable(){
-        TDayInMonth.setCellValueFactory(new TDayOfMonthPropertyValueFactory<>("date"));
-        TrainingDate.setCellValueFactory(new TDatePropertyValueFactory<>("date"));
-        TrainingTime.setCellValueFactory(new TTimePropertyValueFactory<>("startTime"));
+    // inputting retrieved data from db into table view
+    private void updateMatchTable(){
+        matchTableView.setItems(matchList.filtered(match -> match.getConvertedDate().getMonth() == date.getMonth()
+                && match.getConvertedDate().getYear() == date.getYear()));
     }
 
 
+
+    //Training-table methods
+    // Retrieves data from appropriate training class constructor
+    private void TSetCellTable(){
+        TDayInMonth.setCellValueFactory(new TDayOfMonthPropertyValueFactory<>("date"));
+        trainingDate.setCellValueFactory(new TDatePropertyValueFactory<>("date"));
+        trainingTime.setCellValueFactory(new TTimePropertyValueFactory<>("startTime"));
+    }
+
     //Loads data from trainings table in DB
     private void loadTrainingFromDB() throws ParseException {
-        clearTrainingTable();
         trainingList.clear();
-
         try {
             Connection conn = SqlConnection.connectToDB();
             PreparedStatement statement = conn.prepareStatement("SELECT * FROM trainings");
@@ -194,68 +208,76 @@ public class CalendarController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-        //looping though the trainingList to add the relevant data to a filtered list, FiltTrainingList, for the tableView
-        for(int i=0; i< trainingList.size();i++){
-            //Parsing the date-string-variable to a datatype of date named localDate
-            DateFormat format = new SimpleDateFormat("d/MM/yyyy", Locale.ENGLISH);
-            Date localDate = format.parse(trainingList.get(i).getDate());
-
-            //Checks if the month and year of the training is equal to the month and year of the calender
-            if(localDate.getMonth() == date.getMonth() && localDate.getYear() == date.getYear()){
-                FiltTrainingList.add(trainingList.get(i));
-            }
-        }
-
-        // inputting retrieved data from db into table view
-        TrainingTableView.setItems(FiltTrainingList);
         SqlConnection.closeConnection();
     }
 
+    // inputting retrieved data from db into table view
+    private void updateTrainingTable(){
+        trainingTableView.setItems(trainingList.filtered(training -> training.getConvertedDate().getMonth() == date.getMonth()
+                && training.getConvertedDate().getYear() == date.getYear()));
+    }
 
 
+    //OtherEvents-table methods
+    // Retrieves data from appropriate training class constructor
+    private void OSetCellTable(){
+        ODayInMonth.setCellValueFactory(new ODayOfMonthPropertyValueFactory<>("date"));
+        otherTitel.setCellValueFactory(new PropertyValueFactory<>("name"));
+        otherTime.setCellValueFactory(new PropertyValueFactory<>("time"));
+    }
+
+    //Loads data from trainings table in DB
+    private void loadOtherFromDB() throws ParseException {
+        otherList.clear();
+        try {
+            Connection conn = SqlConnection.connectToDB();
+            PreparedStatement statement = conn.prepareStatement("SELECT * FROM otherEvents");
+            ResultSet rs = statement.executeQuery();
+
+            while(rs.next()){
+                otherList.add(new Other(rs.getInt("other_id"),
+                        rs.getString("name"),
+                        rs.getString("date"),
+                        rs.getString("time")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        SqlConnection.closeConnection();
+    }
+
+    // inputting retrieved data from db into table view
+    private void updateOtherTable(){
+        otherTableView.setItems(otherList.filtered(other -> other.getConvertedDate().getMonth() == date.getMonth()
+                && other.getConvertedDate().getYear() == date.getYear()));
+    }
 
 
 
     //Sets next month in calender
     public void NextMonthButtonClick() throws ParseException {
-        matchList.clear();
-        clearMatchTable();
-        MSetCellTable();
-
-        trainingList.clear();
-        clearTrainingTable();
-        TSetCellTable();
-
-
         Calendar c = Calendar.getInstance();
         c.setTime(date);
         c.add(Calendar.MONTH, 1);
         date = c.getTime();
         MonthYearLabel.setText(sdf.format(date).toUpperCase());
 
-        loadMatchFromDB();
-        loadTrainingFromDB();
+        updateMatchTable();
+        updateTrainingTable();
+        updateOtherTable();
     }
 
     //Sets prev month in calender
     public void PrevMonthButtonClick() throws ParseException {
-        clearMatchTable();
-        matchList.clear();
-        MSetCellTable();
-
-        clearTrainingTable();
-        trainingList.clear();
-        TSetCellTable();
-
         Calendar c = Calendar.getInstance();
         c.setTime(date);
         c.add(Calendar.MONTH, -1);
         date = c.getTime();
         MonthYearLabel.setText(sdf.format(date).toUpperCase());
 
-        loadMatchFromDB();
-        loadTrainingFromDB();
+        updateMatchTable();
+        updateTrainingTable();
+        updateOtherTable();
     }
 
 
@@ -273,22 +295,21 @@ public class CalendarController {
             stage.setScene(createEventScene);
             stage.showAndWait();
 
+            loadTrainingFromDB();
+            loadMatchFromDB();
+            loadOtherFromDB();
+            updateMatchTable();
+            updateTrainingTable();
+            updateOtherTable();
+
         } catch (IOException e){
+            e.printStackTrace();
+        } catch (ParseException e) {
             e.printStackTrace();
         }
     }
 
-
-
-    // Menu buttons navigation
-    MenuController controller = new MenuController();
-
-    public void menuButtonClick(ActionEvent event){
-        controller.menuNavigation(event);
-    }
-
-
-
+    //Loader delete event pop-up
     public void deleteEventButtonClick() throws ParseException {
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -306,10 +327,16 @@ public class CalendarController {
 
             DeleteEventController controller = loader.getController();
 
-
             if(selectedItem != null){
                 if(controller.getConfirmValue()){
                     selectedItem.delete();
+
+                    loadOtherFromDB();
+                    loadMatchFromDB();
+                    loadTrainingFromDB();
+                    updateOtherTable();
+                    updateTrainingTable();
+                    updateMatchTable();
                 }
             }
             else {
@@ -318,13 +345,13 @@ public class CalendarController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        finally {
-            clearTrainingTable();
-            clearMatchTable();
-            loadTrainingFromDB();
-            loadMatchFromDB();
-        }
     }
 
 
+    //    // Menu buttons navigation
+    private MenuController controller = new MenuController();
+
+    public void menuButtonClick(ActionEvent event){
+        controller.menuNavigation(event);
+    }
 }
