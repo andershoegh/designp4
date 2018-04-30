@@ -50,6 +50,8 @@ public class MatchOverviewController {
     };
 
     @FXML public void initialize(){
+        seasonData.clear();
+        matchData.clear();
         setCellTable();
         loadDataFromDB();
 
@@ -156,6 +158,7 @@ public class MatchOverviewController {
             Scene createEventScene = new Scene(createEventFXML);
             stage.setScene(createEventScene);
             stage.showAndWait();
+            initialize();
 
         } catch (IOException e){
             e.printStackTrace();

@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.sql.Connection;
@@ -18,7 +19,9 @@ public class newSeasonController {
     private ObservableList<String> choiceBoxList= FXCollections.observableArrayList();
 
     @FXML private ChoiceBox<String> springFallChoiceBox;
+    @FXML private TextField yearTextField;
     @FXML private Button cancelButton;
+    @FXML private Button createButton;
 
     @FXML
     public void initialize(){
@@ -29,40 +32,15 @@ public class newSeasonController {
 
 
 
-
-
-    public void cancelButtonClick(){
-
-        Stage stage = (Stage) cancelButton.getScene().getWindow();
-        stage.close();
-
-    }
-
-
-
-    /*public void acceptButtonClick(){
-        String sql = "INSERT INTO trainings" + "(training_id," +
-                "date, start_time, end_time, program_id)" + "VALUES (null, ?, ?, ?, null)";
+    public void acceptButtonClick(){
+        String sql = "INSERT INTO seasons" + "(season_id," +
+                "name)" + "VALUES (null, ?)";
 
         try {
             Connection conn = SqlConnection.connectToDB();
             PreparedStatement stmt = conn.prepareStatement(sql);
 
-
-            stmt.setString(1, springFallChoiceBox.getValue());
-
-            // Passes date input to DB
-            String date = dateInput.getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-            stmt.setString(2, date);
-
-            // Passes time input to DB
-            stmt.setString(3, timeInput.getText());
-
-            // Passes location input to DB
-            stmt.setInt(4, locationInput.isSelected() ? 1 : 0);
-
-            //Passes notes input to DB
-            stmt.setString(5, notesInput.getText());
+            stmt.setString(1, springFallChoiceBox.getValue() + " " + yearTextField.getText());
 
             stmt.executeUpdate();
 
@@ -75,6 +53,15 @@ public class newSeasonController {
             System.out.println(e.getMessage());
         }
 
-    }*/
+    }
+
+
+
+    public void cancelButtonClick(){
+
+        Stage stage = (Stage) cancelButton.getScene().getWindow();
+        stage.close();
+
+    }
 
 }

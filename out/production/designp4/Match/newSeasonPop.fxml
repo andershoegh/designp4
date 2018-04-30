@@ -58,7 +58,7 @@
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <TextField prefHeight="34.0" prefWidth="175.0" promptText="eks. 2018" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <TextField fx:id="yearTextField" prefHeight="34.0" prefWidth="175.0" promptText="eks. 2018" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <GridPane.margin>
                               <Insets left="20.0" />
                            </GridPane.margin>
@@ -80,7 +80,7 @@
                         <Insets right="20.0" />
                      </HBox.margin>
                   </Button>
-                  <Button layoutX="122.0" layoutY="37.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="98.0" text="Opret">
+                  <Button fx:id="createButton" layoutX="122.0" layoutY="37.0" mnemonicParsing="false" onAction="#acceptButtonClick" prefHeight="46.0" prefWidth="98.0" text="Opret">
                      <HBox.margin>
                         <Insets left="20.0" />
                      </HBox.margin>
