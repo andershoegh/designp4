@@ -144,14 +144,4 @@ public class MatchOverviewController {
         }
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        MatchOverviewController that = (MatchOverviewController) o;
-        return Objects.equals(seasonData, that.seasonData);
-    }
-
-    @Override
-    public int hashCode() { return Objects.hash(seasonData); }
 }
