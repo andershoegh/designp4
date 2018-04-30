@@ -339,7 +339,7 @@ public class CalendarController {
     }
 
 
-    // Menu buttons navigation
+    //    // Menu buttons navigation
     private MenuController controller = new MenuController();
 
     public void menuButtonClick(ActionEvent event){
