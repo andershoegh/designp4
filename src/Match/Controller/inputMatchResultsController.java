@@ -27,6 +27,7 @@ import java.sql.SQLException;
 public class inputMatchResultsController {
 
     private Match selectedMatch;
+    private int matchId;
     private int goalsFor;
     private int goalsAgainst;
     private ObservableList<Player> availablePlayers = FXCollections.observableArrayList();
@@ -81,6 +82,8 @@ public class inputMatchResultsController {
     public void initData(Match match){
         selectedMatch = match;
 
+        matchId = selectedMatch.getId();
+
         if(selectedMatch.getIsHome()) {
             matchLabel.setText("AAIF vs " + selectedMatch.getOpponent());
             labelHomeTeam.setText("AAIF");
@@ -103,11 +106,11 @@ public class inputMatchResultsController {
         Connection conn = SqlConnection.connectToDB();
 
         String sqlQuery = "SELECT *, players.name FROM match_tactic_player INNER JOIN players " +
-                "ON match_tactic_player.player_id = players.player_id WHERE match_tactic_player.match_id = " +
-                Integer.toString(selectedMatch.getId());
+                "ON match_tactic_player.player_id = players.player_id WHERE match_tactic_player.match_id = ?";
 
         try {
         PreparedStatement stmt = conn.prepareStatement(sqlQuery);
+        stmt.setInt(1, matchId);
 
         ResultSet rs = stmt.executeQuery();
 
@@ -125,17 +128,20 @@ public class inputMatchResultsController {
     }
 
     public void addButtonClick(){
-        addResultEntryController controller = new addResultEntryController();
-        controller.initData(availablePlayers);
+        addResultEntryController addResultController = new addResultEntryController();
+        addResultController.initData(availablePlayers);
+
 
         try {
-            Parent addResultFXML = FXMLLoader.load(getClass().getResource("../addResultEntry.fxml"));
-            Scene addResultScene = new Scene(addResultFXML);
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("../addResultEntry.fxml"));
+            Parent addResultFXML = loader.load();
+
             Stage stage = new Stage();
             stage.setResizable(false);
             stage.initModality(Modality.APPLICATION_MODAL);
 
-
+            Scene addResultScene = new Scene(addResultFXML);
             stage.setScene(addResultScene);
             stage.showAndWait();
         } catch (IOException e) {
@@ -157,14 +163,14 @@ public class inputMatchResultsController {
 
         // Inserting data into matches table
         try {
-        String sqlMatch = "INSERT INTO matches (goalsFor, goalsAgainst, note) VALUES(?, ?, ?) WHERE match_id = ?";
+        String sqlMatch = "UPDATE matches SET goalsFor = ?, goalsAgainst = ?, note = ? WHERE match_id = ?";
 
             PreparedStatement stmt = conn.prepareStatement(sqlMatch);
 
             stmt.setInt(1, goalsFor);
             stmt.setInt(2, goalsAgainst);
             stmt.setString(3, textFieldNote.getText());
-            stmt.setInt(4, selectedMatch.getId());
+            stmt.setInt(4, matchId);
 
             // Updates the database
             stmt.executeUpdate();
