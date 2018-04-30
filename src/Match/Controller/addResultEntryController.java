@@ -15,9 +15,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.util.StringConverter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class addResultEntryController {
-    private ObservableList<Player> availablePlayers = FXCollections.observableArrayList();
-    private int availablePlayersFullSize;
+    private static ObservableList<Player> availablePlayers = FXCollections.observableArrayList();
+    private static int availablePlayersFullSize;
+    private int numberOfRows = 1;
 
     @FXML private ChoiceBox<Player> choiceboxPlayer;
     @FXML private TextField textfieldAmount;
@@ -25,23 +29,18 @@ public class addResultEntryController {
     @FXML private GridPane gridPane;
 
     StringConverter<Player> converter = new StringConverter<Player>() {
-        @Override
-        public String toString(Player object) {
-            return object.getName();
-        }
-
-        @Override
-        public Player fromString(String string) {
-            return null;
-        }
+        @Override public String toString(Player object) { return object.getName(); }
+        @Override public Player fromString(String string) { return null; }
     };
 
     @FXML public void initialize(){
-
+        choiceboxPlayer.setItems(availablePlayers);
         choiceboxPlayer.setConverter(converter);
+        //choiceboxPlayer.getStyleClass().add("greenButton");
         choiceboxPlayer.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Player>() {
             @Override
             public void changed(ObservableValue<? extends Player> observable, Player oldValue, Player newValue) {
+                choiceboxPlayer.setValue(observable.getValue());
                 listenerAvailablePlayers(oldValue, newValue);
             }
         });
@@ -55,42 +54,52 @@ public class addResultEntryController {
         });
     }
 
-    public void initData(ObservableList players){
-        availablePlayers = players;
+    public static void initData(ObservableList<Player> players){
+        availablePlayers.addAll(players);
         availablePlayersFullSize = availablePlayers.size();
     }
 
     private void listenerAvailablePlayers(Player oldValue, Player newValue){
-        if(oldValue == null) {
-            availablePlayers.remove(newValue);
-            System.out.println(newValue.getName() + " fjernes fra listen");
-        }else if (oldValue != null && newValue != null) {
-            availablePlayers.add(oldValue);
-            System.out.println(oldValue.getName() + " tilføjes til listen");
-            availablePlayers.remove(newValue);
-            System.out.println(newValue.getName() + " fjernes fra listen");
+
+        Player oV = oldValue, nV = newValue;
+
+        System.out.println("oldValue : " + oV);
+        System.out.println("newValue : " + nV);
+
+        if(oV == null){
+            availablePlayers.remove(nV);
+            System.out.println("if");
+        } else if(nV == null) {
+            availablePlayers.remove(oV);
+            System.out.println("if else");
+        } else {
+            availablePlayers.add(oV);
+            availablePlayers.remove(nV);
+            System.out.println("else");
         }
     }
 
     public void addRowButtonClick(){
-        if(gridPane.getRowCount() < availablePlayersFullSize) {
-            ChoiceBox<Player> choiceBox = new ChoiceBox();
-            choiceBox.setPrefWidth(275);
-            TextField textField = new TextField();
-            Hyperlink hyperlink = new Hyperlink("fjern");
-            hyperlink.setId(Integer.toString(gridPane.getRowCount() + 1));
-            hyperlink.getStyleClass().add("delete");
-            hyperlink.setPadding(new Insets(0, 0, 0, 14));
-
-            choiceBox.setConverter(converter);
+        if(availablePlayers.size() > 0) {
+            ChoiceBox<Player> choiceBox = new ChoiceBox<>();
             choiceBox.setItems(availablePlayers);
+            choiceBox.setConverter(converter);
+            choiceBox.getStyleClass().add("greenButton");
+            choiceBox.setPrefWidth(275);
             choiceBox.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Player>() {
                 @Override
                 public void changed(ObservableValue<? extends Player> observable, Player oldValue, Player newValue) {
+                    choiceBox.setValue(newValue);
                     listenerAvailablePlayers(oldValue, newValue);
                 }
             });
 
+            TextField textField = new TextField();
+
+            Hyperlink hyperlink = new Hyperlink("fjern");
+            hyperlink.setId(Integer.toString(gridPane.getRowCount() + 1));
+            hyperlink.getStyleClass().add("delete");
+            hyperlink.setPadding(new Insets(0, 0, 0, 14));
             hyperlink.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
@@ -100,7 +109,8 @@ public class addResultEntryController {
 
             gridPane.addRow(gridPane.getRowCount(), choiceBox, textField, hyperlink);
             gridPane.setVgap(5.0);
-            System.out.println(gridPane.getRowCount());
+
+            numberOfRows++;
         } else {
             System.out.println("No more players in list");
         }
@@ -108,9 +118,10 @@ public class addResultEntryController {
 
     public void removeRowButtonClick(Hyperlink hyperlink){
         System.out.println("Fjern linje " + hyperlink.getId());
-        int i;
 
-        //gridPane
+        //gridPane.getChildren().remove(3,6);
         //gridPane.getChildren().removeIf(node -> gridPane.getRowIndex(node) == Integer.parseInt(hyperlink.getId()));
+
+        //numberOfRows--;
     }
 }
