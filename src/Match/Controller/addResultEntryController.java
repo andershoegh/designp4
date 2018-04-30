@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
@@ -15,6 +16,7 @@ public class addResultEntryController {
     private static ObservableList<Player> availablePlayers = FXCollections.observableArrayList();
     private static String selectedTable;
 
+    @FXML private Label labelTitle;
     @FXML private ChoiceBox<Player> choiceboxPlayer;
     @FXML private TextField textfieldAmount;
 
@@ -27,6 +29,23 @@ public class addResultEntryController {
         choiceboxPlayer.setItems(availablePlayers);
         choiceboxPlayer.setConverter(converter);
         choiceboxPlayer.getStyleClass().add("greenButton");
+
+        switch (selectedTable) {
+            case "Goals":
+                labelTitle.setText("Tilføj målscorer");
+                break;
+            case "Assists":
+                labelTitle.setText("Tilføj assist");
+                break;
+            case "Yellow":
+                labelTitle.setText("Tilføj gult kort");
+                break;
+            case "Red":
+                labelTitle.setText("Tilføj rødt kort");
+                break;
+            default:
+                break;
+        }
     }
 
     public static void initData(ObservableList<Player> players, String id){
