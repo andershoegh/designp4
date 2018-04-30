@@ -1,5 +1,5 @@
 package Training.Controller;
-
+/*
 import javafx.fxml.FXML;
 import javafx.event.ActionEvent;
 import javafx.scene.layout.GridPane;
@@ -20,9 +20,9 @@ import java.io.IOException;
 import java.sql.*;
 import java.time.format.DateTimeFormatter;
 import static java.lang.String.valueOf;
-
+*/
 public class AddNewTrainingProgramController {
-
+/*
     @FXML private TextField programNameInput;
     @FXML private GridPane trainingExercises;
     @FXML private TextField exerciseDuration;
@@ -150,5 +150,5 @@ public class AddNewTrainingProgramController {
     public void cancelButtonClick() {
         Stage stage = (Stage) cancelButton.getScene().getWindow();
         stage.close();
-    }
+    }*/
 }
