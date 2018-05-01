@@ -14,6 +14,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
@@ -226,7 +227,7 @@ public class inputMatchResultsController {
             Stage stage = new Stage();
             stage.setResizable(false);
             stage.initModality(Modality.APPLICATION_MODAL);
-
+            stage.getIcons().add(new Image("file:graphics/ball.png"));
             Scene addResultScene = new Scene(addResultFXML);
             stage.setScene(addResultScene);
             stage.showAndWait();

@@ -24,7 +24,7 @@ import java.sql.SQLException;
 import java.text.ParseException;
 
 
-public class TrainingOverviewController {
+public class TrainingOverviewController {/*
     private ObservableList<Program> programData = FXCollections.observableArrayList();
 
     @FXML private TableView<Program> tablePrograms;
@@ -170,5 +170,5 @@ public class TrainingOverviewController {
     public void menuButtonClick(ActionEvent event) {
         controller.menuNavigation(event);
     }
-
+*/
 }

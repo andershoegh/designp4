@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -229,6 +230,7 @@ public class EditPlayerController {
             stage.setResizable(false);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle("Spiller ændret");
+            stage.getIcons().add(new Image("file:graphics/ball.png"));
             stage.setScene(playerEditedScene);
             stage.showAndWait();
             // Closing the window and returning to addPlayerFXML.fxml
