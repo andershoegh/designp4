@@ -5,6 +5,7 @@ import Player.Player;
 import SQL.SqlConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -13,18 +14,34 @@ import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
 import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.WritableImage;
 import javafx.scene.input.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.awt.image.RenderedImage;
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -33,6 +50,8 @@ import java.sql.SQLException;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.Stack;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class LineupController3 implements Initializable {
     @FXML
@@ -47,7 +66,7 @@ public class LineupController3 implements Initializable {
     @FXML
     public GridPane gridPane;
     @FXML
-    public GridPane gridBench;
+    public Button saveLineup;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -61,7 +80,6 @@ public class LineupController3 implements Initializable {
         }
 
         final GridPane target = gridPane;
-        final GridPane bench = gridBench;
         //ImageView source = imageView();
         final TableView<Player> source = playersTable;
 
@@ -155,6 +173,37 @@ public class LineupController3 implements Initializable {
             public void handle(DragEvent event) {
                 System.out.println("Drag Exited");
                 event.consume();
+            }
+        });
+
+        saveLineup.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                ImageView imageview = new ImageView();
+
+                FileChooser fileChooser = new FileChooser();
+                fileChooser.setTitle("Gem opstilling");
+
+                FileChooser.ExtensionFilter extensionFilter = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.png");
+                FileChooser.ExtensionFilter extensionFilter1 = new FileChooser.ExtensionFilter("All Files", "*.*");
+                fileChooser.getExtensionFilters().add(extensionFilter);
+                fileChooser.getExtensionFilters().add(extensionFilter1);
+
+                File file = fileChooser.showSaveDialog(null);
+
+                if (file != null) {
+                    try {
+                        Robot robot = new Robot();
+//                        Rectangle rectangle = new Rectangle(100, 0, 1200, 1200);
+                        java.awt.Rectangle rectangle = new java.awt.Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
+                        Thread.sleep(500);
+                        BufferedImage image = robot.createScreenCapture(rectangle);
+
+                        ImageIO.write(image, "png", file);
+                    } catch (Exception ex) {
+                        Logger.getLogger(LineupController3.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
             }
         });
 
