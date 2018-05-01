@@ -1,4 +1,4 @@
-/* This file is the stylesheet our program file */
+/* This file is the stylesheet for our program */
 
 .teamname{
     -fx-font-size: 12px;
@@ -141,7 +141,7 @@
     -fx-text-fill: #FFFFFF !important;
     -fx-text-alignment: center;
     -fx-alignment: center;
-    -fx-background-color: #1f951c;
+    -fx-background-color: #b5d9ad;
 }
 
 .table-row-cell:empty {
@@ -154,13 +154,14 @@
     -fx-text-fill: #FFFFFF !important;
     -fx-text-alignment: center;
     -fx-alignment: center;
-    -fx-background-color: #1f951c;
+    -fx-background-color: #2ba929;
 }
 
 .table-column{
     -fx-text-alignment: center;
     -fx-alignment: center;
     -fx-background-color: transparent;
+    -fx-text-weight: none;
 }
 
 .headerVisibility .column-header-background{
@@ -178,11 +179,15 @@
     -fx-focus-color: none;
 }
 
-.column-header {
+.column-header-background {
     -fx-background-color: #1f951c;
     -fx-text-fill: #FFFFFF !important;
     -fx-border-color: none;
     -fx-focus-color: none;
+}
+
+.column-header .label{
+    -fx-text-fill: #FFFFFF !important;
 }
 
 .tabYellowCard{
@@ -315,7 +320,7 @@
 }
 
 .hyperlink {
-    -fx-text-fill: #a1b56c;
+    -fx-text-fill: #1f951c;
 }
 
 .calender-hbox {

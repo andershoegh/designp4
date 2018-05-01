@@ -54,14 +54,14 @@
                     <children>
                         <HBox prefHeight="71.0" prefWidth="901.0" styleClass="header">
                             <children>
-                                <Text fill="#1f951c" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="headerText" text="TRÆNING" textAlignment="CENTER">
+                                <Text fill="#1f951c" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="headerText" text="        TRÆNING" textAlignment="CENTER" wrappingWidth="915.5617218017578">
                                     <HBox.margin>
-                                        <Insets left="35.0" top="25.0" />
+                                        <Insets top="25.0" />
                                     </HBox.margin>
                                 </Text>
                         <ChoiceBox fx:id="seasonSelector" prefWidth="150.0" styleClass="greenButton">
                            <HBox.margin>
-                              <Insets left="800.0" top="15.0" />
+                              <Insets right="50.0" top="15.0" />
                            </HBox.margin>
                         </ChoiceBox>
                             </children>
@@ -87,7 +87,7 @@
                                     <Insets right="20.0" />
                                  </HBox.margin>
                               </Button>
-                              <Button minWidth="107.0" mnemonicParsing="false" onAction="#editProgram" prefWidth="115.0" styleClass="overviewButtons" text="Vis program">
+                              <Button minWidth="107.0" mnemonicParsing="false" onAction="#editProgram" prefWidth="115.0" styleClass="utilityButtons" text="Vis program">
                                  <HBox.margin>
                                     <Insets right="20.0" />
                                  </HBox.margin>
