@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="340.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Calendar.Controller.CreateActivityMiscController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="340.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Calendar.Controller.CreateActivityMiscController">
    <children>
       <GridPane layoutX="14.0" layoutY="104.0" prefHeight="306.0" prefWidth="312.0" vgap="10.0">
          <columnConstraints>
@@ -45,7 +45,7 @@
             <TextField id="timeInput" fx:id="opponentInput" layoutX="23.0" layoutY="104.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
-      <Text layoutX="-4.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Opret diverse aktivitet" textAlignment="CENTER" wrappingWidth="348.17919921875">
+      <Text layoutX="-4.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="pageheadline" text="OPRET DIVERSE AKTIVITET" textAlignment="CENTER" wrappingWidth="348.17919921875">
          <font>
             <Font size="24.0" />
          </font>

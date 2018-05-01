@@ -14,10 +14,9 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Lineup.LineupController">
+<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Lineup.LineupController3">
     <children>
       <HBox maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0">
          <children>
@@ -43,43 +42,38 @@
                         <Insets bottom="30.0" />
                      </VBox.margin>
                   </HBox>
-                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" text="Oversigt" />
-                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="Kalender" />
-                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" styleClass="selectedmenu" text="Spillere" />
-                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" text="Kampe" />
-                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" text="Træning" />
-                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" text="Statistik" />
-                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" text="Diverse" />
+                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="menubarButton" text="Oversigt" />
+                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefHeight="50.0" prefWidth="200.0" styleClass="menubarButton" text="Kalender" />
+                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="menubarButton" text="Spillere" />
+                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="menubarButton" text="Kampe" />
+                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="selectedmenu" text="Træning" />
+                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="menubarButton" text="Statistik" />
+                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="menubarButton" text="Diverse" />
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="1080.0">
                <children>
-                  <HBox prefHeight="71.0" prefWidth="200.0">
+                  <HBox prefHeight="71.0" prefWidth="200.0" styleClass="header">
                      <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="pageheadline" text="Matches">
+                              <Text fill="#1f951c" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="headerText" text="OPSTILLING" textAlignment="CENTER" wrappingWidth="1080.8407440185547">
                                   <HBox.margin>
-                                      <Insets left="35.0" top="25.0" />
+                                      <Insets top="25.0" />
                                   </HBox.margin>
                               </Text>
                      </children>
                   </HBox>
-                  <Line endX="1080.0" />
                   <AnchorPane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <HBox prefHeight="55.0" prefWidth="1081.0">
+                        <HBox prefHeight="55.0" prefWidth="915.0">
                            <children>
                               <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="68.0" prefWidth="176.0" text="Match:" />
                               <Label alignment="CENTER" prefHeight="55.0" prefWidth="334.0" text="Hvem vs hvem" />
                               <Label alignment="CENTER" prefHeight="74.0" prefWidth="246.0" text="til tidspunkt" />
                            </children>
                         </HBox>
-                        <VBox fx:id="bench" layoutX="928.0" layoutY="60.0" prefHeight="507.0" prefWidth="125.0">
+                        <VBox layoutX="928.0" layoutY="60.0" prefHeight="507.0" prefWidth="100.0">
                            <children>
-                              <HBox prefHeight="78.0" prefWidth="125.0">
-                                 <children>
-                                    <Label alignment="CENTER" prefHeight="41.0" prefWidth="123.0" text="Bench" />
-                                 </children>
-                              </HBox>
+                              <HBox prefHeight="57.0" prefWidth="100.0" />
                            </children>
                         </VBox>
                         <ImageView fx:id="tacticfield" fitHeight="507.0" fitWidth="348.0" layoutX="581.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
@@ -87,27 +81,27 @@
                               <Image url="file:graphics/Fodboldbane.png" />
                            </image>
                         </ImageView>
-                        <VBox layoutX="20.0" layoutY="60.0" prefHeight="507.0" prefWidth="255.0">
+                        <VBox layoutX="20.0" layoutY="60.0" prefHeight="500.0" prefWidth="260.0">
                            <children>
-                              <TableView fx:id="playersTable" prefHeight="452.0" prefWidth="255.0">
+                              <TableView fx:id="playersTable" prefHeight="458.0" prefWidth="260.0">
                                 <columns>
-                                  <TableColumn fx:id="columnPlayers" prefWidth="254.0" text="Players" />
+                                  <TableColumn fx:id="columnPlayers" editable="false" prefWidth="254.0" resizable="false" sortable="false" text="Spillere" />
                                 </columns>
                               </TableView>
-                              <Button fx:id="addNewPlayer" alignment="CENTER" prefHeight="50.0" prefWidth="274.0" text="Add Player" />
+                              <Button fx:id="addNewPlayer" alignment="CENTER" prefHeight="50.0" prefWidth="274.0" styleClass="lineupButton" text="Tilføj spiller" />
                            </children>
                         </VBox>
-                        <VBox layoutX="286.0" layoutY="60.0" prefHeight="507.0" prefWidth="255.0">
+                        <VBox layoutX="286.0" layoutY="60.0" prefHeight="500.0" prefWidth="260.0">
                            <children>
-                              <TableView prefHeight="453.0" prefWidth="255.0">
+                              <TableView prefHeight="458.0" prefWidth="260.0">
                                  <columns>
-                                    <TableColumn fx:id="tactics" prefWidth="254.0" text="Tactics" />
+                                    <TableColumn fx:id="tactics" editable="false" prefWidth="254.0" resizable="false" sortable="false" text="Taktikker" />
                                  </columns>
                               </TableView>
-                              <Button fx:id="addNewTactic" alignment="CENTER" prefHeight="50.0" prefWidth="274.0" text="New tactic" />
+                              <Button fx:id="addNewTactic" alignment="CENTER" prefHeight="50.0" prefWidth="274.0" styleClass="lineupButton" text="Ny taktik" />
                            </children>
                         </VBox>
-                        <GridPane fx:id="gridPane" layoutX="575.0" layoutY="80.0" onDragDetected="#handle" onDragDone="#handle" onDragDropped="#handle" onDragOver="#handle" prefHeight="467.0" prefWidth="334.0">
+                        <GridPane fx:id="gridPane" layoutX="588.0" layoutY="80.0" prefHeight="467.0" prefWidth="450.0">
                           <columnConstraints>
                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -116,6 +110,7 @@
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="120.0" prefWidth="100.0" />
                           </columnConstraints>
                           <rowConstraints>
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -131,7 +126,6 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <ImageView fx:id="iv24" fitHeight="43.0" fitWidth="50.0" onDragDetected="#handleDragDetection" onDragDropped="#handleDrop" onDragOver="#handleDragOver" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="4" />
                               <ImageView fitHeight="49.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" />
                               <ImageView fitHeight="45.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" />
                               <ImageView fitHeight="49.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" />
@@ -141,7 +135,7 @@
                               <ImageView fitHeight="48.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" />
                               <ImageView fitHeight="47.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
                               <ImageView fitHeight="45.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <ImageView fitHeight="50.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                              <ImageView fitHeight="50.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                               <ImageView fitHeight="45.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                               <ImageView fitHeight="48.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="1" />
                               <ImageView fitHeight="51.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="1" />
@@ -153,24 +147,85 @@
                               <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="2" />
                               <ImageView fitHeight="52.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="2" />
                               <ImageView fitHeight="50.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="2" />
+                              <ImageView fitHeight="50.0" fitWidth="49.0" layoutX="296.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3" />
+                              <ImageView fitHeight="50.0" fitWidth="49.0" layoutX="10.0" layoutY="136.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <ImageView fitHeight="50.0" fitWidth="49.0" layoutX="57.0" layoutY="136.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                              <ImageView fitHeight="50.0" fitWidth="49.0" layoutX="104.0" layoutY="136.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                              <ImageView fitHeight="50.0" fitWidth="49.0" layoutX="152.0" layoutY="136.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+                              <ImageView fitHeight="50.0" fitWidth="49.0" layoutX="200.0" layoutY="136.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+                              <ImageView fitHeight="50.0" fitWidth="49.0" layoutX="248.0" layoutY="136.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="3" />
+                              <ImageView fitHeight="50.0" fitWidth="49.0" layoutX="296.0" layoutY="136.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="4" />
+                              <ImageView fitHeight="50.0" fitWidth="49.0" layoutX="10.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <ImageView fitHeight="50.0" fitWidth="49.0" layoutX="57.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                              <ImageView fitHeight="50.0" fitWidth="49.0" layoutX="104.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                              <ImageView fitHeight="50.0" fitWidth="49.0" layoutX="152.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+                              <ImageView fitHeight="50.0" fitWidth="49.0" layoutX="200.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+                              <ImageView fitHeight="50.0" fitWidth="49.0" layoutX="248.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="4" />
+                              <ImageView fitHeight="50.0" fitWidth="49.0" layoutX="296.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="5" />
+                              <ImageView fitHeight="50.0" fitWidth="49.0" layoutX="10.0" layoutY="221.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                              <ImageView fitHeight="50.0" fitWidth="49.0" layoutX="57.0" layoutY="221.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                              <ImageView fitHeight="50.0" fitWidth="49.0" layoutX="104.0" layoutY="221.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+                              <ImageView fitHeight="50.0" fitWidth="49.0" layoutX="152.0" layoutY="221.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+                              <ImageView fitHeight="50.0" fitWidth="49.0" layoutX="200.0" layoutY="221.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="5" />
+                              <ImageView fitHeight="50.0" fitWidth="49.0" layoutX="248.0" layoutY="221.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="5" />
+                              <ImageView fitHeight="50.0" fitWidth="49.0" layoutX="296.0" layoutY="221.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="6" />
+                              <ImageView fitHeight="50.0" fitWidth="49.0" layoutX="10.0" layoutY="263.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                              <ImageView fitHeight="50.0" fitWidth="49.0" layoutX="57.0" layoutY="263.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+                              <ImageView fitHeight="50.0" fitWidth="49.0" layoutX="104.0" layoutY="263.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+                              <ImageView fitHeight="50.0" fitWidth="49.0" layoutX="152.0" layoutY="263.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="6" />
+                              <ImageView fitHeight="50.0" fitWidth="49.0" layoutX="200.0" layoutY="263.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="6" />
+                              <ImageView fitHeight="50.0" fitWidth="49.0" layoutX="248.0" layoutY="263.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="6" />
+                              <ImageView fitHeight="50.0" fitWidth="49.0" layoutX="296.0" layoutY="263.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="7" />
+                              <ImageView fitHeight="50.0" fitWidth="49.0" layoutX="10.0" layoutY="305.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                              <ImageView fitHeight="50.0" fitWidth="49.0" layoutX="57.0" layoutY="305.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+                              <ImageView fitHeight="50.0" fitWidth="49.0" layoutX="104.0" layoutY="305.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+                              <ImageView fitHeight="50.0" fitWidth="49.0" layoutX="152.0" layoutY="305.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="7" />
+                              <ImageView fitHeight="50.0" fitWidth="49.0" layoutX="200.0" layoutY="305.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="7" />
+                              <ImageView fitHeight="50.0" fitWidth="49.0" layoutX="248.0" layoutY="305.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="7" />
+                              <ImageView fitHeight="50.0" fitWidth="49.0" layoutX="296.0" layoutY="305.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="8" />
+                              <ImageView fitHeight="50.0" fitWidth="49.0" layoutX="10.0" layoutY="347.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                              <ImageView fitHeight="50.0" fitWidth="49.0" layoutX="57.0" layoutY="347.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+                              <ImageView fitHeight="50.0" fitWidth="49.0" layoutX="104.0" layoutY="347.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="8" />
+                              <ImageView fitHeight="50.0" fitWidth="49.0" layoutX="152.0" layoutY="347.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="8" />
+                              <ImageView fitHeight="50.0" fitWidth="49.0" layoutX="200.0" layoutY="347.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="8" />
+                              <ImageView fitHeight="50.0" fitWidth="49.0" layoutX="248.0" layoutY="347.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="8" />
+                              <ImageView fitHeight="50.0" fitWidth="49.0" layoutX="296.0" layoutY="347.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="9" />
+                              <ImageView fitHeight="50.0" fitWidth="49.0" layoutX="10.0" layoutY="389.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                              <ImageView fitHeight="50.0" fitWidth="49.0" layoutX="57.0" layoutY="389.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="9" />
+                              <ImageView fitHeight="50.0" fitWidth="49.0" layoutX="104.0" layoutY="389.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="9" />
+                              <ImageView fitHeight="50.0" fitWidth="49.0" layoutX="152.0" layoutY="389.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="9" />
+                              <ImageView fitHeight="50.0" fitWidth="49.0" layoutX="200.0" layoutY="389.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="9" />
+                              <ImageView fitHeight="50.0" fitWidth="49.0" layoutX="248.0" layoutY="389.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="9" />
+                              <ImageView fitHeight="50.0" fitWidth="49.0" layoutX="296.0" layoutY="389.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="10" />
+                              <ImageView fitHeight="50.0" fitWidth="49.0" layoutX="10.0" layoutY="431.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                              <ImageView fitHeight="50.0" fitWidth="49.0" layoutX="57.0" layoutY="431.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="10" />
+                              <ImageView fitHeight="50.0" fitWidth="49.0" layoutX="104.0" layoutY="431.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="10" />
+                              <ImageView fitHeight="50.0" fitWidth="49.0" layoutX="152.0" layoutY="431.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="10" />
+                              <ImageView fitHeight="50.0" fitWidth="49.0" layoutX="200.0" layoutY="431.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="10" />
+                              <ImageView fitHeight="50.0" fitWidth="49.0" layoutX="248.0" layoutY="431.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="10" />
+                              <ImageView fitHeight="128.0" fitWidth="122.0" layoutX="10.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="1" />
+                              <ImageView fitHeight="130.0" fitWidth="122.0" layoutX="340.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="4" />
+                              <ImageView fitHeight="130.0" fitWidth="122.0" layoutX="340.0" layoutY="139.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="7" />
+                              <ImageView fitHeight="130.0" fitWidth="122.0" layoutX="340.0" layoutY="265.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="10" />
                            </children>
                         </GridPane>
+                        <Label alignment="CENTER" layoutX="937.0" layoutY="28.0" prefHeight="41.0" prefWidth="91.0" text="Bench" />
                      </children>
                   </AnchorPane>
                   <HBox prefHeight="50.0" prefWidth="1081.0">
                      <children>
-                        <Region prefHeight="79.0" prefWidth="710.0" />
-                        <Button fx:id="exportLineup" prefHeight="24.0" prefWidth="74.0" text="Export">
+                        <Region prefHeight="50.0" prefWidth="613.0" />
+                        <Button fx:id="exportLineup" prefHeight="24.0" prefWidth="80.0" styleClass="utilityButtons" text="Eksporter">
                            <HBox.margin>
                               <Insets left="15.0" top="15.0" />
                            </HBox.margin>
                         </Button>
-                        <Button fx:id="printLineup" layoutX="775.0" layoutY="10.0" prefHeight="24.0" prefWidth="74.0" text="Print">
+                        <Button fx:id="printLineup" layoutX="775.0" layoutY="10.0" prefHeight="24.0" prefWidth="80.0" styleClass="utilityButtons" text="Print">
                            <HBox.margin>
                               <Insets left="15.0" top="15.0" />
                            </HBox.margin>
                         </Button>
-                        <Button fx:id="saveLineup" layoutX="849.0" layoutY="10.0" prefHeight="24.0" prefWidth="74.0" text="Save">
+                        <Button fx:id="saveLineup" layoutX="849.0" layoutY="10.0" prefHeight="24.0" prefWidth="80.0" styleClass="buttonApprove" text="Gem">
                            <HBox.margin>
                               <Insets left="15.0" top="15.0" />
                            </HBox.margin>

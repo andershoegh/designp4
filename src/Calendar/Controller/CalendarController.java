@@ -295,7 +295,16 @@ public class CalendarController {
             stage.setScene(createEventScene);
             stage.showAndWait();
 
+            loadTrainingFromDB();
+            loadMatchFromDB();
+            loadOtherFromDB();
+            updateMatchTable();
+            updateTrainingTable();
+            updateOtherTable();
+
         } catch (IOException e){
+            e.printStackTrace();
+        } catch (ParseException e) {
             e.printStackTrace();
         }
     }
@@ -339,7 +348,7 @@ public class CalendarController {
     }
 
 
-    // Menu buttons navigation
+    //    // Menu buttons navigation
     private MenuController controller = new MenuController();
 
     public void menuButtonClick(ActionEvent event){
