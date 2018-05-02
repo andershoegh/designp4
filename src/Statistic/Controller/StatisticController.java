@@ -1,5 +1,6 @@
 package Statistic.Controller;
 
+import Controller.DeleteAble;
 import Controller.MenuController;
 import Player.Player;
 import SQL.SqlConnection;
@@ -16,6 +17,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class StatisticController {
+
+    private Player selectedItem = null;
 
     //Mål
     private ObservableList<Player> goalsData;
@@ -70,6 +73,113 @@ public class StatisticController {
         redData = FXCollections.observableArrayList();
         setCellTable();
         loadDataFromDB();
+
+        stats_goals_tableview
+                .getSelectionModel()
+                .selectedItemProperty()
+                .addListener((observable, oldValue, newValue) -> {
+                    if (newValue != null) {
+                        selectedItem = newValue;
+                        stats_match_tableview.getSelectionModel().clearSelection();
+                        stats_assists_tableview.getSelectionModel().clearSelection();
+                        stats_mofm_tableview.getSelectionModel().clearSelection();
+                        stats_trainings_tableview.getSelectionModel().clearSelection();
+                        stats_yellowcards_tableview.getSelectionModel().clearSelection();
+                        stats_redcards_tableview.getSelectionModel().clearSelection();
+                    }
+                });
+
+        stats_match_tableview
+                .getSelectionModel()
+                .selectedItemProperty()
+                .addListener((observable, oldValue, newValue) -> {
+                    if (newValue != null) {
+                        selectedItem = newValue;
+                        stats_goals_tableview.getSelectionModel().clearSelection();
+                        stats_assists_tableview.getSelectionModel().clearSelection();
+                        stats_mofm_tableview.getSelectionModel().clearSelection();
+                        stats_trainings_tableview.getSelectionModel().clearSelection();
+                        stats_yellowcards_tableview.getSelectionModel().clearSelection();
+                        stats_redcards_tableview.getSelectionModel().clearSelection();
+                    }
+                });
+
+
+        stats_assists_tableview
+                .getSelectionModel()
+                .selectedItemProperty()
+                .addListener((observable, oldValue, newValue) -> {
+                    if (newValue != null) {
+                        selectedItem = newValue;
+                        stats_goals_tableview.getSelectionModel().clearSelection();
+                        stats_match_tableview.getSelectionModel().clearSelection();
+                        stats_mofm_tableview.getSelectionModel().clearSelection();
+                        stats_trainings_tableview.getSelectionModel().clearSelection();
+                        stats_yellowcards_tableview.getSelectionModel().clearSelection();
+                        stats_redcards_tableview.getSelectionModel().clearSelection();
+                    }
+
+                });
+        stats_mofm_tableview
+                .getSelectionModel()
+                .selectedItemProperty()
+                .addListener((observable, oldValue, newValue) -> {
+                    if (newValue != null) {
+                        stats_goals_tableview.getSelectionModel().clearSelection();
+                        stats_match_tableview.getSelectionModel().clearSelection();
+                        stats_assists_tableview.getSelectionModel().clearSelection();
+                        stats_trainings_tableview.getSelectionModel().clearSelection();
+                        stats_yellowcards_tableview.getSelectionModel().clearSelection();
+                        stats_redcards_tableview.getSelectionModel().clearSelection();
+                    }
+                });
+
+        stats_trainings_tableview
+                .getSelectionModel()
+                .selectedItemProperty()
+                .addListener((observable, oldValue, newValue) -> {
+                    if (newValue != null) {
+                        selectedItem = newValue;
+                        stats_goals_tableview.getSelectionModel().clearSelection();
+                        stats_match_tableview.getSelectionModel().clearSelection();
+                        stats_assists_tableview.getSelectionModel().clearSelection();
+                        stats_mofm_tableview.getSelectionModel().clearSelection();
+                        stats_yellowcards_tableview.getSelectionModel().clearSelection();
+                        stats_redcards_tableview.getSelectionModel().clearSelection();
+                    }
+                });
+
+
+        stats_yellowcards_tableview
+                .getSelectionModel()
+                .selectedItemProperty()
+                .addListener((observable, oldValue, newValue) -> {
+                    if (newValue != null) {
+                        selectedItem = newValue;
+                        stats_goals_tableview.getSelectionModel().clearSelection();
+                        stats_match_tableview.getSelectionModel().clearSelection();
+                        stats_assists_tableview.getSelectionModel().clearSelection();
+                        stats_mofm_tableview.getSelectionModel().clearSelection();
+                        stats_trainings_tableview.getSelectionModel().clearSelection();
+                        stats_redcards_tableview.getSelectionModel().clearSelection();
+                    }
+
+                });
+        stats_redcards_tableview
+                .getSelectionModel()
+                .selectedItemProperty()
+                .addListener((observable, oldValue, newValue) -> {
+                    if (newValue != null) {
+                        selectedItem = newValue;
+                        stats_goals_tableview.getSelectionModel().clearSelection();
+                        stats_match_tableview.getSelectionModel().clearSelection();
+                        stats_assists_tableview.getSelectionModel().clearSelection();
+                        stats_mofm_tableview.getSelectionModel().clearSelection();
+                        stats_trainings_tableview.getSelectionModel().clearSelection();
+                        stats_yellowcards_tableview.getSelectionModel().clearSelection();
+                    }
+
+                });
     }
 
     // Retrieves data from appropriate player class constructor

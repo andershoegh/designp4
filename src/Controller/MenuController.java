@@ -5,6 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.SQLOutput;
@@ -40,6 +42,24 @@ public class MenuController {
 
             stage.setScene(newScene);
             stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void popupSceneChange(String path){
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource(path));
+            Parent newFXML = loader.load();
+
+            Stage stage = new Stage();
+            stage.setResizable(false);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.getIcons().add(new Image("file:graphics/ball.png"));
+            Scene addResultScene = new Scene(newFXML);
+            stage.setScene(addResultScene);
+            stage.showAndWait();
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -13,7 +13,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Player.Controller.PlayerListController">
@@ -42,33 +41,32 @@
                                 <Insets bottom="30.0" />
                             </VBox.margin>
                         </HBox>
-                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" text="Oversigt" />
-                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefHeight="50.0" prefWidth="200.0" text="Kalender" />
+                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="menubarButton" text="Oversigt" />
+                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefHeight="50.0" prefWidth="200.0" styleClass="menubarButton" text="Kalender" />
                         <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="selectedmenu" text="Spillere" />
-                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" text="Kampe" />
-                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" text="Træning" />
-                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" text="Statistik" />
-                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" text="Diverse" />
+                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="menubarButton" text="Kampe" />
+                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="menubarButton" text="Træning" />
+                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="menubarButton" text="Statistik" />
+                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="menubarButton" text="Diverse" />
                     </children>
                 </VBox>
                 <VBox prefHeight="200.0" prefWidth="1080.0">
                     <children>
-                        <HBox prefHeight="71.0" prefWidth="200.0">
+                        <HBox prefHeight="71.0" prefWidth="200.0" styleClass="header">
                             <children>
-                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="pageheadline" text="Spillere">
+                                <Text fill="#1f951c" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="headerText" text="SPILLERE" textAlignment="CENTER" wrappingWidth="1077.9163970947266">
                                     <HBox.margin>
-                                        <Insets left="35.0" top="25.0" />
+                                        <Insets top="25.0" />
                                     </HBox.margin>
                                 </Text>
                             </children>
                         </HBox>
-                        <Line endX="1080.0" />
                         <VBox prefWidth="100.0" BorderPane.alignment="CENTER">
                             <children>
                                 <Region prefHeight="60.0" prefWidth="200.0" />
                                 <TableView fx:id="tablePlayers" onMouseClicked="#handleRowSelect" prefHeight="400.0" prefWidth="902.0">
                                     <columns>
-                                        <TableColumn fx:id="columnName" editable="false" prefWidth="196.80002439022064" resizable="false" sortable="false" text="Navn" />
+                                        <TableColumn id="name" fx:id="columnName" editable="false" prefWidth="196.80002439022064" resizable="false" sortable="false" styleClass="name" text="Navn" />
                                         <TableColumn fx:id="columnPosition" editable="false" prefWidth="204.0" sortable="false" text="Position" />
                                         <TableColumn fx:id="columnPhone" editable="false" minWidth="0.0" prefWidth="93.60003662109375" resizable="false" sortable="false" text="Telefon" />
                                         <TableColumn fx:id="columnMail" editable="false" prefWidth="174.39993286132812" resizable="false" sortable="false" text="Mail" />
@@ -102,7 +100,7 @@
                                                 <Tooltip text="Klik på knappen, for at tilføje ny spiller" />
                                             </tooltip>
                                         </Button>
-                                        <Button fx:id="show_player_btn" alignment="CENTER" minWidth="99.0" mnemonicParsing="false" onAction="#editPlayerButtonClick" prefHeight="34.0" prefWidth="99.0" styleClass="overviewButtons" text="Vis spiller">
+                                        <Button fx:id="show_player_btn" alignment="CENTER" minWidth="99.0" mnemonicParsing="false" onAction="#editPlayerButtonClick" prefHeight="34.0" prefWidth="99.0" styleClass="utilityButtons" text="Vis spiller">
                                             <opaqueInsets>
                                                 <Insets />
                                             </opaqueInsets>

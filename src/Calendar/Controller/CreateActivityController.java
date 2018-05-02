@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import java.io.IOException;
@@ -24,7 +25,7 @@ public class CreateActivityController {
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle("Opret træning");
-
+            stage.getIcons().add(new Image("file:graphics/ball.png"));
             stage.setScene(createActivityTrainingScene);
             stage.showAndWait();
 
@@ -43,8 +44,8 @@ public class CreateActivityController {
             Scene createActivityMatchScene = new Scene(createEventMatchFXML);
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setTitle("Opret træning");
-
+            stage.setTitle("Opret kamp");
+            stage.getIcons().add(new Image("file:graphics/ball.png"));
             stage.setScene(createActivityMatchScene);
             stage.showAndWait();
 
@@ -63,8 +64,8 @@ public class CreateActivityController {
             Scene createActivityMiscScene = new Scene(createEventMiscFXML);
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setTitle("Opret træning");
-
+            stage.setTitle("Opret diverse");
+            stage.getIcons().add(new Image("file:graphics/ball.png"));
             stage.setScene(createActivityMiscScene);
             stage.showAndWait();
 

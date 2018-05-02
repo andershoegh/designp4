@@ -4,6 +4,7 @@ import Controller.MenuController;
 import Match.Match;
 import Player.Player;
 import SQL.SqlConnection;
+import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,6 +15,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
@@ -23,12 +26,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Objects;
 
 public class inputMatchResultsController {
 
     private Match selectedMatch;
-    int i;
+    private int i;
+    private int inputGoalsScored;
     private int matchId;
     private int goalsFor;
     private int goalsAgainst;
@@ -43,6 +46,7 @@ public class inputMatchResultsController {
     private ObservableList<Player> updatedPlayers = FXCollections.observableArrayList();
 
     MenuController controller = new MenuController();
+    MissingDataPopup controllerPopUp = new MissingDataPopup();
 
     @FXML private Label matchLabel;
     @FXML private Label dateLabel;
@@ -55,7 +59,8 @@ public class inputMatchResultsController {
     @FXML private TextField textFieldGuestScore;
 
     @FXML private ChoiceBox<Player> choiceboxMOTM;
-    @FXML private TextField textFieldNote;
+    @FXML private TextArea textAreaNote;
+    @FXML private Label labelCharacters;
 
     @FXML private TableView<Player> tableGoals;
     @FXML private TableColumn<?, ?> columnGoalsName;
@@ -104,6 +109,23 @@ public class inputMatchResultsController {
         tableAssists.setItems(playerAssists);
         tableYellow.setItems(playerYellow);
         tableRed.setItems(playerRed);
+
+        labelCharacters.setText(textAreaNote.getText().length() + " / 255");
+        textAreaNote.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                labelCharacters.setText(newValue.length() + " / 255");
+
+                if (newValue.length() > 255) {
+                    labelCharacters.setTextFill(Color.valueOf("#ec2d28"));
+                    textAreaNote.deleteNextChar();
+                } else if (newValue.length() == 255) {
+                    labelCharacters.setTextFill(Color.valueOf("#ec2d28"));
+                } else {
+                    labelCharacters.setTextFill(Color.valueOf("#c8c8c8"));
+                }
+            }
+        });
     }
 
     public void setCellTable(){
@@ -226,12 +248,12 @@ public class inputMatchResultsController {
             Stage stage = new Stage();
             stage.setResizable(false);
             stage.initModality(Modality.APPLICATION_MODAL);
-
+            stage.getIcons().add(new Image("file:graphics/ball.png"));
             Scene addResultScene = new Scene(addResultFXML);
             stage.setScene(addResultScene);
             stage.showAndWait();
 
-            updateObsList(tempTable, tempPlayer, tempAmount);
+            if (tempPlayer != null) { updateObsList(tempTable, tempPlayer, tempAmount); }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -239,73 +261,95 @@ public class inputMatchResultsController {
 
     public void saveButtonClick(ActionEvent event){
 
-        if(selectedMatch.getIsHome()){
-            goalsFor = Integer.parseInt(textFieldHomeScore.getText());
-            goalsAgainst = Integer.parseInt(textFieldGuestScore.getText());
+        // Checks if score is input
+        if (textFieldHomeScore.getText().isEmpty() || textFieldGuestScore.getText().isEmpty()) {
+            controllerPopUp.initData("missing score");
+            controller.popupSceneChange("../Match/missingDataPopup.fxml");
         } else {
-            goalsAgainst = Integer.parseInt(textFieldHomeScore.getText());
-            goalsFor = Integer.parseInt(textFieldGuestScore.getText());
-        }
+            if (selectedMatch.getIsHome()) {
+                goalsFor = Integer.parseInt(textFieldHomeScore.getText());
+                goalsAgainst = Integer.parseInt(textFieldGuestScore.getText());
+            } else {
+                goalsAgainst = Integer.parseInt(textFieldHomeScore.getText());
+                goalsFor = Integer.parseInt(textFieldGuestScore.getText());
+            }
 
-        Connection conn = SqlConnection.connectToDB();
+            playerGoals.stream().forEach(player -> inputGoalsScored += player.getGoalsScored());
 
-        // Inserting data into matches table
-        try {
-        String sqlMatch = "UPDATE matches SET goalsFor = ?, goalsAgainst = ?, note = ? WHERE match_id = ?";
-
-            PreparedStatement stmt = conn.prepareStatement(sqlMatch);
-
-            stmt.setInt(1, goalsFor);
-            stmt.setInt(2, goalsAgainst);
-            stmt.setString(3, textFieldNote.getText());
-            stmt.setInt(4, matchId);
-
-            // Updates the database
-            stmt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        // Inserting data into players table
-        // Combines separate table lists into one list
-        updatedPlayers.addAll(tableGoals.getItems().filtered(player -> !updatedPlayers.contains(player)));
-        updatedPlayers.addAll(tableAssists.getItems().filtered(player -> !updatedPlayers.contains(player)));
-        updatedPlayers.addAll(tableYellow.getItems().filtered(player -> !updatedPlayers.contains(player)));
-        updatedPlayers.addAll(tableRed.getItems().filtered(player -> !updatedPlayers.contains(player)));
-
-        // Checks whether motm-selected player is in the updated list, and updates value
-        if(!updatedPlayers.contains(choiceboxMOTM.getValue())) {
-            choiceboxMOTM.getValue().setMotm(+1);
-            updatedPlayers.add(choiceboxMOTM.getValue());
-        } else {
-            choiceboxMOTM.getValue().setMotm(+1);
-        }
-
-        // Updates the database for each player in the updatedPlayers list
-        for(i=0; i<updatedPlayers.size(); i++){
-            try {
-                String sqlPlayer = "UPDATE players SET goalScored = goalScored + ?, " +
-                        "assist = assist + ?, yellowCards = yellowCards + ?, " +
-                        "redCards = redCards + ?, motm = motm + ?" +
-                        "WHERE player_id = ?";
-
-                PreparedStatement stmt = conn.prepareStatement(sqlPlayer);
-
-                stmt.setInt(1, updatedPlayers.get(i).getGoalsScored());
-                stmt.setInt(2, updatedPlayers.get(i).getAssists());
-                stmt.setInt(3, updatedPlayers.get(i).getYellowCards());
-                stmt.setInt(4, updatedPlayers.get(i).getRedCards());
-                stmt.setInt(5, updatedPlayers.get(i).getMotm());
-                stmt.setInt(6, updatedPlayers.get(i).getId());
-
-                stmt.executeUpdate();
-            } catch (SQLException e){
-                e.printStackTrace();
+            if (goalsFor != inputGoalsScored){
+                controllerPopUp.initData("missing goalscorer");
+                controller.popupSceneChange("../Match/missingDataPopup.fxml");
             }
         }
 
-        SqlConnection.closeConnection();
+        if (controllerPopUp.getCloseWindow()) {
 
+            Connection conn = SqlConnection.connectToDB();
+
+            // Inserting data into matches table
+            try {
+                String sqlMatch = "UPDATE matches SET goalsFor = ?, goalsAgainst = ?, note = ? WHERE match_id = ?";
+
+                PreparedStatement stmt = conn.prepareStatement(sqlMatch);
+
+                stmt.setInt(1, goalsFor);
+                stmt.setInt(2, goalsAgainst);
+                stmt.setString(3, textAreaNote.getText());
+                stmt.setInt(4, matchId);
+
+                // Updates the database
+                stmt.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            // Inserting data into players table
+            // Combines separate table lists into one list
+            updatedPlayers.addAll(tableGoals.getItems().filtered(player -> !updatedPlayers.contains(player)));
+            updatedPlayers.addAll(tableAssists.getItems().filtered(player -> !updatedPlayers.contains(player)));
+            updatedPlayers.addAll(tableYellow.getItems().filtered(player -> !updatedPlayers.contains(player)));
+            updatedPlayers.addAll(tableRed.getItems().filtered(player -> !updatedPlayers.contains(player)));
+
+            // Checks whether motm-selected player is in the updated list, and updates value
+            if (choiceboxMOTM.getValue() != null) {
+                if (!updatedPlayers.contains(choiceboxMOTM.getValue())) {
+                    choiceboxMOTM.getValue().setMotm(+1);
+                    updatedPlayers.add(choiceboxMOTM.getValue());
+                } else {
+                    choiceboxMOTM.getValue().setMotm(+1);
+                }
+            }
+
+            // Updates the database for each player in the updatedPlayers list
+            for (i = 0; i < updatedPlayers.size(); i++) {
+                try {
+                    String sqlPlayer = "UPDATE players SET goalScored = goalScored + ?, " +
+                            "assist = assist + ?, yellowCards = yellowCards + ?, " +
+                            "redCards = redCards + ?, motm = motm + ?" +
+                            "WHERE player_id = ?";
+
+                    PreparedStatement stmt = conn.prepareStatement(sqlPlayer);
+
+                    stmt.setInt(1, updatedPlayers.get(i).getGoalsScored());
+                    stmt.setInt(2, updatedPlayers.get(i).getAssists());
+                    stmt.setInt(3, updatedPlayers.get(i).getYellowCards());
+                    stmt.setInt(4, updatedPlayers.get(i).getRedCards());
+                    stmt.setInt(5, updatedPlayers.get(i).getMotm());
+                    stmt.setInt(6, updatedPlayers.get(i).getId());
+
+                    stmt.executeUpdate();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            SqlConnection.closeConnection();
+
+            controller.sceneChange(event, "../Match/MatchOverview.fxml");
+        }
+    }
+
+    public void cancelButtonClick(ActionEvent event){
         controller.sceneChange(event, "../Match/MatchOverview.fxml");
     }
 

@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tooltip;
+import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import Player.Player;
@@ -119,7 +120,7 @@ public class PlayerListController {
             stage.setResizable(false);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle("Opret spiller");
-
+            stage.getIcons().add(new Image("file:graphics/ball.png"));
             stage.setScene(addPlayerScene);
             stage.showAndWait();
 
@@ -140,7 +141,7 @@ public class PlayerListController {
             stage.setResizable(false);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle("Vis spiller");
-
+            stage.getIcons().add(new Image("file:graphics/ball.png"));
             EditPlayerController controller = loader.getController();
             controller.initData(tablePlayers.getSelectionModel().getSelectedItem());
 
@@ -169,7 +170,7 @@ public class PlayerListController {
             // Prevents user interaction with other windows while popup is open
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle("Slet spiller");
-
+            stage.getIcons().add(new Image("file:graphics/ball.png"));
             // Passes selected player info to DeletePlayerController.java
             DeletePlayerController controller = loader.getController();
             controller.initData(tablePlayers.getSelectionModel().getSelectedItem());
