@@ -70,8 +70,8 @@ public class CreateActivityMatchController {
 
     public void createButtonClick() {
         String sql = "INSERT INTO matches " +
-                "(match_id, opponent, goalsFor, goalsAgainst, season_id, date, time, isHome)" +
-                "VALUES (null, ?, null , null, ?,  ?, ?, ?)";
+                "(match_id, opponent, goalsFor, goalsAgainst, season_id, date, time, isHome, note)" +
+                "VALUES (null, ?, null , null, ?,  ?, ?, ?, ?)";
         try {
             Connection conn = SqlConnection.connectToDB();
             PreparedStatement stmt = conn.prepareStatement(sql);
@@ -90,6 +90,9 @@ public class CreateActivityMatchController {
 
             // Passes location input to DB
             stmt.setInt(5, locationInput.isSelected() ? 1 : 0);
+
+            // Passes notes input to DB
+            stmt.setString(6, notesInput.getText());
 
             stmt.executeUpdate();
 
