@@ -104,7 +104,7 @@
                             <tooltip>
                                 <Tooltip text="Vælg spillerens fødselsdag." />
                             </tooltip></DatePicker>
-                        <ChoiceBox fx:id="position" prefHeight="28.0" prefWidth="217.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                        <ChoiceBox fx:id="position" prefHeight="28.0" prefWidth="217.0" styleClass="choice-boxOther" stylesheets="@../stylesheet.css" GridPane.columnIndex="1" GridPane.rowIndex="7">
                             <tooltip>
                                 <Tooltip text="Vælg hvilken position spilleren spiller på. Hvis spilleren spiller flere steder, vælg så &quot;Andet.&quot;" />
                             </tooltip></ChoiceBox>
@@ -139,7 +139,7 @@
                     <children>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                             <children>
-                                <Label fx:id="motm" text="1" />
+                                <Label fx:id="motm" styleClass="pageheadline" stylesheets="@../stylesheet.css" text="1" />
                                 <Label text="Kampens spiller" />
                             </children>
                         </VBox>
@@ -153,37 +153,37 @@
                         </Button>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="150.0" GridPane.columnIndex="1">
                             <children>
-                                <Label fx:id="goalsScored" text="1" />
+                                <Label fx:id="goalsScored" styleClass="pageheadline" stylesheets="@../stylesheet.css" text="1" />
                                 <Label text="Mål" />
                             </children>
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2">
                             <children>
-                                <Label fx:id="assists" text="1" />
+                                <Label fx:id="assists" styleClass="pageheadline" stylesheets="@../stylesheet.css" text="1" />
                                 <Label text="Assists" />
                             </children>
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="162.0" GridPane.columnIndex="3">
                             <children>
-                                <Label fx:id="attendedMatches" text="1" />
+                                <Label fx:id="attendedMatches" styleClass="pageheadline" stylesheets="@../stylesheet.css" text="1" />
                                 <Label text="Kampe spillet" />
                             </children>
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
                             <children>
-                                <Label fx:id="attendedTrainings" text="1" />
+                                <Label fx:id="attendedTrainings" styleClass="pageheadline" stylesheets="@../stylesheet.css" text="1" />
                                 <Label text="Træninger" />
                             </children>
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                             <children>
-                                <Label fx:id="yellowCards" text="1" />
+                                <Label fx:id="yellowCards" styleClass="pageheadlineYellow" stylesheets="@../stylesheet.css" text="1" />
                                 <Label text="Gule kort" />
                             </children>
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                             <children>
-                                <Label fx:id="redCards" text="1" />
+                                <Label fx:id="redCards" styleClass="pageheadlineRed" stylesheets="@../stylesheet.css" text="1" />
                                 <Label text="Røde kort" />
                             </children>
                         </VBox>

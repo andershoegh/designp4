@@ -65,22 +65,17 @@ public class inputMatchResultsController {
     @FXML private TableView<Player> tableGoals;
     @FXML private TableColumn<?, ?> columnGoalsName;
     @FXML private TableColumn<?, ?> columnGoalsAmount;
-    @FXML private Hyperlink Goals;
 
     @FXML private TableView<Player> tableAssists;
     @FXML private TableColumn<?, ?> columnAssistsName;
     @FXML private TableColumn<?, ?> columnAssistsAmount;
-    @FXML private Hyperlink Assists;
 
     @FXML private TableView<Player> tableYellow;
     @FXML private TableColumn<?, ?> columnYellowName;
     @FXML private TableColumn<?, ?> columnYellowAmount;
-    @FXML private Hyperlink Yellow;
 
     @FXML private TableView<Player> tableRed;
     @FXML private TableColumn<?, ?> columnRedName;
-    @FXML private TableColumn<?, ?> columnRedAmount;
-    @FXML private Hyperlink Red;
 
     StringConverter<Player> converter = new StringConverter<Player>() {
         @Override public String toString(Player object) { return object.getName(); }
@@ -136,7 +131,6 @@ public class inputMatchResultsController {
         columnYellowName.setCellValueFactory(new PropertyValueFactory<>("name"));
         columnYellowAmount.setCellValueFactory(new PropertyValueFactory<>("yellowCards"));
         columnRedName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        columnRedAmount.setCellValueFactory(new PropertyValueFactory<>("redCards"));
     }
 
     public void initData(Match match){
@@ -196,6 +190,11 @@ public class inputMatchResultsController {
         tempAmount = amount;
     }
 
+    public void storeSelectedEntry(String table, Player player){
+        tempTable = table;
+        tempPlayer = player;
+    }
+
     public void updateObsList(String table, Player player, int amount){
         switch (table){
             case "Goals":
@@ -211,12 +210,13 @@ public class inputMatchResultsController {
                 playerYellow.add(player);
                 break;
             case "Red":
-                player.setRedCards(amount);
+                player.setRedCards(+1);
                 playerRed.add(player);
                 break;
         }
         tempTable = null;
         tempPlayer = null;
+        tempAmount = 0;
     }
 
     public void addButtonClick(ActionEvent event){
