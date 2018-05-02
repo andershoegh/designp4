@@ -220,7 +220,6 @@
 
 .greenButton{
     -fx-background-color: #1f951c;
-    -fx-pref-width: 120px;
     -fx-pref-height: 35px;
     -fx-text-fill: white;
 }

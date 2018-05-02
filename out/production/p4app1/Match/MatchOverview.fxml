@@ -11,10 +11,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Match.Controller.MatchOverviewController">
+<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Match.Controller.MatchOverviewController">
    <children>
       <HBox maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0">
          <children>
@@ -40,27 +39,26 @@
                         <Insets bottom="30.0" />
                      </VBox.margin>
                   </HBox>
-                  <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" text="Oversigt" />
-                  <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefHeight="50.0" prefWidth="200.0" text="Kalender" />
-                  <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" text="Spillere" />
+                  <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="menubarButton" text="Oversigt" />
+                  <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefHeight="50.0" prefWidth="200.0" styleClass="menubarButton" text="Kalender" />
+                  <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="menubarButton" text="Spillere" />
                   <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="selectedmenu" text="Kampe" />
-                  <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" text="Træning" />
-                  <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" text="Statistik" />
-                  <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" text="Diverse" />
+                  <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="menubarButton" text="Træning" />
+                  <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="menubarButton" text="Statistik" />
+                  <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="menubarButton" text="Diverse" />
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="1080.0">
                <children>
-                  <HBox prefHeight="71.0" prefWidth="200.0">
+                  <HBox prefHeight="71.0" prefWidth="200.0" styleClass="header">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="pageheadline" text="Kampe">
+                        <Text fill="#1f951c" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="headerText" text="KAMPE" textAlignment="CENTER" wrappingWidth="1078.339828491211">
                            <HBox.margin>
-                              <Insets left="35.0" top="25.0" />
+                              <Insets top="25.0" />
                            </HBox.margin>
                         </Text>
                      </children>
                   </HBox>
-                  <Line endX="1080.0" />
                   <AnchorPane prefHeight="647.0" prefWidth="1081.0">
                      <children>
                         <TableView fx:id="tableMatches" layoutX="95.0" layoutY="14.0" prefHeight="482.0">
@@ -86,7 +84,7 @@
                         </TableView>
                         <HBox alignment="TOP_RIGHT" layoutX="61.0" layoutY="511.0" prefHeight="100.0" prefWidth="960.0">
                            <children>
-                              <Button mnemonicParsing="false" prefHeight="23.0" prefWidth="92.0" styleClass="greenButton" text="Ny sæson">
+                              <Button mnemonicParsing="false" onAction="#createSeasonButtonClick" prefHeight="23.0" prefWidth="92.0" styleClass="greenButton" text="Ny sæson">
                                  <HBox.margin>
                                     <Insets />
                                  </HBox.margin>
@@ -100,7 +98,7 @@
                         </HBox>
                         <HBox layoutX="40.0" layoutY="511.0" prefHeight="100.0" prefWidth="288.0">
                            <children>
-                              <Button fx:id="inputButton" mnemonicParsing="false" onAction="#inputMatchResults" prefWidth="163.0" styleClass="greenButton" text="Indtast kampresultat" />
+                              <Button fx:id="inputButton" mnemonicParsing="false" onAction="#inputMatchResults" prefWidth="175.0" styleClass="greenButton" text="Indtast resultat" />
                            </children>
                         </HBox>
                      </children>
