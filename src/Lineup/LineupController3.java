@@ -98,6 +98,7 @@ public class LineupController3 implements Initializable {
             }
         });
 
+
 //        target.setOnDragDetected(new EventHandler<MouseEvent>() {
 //            @Override
 //            public void handle(MouseEvent event) {
@@ -148,7 +149,7 @@ public class LineupController3 implements Initializable {
                     image.setFitHeight(30);
 
                     gridPane.add(text, x, y, 1, 1);
-                    gridPane.add(image,x,y,1,1);
+                    gridPane.add(image, x, y,1,1);
                     GridPane.setHalignment(text, HPos.CENTER);
                     GridPane.setValignment(text, VPos.BOTTOM);
                     GridPane.setValignment(image, VPos.TOP);
