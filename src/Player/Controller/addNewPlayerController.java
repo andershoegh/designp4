@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import SQL.SqlConnection;
@@ -157,6 +158,7 @@ public class addNewPlayerController {
             stage.setResizable(false);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle("Spiller tilføjet");
+            stage.getIcons().add(new Image("file:graphics/ball.png"));
             stage.setScene(playerAddedScene);
             stage.showAndWait();
             // Closing the window and returning to addPlayerFXML.fxm
@@ -173,6 +175,7 @@ public class addNewPlayerController {
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle("Forkert input");
+            stage.getIcons().add(new Image("file:graphics/ball.png"));
             stage.setScene(wrongInputScene);
             stage.showAndWait();
             stage.close();

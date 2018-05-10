@@ -1,21 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="340.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Calendar.Controller.CreateActivityMiscController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="340.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Calendar.Controller.CreateActivityMiscController">
    <children>
-      <GridPane layoutX="14.0" layoutY="104.0" prefHeight="306.0" prefWidth="312.0" vgap="10.0">
+      <VBox prefHeight="117.0" prefWidth="340.0" AnchorPane.bottomAnchor="323.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="65.0" prefWidth="349.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Opret diverse aktivitet" textAlignment="CENTER" wrappingWidth="348.17919921875">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="44.0" prefWidth="352.0">
+               <children>
+                  <AnchorPane prefHeight="19.0" prefWidth="352.0">
+                     <children>
+                        <Line endX="238.0" layoutX="101.0" layoutY="13.0" startX="-100.0" />
+                        <Circle centerX="11.0" centerY="-11.0" fill="#51b550" layoutX="213.0" layoutY="23.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Circle centerX="11.0" centerY="-11.0" fill="#51b550" layoutX="117.0" layoutY="22.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <GridPane layoutX="25.0" layoutY="101.0" prefHeight="250.0" prefWidth="285.0" vgap="10.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
@@ -26,32 +52,45 @@
             <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Modstander:" GridPane.rowIndex="1" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Dato:" wrappingWidth="49.646484375" GridPane.rowIndex="2" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tid:" wrappingWidth="30.646484375" GridPane.rowIndex="3" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Hjemmebane:" wrappingWidth="96.646484375" GridPane.rowIndex="4" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Noter:" wrappingWidth="43.73240661621094" GridPane.rowIndex="5" GridPane.valignment="TOP">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Navn:" GridPane.rowIndex="1">
                <GridPane.margin>
-                  <Insets top="4.0" />
+                  <Insets left="10.0" />
                </GridPane.margin>
             </Text>
-            <TextField id="timeInput" fx:id="timeInput" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <TextField fx:id="notesInput" prefHeight="107.0" prefWidth="196.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Dato:" wrappingWidth="49.646484375" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tid:" wrappingWidth="30.646484375" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Noter:" wrappingWidth="43.73240661621094" GridPane.rowIndex="4" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Text>
+            <TextField id="timeInput" fx:id="timeInput" prefWidth="159.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="notesInput" prefHeight="107.0" prefWidth="196.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <DatePicker fx:id="dateInput" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <CheckBox fx:id="locationInput" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <TextField id="timeInput" fx:id="opponentInput" layoutX="23.0" layoutY="104.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField id="timeInput" fx:id="nameInputField" layoutX="23.0" layoutY="104.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
-      <Text layoutX="-4.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="pageheadline" text="OPRET DIVERSE AKTIVITET" textAlignment="CENTER" wrappingWidth="348.17919921875">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Text>
-      <Line endX="250.0" layoutX="95.0" layoutY="82.0" startX="-100.0" />
-      <Circle fill="#51b550" layoutX="212.0" layoutY="82.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fill="#51b550" layoutX="127.0" layoutY="82.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
+      <HBox alignment="CENTER" layoutX="1.0" layoutY="367.0" prefHeight="73.0" prefWidth="340.0">
+         <children>
+            <Button fx:id="createButton" mnemonicParsing="false" onAction="#createButtonClick" prefHeight="51.0" prefWidth="150.0" text="Opret">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <HBox.margin>
+                  <Insets bottom="6.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
    </children>
 </AnchorPane>

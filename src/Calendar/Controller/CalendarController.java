@@ -18,6 +18,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.collections.FXCollections;
@@ -290,7 +291,7 @@ public class CalendarController {
 
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
-
+            stage.getIcons().add(new Image("file:graphics/ball.png"));
             Scene createEventScene = new Scene(createEventFXML);
             stage.setScene(createEventScene);
             stage.showAndWait();
@@ -320,7 +321,7 @@ public class CalendarController {
             // Prevents user interaction with other windows while popup is open
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle("Slet event");
-
+            stage.getIcons().add(new Image("file:graphics/ball.png"));
             Scene deleteEventScene = new Scene(deleteEventFXML);
             stage.setScene(deleteEventScene);
             stage.showAndWait();

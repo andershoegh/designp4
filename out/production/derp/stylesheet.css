@@ -9,7 +9,7 @@
 .window{
     -fx-font-family: "Montserrat";
     -fx-font-size: 12px;
-    -fx-background-color: #e6e6e6;
+    -fx-background-color: #f9f9f9;
 }
 .header {
     -fx-background-color: #FFFFFF;
@@ -134,7 +134,7 @@
     -fx-alignment: center;
     -fx-border-color: transparent;
     -fx-table-cell-border-color: transparent;
-    -fx-background-color: #e8e8e8;
+    -fx-background-color: transparent;
 }
 
 .table-row-cell:hover {

@@ -101,7 +101,7 @@
                             <tooltip>
                                 <Tooltip text="Vælg spillerens fødselsdag.  Dette kan altid ændres under &quot;Vis spiller.&quot;" />
                             </tooltip></DatePicker>
-                        <ChoiceBox fx:id="positionInput" prefHeight="26.0" prefWidth="198.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                        <ChoiceBox fx:id="positionInput" prefHeight="26.0" prefWidth="198.0" styleClass="choice-boxOther" GridPane.columnIndex="1" GridPane.rowIndex="7">
                             <tooltip>
                                 <Tooltip text="Vælg hvilken position spilleren spiller på. Hvis spilleren spiller flere steder, vælg så &quot;Andet.&quot;  Dette kan altid ændres under &quot;Vis spiller.&quot;" />
                             </tooltip></ChoiceBox>

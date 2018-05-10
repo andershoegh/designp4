@@ -75,7 +75,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="91.0" prefWidth="341.0">
                <children>
-                  <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancelButtonClick" prefHeight="46.0" prefWidth="98.0" text="Afbryd">
+                  <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancelButtonClick" prefHeight="46.0" prefWidth="98.0" text="Cancel">
                      <HBox.margin>
                         <Insets right="20.0" />
                      </HBox.margin>

@@ -139,27 +139,6 @@
                                     <Tooltip text="Top 5 spillere, der har assistet flest gange." />
                                  </tooltip>
                               </TableView>
-                              <TableView fx:id="stats_trainings_tableview" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="180.0" prefWidth="385.0" snapToPixel="false" GridPane.rowIndex="2" GridPane.rowSpan="2147483647">
-                                 <columns>
-                                    <TableColumn id="antal" fx:id="stats_trainings_tablecolumn" editable="false" maxWidth="352.0000579357147" prefWidth="317.599972486496" sortable="false" text="Antal træninger" />
-                                    <TableColumn fx:id="stats_trainings_amount_tablecolumn" editable="false" maxWidth="118.20002136230471" prefWidth="60.800048828125" sortable="false" text="Antal" />
-                                 </columns>
-                                 <columnResizePolicy>
-                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                                 </columnResizePolicy>
-                                 <opaqueInsets>
-                                    <Insets />
-                                 </opaqueInsets>
-                                 <GridPane.margin>
-                                    <Insets />
-                                 </GridPane.margin>
-                                 <padding>
-                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                 </padding>
-                                 <tooltip>
-                                    <Tooltip text="Top 5 spillere, der har været med til flest træninger." />
-                                 </tooltip>
-                              </TableView>
                               <TableView fx:id="stats_mofm_tableview" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="180.0" prefWidth="385.0" snapToPixel="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                  <columns>
                                     <TableColumn fx:id="stats_mofm_tablecolumn" editable="false" maxWidth="253.60004270076752" prefWidth="212.00004959106445" sortable="false" text="Man of the Match" />
@@ -231,6 +210,27 @@
                                     <Insets top="80.0" />
                                  </GridPane.margin>
                               </Label>
+                              <TableView fx:id="stats_trainings_tableview" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="180.0" prefWidth="385.0" snapToPixel="false" styleClass="table-column-stats" GridPane.rowIndex="2" GridPane.rowSpan="2147483647">
+                                 <columns>
+                                    <TableColumn fx:id="stats_trainings_tablecolumn" editable="false" maxWidth="352.0000579357147" prefWidth="317.599972486496" sortable="false" styleClass="table-column-stats" text="Antal træninger" />
+                                    <TableColumn fx:id="stats_trainings_amount_tablecolumn" editable="false" maxWidth="118.20002136230471" prefWidth="60.800048828125" sortable="false" text="Antal" />
+                                 </columns>
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <GridPane.margin>
+                                    <Insets />
+                                 </GridPane.margin>
+                                 <padding>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </padding>
+                                 <tooltip>
+                                    <Tooltip text="Top 5 spillere, der har været med til flest træninger." />
+                                 </tooltip>
+                              </TableView>
                            </children>
                            <padding>
                               <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
