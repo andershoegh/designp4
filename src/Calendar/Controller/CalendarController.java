@@ -11,6 +11,7 @@ import Controller.DeleteAble;
 import Controller.MenuController;
 import Match.Match;
 import Other_Event.Other;
+import Player.Player;
 import SQL.SqlConnection;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -37,6 +38,7 @@ import java.util.Date;
 import Training.Training;
 
 public class CalendarController {
+
 
     private ObservableList<Match> matchList= FXCollections.observableArrayList();
     private ObservableList<Training> trainingList = FXCollections.observableArrayList();
@@ -120,30 +122,78 @@ public class CalendarController {
     }
 
 
-    /*
-    // Checks for double clicks.
-    private Match temp;
-    private Date lastClickTime;
+    // Checks for double clicks, and opens edit window accordingly.
+    private Training trainingTemp;
+    private Date trainingLastClickTime;
     @FXML
-    private void handleRowSelect() {
-        Match row = matchTableView.getSelectionModel().getSelectedItem();
-        if (row == null)
+    private void trainingHandleRowSelect() throws IOException {
+        Training trow = trainingTableView.getSelectionModel().getSelectedItem();
+        if (trow == null)
             return;
-        if(row != temp){
-            temp = row;
-            lastClickTime = new Date();
-        } else if(row == temp) {
+        if(trow != trainingTemp){
+            trainingTemp = trow;
+            trainingLastClickTime = new Date();
+        } else if(trow == trainingTemp) {
             Date now = new Date();
-            long diff = now.getTime() - lastClickTime.getTime();
+            long diff = now.getTime() - trainingLastClickTime.getTime();
             if (diff < 300){ //another click registered in 300 millis
                 System.out.println("--- Double Clicked on a row! Will open edit window. ---");
-                editPlayerButtonClick();
+                redigerButtonClick();
             } else {
-                lastClickTime = new Date();
+                trainingLastClickTime = new Date();
             }
         }
     }
-*/
+
+    // Checks for double clicks, and opens edit window accordingly.
+    private Match matchTemp;
+    private Date matchLastClickTime;
+    @FXML
+    private void matchHandleRowSelect() throws IOException {
+        Match mrow = matchTableView.getSelectionModel().getSelectedItem();
+        if (mrow == null)
+            return;
+        if(mrow != matchTemp){
+            matchTemp = mrow;
+            matchLastClickTime = new Date();
+        } else if(mrow == matchTemp) {
+            Date now = new Date();
+            long diff = now.getTime() - matchLastClickTime.getTime();
+            if (diff < 300){ //another click registered in 300 millis
+                System.out.println("--- Double Clicked on a row! Will open edit window. ---");
+                redigerButtonClick();
+            } else {
+                matchLastClickTime = new Date();
+            }
+        }
+    }
+
+    // Checks for double clicks, and opens edit window accordingly.
+    private Other otherTemp;
+    private Date otherLastClickTime;
+    @FXML
+    private void otherHandleRowSelect() throws IOException {
+        Other orow = otherTableView.getSelectionModel().getSelectedItem();
+        if (orow == null)
+            return;
+        if(orow != otherTemp){
+            otherTemp = orow;
+            otherLastClickTime = new Date();
+        } else if(orow == otherTemp) {
+            Date now = new Date();
+            long diff = now.getTime() - otherLastClickTime.getTime();
+            if (diff < 300){ //another click registered in 300 millis
+                System.out.println("--- Double Clicked on a row! Will open edit window. ---");
+                redigerButtonClick();
+            } else {
+                otherLastClickTime = new Date();
+            }
+        }
+    }
+
+
+
+
 
     //Match-table methods
     // Retrieves data from appropriate match class constructor
@@ -253,8 +303,6 @@ public class CalendarController {
                 && other.getConvertedDate().getYear() == date.getYear()));
     }
 
-
-
     //Sets next month in calender
     public void NextMonthButtonClick() throws ParseException {
         Calendar c = Calendar.getInstance();
@@ -280,8 +328,6 @@ public class CalendarController {
         updateTrainingTable();
         updateOtherTable();
     }
-
-
 
     //Loader Create event pop-up
     public void createEventButtonClick(ActionEvent event){
@@ -345,6 +391,70 @@ public class CalendarController {
             }
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void redigerButtonClick() throws IOException {
+        if (selectedItem.getClass().getSimpleName().equals("Training")){
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("../createActivityTraining.fxml"));
+            Parent createActivityTrainingFXML = loader.load();
+
+            Stage stage = new Stage();
+            stage.setResizable(false);
+
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Rediger træning");
+            stage.getIcons().add(new Image("file:graphics/ball.png"));
+
+            Scene createTrainingScene = new Scene(createActivityTrainingFXML);
+
+            stage.setScene(createTrainingScene);
+
+            stage.showAndWait();
+
+        }
+        else if(selectedItem.getClass().getSimpleName().equals("Match")){
+
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("../createActivityMatch.fxml"));
+            Parent createActivityMatchFXML = loader.load();
+
+            Stage stage = new Stage();
+            stage.setResizable(false);
+
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Rediger kamp");
+            stage.getIcons().add(new Image("file:graphics/ball.png"));
+
+            Scene createMatchScene = new Scene(createActivityMatchFXML);
+
+            stage.setScene(createMatchScene);
+
+            stage.showAndWait();
+
+
+        }
+        else if(selectedItem.getClass().getSimpleName().equals("Other")){
+
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("../createActivityMisc.fxml"));
+            Parent createActivityMiscFXML = loader.load();
+
+            Stage stage = new Stage();
+            stage.setResizable(false);
+
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Rediger kamp");
+            stage.getIcons().add(new Image("file:graphics/ball.png"));
+
+            Scene createMiscScene = new Scene(createActivityMiscFXML);
+
+            stage.setScene(createMiscScene);
+
+            stage.showAndWait();
+
+
         }
     }
 
