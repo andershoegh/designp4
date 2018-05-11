@@ -61,8 +61,7 @@ public class LineupController3 implements Initializable {
     public TableView<Player> playersTable;
     @FXML
     public TableColumn<?, ?> columnPlayers;
-    @FXML
-    public Text[][] textfield;
+
     @FXML
     public GridPane gridPane;
     @FXML
@@ -70,14 +69,6 @@ public class LineupController3 implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        textfield = new Text[7][11];
-
-        for (int i = 0; i < 7; i++) {
-            for (int j = 0; j < 11; j++) {
-                textfield[i][j] = new Text();
-                gridPane.add(textfield[i][j], i, j);
-            }
-        }
 
         final GridPane target = gridPane;
         //ImageView source = imageView();
