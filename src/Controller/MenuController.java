@@ -23,11 +23,11 @@ public class MenuController {
         } else if(event.getSource().toString().contains("Kampe")){
             sceneChange(event, "../Match/MatchOverview.fxml");
         } else if(event.getSource().toString().contains("Træning")){
-            sceneChange(event, "../Lineup/LineupOverview.fxml");
+            System.out.println("Du kan bare smide træning fxml ind her nu");
         } else if(event.getSource().toString().contains("Statistik")){
             sceneChange(event, "../Statistic/Statistic.fxml");
         } else if(event.getSource().toString().contains("Diverse")){
-            System.out.println("Hverken prototypen eller FXML er ikke lavet endnu.. Kom i gang, FFS!");
+            sceneChange(event, "../Lineup/LineupOverview.fxml");
         }
     }
 
@@ -38,7 +38,6 @@ public class MenuController {
 
             Scene newScene = new Scene(parent);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
 
             stage.setScene(newScene);
             stage.show();

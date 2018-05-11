@@ -11,7 +11,6 @@ import Controller.DeleteAble;
 import Controller.MenuController;
 import Match.Match;
 import Other_Event.Other;
-import Player.Player;
 import SQL.SqlConnection;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -38,7 +37,6 @@ import java.util.Date;
 import Training.Training;
 
 public class CalendarController {
-
 
     private ObservableList<Match> matchList= FXCollections.observableArrayList();
     private ObservableList<Training> trainingList = FXCollections.observableArrayList();
@@ -67,6 +65,9 @@ public class CalendarController {
     @FXML private TableColumn<?,?> trainingDate;
     @FXML private TableColumn<?,?> trainingTime;
 
+    @FXML private Button DeleteButton;
+    @FXML private Button editButton;
+
 
     //Running methods when scene gets loaded
     @FXML
@@ -94,6 +95,9 @@ public class CalendarController {
                         selectedItem = newValue;
                         matchTableView.getSelectionModel().clearSelection();
                         otherTableView.getSelectionModel().clearSelection();
+                        DeleteButton.setDisable(false);
+                        editButton.setDisable(false);
+
                     }
                 });
 
@@ -105,6 +109,8 @@ public class CalendarController {
                         selectedItem = newValue;
                         trainingTableView.getSelectionModel().clearSelection();
                         otherTableView.getSelectionModel().clearSelection();
+                        DeleteButton.setDisable(false);
+                        editButton.setDisable(false);
                     }
                 });
 
@@ -117,8 +123,13 @@ public class CalendarController {
                         selectedItem = newValue;
                         trainingTableView.getSelectionModel().clearSelection();
                         matchTableView.getSelectionModel().clearSelection();
+                        DeleteButton.setDisable(false);
+                        editButton.setDisable(false);
                     }
                 });
+
+        DeleteButton.setDisable(true);
+        editButton.setDisable(true);
     }
 
 
@@ -138,7 +149,7 @@ public class CalendarController {
             long diff = now.getTime() - trainingLastClickTime.getTime();
             if (diff < 300){ //another click registered in 300 millis
                 System.out.println("--- Double Clicked on a row! Will open edit window. ---");
-                redigerButtonClick();
+                editButtonClick();
             } else {
                 trainingLastClickTime = new Date();
             }
@@ -161,7 +172,7 @@ public class CalendarController {
             long diff = now.getTime() - matchLastClickTime.getTime();
             if (diff < 300){ //another click registered in 300 millis
                 System.out.println("--- Double Clicked on a row! Will open edit window. ---");
-                redigerButtonClick();
+                editButtonClick();
             } else {
                 matchLastClickTime = new Date();
             }
@@ -184,7 +195,7 @@ public class CalendarController {
             long diff = now.getTime() - otherLastClickTime.getTime();
             if (diff < 300){ //another click registered in 300 millis
                 System.out.println("--- Double Clicked on a row! Will open edit window. ---");
-                redigerButtonClick();
+                editButtonClick();
             } else {
                 otherLastClickTime = new Date();
             }
@@ -303,6 +314,8 @@ public class CalendarController {
                 && other.getConvertedDate().getYear() == date.getYear()));
     }
 
+
+
     //Sets next month in calender
     public void NextMonthButtonClick() throws ParseException {
         Calendar c = Calendar.getInstance();
@@ -328,6 +341,8 @@ public class CalendarController {
         updateTrainingTable();
         updateOtherTable();
     }
+
+
 
     //Loader Create event pop-up
     public void createEventButtonClick(ActionEvent event){
@@ -394,7 +409,7 @@ public class CalendarController {
         }
     }
 
-    public void redigerButtonClick() throws IOException {
+    public void editButtonClick() throws IOException {
         if (selectedItem.getClass().getSimpleName().equals("Training")){
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("../createActivityTraining.fxml"));

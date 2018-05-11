@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Calendar.Controller.CalendarController">
+<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Calendar.Controller.CalendarController">
    <children>
       <HBox maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0">
          <children>
@@ -118,7 +118,7 @@
                                     <Insets bottom="10.0" />
                                  </padding>
                                  <children>
-                                    <TableView fx:id="matchTableView" prefHeight="200.0" prefWidth="300.0" styleClass="headerVisibility">
+                                    <TableView fx:id="matchTableView" onMouseClicked="#matchHandleRowSelect" prefHeight="200.0" prefWidth="300.0" styleClass="headerVisibility">
                                       <columns>
                                         <TableColumn fx:id="MDayInMonth" prefWidth="49.0" text="Dag i måned" />
                                         <TableColumn fx:id="matchTitel" prefWidth="118.0" text="Kamp" />
@@ -129,7 +129,7 @@
                                           <Insets left="20.0" right="20.0" />
                                        </HBox.margin>
                                     </TableView>
-                                    <TableView fx:id="trainingTableView" prefHeight="200.0" prefWidth="300.0" styleClass="headerVisibility">
+                                    <TableView fx:id="trainingTableView" onMouseClicked="#trainingHandleRowSelect" prefHeight="200.0" prefWidth="300.0" styleClass="headerVisibility">
                                       <columns>
                                         <TableColumn fx:id="TDayInMonth" prefWidth="60.0" text="Dag i Måned" />
                                           <TableColumn fx:id="trainingDate" prefWidth="115.0" text="Dato" />
@@ -139,7 +139,7 @@
                                           <Insets left="20.0" right="20.0" />
                                        </HBox.margin>
                                     </TableView>
-                                    <TableView fx:id="otherTableView" prefHeight="200.0" prefWidth="300.0" styleClass="headerVisibility">
+                                    <TableView fx:id="otherTableView" onMouseClicked="#otherHandleRowSelect" prefHeight="200.0" prefWidth="300.0" styleClass="headerVisibility">
                                       <columns>
                                         <TableColumn fx:id="ODayInMonth" prefWidth="83.0" text="Dag i måned" />
                                         <TableColumn fx:id="otherTitel" prefWidth="110.0" text="Titel" />
@@ -156,6 +156,11 @@
                         <HBox alignment="CENTER_RIGHT" VBox.vgrow="NEVER">
                            <children>
                               <Button fx:id="OpretButton" mnemonicParsing="false" onAction="#createEventButtonClick" prefWidth="105.0" styleClass="buttonApprove" text="Opret aktivitet">
+                                 <HBox.margin>
+                                    <Insets bottom="15.0" right="15.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <Button fx:id="editButton" alignment="CENTER" mnemonicParsing="false" onAction="#editButtonClick" prefWidth="105.0" styleClass="utilityButtons" stylesheets="@../stylesheet.css" text="Rediger">
                                  <HBox.margin>
                                     <Insets bottom="15.0" right="15.0" />
                                  </HBox.margin>
