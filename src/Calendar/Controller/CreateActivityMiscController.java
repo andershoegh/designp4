@@ -51,7 +51,4 @@ public class CreateActivityMiscController {
             System.out.println(e.getMessage());
         }
     }
-
-
-
 }
