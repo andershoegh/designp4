@@ -1,9 +1,10 @@
 package Calendar.Controller;
 
 import SQL.SqlConnection;
-import Season.Season;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.sql.Connection;
@@ -11,16 +12,16 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.time.format.DateTimeFormatter;
 
-public class CreateActivityMiscController {
+public class EditActivityMiscController {
 
-    @FXML private TextField nameInputField;
+    @FXML
+    private TextField nameInputField;
     @FXML private DatePicker dateInput;
     @FXML private TextField timeInput;
     @FXML private TextField notesInput;
-    @FXML private Button createButton;
+    @FXML private Button editButton;
 
-
-    public void createButtonClick() {
+    public void editButtonClick() {
         String sql = "INSERT INTO otherEvents " +
                 "(other_id, name, date, time, note)" +
                 "VALUES (null, ?, ?, ?, ?)";
@@ -44,7 +45,7 @@ public class CreateActivityMiscController {
 
             SqlConnection.closeConnection();
 
-            Stage stage = (Stage) createButton.getScene().getWindow();
+            Stage stage = (Stage) editButton.getScene().getWindow();
             stage.close();
 
         } catch (SQLException e) {
