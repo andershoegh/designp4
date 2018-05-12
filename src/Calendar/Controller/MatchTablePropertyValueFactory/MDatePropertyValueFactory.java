@@ -25,7 +25,6 @@ public class MDatePropertyValueFactory<S,T> implements Callback<TableColumn.Cell
         Match m = (Match) param.getValue();
         String st = "";
 
-
         try {
             DateFormat format1 = new SimpleDateFormat("d/MM/yyyy", Locale.ENGLISH);
             Date localDate = format1.parse(m.getDate());

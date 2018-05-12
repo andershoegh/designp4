@@ -85,72 +85,76 @@
                         </HBox>
                         <VBox prefHeight="469.0" prefWidth="1081.0">
                            <children>
-                              <HBox alignment="TOP_CENTER" prefHeight="63.0" prefWidth="1081.0">
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0">
                                  <children>
-                                    <HBox alignment="CENTER" prefHeight="64.0" prefWidth="300.0" styleClass="calender-hbox">
-                                       <HBox.margin>
-                                          <Insets left="20.0" right="20.0" />
-                                       </HBox.margin>
+                                    <HBox alignment="TOP_CENTER" layoutX="1.0" layoutY="25.0" prefHeight="426.0" prefWidth="1080.0">
+                                       <padding>
+                                          <Insets bottom="10.0" />
+                                       </padding>
                                        <children>
-                                          <Label fx:id="KampeLabel" style="-fx-text-fill: white;" text="Kampe" />
+                                          <TableView fx:id="matchTableView" onMouseClicked="#matchHandleRowSelect" prefHeight="495.0" prefWidth="300.0" styleClass="headerVisibility">
+                                            <columns>
+                                              <TableColumn fx:id="MDayInMonth" prefWidth="49.0" text="Dag i måned" />
+                                              <TableColumn fx:id="matchTitel" prefWidth="118.0" text="Kamp" />
+                                                <TableColumn fx:id="matchDate" prefWidth="49.0" text="Ugedag" />
+                                                <TableColumn fx:id="matchTime" prefWidth="81.0" text="Tidspunkt" />
+                                            </columns>
+                                             <HBox.margin>
+                                                <Insets left="20.0" right="20.0" />
+                                             </HBox.margin>
+                                          </TableView>
+                                          <TableView fx:id="trainingTableView" onMouseClicked="#trainingHandleRowSelect" prefHeight="200.0" prefWidth="300.0" styleClass="headerVisibility">
+                                            <columns>
+                                              <TableColumn fx:id="TDayInMonth" prefWidth="60.0" text="Dag i Måned" />
+                                                <TableColumn fx:id="trainingDate" prefWidth="115.0" text="Dato" />
+                                                <TableColumn fx:id="trainingTime" prefWidth="120.0" text="Tidspunkt" />
+                                            </columns>
+                                             <HBox.margin>
+                                                <Insets left="20.0" right="20.0" />
+                                             </HBox.margin>
+                                          </TableView>
+                                          <TableView fx:id="otherTableView" onMouseClicked="#otherHandleRowSelect" prefHeight="200.0" prefWidth="300.0" styleClass="headerVisibility">
+                                            <columns>
+                                              <TableColumn fx:id="ODayInMonth" prefWidth="83.0" text="Dag i måned" />
+                                              <TableColumn fx:id="otherTitel" prefWidth="110.0" text="Titel" />
+                                                <TableColumn fx:id="otherTime" prefWidth="102.0" text="Tidspunkt" />
+                                            </columns>
+                                             <HBox.margin>
+                                                <Insets left="20.0" right="20.0" />
+                                             </HBox.margin>
+                                          </TableView>
                                        </children>
                                     </HBox>
-                                    <HBox alignment="CENTER" layoutX="416.0" layoutY="10.0" prefHeight="100.0" prefWidth="300.0" styleClass="calender-hbox">
-                                       <HBox.margin>
-                                          <Insets left="20.0" right="20.0" />
-                                       </HBox.margin>
+                                    <HBox alignment="TOP_CENTER" prefHeight="49.0" prefWidth="1081.0">
                                        <children>
-                                          <Label fx:id="TraeningLabel" style="-fx-text-fill: white;" text="Træning" />
-                                       </children>
-                                    </HBox>
-                                    <HBox alignment="CENTER" layoutX="571.0" layoutY="10.0" prefHeight="100.0" prefWidth="300.0" styleClass="calender-hbox">
-                                       <HBox.margin>
-                                          <Insets left="20.0" right="20.0" />
-                                       </HBox.margin>
-                                       <children>
-                                          <Label fx:id="AndetLabel" style="-fx-text-fill: white;" text="Andet" />
+                                          <HBox alignment="CENTER" prefHeight="64.0" prefWidth="300.0" styleClass="calender-hbox">
+                                             <HBox.margin>
+                                                <Insets left="20.0" right="20.0" />
+                                             </HBox.margin>
+                                             <children>
+                                                <Label fx:id="KampeLabel" style="-fx-text-fill: white;" text="Kampe" />
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER" layoutX="416.0" layoutY="10.0" prefHeight="100.0" prefWidth="300.0" styleClass="calender-hbox">
+                                             <HBox.margin>
+                                                <Insets left="20.0" right="20.0" />
+                                             </HBox.margin>
+                                             <children>
+                                                <Label fx:id="TraeningLabel" style="-fx-text-fill: white;" text="Træning" />
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER" layoutX="571.0" layoutY="10.0" prefHeight="100.0" prefWidth="300.0" styleClass="calender-hbox">
+                                             <HBox.margin>
+                                                <Insets left="20.0" right="20.0" />
+                                             </HBox.margin>
+                                             <children>
+                                                <Label fx:id="AndetLabel" style="-fx-text-fill: white;" text="Andet" />
+                                             </children>
+                                          </HBox>
                                        </children>
                                     </HBox>
                                  </children>
-                              </HBox>
-                              <HBox alignment="TOP_CENTER" prefHeight="240.0" prefWidth="1081.0" VBox.vgrow="ALWAYS">
-                                 <padding>
-                                    <Insets bottom="10.0" />
-                                 </padding>
-                                 <children>
-                                    <TableView fx:id="matchTableView" onMouseClicked="#matchHandleRowSelect" prefHeight="200.0" prefWidth="300.0" styleClass="headerVisibility">
-                                      <columns>
-                                        <TableColumn fx:id="MDayInMonth" prefWidth="49.0" text="Dag i måned" />
-                                        <TableColumn fx:id="matchTitel" prefWidth="118.0" text="Kamp" />
-                                          <TableColumn fx:id="matchDate" prefWidth="49.0" text="Ugedag" />
-                                          <TableColumn fx:id="matchTime" prefWidth="81.0" text="Tidspunkt" />
-                                      </columns>
-                                       <HBox.margin>
-                                          <Insets left="20.0" right="20.0" />
-                                       </HBox.margin>
-                                    </TableView>
-                                    <TableView fx:id="trainingTableView" onMouseClicked="#trainingHandleRowSelect" prefHeight="200.0" prefWidth="300.0" styleClass="headerVisibility">
-                                      <columns>
-                                        <TableColumn fx:id="TDayInMonth" prefWidth="60.0" text="Dag i Måned" />
-                                          <TableColumn fx:id="trainingDate" prefWidth="115.0" text="Dato" />
-                                          <TableColumn fx:id="trainingTime" prefWidth="120.0" text="Tidspunkt" />
-                                      </columns>
-                                       <HBox.margin>
-                                          <Insets left="20.0" right="20.0" />
-                                       </HBox.margin>
-                                    </TableView>
-                                    <TableView fx:id="otherTableView" onMouseClicked="#otherHandleRowSelect" prefHeight="200.0" prefWidth="300.0" styleClass="headerVisibility">
-                                      <columns>
-                                        <TableColumn fx:id="ODayInMonth" prefWidth="83.0" text="Dag i måned" />
-                                        <TableColumn fx:id="otherTitel" prefWidth="110.0" text="Titel" />
-                                          <TableColumn fx:id="otherTime" prefWidth="102.0" text="Tidspunkt" />
-                                      </columns>
-                                       <HBox.margin>
-                                          <Insets left="20.0" right="20.0" />
-                                       </HBox.margin>
-                                    </TableView>
-                                 </children>
-                              </HBox>
+                              </AnchorPane>
                            </children>
                         </VBox>
                         <HBox alignment="CENTER_RIGHT" VBox.vgrow="NEVER">

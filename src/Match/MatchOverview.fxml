@@ -10,10 +10,11 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Match.Controller.MatchOverviewController">
+<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Match.Controller.MatchOverviewController">
    <children>
       <HBox maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0">
          <children>
@@ -84,7 +85,32 @@
                         </TableView>
                         <HBox alignment="TOP_RIGHT" layoutX="61.0" layoutY="511.0" prefHeight="100.0" prefWidth="960.0">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#createSeasonButtonClick" prefHeight="23.0" prefWidth="92.0" styleClass="greenButton" text="Ny sæson">
+                              <Button fx:id="showTacticButton" layoutX="189.0" layoutY="10.0" mnemonicParsing="false" onAction="#showTacticButtonClick" prefWidth="100.0" styleClass="utilityButtons" text="Vis taktik">
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <Button fx:id="inputButton" mnemonicParsing="false" onAction="#inputMatchResults" prefWidth="123.0" styleClass="greenButton" text="Indtast resultat">
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin></Button>
+                              <Button fx:id="showResButton" layoutX="189.0" layoutY="10.0" mnemonicParsing="false" prefWidth="100.0" styleClass="utilityButtons" text="Vis resultat">
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <Region prefHeight="100.0" prefWidth="157.0" />
+                              <Button fx:id="deleteMatchButton" layoutX="597.0" layoutY="10.0" mnemonicParsing="false" onAction="#deleteMatchButtonClick" prefHeight="37.0" prefWidth="91.0" style="-fx-background-color: #ec2d28; -fx-text-fill: white; -fx-pref-height: 35;" text="Slet Kamp">
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <Button fx:id="createMatchButton" layoutX="274.0" layoutY="10.0" mnemonicParsing="false" onAction="#createMatchButtonClick" prefWidth="100.0" styleClass="greenButton" text="Opret kamp">
+                                 <HBox.margin>
+                                    <Insets right="30.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <Button mnemonicParsing="false" onAction="#createSeasonButtonClick" prefHeight="23.0" prefWidth="83.0" styleClass="greenButton" text="Ny sæson">
                                  <HBox.margin>
                                     <Insets />
                                  </HBox.margin>
@@ -94,11 +120,6 @@
                                     <Insets left="10.0" />
                                  </HBox.margin>
                               </ChoiceBox>
-                           </children>
-                        </HBox>
-                        <HBox layoutX="40.0" layoutY="511.0" prefHeight="100.0" prefWidth="288.0">
-                           <children>
-                              <Button fx:id="inputButton" mnemonicParsing="false" onAction="#inputMatchResults" prefWidth="175.0" styleClass="greenButton" text="Indtast resultat" />
                            </children>
                         </HBox>
                      </children>

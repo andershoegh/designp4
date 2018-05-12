@@ -39,7 +39,6 @@ public class CreateActivityController {
 
     public void matchButtonClick(){
         try {
-
             Parent createEventMatchFXML = FXMLLoader.load(getClass().getResource("../createActivityMatch.fxml"));
             Scene createActivityMatchScene = new Scene(createEventMatchFXML);
             Stage stage = new Stage();
@@ -59,7 +58,6 @@ public class CreateActivityController {
 
     public void miscButtonClick(){
         try {
-
             Parent createEventMiscFXML = FXMLLoader.load(getClass().getResource("../createActivityMisc.fxml"));
             Scene createActivityMiscScene = new Scene(createEventMiscFXML);
             Stage stage = new Stage();
@@ -71,7 +69,6 @@ public class CreateActivityController {
 
             stage.close();
             cancelButtonClick();
-
         } catch (IOException e){
             e.printStackTrace();
         }

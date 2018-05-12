@@ -29,10 +29,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
+import java.util.*;
 
 import Training.Training;
 
@@ -238,6 +238,21 @@ public class CalendarController {
 
     // inputting retrieved data from db into table view
     private void updateMatchTable(){
+        Collections.sort(matchList, new Comparator<Match>() {
+            @Override
+            public int compare(Match o1, Match o2) {
+                DateFormat format1 = new SimpleDateFormat("d/MM/yyyy", Locale.ENGLISH);
+                Date date1= null;
+                Date date2 = null;
+                try {
+                    date1 = format1.parse(o1.getDate());
+                    date2 = format1.parse(o2.getDate());
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                return date1.compareTo(date2);
+            }
+        });
         matchTableView.setItems(matchList.filtered(match -> match.getConvertedDate().getMonth() == date.getMonth()
                 && match.getConvertedDate().getYear() == date.getYear()));
     }
@@ -275,6 +290,13 @@ public class CalendarController {
 
     // inputting retrieved data from db into table view
     private void updateTrainingTable(){
+        Collections.sort(trainingList, new Comparator<Training>() {
+            @Override
+            public int compare(Training o1, Training o2) {
+                return o1.getConvertedDate().compareTo(o2.getConvertedDate());
+            }
+        });
+
         trainingTableView.setItems(trainingList.filtered(training -> training.getConvertedDate().getMonth() == date.getMonth()
                 && training.getConvertedDate().getYear() == date.getYear()));
     }
@@ -310,6 +332,13 @@ public class CalendarController {
 
     // inputting retrieved data from db into table view
     private void updateOtherTable(){
+        Collections.sort(otherList, new Comparator<Other>() {
+            @Override
+            public int compare(Other o1, Other o2) {
+                return o1.getConvertedDate().compareTo(o2.getConvertedDate());
+            }
+        });
+
         otherTableView.setItems(otherList.filtered(other -> other.getConvertedDate().getMonth() == date.getMonth()
                 && other.getConvertedDate().getYear() == date.getYear()));
     }

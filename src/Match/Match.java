@@ -115,8 +115,5 @@ public class Match implements DeleteAble{
             e.printStackTrace();
         }
     }
-
-
-
 }
 

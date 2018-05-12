@@ -27,7 +27,7 @@ public class MenuController {
         } else if(event.getSource().toString().contains("Statistik")){
             sceneChange(event, "../Statistic/Statistic.fxml");
         } else if(event.getSource().toString().contains("Diverse")){
-            sceneChange(event, "../Lineup/LineupOverview.fxml");
+            System.out.println("Menupunkt er under udvkling, måske klar i version 2.0");;
         }
     }
 
