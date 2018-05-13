@@ -202,10 +202,6 @@ public class CalendarController {
         }
     }
 
-
-
-
-
     //Match-table methods
     // Retrieves data from appropriate match class constructor
     private void MSetCellTable(){
@@ -441,7 +437,7 @@ public class CalendarController {
     public void editButtonClick() throws IOException {
         if (selectedItem.getClass().getSimpleName().equals("Training")){
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("../createActivityTraining.fxml"));
+            loader.setLocation(getClass().getResource("../EditActivityTraining.fxml"));
             Parent createActivityTrainingFXML = loader.load();
 
             Stage stage = new Stage();
@@ -461,7 +457,7 @@ public class CalendarController {
         else if(selectedItem.getClass().getSimpleName().equals("Match")){
 
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("../createActivityMatch.fxml"));
+            loader.setLocation(getClass().getResource("../EditActivityMatch.fxml"));
             Parent createActivityMatchFXML = loader.load();
 
             Stage stage = new Stage();
@@ -476,13 +472,11 @@ public class CalendarController {
             stage.setScene(createMatchScene);
 
             stage.showAndWait();
-
-
         }
         else if(selectedItem.getClass().getSimpleName().equals("Other")){
 
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("../createActivityMisc.fxml"));
+            loader.setLocation(getClass().getResource("../EditActivityMisc.fxml"));
             Parent createActivityMiscFXML = loader.load();
 
             Stage stage = new Stage();

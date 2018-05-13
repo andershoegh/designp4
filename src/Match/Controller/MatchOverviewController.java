@@ -85,11 +85,9 @@ public class MatchOverviewController {
                     if (newValue != null) {
                         if(newValue.getConvertedDate().before(date)){
                             inputButton.setDisable(false);
-                            showResButton.setDisable(false);
                         }
                         else{
                             inputButton.setDisable(true);
-                            showResButton.setDisable(true);
                         }
                         showTacticButton.setDisable(false);
                         deleteMatchButton.setDisable(false);
