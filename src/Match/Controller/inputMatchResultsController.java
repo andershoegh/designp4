@@ -159,10 +159,9 @@ public class inputMatchResultsController {
     public void loadDataFromDB(){
         Connection conn = SqlConnection.connectToDB();
 
-        String sqlQuery = "SELECT *, " +
-                "players.name, players.goalScored, players.assist, players.yellowCards, players.redCards " +
-                "FROM match_tactic_player INNER JOIN players " +
-                "ON match_tactic_player.player_id = players.player_id WHERE match_tactic_player.match_id = ?";
+        String sqlQuery = "SELECT *, players.name, players.goalScored, players.assist, players.yellowCards, players.redCards " +
+                "FROM match_tactic_player INNER JOIN players ON match_tactic_player.player_id = players.player_id " +
+                "WHERE match_tactic_player.match_id = ?";
 
         try {
         PreparedStatement stmt = conn.prepareStatement(sqlQuery);
