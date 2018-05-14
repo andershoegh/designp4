@@ -237,16 +237,7 @@ public class CalendarController {
         Collections.sort(matchList, new Comparator<Match>() {
             @Override
             public int compare(Match o1, Match o2) {
-                DateFormat format1 = new SimpleDateFormat("d/MM/yyyy", Locale.ENGLISH);
-                Date date1= null;
-                Date date2 = null;
-                try {
-                    date1 = format1.parse(o1.getDate());
-                    date2 = format1.parse(o2.getDate());
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                return date1.compareTo(date2);
+                return o1.getConvertedDate().compareTo(o2.getConvertedDate());
             }
         });
         matchTableView.setItems(matchList.filtered(match -> match.getConvertedDate().getMonth() == date.getMonth()
