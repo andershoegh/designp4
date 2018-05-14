@@ -94,6 +94,7 @@ public class Training implements DeleteAble {
         }
     }
 
+
     public Date getConvertedDate() {
         DateFormat format = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
         try {

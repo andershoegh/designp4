@@ -1,5 +1,6 @@
 package Overview.Controller;
 
+import Controller.DeleteAble;
 import Controller.MenuController;
 import Match.Match;
 import Player.Player;
@@ -302,49 +303,9 @@ public class OverviewController {
         controller.menuNavigation(event);
     }
 
-    Comparator<Training> trainingComparator = (training1, training2) -> {
-        if (training1.getConvertedDate().getYear() < training2.getConvertedDate().getYear()) {
-            return -1;
-        } else if (training1.getConvertedDate().getYear() > training2.getConvertedDate().getYear()) {
-            return 1;
-        } else {
-            if (training1.getConvertedDate().getMonth() < training2.getConvertedDate().getMonth()) {
-                return -1;
-            } else if (training1.getConvertedDate().getMonth() > training2.getConvertedDate().getMonth()) {
-                return 1;
-            } else {
-                if (training1.getConvertedDate().getDate() < training2.getConvertedDate().getDate()) {
-                    return -1;
-                } else if (training1.getConvertedDate().getDate() > training2.getConvertedDate().getDate()) {
-                    return 1;
-                } else {
-                    return 0;
-                }
-            }
-        }
-    };
+    Comparator<Training> trainingComparator = Comparator.comparing(Training::getConvertedDate);
 
-    Comparator<Match> matchComparator = (match1, match2) -> {
-        if (match1.getConvertedDate().getYear() < match2.getConvertedDate().getYear()) {
-            return -1;
-        } else if (match1.getConvertedDate().getYear() > match2.getConvertedDate().getYear()) {
-            return 1;
-        } else {
-            if (match1.getConvertedDate().getMonth() < match2.getConvertedDate().getMonth()) {
-                return -1;
-            } else if (match1.getConvertedDate().getMonth() > match2.getConvertedDate().getMonth()) {
-                return 1;
-            } else {
-                if (match1.getConvertedDate().getDate() < match2.getConvertedDate().getDate()) {
-                    return -1;
-                } else if (match1.getConvertedDate().getDate() > match2.getConvertedDate().getDate()) {
-                    return 1;
-                } else {
-                    return 0;
-                }
-            }
-        }
-    };
+    Comparator<Match> matchComparator = Comparator.comparing(Match::getConvertedDate);
 
     Comparator<Player> playerComparator = (player1, player2) -> {
         if (player1.getConvertedDate().getMonth() < player2.getConvertedDate().getMonth()) {
