@@ -88,7 +88,7 @@ public class TrainingOverviewController {/*
     }
 
     public void addProgram(ActionEvent event) {
-        //switches from overview to addNewTrainingProgram
+        //switches from Overview to addNewTrainingProgram
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("../AddNewTrainingProgram.fxml"));

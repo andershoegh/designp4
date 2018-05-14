@@ -2,6 +2,12 @@ package Player;
 
 import Controller.DeleteAble;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 // class for all players generated in system
 public class Player {
     private String name;
@@ -48,6 +54,12 @@ public class Player {
     public Player(int id, String name){
         this.id = id;
         this.name = name;
+    }
+
+    public Player(int id, String name, String birthday) {
+        this.id = id;
+        this.name = name;
+        this.birthday = birthday;
     }
 
     public Player(int id, String name, int goalsScored, int assists, int yellowCards, int redCards){
@@ -144,6 +156,17 @@ public class Player {
 
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
+
+
+    public Date getConvertedDate() {
+        DateFormat format = new SimpleDateFormat("d/MM/yyyy", Locale.ENGLISH);
+        try {
+            return format.parse(this.getBirthday());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
 
 
