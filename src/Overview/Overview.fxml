@@ -20,7 +20,7 @@
                <children>
                   <HBox>
                      <children>
-                        <ImageView fitHeight="49.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="teamPic" fitHeight="49.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="file:graphics/aaif.png" />
                            </image>
@@ -28,7 +28,7 @@
                               <Insets left="15.0" top="15.0" />
                            </HBox.margin>
                         </ImageView>
-                        <Label styleClass="teamname" text="AAIF Senior">
+                        <Label fx:id="teamName" prefHeight="18.0" prefWidth="86.0" styleClass="teamname" text="Skriv navn">
                            <HBox.margin>
                               <Insets left="20.0" top="30.0" />
                            </HBox.margin>

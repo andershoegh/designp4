@@ -1,32 +1,37 @@
 package Overview.Controller;
 
-import Controller.DeleteAble;
 import Controller.MenuController;
 import Match.Match;
 import Player.Player;
 import SQL.SqlConnection;
+import Team.Team;
 import Training.Training;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Comparator;
 import java.util.Date;
-import java.util.stream.Collectors;
 
 public class OverviewController {
 
@@ -38,6 +43,7 @@ public class OverviewController {
     private ObservableList<Player> playerList = FXCollections.observableArrayList();
     private ObservableList<Player> filteredPlayerList = FXCollections.observableArrayList();
     private ObservableList<String> attendingPlayers = FXCollections.observableArrayList();
+    private ObservableList<Team> teamData;
 
     private Date date;
     private DropShadow shadow;
@@ -45,6 +51,8 @@ public class OverviewController {
     @FXML private VBox trainingColumn;
     @FXML private VBox matchColumn;
     @FXML private VBox birthdayColumn;
+    @FXML private Label teamName;
+    @FXML private javafx.scene.image.ImageView teamPic;
 
     @FXML
     public void initialize() {
@@ -58,7 +66,11 @@ public class OverviewController {
         shadow.setOffsetY(4.0);
         shadow.setColor(Color.rgb(171, 168, 168));
 
+        teamData = FXCollections.observableArrayList();
+
         loadDataFromDB();
+        loadDataFromDBLabel();
+        checkTeamDBLabel();
     }
 
     public void loadDataFromDB() {
@@ -297,6 +309,61 @@ public class OverviewController {
         vBox.setMargin(playerInfoLabel, new Insets(10, 0, 20, 0));
 
         birthdayColumn.getChildren().add(vBox);
+    }
+    public void loadDataFromDBLabel() {
+        try {
+            Connection conn = SqlConnection.connectToDB();
+            PreparedStatement statement = conn.prepareStatement("SELECT * FROM team");
+            ResultSet rs = statement.executeQuery();
+
+            while (rs.next()) {
+                teamData.add(new Team(
+                        rs.getInt("team_id"),
+                        rs.getString("team_name"),
+                        rs.getString("team_image")));
+            }
+            SqlConnection.closeConnection();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void checkTeamDBLabel() {
+        try {
+            if (teamData.get(0).getTeamName().equals("noname")) {
+                System.out.println("--- CoachDB does not have a team. 'addTeam' loaded ---");
+
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("../addTeam.fxml"));
+                Parent createTeam = loader.load();
+
+                Stage stage = new Stage();
+                stage.setResizable(false);
+                // Prevents user interaction with other windows while popup is open
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.setTitle("Opret hold");
+                stage.getIcons().add(new Image("file:graphics/ball.png"));
+
+                Scene createTeamForProgram = new Scene(createTeam);
+                stage.setScene(createTeamForProgram);
+                stage.setResizable(false);
+                stage.isAlwaysOnTop();
+                stage.showAndWait();
+            } else {
+                teamName.setText(teamData.get(0).getTeamName());
+                Team teamName = new Team(1, teamData.get(0).getTeamName(), null);
+                System.out.println(teamData.get(0).getTeamName() + " is the name of the team.");
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            
+        } finally {
+            teamData.remove(0);
+            loadDataFromDBLabel();
+            teamName.setText(teamData.get(0).getTeamName());
+        }
     }
 
     public void menuButtonClick(ActionEvent event){
