@@ -45,7 +45,6 @@ public class CreateActivityMatchController {
         loadDataFromDB();
 
         seasonChoiceBox.setConverter(converter);
-
     }
 
 

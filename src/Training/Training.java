@@ -19,6 +19,7 @@ public class Training implements DeleteAble {
     private String startTime;
     private String endTime;
     private int programID;
+    private int attending;
 
     public Training(int id, String date, String startTime, String endTime, int programID) {
         this.id = id;
@@ -26,6 +27,15 @@ public class Training implements DeleteAble {
         this.startTime = startTime;
         this.endTime = endTime;
         this.programID = programID;
+    }
+
+    public Training(int id, String date, String startTime, String endTime, int programID, int attending) {
+        this.id = id;
+        this.date = date;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.programID = programID;
+        this.attending = attending;
     }
 
 
@@ -61,6 +71,11 @@ public class Training implements DeleteAble {
         return programID;
     }
 
+    public int getAttending() { return attending; }
+
+    public void setAttending(int attending) { this.attending = attending; }
+
+
     @Override
     public void delete() {
 
@@ -80,7 +95,7 @@ public class Training implements DeleteAble {
     }
 
     public Date getConvertedDate() {
-        DateFormat format = new SimpleDateFormat("d/MM/yyyy", Locale.ENGLISH);
+        DateFormat format = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
         try {
             return format.parse(this.getDate());
         } catch (ParseException e) {

@@ -15,6 +15,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
@@ -23,6 +24,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
+
+import Calendar.Controller.MatchTablePropertyValueFactory.MatchTitelPropertyValueFactory;
 
 public class MatchOverviewController {
 
@@ -37,6 +43,10 @@ public class MatchOverviewController {
     @FXML private TableColumn<?, ?> columnTime;
     @FXML private ChoiceBox<Season> seasonSelector;
     @FXML private Button inputButton;
+    @FXML private Button showTacticButton;
+    @FXML private Button showResButton;
+    @FXML private Button deleteMatchButton;
+
 
     // Converts seasonData to Season name to be displayed in the Choicebox
     StringConverter<Season> converter = new StringConverter<>() {
@@ -49,6 +59,7 @@ public class MatchOverviewController {
     };
 
     @FXML public void initialize(){
+        Date date = new Date();
         seasonData.clear();
         matchData.clear();
         setCellTable();
@@ -66,11 +77,32 @@ public class MatchOverviewController {
                         }
                     }
                 });
+
+        tableMatches
+                .getSelectionModel()
+                .selectedItemProperty()
+                .addListener((observable, oldValue, newValue) -> {
+                    if (newValue != null) {
+                        if(newValue.getConvertedDate().before(date)){
+                            inputButton.setDisable(false);
+                        }
+                        else{
+                            inputButton.setDisable(true);
+                        }
+                        showTacticButton.setDisable(false);
+                        deleteMatchButton.setDisable(false);
+                    }
+                });
+
+        inputButton.setDisable(true);
+        showTacticButton.setDisable(true);
+        showResButton.setDisable(true);
+        deleteMatchButton.setDisable(true);
     }
 
     // Retrieves data from appropriate player class constructor
     private void setCellTable(){
-        columnOpponent.setCellValueFactory(new PropertyValueFactory<>("opponent"));
+        columnOpponent.setCellValueFactory(new MatchTitelPropertyValueFactory<>("opponent"));
         columnGoalsFor.setCellValueFactory(new PropertyValueFactory<>("goalsFor"));
         columnGoalsAgainst.setCellValueFactory(new PropertyValueFactory<>("goalsAgainst"));
         columnDate.setCellValueFactory(new PropertyValueFactory<>("date"));
@@ -116,6 +148,12 @@ public class MatchOverviewController {
     }
 
     private void updateTable(int newSeason){
+        Collections.sort(matchData, new Comparator<Match>() {
+            @Override
+            public int compare(Match o1, Match o2) {
+                return o1.getConvertedDate().compareTo(o2.getConvertedDate());
+            }
+        });
         tableMatches.setItems(matchData.filtered(match -> match.getSeason() == newSeason));
     }
 
@@ -146,6 +184,56 @@ public class MatchOverviewController {
         }
     }
 
+
+    public void createMatchButtonClick(){
+        try {
+            Parent createEventMatchFXML = FXMLLoader.load(getClass().getResource("../createActivityMatch.fxml"));
+            Scene createActivityMatchScene = new Scene(createEventMatchFXML);
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Opret kamp");
+            stage.getIcons().add(new Image("file:graphics/ball.png"));
+            stage.setScene(createActivityMatchScene);
+            stage.showAndWait();
+            stage.close();
+
+            //tableMatches.getItems().clear();
+            initialize();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+
+    }
+
+    public void deleteMatchButtonClick(){
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("../DeleteMatch.fxml"));
+            Parent deleteMatchFXML = loader.load();
+
+            Stage stage = new Stage();
+            stage.setResizable(false);
+            // Prevents user interaction with other windows while popup is open
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Slet kamp");
+            stage.getIcons().add(new Image("file:graphics/ball.png"));
+
+            // Passes selected player info to DeletePlayerController.java
+            DeleteMatchController controller = loader.getController();
+            controller.initData(tableMatches.getSelectionModel().getSelectedItem());
+
+            Scene deleteMatchScene = new Scene(deleteMatchFXML);
+            stage.setScene(deleteMatchScene);
+            stage.showAndWait();
+
+            //tableMatches.getItems().clear();
+            initialize();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+
+    }
+
     public void createSeasonButtonClick(){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../newSeasonPop.fxml"));
@@ -162,6 +250,28 @@ public class MatchOverviewController {
         } catch (IOException e){
             e.printStackTrace();
         }
+    }
+
+
+    public void showTacticButtonClick(){
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("../LineupOverview.fxml"));
+            Parent lineupFXML = loader.load();
+
+            LineupController lineupController = loader.getController();
+            lineupController.initData(tableMatches.getSelectionModel().getSelectedItem());
+            //lineupController.loadDataFromDB();
+
+            Stage stage = (Stage) showTacticButton.getScene().getWindow();
+
+            Scene lineupScene = new Scene(lineupFXML);
+            stage.setScene(lineupScene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
 }

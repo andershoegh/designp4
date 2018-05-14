@@ -1,5 +1,6 @@
 package Player.Controller;
 
+import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXMLLoader;
@@ -15,9 +16,11 @@ import javafx.fxml.FXML;
 import java.io.IOException;
 import java.sql.*;
 import java.time.format.DateTimeFormatter;
+import java.util.EventListener;
+
 import static java.lang.String.valueOf;
 
-public class addNewPlayerController {
+public class addNewPlayerController{
 
     // This is a connection between the FXML file and the DB, inserting values.
     @FXML private TextField nameInput;

@@ -40,12 +40,26 @@ public class PlayerListController {
     @FXML private TableColumn<?, ?> columnAddress;
     @FXML private TableColumn<?, ?> columnBirthday;
     @FXML private Button show_player_btn;
+    @FXML private Button deleteButton;
 
     // Runs when FXML is loaded
     @FXML public void initialize(){
         playerData = FXCollections.observableArrayList();
         setCellTable();
         loadDataFromDB();
+
+        tablePlayers
+                .getSelectionModel()
+                .selectedItemProperty()
+                .addListener((observable, oldValue, newValue) -> {
+                    if (newValue != null) {
+                        show_player_btn.setDisable(false);
+                        deleteButton.setDisable(false);
+                    }
+                });
+
+        show_player_btn.setDisable(true);
+        deleteButton.setDisable(true);
     }
 
     // Checks for double clicks, and opens edit window accordingly.

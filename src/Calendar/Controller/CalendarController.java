@@ -29,10 +29,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
+import java.util.*;
 
 import Training.Training;
 
@@ -65,6 +65,9 @@ public class CalendarController {
     @FXML private TableColumn<?,?> trainingDate;
     @FXML private TableColumn<?,?> trainingTime;
 
+    @FXML private Button DeleteButton;
+    @FXML private Button editButton;
+
 
     //Running methods when scene gets loaded
     @FXML
@@ -92,6 +95,9 @@ public class CalendarController {
                         selectedItem = newValue;
                         matchTableView.getSelectionModel().clearSelection();
                         otherTableView.getSelectionModel().clearSelection();
+                        DeleteButton.setDisable(false);
+                        editButton.setDisable(false);
+
                     }
                 });
 
@@ -103,6 +109,8 @@ public class CalendarController {
                         selectedItem = newValue;
                         trainingTableView.getSelectionModel().clearSelection();
                         otherTableView.getSelectionModel().clearSelection();
+                        DeleteButton.setDisable(false);
+                        editButton.setDisable(false);
                     }
                 });
 
@@ -115,35 +123,84 @@ public class CalendarController {
                         selectedItem = newValue;
                         trainingTableView.getSelectionModel().clearSelection();
                         matchTableView.getSelectionModel().clearSelection();
+                        DeleteButton.setDisable(false);
+                        editButton.setDisable(false);
                     }
                 });
+
+        DeleteButton.setDisable(true);
+        editButton.setDisable(true);
     }
 
 
-    /*
-    // Checks for double clicks.
-    private Match temp;
-    private Date lastClickTime;
+    // Checks for double clicks, and opens edit window accordingly.
+    private Training trainingTemp;
+    private Date trainingLastClickTime;
     @FXML
-    private void handleRowSelect() {
-        Match row = matchTableView.getSelectionModel().getSelectedItem();
-        if (row == null)
+    private void trainingHandleRowSelect() throws IOException {
+        Training trow = trainingTableView.getSelectionModel().getSelectedItem();
+        if (trow == null)
             return;
-        if(row != temp){
-            temp = row;
-            lastClickTime = new Date();
-        } else if(row == temp) {
+        if(trow != trainingTemp){
+            trainingTemp = trow;
+            trainingLastClickTime = new Date();
+        } else if(trow == trainingTemp) {
             Date now = new Date();
-            long diff = now.getTime() - lastClickTime.getTime();
+            long diff = now.getTime() - trainingLastClickTime.getTime();
             if (diff < 300){ //another click registered in 300 millis
                 System.out.println("--- Double Clicked on a row! Will open edit window. ---");
-                editPlayerButtonClick();
+                editButtonClick();
             } else {
-                lastClickTime = new Date();
+                trainingLastClickTime = new Date();
             }
         }
     }
-*/
+
+    // Checks for double clicks, and opens edit window accordingly.
+    private Match matchTemp;
+    private Date matchLastClickTime;
+    @FXML
+    private void matchHandleRowSelect() throws IOException {
+        Match mrow = matchTableView.getSelectionModel().getSelectedItem();
+        if (mrow == null)
+            return;
+        if(mrow != matchTemp){
+            matchTemp = mrow;
+            matchLastClickTime = new Date();
+        } else if(mrow == matchTemp) {
+            Date now = new Date();
+            long diff = now.getTime() - matchLastClickTime.getTime();
+            if (diff < 300){ //another click registered in 300 millis
+                System.out.println("--- Double Clicked on a row! Will open edit window. ---");
+                editButtonClick();
+            } else {
+                matchLastClickTime = new Date();
+            }
+        }
+    }
+
+    // Checks for double clicks, and opens edit window accordingly.
+    private Other otherTemp;
+    private Date otherLastClickTime;
+    @FXML
+    private void otherHandleRowSelect() throws IOException {
+        Other orow = otherTableView.getSelectionModel().getSelectedItem();
+        if (orow == null)
+            return;
+        if(orow != otherTemp){
+            otherTemp = orow;
+            otherLastClickTime = new Date();
+        } else if(orow == otherTemp) {
+            Date now = new Date();
+            long diff = now.getTime() - otherLastClickTime.getTime();
+            if (diff < 300){ //another click registered in 300 millis
+                System.out.println("--- Double Clicked on a row! Will open edit window. ---");
+                editButtonClick();
+            } else {
+                otherLastClickTime = new Date();
+            }
+        }
+    }
 
     //Match-table methods
     // Retrieves data from appropriate match class constructor
@@ -177,6 +234,12 @@ public class CalendarController {
 
     // inputting retrieved data from db into table view
     private void updateMatchTable(){
+        Collections.sort(matchList, new Comparator<Match>() {
+            @Override
+            public int compare(Match o1, Match o2) {
+                return o1.getConvertedDate().compareTo(o2.getConvertedDate());
+            }
+        });
         matchTableView.setItems(matchList.filtered(match -> match.getConvertedDate().getMonth() == date.getMonth()
                 && match.getConvertedDate().getYear() == date.getYear()));
     }
@@ -214,6 +277,13 @@ public class CalendarController {
 
     // inputting retrieved data from db into table view
     private void updateTrainingTable(){
+        Collections.sort(trainingList, new Comparator<Training>() {
+            @Override
+            public int compare(Training o1, Training o2) {
+                return o1.getConvertedDate().compareTo(o2.getConvertedDate());
+            }
+        });
+
         trainingTableView.setItems(trainingList.filtered(training -> training.getConvertedDate().getMonth() == date.getMonth()
                 && training.getConvertedDate().getYear() == date.getYear()));
     }
@@ -249,6 +319,13 @@ public class CalendarController {
 
     // inputting retrieved data from db into table view
     private void updateOtherTable(){
+        Collections.sort(otherList, new Comparator<Other>() {
+            @Override
+            public int compare(Other o1, Other o2) {
+                return o1.getConvertedDate().compareTo(o2.getConvertedDate());
+            }
+        });
+
         otherTableView.setItems(otherList.filtered(other -> other.getConvertedDate().getMonth() == date.getMonth()
                 && other.getConvertedDate().getYear() == date.getYear()));
     }
@@ -345,6 +422,68 @@ public class CalendarController {
             }
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void editButtonClick() throws IOException {
+        if (selectedItem.getClass().getSimpleName().equals("Training")){
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("../EditActivityTraining.fxml"));
+            Parent createActivityTrainingFXML = loader.load();
+
+            Stage stage = new Stage();
+            stage.setResizable(false);
+
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Rediger træning");
+            stage.getIcons().add(new Image("file:graphics/ball.png"));
+
+            Scene createTrainingScene = new Scene(createActivityTrainingFXML);
+
+            stage.setScene(createTrainingScene);
+
+            stage.showAndWait();
+
+        }
+        else if(selectedItem.getClass().getSimpleName().equals("Match")){
+
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("../EditActivityMatch.fxml"));
+            Parent createActivityMatchFXML = loader.load();
+
+            Stage stage = new Stage();
+            stage.setResizable(false);
+
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Rediger kamp");
+            stage.getIcons().add(new Image("file:graphics/ball.png"));
+
+            Scene createMatchScene = new Scene(createActivityMatchFXML);
+
+            stage.setScene(createMatchScene);
+
+            stage.showAndWait();
+        }
+        else if(selectedItem.getClass().getSimpleName().equals("Other")){
+
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("../EditActivityMisc.fxml"));
+            Parent createActivityMiscFXML = loader.load();
+
+            Stage stage = new Stage();
+            stage.setResizable(false);
+
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Rediger kamp");
+            stage.getIcons().add(new Image("file:graphics/ball.png"));
+
+            Scene createMiscScene = new Scene(createActivityMiscFXML);
+
+            stage.setScene(createMiscScene);
+
+            stage.showAndWait();
+
+
         }
     }
 

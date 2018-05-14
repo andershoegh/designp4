@@ -35,7 +35,7 @@
                <children>
                   <ChoiceBox fx:id="choiceboxPlayer" prefHeight="26.0" prefWidth="284.0" GridPane.rowIndex="1" />
                   <Label text="Spiller" />
-                  <Label text="Antal" GridPane.columnIndex="1" />
+                  <Label text="Antal" GridPane.columnIndex="1" fx:id="labelAmount" />
                </children>
             </GridPane>
             <HBox alignment="TOP_RIGHT">
