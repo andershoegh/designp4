@@ -23,7 +23,7 @@ public class MenuController {
         } else if(event.getSource().toString().contains("Kampe")){
             sceneChange(event, "../Match/MatchOverview.fxml");
         } else if(event.getSource().toString().contains("Træning")){
-            sceneChange(event, "../Training/TrainingOverview.fxml");
+            System.out.println("Du kan bare smide træning fxml ind her nu");
         } else if(event.getSource().toString().contains("Statistik")){
             sceneChange(event, "../Statistic/Statistic.fxml");
         } else if(event.getSource().toString().contains("Diverse")){

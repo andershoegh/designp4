@@ -22,11 +22,26 @@
          <children>
             <VBox prefHeight="720.0" prefWidth="200.0" styleClass="menubar">
                <children>
-                  <HBox alignment="CENTER">
+                  <HBox>
                      <children>
-                        <Label fx:id="menuTeamName" alignment="TOP_CENTER" prefHeight="30.0" prefWidth="160.0" styleClass="teamname" text="Holdnavn" wrapText="true">
+                        <ImageView fitHeight="49.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+
+                            <image>
+                                <Image url="file:../../graphics/aaif.png" />
+                            </image>
+                            <HBox.margin>
+                                <Insets left="15.0" top="15.0" />
+                            </HBox.margin>
+                           <image>
+                              <Image url="@../../graphics/aaif.png" />
+                           </image>
                            <HBox.margin>
-                              <Insets top="30.0" />
+                              <Insets left="15.0" top="15.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label styleClass="teamname" text="AAIF Senior">
+                           <HBox.margin>
+                              <Insets left="20.0" top="30.0" />
                            </HBox.margin>
                         </Label>
                      </children>
@@ -40,6 +55,7 @@
                   <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" styleClass="selectedmenu" text="Kampe" />
                   <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" styleClass="menubarButton" text="Træning" />
                   <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" styleClass="menubarButton" text="Statistik" />
+                  <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" styleClass="menubarButton" text="Diverse" />
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="1080.0">

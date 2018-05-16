@@ -224,16 +224,6 @@
     -fx-text-fill: white;
 }
 
-.redButton{
-    -fx-background-color: #ec2d28;
-    -fx-pref-height: 35px;
-    -fx-text-fill: white;
-}
-
-.redButton:hover{
-    -fx-background-color: #8f1b18;
-}
-
 .greenButton:hover{
     -fx-background-color: #0f4b0d;
 }

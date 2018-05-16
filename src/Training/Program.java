@@ -7,33 +7,41 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class Program implements DeleteAble {
-    //Fields for a training program
+
     private int id;
     private String name;
-    private String notes;
-    private String duration;
+    private String description;
+    private int numberOfExercises;
+    private int duration;
 
-    //Constructor
-    public Program(int id, String name, String notes, String duration) {
+    public Program(int id, String name, String description, int numberOfExercises, int duration) {
         this.id = id;
         this.name = name;
-        this.notes = notes;
+        this.description = description;
+        this.numberOfExercises = numberOfExercises;
         this.duration = duration;
     }
 
-    //Getters
-    public int getId() {return id;}
+    public int getId() {
+        return id;
+    }
+
     public String getName() {
         return name;
     }
-    public String getNotes() {
-        return notes;
+
+    public String getDescription() {
+        return description;
     }
-    public String getDuration() {
+
+    public int getNumberOfExercises() {
+        return numberOfExercises;
+    }
+
+    public int getDuration() {
         return duration;
     }
 
-    //Implementing the delete-method from Deleteable interface
     @Override
     public void delete() {
         try{

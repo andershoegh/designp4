@@ -6,6 +6,8 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -20,11 +22,19 @@
          <children>
             <VBox prefHeight="720.0" prefWidth="200.0" styleClass="menubar">
                <children>
-                  <HBox alignment="CENTER">
+                  <HBox>
                      <children>
-                        <Label fx:id="menuTeamName" alignment="TOP_CENTER" prefHeight="30.0" prefWidth="160.0" styleClass="teamname" text="Holdnavn">
+                        <ImageView fitHeight="49.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="file:graphics/aaif.png" />
+                           </image>
                            <HBox.margin>
-                              <Insets top="30.0" />
+                              <Insets left="15.0" top="15.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label styleClass="teamname" text="AAIF Senior">
+                           <HBox.margin>
+                              <Insets left="20.0" top="30.0" />
                            </HBox.margin>
                         </Label>
                      </children>
@@ -38,13 +48,14 @@
                   <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="menubarButton" text="Kampe" />
                   <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="menubarButton" text="Træning" />
                   <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="selectedmenu" text="Statistik" />
+                  <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="menubarButton" text="Diverse" />
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="1080.0">
                <children>
                   <HBox prefHeight="71.0" prefWidth="200.0" styleClass="header">
                      <children>
-                        <Text fill="#1f951c" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="headerText" text="STATISTIK" textAlignment="CENTER" wrappingWidth="1042.5203857421875">
+                        <Text fill="#1f951c" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="headerText" text="STATSTIK" textAlignment="CENTER" wrappingWidth="1042.5203857421875">
                            <HBox.margin>
                               <Insets left="35.0" top="25.0" />
                            </HBox.margin>
@@ -188,6 +199,17 @@
                                     <Tooltip text="Top 5 spillere, der har fået flest gule kort." />
                                  </tooltip>
                               </TableView>
+                              <Label prefHeight="23.0" prefWidth="294.0" text="Statistikken vist på den her side, kommer direkte" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                              <Label prefHeight="23.0" prefWidth="294.0" text="fra trænerens eget input efter kampe og diverse," GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                 <GridPane.margin>
+                                    <Insets top="40.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label layoutX="767.0" layoutY="550.0" prefHeight="23.0" prefWidth="294.0" text="og kan ikke ændres direkte på denne side." GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                 <GridPane.margin>
+                                    <Insets top="80.0" />
+                                 </GridPane.margin>
+                              </Label>
                               <TableView fx:id="stats_trainings_tableview" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="180.0" prefWidth="385.0" snapToPixel="false" styleClass="table-column-stats" GridPane.rowIndex="2" GridPane.rowSpan="2147483647">
                                  <columns>
                                     <TableColumn fx:id="stats_trainings_tablecolumn" editable="false" maxWidth="352.0000579357147" prefWidth="317.599972486496" sortable="false" styleClass="table-column-stats" text="Antal træninger" />
