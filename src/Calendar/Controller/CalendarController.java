@@ -454,6 +454,9 @@ public class CalendarController {
 
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("../EditActivityMatch.fxml"));
+            EditActivityMatchController controller = new EditActivityMatchController();
+            controller.initData(matchTableView.getSelectionModel().getSelectedItem());
+
             Parent createActivityMatchFXML = loader.load();
 
             Stage stage = new Stage();
@@ -462,6 +465,7 @@ public class CalendarController {
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle("Rediger kamp");
             stage.getIcons().add(new Image("file:graphics/ball.png"));
+
 
             Scene createMatchScene = new Scene(createActivityMatchFXML);
 

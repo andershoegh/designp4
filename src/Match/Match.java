@@ -22,28 +22,18 @@ public class Match implements DeleteAble{
     private int id;
     private int tactic;
     private boolean isHome;
+    private String note;
+
+
+    // Constructors
+    public Match(String opponent) {
+        this.opponent = opponent;
+    }
 
     public Match(String opponent, String date){
         this.opponent = opponent;
         this.date = date;
     }
-
-    public Match(String opponent, int goalsFor, int goalsAgainst, int season,
-                 String date, String time, int id, int tactic, boolean isHome) {
-        this.opponent = opponent;
-        this.goalsFor = goalsFor;
-        this.goalsAgainst = goalsAgainst;
-        this.season = season;
-        this.date = date;
-        this.time = time;
-        this.id = id;
-        this.tactic = tactic;
-        this.isHome = isHome;
-    }
-
-    public Match(String opponent) {
-        this.opponent = opponent;
-        }
 
     public Match(int id, String opponent, String date, String time, boolean isHome) {
         this.opponent = opponent;
@@ -53,6 +43,21 @@ public class Match implements DeleteAble{
         this.id = id;
 
     }
+
+    public Match(String opponent, int goalsFor, int goalsAgainst, int season,
+                 String date, String time, int id, int tactic, boolean isHome, String note) {
+        this.opponent = opponent;
+        this.goalsFor = goalsFor;
+        this.goalsAgainst = goalsAgainst;
+        this.season = season;
+        this.date = date;
+        this.time = time;
+        this.id = id;
+        this.tactic = tactic;
+        this.isHome = isHome;
+        this.note = note;
+    }
+
 
     public String getOpponent() { return opponent; }
     public void setOpponent(String opponent) { this.opponent = opponent; }
@@ -87,6 +92,8 @@ public class Match implements DeleteAble{
         this.isHome = isHome;
     }
 
+    public String getNote() { return note; }
+    public void setNote(String note) { this.note = note; }
 
     public Date getConvertedDate() {
         DateFormat format = new SimpleDateFormat("d/MM/yyyy", Locale.ENGLISH);

@@ -134,7 +134,8 @@ public class MatchOverviewController {
                         rsMatch.getString("date"),
                         rsMatch.getString("time"),
                         rsMatch.getInt("match_id"), 0,
-                        rsMatch.getBoolean("isHome")));
+                        rsMatch.getBoolean("isHome"),
+                        rsMatch.getString("note")));
             }
         } catch (SQLException e) {
             e.printStackTrace();

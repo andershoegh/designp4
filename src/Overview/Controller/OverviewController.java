@@ -81,7 +81,8 @@ public class OverviewController {
                         rsMatch.getString("date"),
                         rsMatch.getString("time"),
                         rsMatch.getInt("match_id"), 0,
-                        rsMatch.getBoolean("isHome")));
+                        rsMatch.getBoolean("isHome"),
+                        rsMatch.getString("note")));
             }
 
             filteredMatchList = matchList.filtered(match -> match.getConvertedDate().after(date)).sorted(matchComparator);
