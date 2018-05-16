@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="720.0" maxWidth="900.0" minHeight="602.0" minWidth="730.0" prefHeight="602.0" prefWidth="730.0" styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Training.Controller.EditTrainingProgramController">
+    <children>
+        <HBox maxHeight="720.0" maxWidth="733.0" minHeight="720.0" minWidth="733.0" prefHeight="602.0" prefWidth="730.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <VBox prefHeight="604.0" prefWidth="730.0">
+                    <children>
+                        <HBox alignment="CENTER" prefHeight="71.0" prefWidth="200.0">
+                            <children>
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="pageheadline" text="Opret nyt træningsprogram" textAlignment="CENTER" wrappingWidth="536.5019836425781">
+                                    <HBox.margin>
+                                        <Insets left="35.0" top="25.0" />
+                                    </HBox.margin>
+                                </Text>
+                            </children>
+                        </HBox>
+                  <AnchorPane prefHeight="648.0" prefWidth="730.0">
+                     <children>
+                        <GridPane layoutY="1.0" prefHeight="526.0" prefWidth="728.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="383.57568359375" minWidth="10.0" prefWidth="314.8546142578125" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="376.57562255859375" minWidth="10.0" prefWidth="353.1453857421875" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints />
+                              <RowConstraints maxHeight="232.67225646972656" minHeight="0.0" prefHeight="55.69830322265625" />
+                              <RowConstraints maxHeight="338.8310317993164" minHeight="0.0" prefHeight="28.75494384765625" />
+                              <RowConstraints maxHeight="505.3708801269531" minHeight="0.0" prefHeight="376.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <TextField fx:id="programNameText" promptText="Tilføj navn på træningsprogram" styleClass="headerTextField" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="20.0" right="20.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </TextField>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Varighed:" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="20.0" left="30.0" />
+                                 </GridPane.margin>
+                              </Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Beskrivelse" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                 <GridPane.margin>
+                                    <Insets left="30.0" />
+                                 </GridPane.margin>
+                              </Text>
+                              <TextArea fx:id="notesText" maxHeight="-Infinity" prefHeight="200.0" prefWidth="299.0" promptText="Noter til træningsprogrammet" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="TOP">
+                                 <GridPane.margin>
+                                    <Insets left="30.0" right="20.0" />
+                                 </GridPane.margin>
+                              </TextArea>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tid" GridPane.rowIndex="2">
+                                 <GridPane.margin>
+                                    <Insets left="2.0" />
+                                 </GridPane.margin>
+                              </Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Øvelse" GridPane.rowIndex="2">
+                                 <GridPane.margin>
+                                    <Insets left="62.0" />
+                                 </GridPane.margin>
+                              </Text>
+                              <GridPane fx:id="trainingExercises" GridPane.rowIndex="3">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="163.9796142578125" minWidth="10.0" prefWidth="62.165435791015625" />
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="318.8326110839844" minWidth="10.0" prefWidth="251.83456420898438" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints maxHeight="33.0" minHeight="33.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="33.0" minHeight="33.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="33.0" minHeight="33.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="33.0" minHeight="33.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="33.0" minHeight="33.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="33.0" minHeight="33.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="33.0" minHeight="33.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="33.0" minHeight="33.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="33.0" minHeight="33.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="33.0" minHeight="33.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="33.0" minHeight="33.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <TextField fx:id="exerciseDuration0" prefHeight="25.0" prefWidth="56.0" styleClass="textField">
+                                       <GridPane.margin>
+                                          <Insets right="10.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <TextField fx:id="exerciseName0" styleClass="textField" GridPane.columnIndex="1">
+                                       <GridPane.margin>
+                                          <Insets right="20.0" />
+                                       </GridPane.margin></TextField>
+                                    <TextField fx:id="exerciseDuration1" prefHeight="25.0" prefWidth="35.0" styleClass="textField" GridPane.rowIndex="1">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <GridPane.margin>
+                                          <Insets right="10.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <TextField fx:id="exerciseDuration2" prefHeight="25.0" prefWidth="0.0" styleClass="textField" GridPane.rowIndex="2">
+                                       <GridPane.margin>
+                                          <Insets right="10.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <TextField fx:id="exerciseDuration3" prefHeight="25.0" prefWidth="0.0" styleClass="textField" GridPane.rowIndex="3">
+                                       <GridPane.margin>
+                                          <Insets right="10.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <TextField fx:id="exerciseDuration4" prefHeight="25.0" prefWidth="0.0" styleClass="textField" GridPane.rowIndex="4">
+                                       <GridPane.margin>
+                                          <Insets right="10.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <TextField fx:id="exerciseDuration5" prefHeight="25.0" prefWidth="0.0" styleClass="textField" GridPane.rowIndex="5">
+                                       <GridPane.margin>
+                                          <Insets right="10.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <TextField fx:id="exerciseDuration6" prefHeight="25.0" prefWidth="0.0" styleClass="textField" GridPane.rowIndex="6">
+                                       <GridPane.margin>
+                                          <Insets right="10.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <TextField fx:id="exerciseDuration7" prefHeight="25.0" prefWidth="0.0" styleClass="textField" GridPane.rowIndex="7">
+                                       <GridPane.margin>
+                                          <Insets right="10.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <TextField fx:id="exerciseDuration8" prefHeight="25.0" prefWidth="0.0" styleClass="textField" GridPane.rowIndex="8">
+                                       <GridPane.margin>
+                                          <Insets right="10.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <TextField fx:id="exerciseDuration9" prefHeight="25.0" prefWidth="0.0" styleClass="textField" GridPane.rowIndex="9">
+                                       <GridPane.margin>
+                                          <Insets right="10.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <TextField fx:id="exerciseDuration10" prefHeight="25.0" prefWidth="0.0" styleClass="textField" GridPane.rowIndex="10">
+                                       <GridPane.margin>
+                                          <Insets right="10.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <TextField fx:id="exerciseName1" styleClass="textField" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                       <GridPane.margin>
+                                          <Insets right="20.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <TextField fx:id="exerciseName2" styleClass="textField" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                       <GridPane.margin>
+                                          <Insets right="20.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <TextField fx:id="exerciseName3" styleClass="textField" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                       <GridPane.margin>
+                                          <Insets right="20.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <TextField fx:id="exerciseName4" styleClass="textField" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                       <GridPane.margin>
+                                          <Insets right="20.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <TextField fx:id="exerciseName5" styleClass="textField" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                       <GridPane.margin>
+                                          <Insets right="20.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <TextField fx:id="exerciseName6" styleClass="textField" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                       <GridPane.margin>
+                                          <Insets right="20.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <TextField fx:id="exerciseName7" styleClass="textField" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                                       <GridPane.margin>
+                                          <Insets right="20.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <TextField fx:id="exerciseName8" styleClass="textField" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                                       <GridPane.margin>
+                                          <Insets right="20.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <TextField fx:id="exerciseName9" styleClass="textField" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                                       <GridPane.margin>
+                                          <Insets right="20.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <TextField fx:id="exerciseName10" styleClass="textField" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                                       <GridPane.margin>
+                                          <Insets right="20.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                 </children>
+                              </GridPane>
+                              <TextField fx:id="programDuration" prefWidth="200.0" promptText="Tid i min" styleClass="textField" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="20.0" left="90.0" right="180.0" />
+                                 </GridPane.margin>
+                              </TextField>
+                              <Button fx:id="safeButton" mnemonicParsing="false" onAction="#safeButtonClick" prefWidth="80.0" styleClass="greenButton" text="Gem" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                 <GridPane.margin>
+                                    <Insets left="140.0" top="300.0" />
+                                 </GridPane.margin>
+                              </Button>
+                              <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancelButtonClick" prefHeight="26.0" prefWidth="80.0" styleClass="redButton" text="Anuller" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                 <GridPane.margin>
+                                    <Insets left="240.0" top="300.0" />
+                                 </GridPane.margin>
+                              </Button>
+                           </children>
+                           <padding>
+                              <Insets bottom="30.0" left="50.0" right="30.0" top="30.0" />
+                           </padding>
+                        </GridPane>
+                     </children>
+                  </AnchorPane>
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+    </children>
+</AnchorPane>
