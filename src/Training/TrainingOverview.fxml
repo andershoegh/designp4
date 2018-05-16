@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -15,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Training.Controller.TrainingOverviewController">
+<AnchorPane styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Training.Controller.TrainingOverviewController">
     <children>
         <HBox maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0">
             <children>
@@ -45,35 +44,29 @@
                         <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefHeight="50.0" prefWidth="200.0" styleClass="menubarButton" text="Kalender" />
                         <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="menubarButton" text="Spillere" />
                         <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="menubarButton" text="Kampe" />
-                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="selectedmenu" text="Træning" />
+                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" styleClass="selectedmenu" text="Træning" />
                         <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="menubarButton" text="Statistik" />
                         <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="menubarButton" text="Diverse" />
                     </children>
                 </VBox>
                 <VBox prefHeight="200.0" prefWidth="1080.0">
                     <children>
-                        <HBox prefHeight="71.0" prefWidth="901.0" styleClass="header">
+                        <HBox alignment="CENTER" prefHeight="71.0" prefWidth="901.0" styleClass="header">
                             <children>
-                                <Text fill="#1f951c" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="headerText" text="        TRÆNING" textAlignment="CENTER" wrappingWidth="915.5617218017578">
+                                <Text fill="#1f951c" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="headerText" text="TRÆNING" textAlignment="CENTER" wrappingWidth="207.5617218017578">
                                     <HBox.margin>
                                         <Insets top="25.0" />
                                     </HBox.margin>
                                 </Text>
-                        <ChoiceBox fx:id="seasonSelector" prefWidth="150.0" styleClass="greenButton">
-                           <HBox.margin>
-                              <Insets right="50.0" top="15.0" />
-                           </HBox.margin>
-                        </ChoiceBox>
                             </children>
                         </HBox>
                         <VBox prefHeight="657.0" prefWidth="1081.0" BorderPane.alignment="CENTER">
                             <children>
                         <AnchorPane prefHeight="400.0" prefWidth="891.0">
                            <children>
-                              <TableView fx:id="tablePrograms" layoutX="171.0" layoutY="-3.0" prefHeight="509.0" prefWidth="738.0" AnchorPane.topAnchor="20.0">
+                              <TableView fx:id="tablePrograms" layoutX="246.0" layoutY="50.0" prefHeight="460.0" prefWidth="588.0" AnchorPane.topAnchor="50.0">
                                 <columns>
                                   <TableColumn fx:id="columnName" editable="false" prefWidth="440.2343444824219" resizable="false" sortable="false" text="Træningsprogram" />
-                                  <TableColumn fx:id="columnExercises" editable="false" minWidth="0.0" prefWidth="150.76556396484375" resizable="false" sortable="false" text="Antal øvelser" />
                                     <TableColumn fx:id="columnDuration" editable="false" prefWidth="145.0" resizable="false" sortable="false" text="Varighed" />
                                 </columns>
                               </TableView>
@@ -82,7 +75,7 @@
                                 <Region prefHeight="20.0" prefWidth="200.0" />
                                 <HBox alignment="CENTER_RIGHT" prefHeight="135.0" prefWidth="1081.0">
                            <children>
-                              <Button minWidth="116.0" mnemonicParsing="false" onAction="#addProgram" styleClass="buttonApprove" text="Tilføj program">
+                              <Button minWidth="116.0" mnemonicParsing="false" onAction="#addProgram" styleClass="buttonApprove" text="Opret program">
                                  <HBox.margin>
                                     <Insets right="20.0" />
                                  </HBox.margin>

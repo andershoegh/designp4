@@ -37,50 +37,30 @@ public class EditPlayerController {
     private SimpleDateFormat sdf = new SimpleDateFormat("MMMM yyyy");
 
 
-    @FXML
-    Button saveButton;
-    @FXML
-    Button cancelButton_EDIT;
+    @FXML Button saveButton;
+    @FXML Button cancelButton_EDIT;
 
     // editable
-    @FXML
-    private Label playerName;
-    @FXML
-    private TextField nameInput;
-    @FXML
-    private TextField address;
-    @FXML
-    private TextField telephone;
-    @FXML
-    private TextField mail;
-    @FXML
-    private TextField ICEnameInput;
-    @FXML
-    private TextField ICEphoneInput;
-    @FXML
-    private DatePicker birthday;
-    @FXML
-    private ChoiceBox position;
-    @FXML
-    private CheckBox health;
-    @FXML
-    private Label health_label;
+    @FXML private Label playerName;
+    @FXML private TextField nameInput;
+    @FXML private TextField address;
+    @FXML private TextField telephone;
+    @FXML private TextField mail;
+    @FXML private TextField ICEnameInput;
+    @FXML private TextField ICEphoneInput;
+    @FXML private DatePicker birthday;
+    @FXML private ChoiceBox position;
+    @FXML private CheckBox health;
+    @FXML private Label health_label;
 
     // stats display
-    @FXML
-    private Label motm;
-    @FXML
-    private Label goalsScored;
-    @FXML
-    private Label assists;
-    @FXML
-    private Label attendedMatches;
-    @FXML
-    private Label attendedTrainings;
-    @FXML
-    private Label yellowCards;
-    @FXML
-    private Label redCards;
+    @FXML private Label motm;
+    @FXML private Label goalsScored;
+    @FXML private Label assists;
+    @FXML private Label attendedMatches;
+    @FXML private Label attendedTrainings;
+    @FXML private Label yellowCards;
+    @FXML private Label redCards;
 
 
     @FXML
