@@ -5,8 +5,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -20,16 +18,8 @@
             <children>
                 <VBox prefHeight="720.0" prefWidth="200.0" styleClass="menubar">
                     <children>
-                        <HBox>
+                        <HBox alignment="BOTTOM_CENTER">
                             <children>
-                                <ImageView fitHeight="49.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="file:graphics/aaif.png" />
-                                    </image>
-                                    <HBox.margin>
-                                        <Insets left="15.0" top="15.0" />
-                                    </HBox.margin>
-                                </ImageView>
                                 <Label styleClass="teamname" text="AAIF Senior">
                                     <HBox.margin>
                                         <Insets left="20.0" top="30.0" />
@@ -46,7 +36,6 @@
                         <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="menubarButton" text="Kampe" />
                         <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" prefWidth="200.0" styleClass="selectedmenu" text="Træning" />
                         <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="menubarButton" text="Statistik" />
-                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="menubarButton" text="Diverse" />
                     </children>
                 </VBox>
                 <VBox prefHeight="200.0" prefWidth="1080.0">

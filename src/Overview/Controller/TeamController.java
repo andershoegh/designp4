@@ -27,7 +27,7 @@ public class TeamController {
     public void acceptButtonClick() throws IOException {
         Connection conn = SqlConnection.connectToDB();
         String sql = "UPDATE team SET team_id = 1, " +
-                "team_name = ?, team_image = null ";
+                "team_name = ?";
 
         // Connecting to the database
         try {
