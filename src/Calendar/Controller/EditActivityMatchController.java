@@ -75,7 +75,7 @@ public class EditActivityMatchController {
             }
 
             seasonChoiceBox.setItems(seasonData);
-           // seasonData.forEach(season -> selectedSeason = season.getId() == selectedMatch.getSeason());
+            //seasonData.stream().findFirst().filter(season -> season.getId() == selectedMatch.getSeason());
             //seasonChoiceBox.getSelectionModel().select();
         } catch (SQLException e) {
             System.out.println("Could not retrieve data from seasons table " + e.getMessage());
