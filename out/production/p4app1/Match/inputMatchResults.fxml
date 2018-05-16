@@ -10,32 +10,22 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Match.Controller.inputMatchResultsController">
+<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Match.Controller.inputMatchResultsController">
     <children>
         <HBox maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0">
             <children>
                 <VBox prefHeight="720.0" prefWidth="200.0" styleClass="menubar">
                     <children>
-                        <HBox>
+                        <HBox alignment="CENTER">
                             <children>
-                                <ImageView fitHeight="49.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="file:graphics/aaif.png" />
-                                    </image>
+                                <Label fx:id="menuTeamName" alignment="TOP_CENTER" prefHeight="30.0" prefWidth="160.0" styleClass="teamname" text="Holdnavn">
                                     <HBox.margin>
-                                        <Insets left="15.0" top="15.0" />
-                                    </HBox.margin>
-                                </ImageView>
-                                <Label styleClass="teamname" text="AAIF Senior">
-                                    <HBox.margin>
-                                        <Insets left="20.0" top="30.0" />
+                                        <Insets top="30.0" />
                                     </HBox.margin>
                                 </Label>
                             </children>
@@ -49,7 +39,6 @@
                         <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="selectedmenu" text="Kampe" />
                         <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="menubarButton" text="Træning" />
                         <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="menubarButton" text="Statistik" />
-                        <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="menubarButton" text="Diverse" />
                     </children>
                 </VBox>
                 <VBox prefHeight="200.0" prefWidth="1080.0">
@@ -120,8 +109,9 @@
                         </HBox>
                         <TableView fx:id="tableGoals" layoutX="399.0" layoutY="127.0" prefHeight="207.0" prefWidth="284.0" styleClass="headerVisibility">
                           <columns>
-                            <TableColumn fx:id="columnGoalsName" prefWidth="232.0" text="C1" />
+                            <TableColumn fx:id="columnGoalsName" prefWidth="202.0" text="C1" />
                             <TableColumn fx:id="columnGoalsAmount" prefWidth="50.0" text="C2" />
+                              <TableColumn fx:id="columnGoalsDelete" prefWidth="30.0" text="x" />
                           </columns>
                         </TableView>
                         <TableView fx:id="tableAssists" layoutX="399.0" layoutY="350.0" prefHeight="207.0" prefWidth="284.0" styleClass="headerVisibility">

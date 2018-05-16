@@ -4,6 +4,7 @@ import Controller.MenuController;
 import Match.Match;
 import Player.Player;
 import SQL.SqlConnection;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -48,6 +49,7 @@ public class inputMatchResultsController {
     MenuController controller = new MenuController();
     MissingDataPopup controllerPopUp = new MissingDataPopup();
 
+    @FXML private Label menuTeamName;
     @FXML private Label matchLabel;
     @FXML private Label dateLabel;
     @FXML private ListView listPlayers;
@@ -126,10 +128,13 @@ public class inputMatchResultsController {
     public void setCellTable(){
         columnGoalsName.setCellValueFactory(new PropertyValueFactory<>("name"));
         columnGoalsAmount.setCellValueFactory(new PropertyValueFactory<>("goalsScored"));
+
         columnAssistsName.setCellValueFactory(new PropertyValueFactory<>("name"));
         columnAssistsAmount.setCellValueFactory(new PropertyValueFactory<>("assists"));
+
         columnYellowName.setCellValueFactory(new PropertyValueFactory<>("name"));
         columnYellowAmount.setCellValueFactory(new PropertyValueFactory<>("yellowCards"));
+
         columnRedName.setCellValueFactory(new PropertyValueFactory<>("name"));
     }
 
@@ -179,6 +184,8 @@ public class inputMatchResultsController {
 
         listPlayers.setItems(availablePlayers);
         choiceboxMOTM.setItems(availablePlayers);
+
+        menuTeamName.setText(SqlConnection.getTeamNameFromDB());
 
         SqlConnection.closeConnection();
     }

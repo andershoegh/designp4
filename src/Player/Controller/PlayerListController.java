@@ -5,8 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Tooltip;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -15,8 +14,6 @@ import SQL.SqlConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
@@ -32,6 +29,7 @@ public class PlayerListController {
     private ObservableList<Player> playerData;
 
     // setting FXML IDs
+    @FXML private Label menuTeamName;
     @FXML private TableView<Player> tablePlayers;
     @FXML private TableColumn<?, ?> columnName;
     @FXML private TableColumn<?, ?> columnPosition;
@@ -114,6 +112,8 @@ public class PlayerListController {
                         rs.getInt("attendedTrainings"), rs.getInt("player_id"))
                 );
             }
+
+            menuTeamName.setText(SqlConnection.getTeamNameFromDB());
 
             SqlConnection.closeConnection();
 

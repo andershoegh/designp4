@@ -44,6 +44,7 @@ public class LineupController implements Initializable {
     private Match selectedMatch;
     private ArrayList<PlayerPos> playerPosList;
 
+    @FXML private Label menuTeamName;
     @FXML private ObservableList<Player> playerData;
     @FXML public TableView<Player> playersTable;
     @FXML public TableColumn<?, ?> columnPlayers;
@@ -294,6 +295,9 @@ public class LineupController implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+        menuTeamName.setText(SqlConnection.getTeamNameFromDB());
+
         SqlConnection.closeConnection();
     }
 

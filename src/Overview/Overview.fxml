@@ -3,9 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -18,19 +15,11 @@
          <children>
             <VBox prefHeight="720.0" prefWidth="200.0" styleClass="menubar">
                <children>
-                  <HBox>
+                  <HBox alignment="CENTER">
                      <children>
-                        <ImageView fx:id="teamPic" fitHeight="49.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="file:graphics/aaif.png" />
-                           </image>
+                        <Label fx:id="menuTeamName" alignment="TOP_CENTER" prefHeight="30.0" prefWidth="160.0" styleClass="teamname" text="Holdnavn">
                            <HBox.margin>
-                              <Insets left="15.0" top="15.0" />
-                           </HBox.margin>
-                        </ImageView>
-                        <Label fx:id="teamName" prefHeight="18.0" prefWidth="86.0" styleClass="teamname" text="Skriv navn">
-                           <HBox.margin>
-                              <Insets left="20.0" top="30.0" />
+                              <Insets top="30.0" />
                            </HBox.margin>
                         </Label>
                      </children>
@@ -44,7 +33,6 @@
                   <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="menubarButton" stylesheets="@../stylesheet.css" text="Kampe" />
                   <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="menubarButton" stylesheets="@../stylesheet.css" text="Træning" />
                   <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="menubarButton" stylesheets="@../stylesheet.css" text="Statistik" />
-                  <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="menubarButton" stylesheets="@../stylesheet.css" text="Diverse" />
                </children>
             </VBox>
             <VBox prefHeight="720.0" prefWidth="1080.0">
@@ -60,9 +48,9 @@
                   </HBox>
                   <HBox prefHeight="649.0" prefWidth="1080.0">
                      <children>
-                        <VBox fx:id="trainingColumn" alignment="TOP_CENTER" fillWidth="false" prefHeight="200.0" prefWidth="360.0" spacing="20.0">
+                        <VBox fx:id="matchColumn" alignment="TOP_CENTER" fillWidth="false" prefHeight="200.0" prefWidth="360.0" spacing="20.0">
                            <children>
-                              <Label styleClass="overviewHeadline" text="Kommende træning">
+                              <Label styleClass="overviewHeadline" text="Kommende kamp">
                                  <VBox.margin>
                                     <Insets top="20.0" />
                                  </VBox.margin>
@@ -74,9 +62,9 @@
                               </Line>
                            </children>
                         </VBox>
-                        <VBox fx:id="matchColumn" alignment="TOP_CENTER" fillWidth="false" prefHeight="200.0" prefWidth="360.0" spacing="20.0">
+                        <VBox fx:id="trainingColumn" alignment="TOP_CENTER" fillWidth="false" prefHeight="200.0" prefWidth="360.0" spacing="20.0">
                            <children>
-                              <Label styleClass="overviewHeadline" text="Kommende kamp">
+                              <Label styleClass="overviewHeadline" text="Kommende træning">
                                  <VBox.margin>
                                     <Insets top="20.0" />
                                  </VBox.margin>
@@ -100,43 +88,6 @@
                                     <Insets />
                                  </VBox.margin>
                               </Line>
-                              <VBox fx:id="birthdayBox" prefWidth="324.0" style="-fx-background-color: white;">
-                                 <children>
-                                    <HBox prefHeight="30.0" prefWidth="324.0">
-                                       <children>
-                                          <Label fx:id="birthdayDate" styleClass="overviewText" stylesheets="@../stylesheet.css" text="Ugedag, dato">
-                                             <HBox.margin>
-                                                <Insets />
-                                             </HBox.margin>
-                                             <padding>
-                                                <Insets left="30.0" />
-                                             </padding>
-                                          </Label>
-                                       </children>
-                                       <VBox.margin>
-                                          <Insets top="15.0" />
-                                       </VBox.margin>
-                                    </HBox>
-                                    <HBox layoutX="10.0" layoutY="60.0" prefHeight="15.0" prefWidth="324.0">
-                                       <children>
-                                          <Label fx:id="birthdayPlayer" styleClass="overviewText" stylesheets="@../stylesheet.css" text="Spillernavn">
-                                             <HBox.margin>
-                                                <Insets />
-                                             </HBox.margin>
-                                             <padding>
-                                                <Insets left="30.0" />
-                                             </padding>
-                                          </Label>
-                                       </children>
-                                       <VBox.margin>
-                                          <Insets bottom="30.0" />
-                                       </VBox.margin>
-                                    </HBox>
-                                 </children>
-                                 <effect>
-                                    <DropShadow color="#aba8a8" height="30.0" offsetX="4.0" offsetY="4.0" radius="14.5" width="30.0" />
-                                 </effect>
-                              </VBox>
                            </children>
                         </VBox>
                      </children>

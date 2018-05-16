@@ -1,7 +1,6 @@
 package Overview.Controller;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -13,15 +12,12 @@ import javafx.fxml.FXML;
 
 import java.io.IOException;
 import java.sql.*;
-import java.time.format.DateTimeFormatter;
-import static java.lang.String.valueOf;
 
 public class TeamController {
 
     // This is a connection between the FXML file and the DB, inserting values.
     @FXML private TextField teamInput;
     @FXML private Button createTeam;
-    @FXML private Button changePic;
     @FXML private Button cancelButton;
 
     @FXML
@@ -43,14 +39,7 @@ public class TeamController {
             } else {
                 stmt.setString(1, teamInput.getText());
             }
-/*
-            // Inserts data into the "address" field in the database. If there is no data, it will set the string to "null"
-            if (imageInput.getText().equals("")) {
-                stmt.setString(2, null);
-            } else {
-                stmt.setString(2, imageInput.getText());
-            }
-*/
+
             // Updates the database
             stmt.executeUpdate();
 
@@ -74,9 +63,8 @@ public class TeamController {
     }
 
     public void cancelButtonClick(){
-        // Closing the window and returning to PlayerList.fxml
-        Stage stage = (Stage) cancelButton.getScene().getWindow();
-        stage.close();
+        // Closing the program
+        System.exit(0);
     }
 }
 

@@ -30,6 +30,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Comparator;
 import java.util.Date;
 
@@ -43,7 +45,7 @@ public class OverviewController {
     private ObservableList<Player> playerList = FXCollections.observableArrayList();
     private ObservableList<Player> filteredPlayerList = FXCollections.observableArrayList();
     private ObservableList<String> attendingPlayers = FXCollections.observableArrayList();
-    private ObservableList<Team> teamData;
+    private ObservableList<Team> teamData = FXCollections.observableArrayList();
 
     private Date date;
     private DropShadow shadow;
@@ -51,32 +53,45 @@ public class OverviewController {
     @FXML private VBox trainingColumn;
     @FXML private VBox matchColumn;
     @FXML private VBox birthdayColumn;
-    @FXML private Label teamName;
-    @FXML private javafx.scene.image.ImageView teamPic;
+    @FXML private Label menuTeamName;
 
     @FXML
     public void initialize() {
         date = new Date();
 
-        shadow = new DropShadow();
-        shadow.setWidth(30.0);
-        shadow.setHeight(30.0);
-        shadow.setRadius(14.5);
-        shadow.setOffsetX(4.0);
-        shadow.setOffsetY(4.0);
-        shadow.setColor(Color.rgb(171, 168, 168));
-
-        teamData = FXCollections.observableArrayList();
-
-        loadDataFromDB();
+        setupShadow();
         loadDataFromDBLabel();
         checkTeamDBLabel();
+        loadDataFromDB();
     }
 
     public void loadDataFromDB() {
         Connection conn = SqlConnection.connectToDB();
 
         try {
+            // Matches
+            PreparedStatement matchStatement = conn.prepareStatement("SELECT * FROM matches");
+            ResultSet rsMatch = matchStatement.executeQuery();
+
+            while (rsMatch.next()) {
+                matchList.add(new Match(rsMatch.getString("opponent"),
+                        rsMatch.getInt("goalsFor"),
+                        rsMatch.getInt("goalsAgainst"),
+                        rsMatch.getInt("season_id"),
+                        rsMatch.getString("date"),
+                        rsMatch.getString("time"),
+                        rsMatch.getInt("match_id"), 0,
+                        rsMatch.getBoolean("isHome")));
+            }
+
+            filteredMatchList = matchList.filtered(match -> match.getConvertedDate().after(date)).sorted(matchComparator);
+
+            if (filteredMatchList.size() > 0) {
+                createMatchBox(filteredMatchList.get(0), getAttendingPlayers(filteredMatchList.get(0), conn));
+            } else {
+                createMissingMessage("Der er ikke nogen kommenede kampe", matchColumn);
+            }
+
             // Loading data from training
             PreparedStatement trainingStatement = conn.prepareStatement("SELECT * FROM trainings");
             ResultSet rsTraining = trainingStatement.executeQuery();
@@ -102,30 +117,7 @@ public class OverviewController {
                     createTrainingBox(filteredTrainingList.get(1));
                 }
             } else {
-               createMissingMessage("Der er ikke nogen kommende træninger", trainingColumn);
-            }
-
-            // Matches
-            PreparedStatement matchStatement = conn.prepareStatement("SELECT * FROM matches");
-            ResultSet rsMatch = matchStatement.executeQuery();
-
-            while (rsMatch.next()) {
-                matchList.add(new Match(rsMatch.getString("opponent"),
-                        rsMatch.getInt("goalsFor"),
-                        rsMatch.getInt("goalsAgainst"),
-                        rsMatch.getInt("season_id"),
-                        rsMatch.getString("date"),
-                        rsMatch.getString("time"),
-                        rsMatch.getInt("match_id"), 0,
-                        rsMatch.getBoolean("isHome")));
-            }
-
-            filteredMatchList = matchList.filtered(match -> match.getConvertedDate().after(date)).sorted(matchComparator);
-
-            if (filteredMatchList.size() > 0) {
-                createMatchBox(filteredMatchList.get(0), getAttendingPlayers(filteredMatchList.get(0), conn));
-            } else {
-                createMissingMessage("Der er ikke nogen kommenede kampe", matchColumn);
+                createMissingMessage("Der er ikke nogen kommende træninger", trainingColumn);
             }
 
             // Birthday
@@ -139,12 +131,13 @@ public class OverviewController {
             }
 
             filteredPlayerList = playerList
-                    .filtered(player -> player.getConvertedDate().getMonth() > date.getMonth())
-                    .filtered(player -> player.getConvertedDate().getDate() > date.getDate())
+                    .filtered(player -> player.getBirthdayDayOfYear() >= convertDateToDayOfYear(date))
                     .sorted(playerComparator);
 
-            System.out.println(playerList);
-            System.out.println(filteredPlayerList.size());
+            // If the list is empty, there are no more birthdays the current year. The list is instead filtered from the start of the following year
+            if(filteredPlayerList.size() == 0) {
+                filteredPlayerList = playerList.filtered(player -> player.getBirthdayDayOfYear() > 0).sorted(playerComparator);
+            }
 
             if (filteredPlayerList.size() > 0) {
                 createBirthdayBox(filteredPlayerList.get(0));
@@ -156,6 +149,17 @@ public class OverviewController {
         }
 
         SqlConnection.closeConnection();
+    }
+
+    public void setupShadow() {
+        // Creating the shadow used for boxes
+        shadow = new DropShadow();
+        shadow.setWidth(30.0);
+        shadow.setHeight(30.0);
+        shadow.setRadius(14.5);
+        shadow.setOffsetX(4.0);
+        shadow.setOffsetY(4.0);
+        shadow.setColor(Color.rgb(171, 168, 168));
     }
 
     public void getAttendingPlayers(Training training, Connection conn) {
@@ -260,12 +264,15 @@ public class OverviewController {
         Label dateLabel = new Label("Dato:");
         dateLabel.getStyleClass().add("overviewText");
         Label date = new Label(match.getConvertedDate().getDate() + " / " + (match.getConvertedDate().getMonth() + 1));
+
         Label opponentLabel = new Label("Modstander:");
         opponentLabel.getStyleClass().add("overviewText");
         Label opponent = new Label(match.getOpponent());
+
         Label placeLabel = new Label("Sted:");
         placeLabel.getStyleClass().add("overviewText");
         Label place = match.getIsHome() ? new Label("Hjemme") : new Label("Ude");
+
         Label attendingLabel = new Label("Tilmeldte:");
         attendingLabel.getStyleClass().add("overviewText");
 
@@ -300,13 +307,13 @@ public class OverviewController {
         vBox.setEffect(shadow);
         vBox.alignmentProperty().setValue(Pos.TOP_LEFT);
 
-        Label dateLabel = new Label(player.getConvertedDate().getDate() + " / " + player.getConvertedDate().getMonth());
+        Label dateLabel = new Label(player.getConvertedDate().getDate() + " / " + (player.getConvertedDate().getMonth() + 1));
         dateLabel.getStyleClass().add("overviewText");
         Label playerInfoLabel = new Label(player.getName() + ", " + (date.getYear() - player.getConvertedDate().getYear() + " år"));
 
         vBox.getChildren().addAll(dateLabel, playerInfoLabel);
-        vBox.setMargin(dateLabel, new Insets(15, 0, 0, 0));
-        vBox.setMargin(playerInfoLabel, new Insets(10, 0, 20, 0));
+        vBox.setMargin(dateLabel, new Insets(27, 0, 0, 30));
+        vBox.setMargin(playerInfoLabel, new Insets(10, 0, 20, 30));
 
         birthdayColumn.getChildren().add(vBox);
     }
@@ -319,8 +326,7 @@ public class OverviewController {
             while (rs.next()) {
                 teamData.add(new Team(
                         rs.getInt("team_id"),
-                        rs.getString("team_name"),
-                        rs.getString("team_image")));
+                        rs.getString("team_name")));
             }
             SqlConnection.closeConnection();
 
@@ -351,8 +357,8 @@ public class OverviewController {
                 stage.isAlwaysOnTop();
                 stage.showAndWait();
             } else {
-                teamName.setText(teamData.get(0).getTeamName());
-                Team teamName = new Team(1, teamData.get(0).getTeamName(), null);
+                menuTeamName.setText(teamData.get(0).getTeamName());
+                Team teamName = new Team(1, teamData.get(0).getTeamName());
                 System.out.println(teamData.get(0).getTeamName() + " is the name of the team.");
             }
 
@@ -362,8 +368,14 @@ public class OverviewController {
         } finally {
             teamData.remove(0);
             loadDataFromDBLabel();
-            teamName.setText(teamData.get(0).getTeamName());
+            menuTeamName.setText(teamData.get(0).getTeamName());
         }
+    }
+
+    public int convertDateToDayOfYear(Date date){
+        DateFormat dayOfYear = new SimpleDateFormat("D");
+
+        return Integer.parseInt(dayOfYear.format(date));
     }
 
     public void menuButtonClick(ActionEvent event){
@@ -374,19 +386,5 @@ public class OverviewController {
 
     Comparator<Match> matchComparator = Comparator.comparing(Match::getConvertedDate);
 
-    Comparator<Player> playerComparator = (player1, player2) -> {
-        if (player1.getConvertedDate().getMonth() < player2.getConvertedDate().getMonth()) {
-            return -1;
-        } else if (player1.getConvertedDate().getMonth() > player2.getConvertedDate().getMonth()) {
-            return 1;
-        } else {
-            if (player1.getConvertedDate().getDate() < player2.getConvertedDate().getDate()) {
-                return -1;
-            } else if (player1.getConvertedDate().getDate() > player2.getConvertedDate().getDate()) {
-                return 1;
-            } else {
-                return 0;
-            }
-        }
-    };
+    Comparator<Player> playerComparator = Comparator.comparing(Player::getBirthdayDayOfYear);
 }

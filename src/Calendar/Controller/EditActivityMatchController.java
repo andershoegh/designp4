@@ -1,7 +1,7 @@
 package Calendar.Controller;
 
+import Match.Match;
 import SQL.SqlConnection;
-import Training.Training;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
@@ -13,14 +13,16 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.time.format.DateTimeFormatter;
 
-
 public class EditActivityMatchController {
 
-    @FXML
-    private DatePicker dateInput;
+    @FXML private DatePicker dateInput;
     @FXML private TextField startTimeInput;
     @FXML private TextField endTimeInput;
     @FXML private Button editButton;
+
+    public void initData(Match match){
+
+    }
 
     public void editButtonClick(){
         String sql = "INSERT INTO trainings" + "(training_id," +
@@ -29,11 +31,8 @@ public class EditActivityMatchController {
             Connection conn = SqlConnection.connectToDB();
             PreparedStatement stmt = conn.prepareStatement(sql);
 
-            String date = dateInput.getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-            stmt.setString(1, date);
-
+            stmt.setString(1, dateInput.getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
             stmt.setString(2, startTimeInput.getText());
-
             stmt.setString(3, endTimeInput.getText());
 
             stmt.executeUpdate();

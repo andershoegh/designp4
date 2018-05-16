@@ -8,6 +8,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -19,6 +20,8 @@ import java.sql.SQLException;
 public class StatisticController {
 
     private Player selectedItem = null;
+
+    @FXML private Label menuTeamName;
 
     //Mål
     private ObservableList<Player> goalsData;
@@ -331,6 +334,8 @@ public class StatisticController {
         stats_trainings_tableview.setItems(trainingsData);
         stats_yellowcards_tableview.setItems(yellowData);
         stats_redcards_tableview.setItems(redData);
+
+        menuTeamName.setText(SqlConnection.getTeamNameFromDB());
 
         SqlConnection.closeConnection();
     }
