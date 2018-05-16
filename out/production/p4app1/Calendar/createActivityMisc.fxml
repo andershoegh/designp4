@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="340.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Calendar.Controller.CreateActivityMiscController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="340.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Calendar.Controller.CreateActivityMiscController">
    <children>
       <VBox prefHeight="117.0" prefWidth="340.0" AnchorPane.bottomAnchor="323.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -34,7 +34,7 @@
                      <children>
                         <Line endX="238.0" layoutX="101.0" layoutY="13.0" startX="-100.0" />
                         <Circle centerX="11.0" centerY="-11.0" fill="#51b550" layoutX="213.0" layoutY="23.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
-                        <Circle centerX="11.0" centerY="-11.0" fill="#51b550" layoutX="117.0" layoutY="22.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Circle centerX="11.0" centerY="-11.0" fill="#51b550" layoutX="117.0" layoutY="23.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
                      </children>
                   </AnchorPane>
                </children>

@@ -167,6 +167,18 @@ public class Player {
         }
         return null;
     }
+
+    public int getBirthdayDayOfYear() {
+        DateFormat format = new SimpleDateFormat("d/MM/yyyy", Locale.ENGLISH);
+        DateFormat day = new SimpleDateFormat("D");
+        try {
+            Date date = format.parse(this.getBirthday());
+            return Integer.parseInt(day.format(date));
+        } catch (ParseException e) {
+            System.out.println("The player's birthday could not be parsed to int day of the year");
+        }
+        return -1;
+    }
 }
 
 

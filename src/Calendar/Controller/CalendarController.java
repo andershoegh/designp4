@@ -29,7 +29,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -47,6 +46,7 @@ public class CalendarController {
     private SimpleDateFormat sdf = new SimpleDateFormat("MMMM yyyy");
 
     // setting FXML IDs
+    @FXML private Label menuTeamName;
     @FXML private Label MonthYearLabel;
 
     @FXML private TableView<Other>otherTableView;
@@ -72,6 +72,7 @@ public class CalendarController {
     //Running methods when scene gets loaded
     @FXML
     public void initialize() throws ParseException {
+
         date = new Date();
         MonthYearLabel.setText(sdf.format(date).toUpperCase());
 
@@ -314,6 +315,10 @@ public class CalendarController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+        // Setting the team name in the menu
+        menuTeamName.setText(SqlConnection.getTeamNameFromDB());
+
         SqlConnection.closeConnection();
     }
 

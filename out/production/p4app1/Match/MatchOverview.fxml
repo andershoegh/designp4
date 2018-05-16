@@ -6,33 +6,23 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Match.Controller.MatchOverviewController">
+<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Match.Controller.MatchOverviewController">
    <children>
       <HBox maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0">
          <children>
             <VBox prefHeight="720.0" prefWidth="200.0" styleClass="menubar">
                <children>
-                  <HBox>
+                  <HBox alignment="CENTER">
                      <children>
-                        <ImageView fitHeight="49.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="file:graphics/aaif.png" />
-                           </image>
+                        <Label fx:id="menuTeamName" alignment="TOP_CENTER" prefHeight="30.0" prefWidth="160.0" styleClass="teamname" text="Holdnavn">
                            <HBox.margin>
-                              <Insets left="15.0" top="15.0" />
-                           </HBox.margin>
-                        </ImageView>
-                        <Label styleClass="teamname" text="AAIF Senior">
-                           <HBox.margin>
-                              <Insets left="20.0" top="30.0" />
+                              <Insets top="30.0" />
                            </HBox.margin>
                         </Label>
                      </children>
@@ -46,7 +36,6 @@
                   <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="selectedmenu" text="Kampe" />
                   <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="menubarButton" text="Træning" />
                   <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="menubarButton" text="Statistik" />
-                  <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="menubarButton" text="Diverse" />
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="1080.0">
@@ -62,7 +51,7 @@
                   </HBox>
                   <AnchorPane prefHeight="647.0" prefWidth="1081.0">
                      <children>
-                        <TableView fx:id="tableMatches" layoutX="95.0" layoutY="14.0" prefHeight="482.0">
+                        <TableView fx:id="tableMatches" layoutX="254.0" layoutY="14.0" prefHeight="482.0">
                           <columns>
                             <TableColumn fx:id="columnOpponent" prefWidth="220.0" text="Kamp" />
                               <TableColumn prefWidth="220.0" text="Tidspunkt">
@@ -77,7 +66,6 @@
                                     <TableColumn fx:id="columnGoalsAgainst" prefWidth="75.0" text="Dem" />
                                  </columns>
                               </TableColumn>
-                              <TableColumn fx:id="columnAddress" prefWidth="240.0" text="Spillested" />
                           </columns>
                            <padding>
                               <Insets top="20.0" />

@@ -35,6 +35,7 @@ public class MatchOverviewController {
     private ObservableList<Match> matchData = FXCollections.observableArrayList();
     private ObservableList<Season> seasonData = FXCollections.observableArrayList();
 
+    @FXML private Label menuTeamName;
     @FXML private TableView<Match> tableMatches;
     @FXML private TableColumn<?, ?> columnOpponent;
     @FXML private TableColumn<?, ?> columnGoalsFor;
@@ -140,6 +141,8 @@ public class MatchOverviewController {
         }
 
         seasonSelector.setItems(seasonData);
+
+        menuTeamName.setText(SqlConnection.getTeamNameFromDB());
 
         SqlConnection.closeConnection();
 

@@ -1,8 +1,6 @@
 package SQL;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class SqlConnection {
 
@@ -23,11 +21,26 @@ public class SqlConnection {
     }
 
     public static void closeConnection(){
+
         try {
             conn.close();
             System.out.println("--- Connection closed ---");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+    }
+
+    public static String getTeamNameFromDB() {
+
+        try {
+            PreparedStatement statement = conn.prepareStatement("SELECT team_name FROM team");
+            ResultSet rs = statement.executeQuery();
+
+            return rs.getString("team_name");
+        } catch (SQLException e) {
+            System.out.println("Could not connect to team table " + e.getMessage());
+        }
+
+        return null;
     }
 }
