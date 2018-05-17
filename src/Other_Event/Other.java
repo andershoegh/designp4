@@ -18,12 +18,14 @@ public class Other implements DeleteAble{
     private String name;
     private String date;
     private String time;
+    private String note;
 
-    public Other(int id, String name, String date, String time) {
+    public Other(int id, String name, String date, String time, String note) {
         this.id = id;
         this.name = name;
         this.date = date;
         this.time = time;
+        this.note = note;
     }
 
     public String getTime() { return time; }
@@ -36,6 +38,9 @@ public class Other implements DeleteAble{
     public void setName(String name) { this.name = name; }
 
     public int getId() { return id; }
+
+    public String getNote() { return note; }
+    public void setNote(String note) { this.note = note; }
 
     public Date getConvertedDate() {
         DateFormat format = new SimpleDateFormat("d/MM/yyyy", Locale.ENGLISH);

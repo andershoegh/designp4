@@ -1,6 +1,5 @@
 package Calendar.Controller;
 
-import Match.Match;
 import SQL.SqlConnection;
 import Season.Season;
 import javafx.collections.FXCollections;
@@ -14,7 +13,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class CreateActivityMatchController {
@@ -48,7 +46,6 @@ public class CreateActivityMatchController {
     }
 
 
-
     public void loadDataFromDB(){
         Connection conn = SqlConnection.connectToDB();
 
@@ -68,9 +65,8 @@ public class CreateActivityMatchController {
 
 
     public void createButtonClick() {
-        String sql = "INSERT INTO matches " +
-                "(match_id, opponent, goalsFor, goalsAgainst, season_id, date, time, isHome, note)" +
-                "VALUES (null, ?, null , null, ?,  ?, ?, ?, ?)";
+        String sql = "INSERT INTO matches(match_id, opponent, goalsFor, goalsAgainst, season_id, date, time, isHome, note)" +
+                "VALUES (null, ?, -1, -1, ?, ?, ?, ?, ?)";
         try {
             Connection conn = SqlConnection.connectToDB();
             PreparedStatement stmt = conn.prepareStatement(sql);

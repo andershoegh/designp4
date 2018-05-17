@@ -2,7 +2,6 @@ package Training;
 
 import Controller.DeleteAble;
 import SQL.SqlConnection;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -13,7 +12,7 @@ import java.util.Date;
 import java.util.Locale;
 
 public class Training implements DeleteAble {
-
+    //
     private int id;
     private String date;
     private String startTime;

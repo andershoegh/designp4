@@ -4,11 +4,13 @@ import Controller.MenuController;
 import Match.Match;
 import Player.Player;
 import SQL.SqlConnection;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,6 +18,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -26,6 +30,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 
 public class inputMatchResultsController {
 
@@ -38,6 +43,9 @@ public class inputMatchResultsController {
     private static String tempTable;
     private static Player tempPlayer;
     private static int tempAmount;
+    private Player selectedItem;
+    private Player temp;
+    private Date lastClickTime;
     private ObservableList<Player> availablePlayers = FXCollections.observableArrayList();
     private ObservableList<Player> playerGoals = FXCollections.observableArrayList();
     private ObservableList<Player> playerAssists = FXCollections.observableArrayList();
@@ -48,6 +56,7 @@ public class inputMatchResultsController {
     MenuController controller = new MenuController();
     MissingDataPopup controllerPopUp = new MissingDataPopup();
 
+    @FXML private Label menuTeamName;
     @FXML private Label matchLabel;
     @FXML private Label dateLabel;
     @FXML private ListView listPlayers;
@@ -121,15 +130,110 @@ public class inputMatchResultsController {
                 }
             }
         });
+
+        tableGoals.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if (event.getButton().equals(MouseButton.PRIMARY)) {
+                    if (event.getClickCount() == 2) {
+                        deleteRow("Goals");
+                    }
+                }
+            }
+        });
+
+        tableAssists.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if (event.getButton().equals(MouseButton.PRIMARY)) {
+                    if (event.getClickCount() == 2) {
+                        deleteRow("Assists");
+                    }
+                }
+            }
+        });
+
+        tableYellow.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if (event.getButton().equals(MouseButton.PRIMARY)) {
+                    if (event.getClickCount() == 2) {
+                        deleteRow("Yellow");
+                    }
+                }
+            }
+        });
+
+        tableRed.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if (event.getButton().equals(MouseButton.PRIMARY)) {
+                    if (event.getClickCount() == 2) {
+                        deleteRow("Red");
+                    }
+                }
+            }
+        });
+
+        tableGoals
+                .getSelectionModel()
+                .selectedItemProperty()
+                .addListener((observable, oldValue, newValue) -> {
+                    if (newValue != null) {
+                        selectedItem = newValue;
+                        tableAssists.getSelectionModel().clearSelection();
+                        tableYellow.getSelectionModel().clearSelection();
+                        tableRed.getSelectionModel().clearSelection();
+                    }
+                });
+
+        tableAssists
+                .getSelectionModel()
+                .selectedItemProperty()
+                .addListener((observable, oldValue, newValue) -> {
+                    if (newValue != null) {
+                        selectedItem = newValue;
+                        tableGoals.getSelectionModel().clearSelection();
+                        tableYellow.getSelectionModel().clearSelection();
+                        tableRed.getSelectionModel().clearSelection();
+                    }
+                });
+
+        tableYellow
+                .getSelectionModel()
+                .selectedItemProperty()
+                .addListener((observable, oldValue, newValue) -> {
+                    if (newValue != null) {
+                        selectedItem = newValue;
+                        tableGoals.getSelectionModel().clearSelection();
+                        tableAssists.getSelectionModel().clearSelection();
+                        tableRed.getSelectionModel().clearSelection();
+                    }
+                });
+
+        tableRed
+                .getSelectionModel()
+                .selectedItemProperty()
+                .addListener((observable, oldValue, newValue) -> {
+                    if (newValue != null) {
+                        selectedItem = newValue;
+                        tableGoals.getSelectionModel().clearSelection();
+                        tableAssists.getSelectionModel().clearSelection();
+                        tableYellow.getSelectionModel().clearSelection();
+                    }
+                });
     }
 
     public void setCellTable(){
         columnGoalsName.setCellValueFactory(new PropertyValueFactory<>("name"));
         columnGoalsAmount.setCellValueFactory(new PropertyValueFactory<>("goalsScored"));
+
         columnAssistsName.setCellValueFactory(new PropertyValueFactory<>("name"));
         columnAssistsAmount.setCellValueFactory(new PropertyValueFactory<>("assists"));
+
         columnYellowName.setCellValueFactory(new PropertyValueFactory<>("name"));
         columnYellowAmount.setCellValueFactory(new PropertyValueFactory<>("yellowCards"));
+
         columnRedName.setCellValueFactory(new PropertyValueFactory<>("name"));
     }
 
@@ -179,6 +283,8 @@ public class inputMatchResultsController {
 
         listPlayers.setItems(availablePlayers);
         choiceboxMOTM.setItems(availablePlayers);
+
+        menuTeamName.setText(SqlConnection.getTeamNameFromDB());
 
         SqlConnection.closeConnection();
     }
@@ -257,6 +363,24 @@ public class inputMatchResultsController {
             e.printStackTrace();
         }
     }
+
+    public void deleteRow(String table){
+        switch (table) {
+            case "Goals":
+                playerGoals.remove(selectedItem);
+                break;
+            case "Assists":
+                playerAssists.remove(selectedItem);
+                break;
+            case "Yellow":
+                playerYellow.remove(selectedItem);
+                break;
+            case "Red":
+                playerRed.remove(selectedItem);
+                break;
+        }
+    }
+
 
     public void saveButtonClick(ActionEvent event){
 

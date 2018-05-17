@@ -1,6 +1,7 @@
 package Calendar.Controller;
 
 import SQL.SqlConnection;
+import Training.Training;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
@@ -10,6 +11,7 @@ import javafx.stage.Stage;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class CreateActivityTrainingController {
