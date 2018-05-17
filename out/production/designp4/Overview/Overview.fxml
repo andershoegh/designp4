@@ -6,10 +6,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Overview.Controller.OverviewController">
+<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Overview.Controller.OverviewController">
    <children>
       <HBox maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0">
          <children>
@@ -37,7 +36,7 @@
             </VBox>
             <VBox prefHeight="720.0" prefWidth="1080.0">
                <children>
-                  <HBox prefHeight="71.0" prefWidth="200.0" styleClass="header">
+                  <HBox alignment="CENTER" prefHeight="111.0" prefWidth="1080.0" styleClass="header">
                      <children>
                         <Text fill="#1f951c" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="headerText" text="OVERSIGT" textAlignment="CENTER" wrappingWidth="1075.3203125">
                            <HBox.margin>
@@ -50,44 +49,29 @@
                      <children>
                         <VBox fx:id="matchColumn" alignment="TOP_CENTER" fillWidth="false" prefHeight="200.0" prefWidth="360.0" spacing="20.0">
                            <children>
-                              <Label styleClass="overviewHeadline" text="Kommende kamp">
+                              <Label alignment="CENTER" prefHeight="64.0" prefWidth="300.0" style="-fx-text-fill: white;" styleClass="calender-hbox" text="Kommende kamp">
                                  <VBox.margin>
                                     <Insets top="20.0" />
                                  </VBox.margin>
                               </Label>
-                              <Line endX="182.0" startX="-100.0">
-                                 <VBox.margin>
-                                    <Insets />
-                                 </VBox.margin>
-                              </Line>
                            </children>
                         </VBox>
                         <VBox fx:id="trainingColumn" alignment="TOP_CENTER" fillWidth="false" prefHeight="200.0" prefWidth="360.0" spacing="20.0">
                            <children>
-                              <Label styleClass="overviewHeadline" text="Kommende træning">
+                              <Label alignment="CENTER" prefHeight="64.0" prefWidth="300.0" style="-fx-text-fill: white;" styleClass="calender-hbox" text="Kommende træning">
                                  <VBox.margin>
                                     <Insets top="20.0" />
                                  </VBox.margin>
                               </Label>
-                              <Line endX="182.0" startX="-100.0">
-                                 <VBox.margin>
-                                    <Insets />
-                                 </VBox.margin>
-                              </Line>
                            </children>
                         </VBox>
                         <VBox fx:id="birthdayColumn" alignment="TOP_CENTER" fillWidth="false" prefHeight="200.0" prefWidth="360.0" spacing="20.0">
                            <children>
-                              <Label styleClass="overviewHeadline" text="Kommende fødselsdag">
+                              <Label alignment="CENTER" prefHeight="64.0" prefWidth="300.0" style="-fx-text-fill: white;" styleClass="calender-hbox" text="Kommende fødselsdag">
                                  <VBox.margin>
                                     <Insets top="20.0" />
                                  </VBox.margin>
                               </Label>
-                              <Line endX="182.0" startX="-100.0">
-                                 <VBox.margin>
-                                    <Insets />
-                                 </VBox.margin>
-                              </Line>
                            </children>
                         </VBox>
                      </children>

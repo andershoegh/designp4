@@ -9,11 +9,12 @@
 .window{
     -fx-font-family: "Montserrat";
     -fx-font-size: 12px;
-    -fx-background-color: #f9f9f9;
+    -fx-background-color: #fefefe;
 }
 .header {
-    -fx-background-color: #FFFFFF;
+    -fx-background-color: #c5c5c5;
 }
+
 .headerText{
     -fx-font-family: "Montserrat";
     -fx-text-fill: #1f951c;
@@ -49,7 +50,7 @@
 
 .menubar{
     -fx-min-width: 200px;
-    -fx-background-color: #FFFFFF;
+    -fx-background-color: #c5c5c5;
 }
 
 .button{
@@ -97,7 +98,7 @@
 .menubarButton{
     -fx-pref-height: 55px;
     -fx-padding-left: 20;
-    -fx-background-color: #FFFFFF;
+    -fx-background-color: #c5c5c5;
     -fx-text-fill: #1f951c;
 }
 
@@ -112,7 +113,7 @@
 
 .selectedmenu{
     -fx-border-style: solid;
-    -fx-background-color: #FFFFFF;
+    -fx-background-color: #c5c5c5;
     -fx-border-color: transparent #1f951c transparent transparent;
     -fx-border-width: 5px;
     -fx-font-weight: bold;

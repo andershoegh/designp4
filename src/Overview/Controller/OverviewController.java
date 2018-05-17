@@ -1,6 +1,7 @@
 package Overview.Controller;
 
 import Controller.MenuController;
+import Match.Controller.LineupController;
 import Match.Match;
 import Player.Player;
 import SQL.SqlConnection;
@@ -236,6 +237,7 @@ public class OverviewController {
         trainingProgramButton.getStyleClass().add("overviewButtons");
         trainingProgramButton.setMinWidth(135.0);
 
+
         vBox.getChildren().addAll(grid, trainingProgramButton);
         grid.setHgap(30.0);
         grid.setVgap(12.0);
@@ -246,6 +248,10 @@ public class OverviewController {
         vBox.setMargin(trainingProgramButton, new Insets(15, 0, 20, 0));
 
         trainingColumn.getChildren().add(vBox);
+
+        trainingProgramButton.setOnMouseClicked(e -> {
+
+        });
     }
 
     public void createMatchBox(Match match, ObservableList attendingPlayers) {
@@ -285,6 +291,7 @@ public class OverviewController {
         tacticButton.getStyleClass().add("overviewButton");
         tacticButton.setMinWidth(120.0);
 
+
         vBox.getChildren().addAll(grid, tacticButton);
         grid.setHgap(10.0);
         grid.setVgap(12.0);
@@ -297,6 +304,27 @@ public class OverviewController {
         vBox.setMargin(tacticButton, new Insets(25, 0, 20, 0));
 
         matchColumn.getChildren().add(vBox);
+
+        tacticButton.setOnMouseClicked(event -> {
+            try {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("../../Match/LineupOverview.fxml"));
+                Parent lineupFXML = loader.load();
+
+                LineupController lineupController = loader.getController();
+                lineupController.initData(match);
+                //lineupController.loadDataFromDB();
+
+                Stage stage = (Stage) tacticButton.getScene().getWindow();
+
+                Scene lineupScene = new Scene(lineupFXML);
+                stage.setScene(lineupScene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
     }
 
     public void createBirthdayBox(Player player) {

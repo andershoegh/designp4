@@ -107,9 +107,7 @@ public class MatchOverviewController {
     // Retrieves data from appropriate player class constructor
     private void setCellTable(){
         columnOpponent.setCellValueFactory(new MatchTitelPropertyValueFactory<>("opponent"));
-
         columnGoalsFor.setCellValueFactory(new PropertyValueFactory<>("goalsFor"));
-
         columnGoalsAgainst.setCellValueFactory(new PropertyValueFactory<>("goalsAgainst"));
         columnDate.setCellValueFactory(new PropertyValueFactory<>("date"));
         columnTime.setCellValueFactory(new PropertyValueFactory<>("time"));
