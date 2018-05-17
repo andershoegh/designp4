@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="340.0" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Calendar.Controller.EditActivityMatchController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="340.0" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Calendar.Controller.EditActivityMatchController">
    <children>
       <GridPane layoutX="23.0" layoutY="109.0" prefHeight="239.0" prefWidth="296.0" vgap="10.0">
          <columnConstraints>
@@ -41,12 +41,12 @@
                </GridPane.margin>
             </Text>
             <TextField id="timeInput" fx:id="timeInput" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <TextField fx:id="notesInput" prefHeight="107.0" prefWidth="197.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <TextField fx:id="notesInput" alignment="TOP_LEFT" prefHeight="107.0" prefWidth="197.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <DatePicker fx:id="dateInput" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <CheckBox fx:id="locationInput" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <TextField id="timeInput" fx:id="opponentInput" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sæson:" />
-            <ChoiceBox fx:id="seasonChoiceBox" prefWidth="150.0" GridPane.columnIndex="1" />
+            <ChoiceBox fx:id="seasonChoiceBox" prefWidth="150.0" styleClass="greenButton" GridPane.columnIndex="1" />
          </children>
       </GridPane>
       <Text layoutX="-4.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="pageheadline" text="REDIGER KAMP" textAlignment="CENTER" wrappingWidth="348.17919921875">

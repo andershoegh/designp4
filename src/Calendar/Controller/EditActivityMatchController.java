@@ -46,11 +46,12 @@ public class EditActivityMatchController {
 
         seasonChoiceBox.setConverter(seasonConverter);
 
-
         opponentInput.setText(selectedMatch.getOpponent());
 
-        // LocalDate selectedDate = LocalDate.parse(selectedMatch.getDate());
-        // dateInput.setValue(selectedDate);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyy");
+        LocalDate selectedDate = LocalDate.parse(selectedMatch.getDate(), formatter);
+        dateInput.setValue(selectedDate);
+
         timeInput.setText(selectedMatch.getTime());
         locationInput.setSelected(selectedMatch.getIsHome());
         notesInput.setText(selectedMatch.getNote());
@@ -75,8 +76,8 @@ public class EditActivityMatchController {
             }
 
             seasonChoiceBox.setItems(seasonData);
-            //seasonData.stream().findFirst().filter(season -> season.getId() == selectedMatch.getSeason());
-            //seasonChoiceBox.getSelectionModel().select();
+            seasonData.stream().filter(season -> season.getId() == selectedMatch.getSeason());
+            seasonChoiceBox.getSelectionModel().select(seasonData.get(0));
         } catch (SQLException e) {
             System.out.println("Could not retrieve data from seasons table " + e.getMessage());
         }

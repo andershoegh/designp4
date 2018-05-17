@@ -1,6 +1,7 @@
 package Calendar.Controller;
 
 import SQL.SqlConnection;
+import Training.Training;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
@@ -10,16 +11,30 @@ import javafx.stage.Stage;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class EditActivityTrainingController {
 
+    private static Training selectedTraining;
 
-    @FXML
-    private DatePicker dateInput;
+    @FXML private DatePicker dateInput;
     @FXML private TextField startTimeInput;
     @FXML private TextField endTimeInput;
     @FXML private Button editButton;
+
+    @FXML public void initialize() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate selectedDate = LocalDate.parse(selectedTraining.getDate(), formatter);
+        dateInput.setValue(selectedDate);
+
+        startTimeInput.setText(selectedTraining.getStartTime());
+        endTimeInput.setText(selectedTraining.getEndTime());
+    }
+
+    public void initData(Training training) {
+        selectedTraining = training;
+    }
 
     public void editButtonClick(){
         String sql = "INSERT INTO trainings" + "(training_id," +

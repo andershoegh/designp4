@@ -15,7 +15,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
+import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
@@ -29,6 +31,7 @@ import java.util.Comparator;
 import java.util.Date;
 
 import Calendar.Controller.MatchTablePropertyValueFactory.MatchTitelPropertyValueFactory;
+import javafx.util.converter.IntegerStringConverter;
 
 public class MatchOverviewController {
 
@@ -38,7 +41,7 @@ public class MatchOverviewController {
     @FXML private Label menuTeamName;
     @FXML private TableView<Match> tableMatches;
     @FXML private TableColumn<?, ?> columnOpponent;
-    @FXML private TableColumn<?, ?> columnGoalsFor;
+    @FXML private TableColumn<Match, Integer> columnGoalsFor;
     @FXML private TableColumn<?, ?> columnGoalsAgainst;
     @FXML private TableColumn<?, ?> columnDate;
     @FXML private TableColumn<?, ?> columnTime;
@@ -104,7 +107,9 @@ public class MatchOverviewController {
     // Retrieves data from appropriate player class constructor
     private void setCellTable(){
         columnOpponent.setCellValueFactory(new MatchTitelPropertyValueFactory<>("opponent"));
+
         columnGoalsFor.setCellValueFactory(new PropertyValueFactory<>("goalsFor"));
+
         columnGoalsAgainst.setCellValueFactory(new PropertyValueFactory<>("goalsAgainst"));
         columnDate.setCellValueFactory(new PropertyValueFactory<>("date"));
         columnTime.setCellValueFactory(new PropertyValueFactory<>("time"));

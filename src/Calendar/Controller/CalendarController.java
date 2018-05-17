@@ -310,7 +310,8 @@ public class CalendarController {
                 otherList.add(new Other(rs.getInt("other_id"),
                         rs.getString("name"),
                         rs.getString("date"),
-                        rs.getString("time")));
+                        rs.getString("time"),
+                        rs.getString("note")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -432,8 +433,11 @@ public class CalendarController {
 
     public void editButtonClick() throws IOException {
         if (selectedItem.getClass().getSimpleName().equals("Training")){
+
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("../EditActivityTraining.fxml"));
+            EditActivityTrainingController controller = new EditActivityTrainingController();
+            controller.initData(trainingTableView.getSelectionModel().getSelectedItem());
             Parent createActivityTrainingFXML = loader.load();
 
             Stage stage = new Stage();
@@ -477,6 +481,8 @@ public class CalendarController {
 
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("../EditActivityMisc.fxml"));
+            EditActivityMiscController controller = new EditActivityMiscController();
+            controller.initData(otherTableView.getSelectionModel().getSelectedItem());
             Parent createActivityMiscFXML = loader.load();
 
             Stage stage = new Stage();
