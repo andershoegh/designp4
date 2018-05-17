@@ -107,8 +107,8 @@ public class MatchOverviewController {
     // Retrieves data from appropriate player class constructor
     private void setCellTable(){
         columnOpponent.setCellValueFactory(new MatchTitelPropertyValueFactory<>("opponent"));
-        columnGoalsFor.setCellValueFactory(new PropertyValueFactory<>("goalsFor"));
-        columnGoalsAgainst.setCellValueFactory(new PropertyValueFactory<>("goalsAgainst"));
+        columnGoalsFor.setCellValueFactory(new MatchGoalsForPropertyValueFactory<>("goalsFor"));
+        columnGoalsAgainst.setCellValueFactory(new MatchGoalsAgainstPropertyValueFactory<>("goalsAgainst"));
         columnDate.setCellValueFactory(new PropertyValueFactory<>("date"));
         columnTime.setCellValueFactory(new PropertyValueFactory<>("time"));
     }
@@ -194,7 +194,7 @@ public class MatchOverviewController {
 
     public void createMatchButtonClick(){
         try {
-            Parent createEventMatchFXML = FXMLLoader.load(getClass().getResource("../createActivityMatch.fxml"));
+            Parent createEventMatchFXML = FXMLLoader.load(getClass().getResource("../../Calendar/createActivityMatch.fxml"));
             Scene createActivityMatchScene = new Scene(createEventMatchFXML);
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
