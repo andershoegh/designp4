@@ -119,7 +119,7 @@ public class LineupController implements Initializable {
 
                     Text text = new Text(player.getName());
                     text.setFill(Color.WHITE);
-                    ImageView image = new ImageView("file:../../graphics/player.png");
+                    ImageView image = new ImageView("file:graphics/player.png");
                     image.setPreserveRatio(true);
                     image.setFitWidth(30);
                     image.setFitHeight(30);
@@ -182,7 +182,7 @@ public class LineupController implements Initializable {
             for (PlayerPos playerPos : playerPosList) {
                 Text text = new Text(playerPos.getPlayerName());
                 text.setFill(Color.WHITE);
-                ImageView image = new ImageView("file:../../graphics/player.png");
+                ImageView image = new ImageView("file:graphics/player.png");
                 image.setPreserveRatio(true);
                 image.setFitWidth(30);
                 image.setFitHeight(30);
