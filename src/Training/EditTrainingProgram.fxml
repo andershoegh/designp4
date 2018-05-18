@@ -218,7 +218,7 @@
                                     <Insets left="140.0" top="300.0" />
                                  </GridPane.margin>
                               </Button>
-                              <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancelButtonClick" prefHeight="26.0" prefWidth="80.0" styleClass="redButton" text="Anuller" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                              <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancelButtonClick" prefHeight="26.0" prefWidth="80.0" styleClass="redButton" text="Annuller" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                  <GridPane.margin>
                                     <Insets left="240.0" top="300.0" />
                                  </GridPane.margin>

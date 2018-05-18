@@ -24,6 +24,7 @@ public class TrainingOverviewController {
     private ObservableList<Program> programData = FXCollections.observableArrayList();
 
     //Connecting FXML elements
+    @FXML private Label menuTeamName;
     @FXML private TableView<Program> tablePrograms;
     @FXML private TableColumn<?, ?> columnName;
     @FXML private TableColumn<?, ?> columnDuration;
@@ -61,6 +62,8 @@ public class TrainingOverviewController {
                         rsProgram.getString("duration"))
                 );
             }
+
+            menuTeamName.setText(SqlConnection.getTeamNameFromDB());
 
             SqlConnection.closeConnection();
 

@@ -397,7 +397,7 @@ public class inputMatchResultsController {
                 goalsFor = Integer.parseInt(textFieldGuestScore.getText());
             }
 
-            playerGoals.stream().forEach(player -> inputGoalsScored += player.getGoalsScored());
+            playerGoals.stream().forEach(player -> inputGoalsScored = inputGoalsScored + player.getGoalsScored());
 
             if (goalsFor != inputGoalsScored){
                 controllerPopUp.initData("missing goalscorer");

@@ -20,7 +20,7 @@
                     <children>
                         <HBox alignment="CENTER">
                             <children>
-                                <Label alignment="TOP_CENTER" prefHeight="30.0" prefWidth="160.0" styleClass="teamname" text="Holdnavn">
+                                <Label fx:id="menuTeamName" alignment="TOP_CENTER" prefHeight="30.0" prefWidth="160.0" styleClass="teamname" text="Holdnavn">
                                     <HBox.margin>
                                         <Insets top="30.0" />
                                     </HBox.margin>
@@ -40,11 +40,11 @@
                 </VBox>
                 <VBox prefHeight="200.0" prefWidth="1080.0">
                     <children>
-                        <HBox prefHeight="71.0" prefWidth="901.0" styleClass="header">
+                        <HBox minHeight="71.0" prefHeight="71.0" prefWidth="901.0" styleClass="header">
                             <children>
-                                <Text fill="#1f951c" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="headerText" text="TRÆNING" textAlignment="CENTER" wrappingWidth="1043.5617218017578">
+                                <Text fill="#1f951c" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="headerText" text="TRÆNING" textAlignment="CENTER" wrappingWidth="1080.0">
                                     <HBox.margin>
-                                        <Insets left="35.0" top="25.0" />
+                                        <Insets top="25.0" />
                                     </HBox.margin>
                                 </Text>
                             </children>
