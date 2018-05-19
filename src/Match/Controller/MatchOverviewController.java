@@ -144,15 +144,18 @@ public class MatchOverviewController {
             e.printStackTrace();
         }
 
-        seasonSelector.setItems(seasonData);
+        if(!(seasonData.isEmpty())){
+            seasonSelector.setItems(seasonData);
+            seasonSelector.getSelectionModel().selectLast();
+            updateTable(seasonSelector.getValue().getId());
+        }
+
 
         menuTeamName.setText(SqlConnection.getTeamNameFromDB());
 
         SqlConnection.closeConnection();
-
-        seasonSelector.getSelectionModel().selectLast();
-        updateTable(seasonSelector.getValue().getId());
     }
+
 
     private void updateTable(int newSeason){
         Collections.sort(matchData, new Comparator<Match>() {
