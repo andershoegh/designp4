@@ -6,6 +6,8 @@ import Match.Match;
 import Player.Player;
 import SQL.SqlConnection;
 import Team.Team;
+import Training.Controller.EditTrainingProgramController;
+import Training.Program;
 import Training.Training;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -250,7 +252,41 @@ public class OverviewController {
         trainingColumn.getChildren().add(vBox);
 
         trainingProgramButton.setOnMouseClicked(e -> {
+            try {
+                Connection conn = SqlConnection.connectToDB();
+                PreparedStatement stmt = conn.prepareStatement("SELECT * FROM programs WHERE program_id = ?");
 
+                stmt.setInt(1, training.getProgramID());
+
+                ResultSet rs = stmt.executeQuery();
+
+                Program program = new Program(rs.getInt("program_id"),
+                        rs.getString("name"),
+                        rs.getString("notes"),
+                        rs.getString("duration"));
+
+                SqlConnection.closeConnection();
+
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("../../Training/EditTrainingProgram.fxml"));
+                Parent editProgramFXML = loader.load();
+
+                Stage stage = new Stage();
+                stage.setResizable(false);
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.setTitle("Vis træningsprogram");
+
+                EditTrainingProgramController controller = loader.getController();
+                controller.initData(program);
+
+                Scene editProgramScene = new Scene(editProgramFXML);
+                stage.setScene(editProgramScene);
+                stage.showAndWait();
+            } catch (SQLException exc) {
+                exc.printStackTrace();
+            } catch (IOException excp) {
+                excp.printStackTrace();
+            }
         });
     }
 

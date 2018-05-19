@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Overview.Controller.OverviewController">
+<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Overview.Controller.OverviewController">
    <children>
       <HBox maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0">
          <children>
@@ -36,7 +36,7 @@
             </VBox>
             <VBox prefHeight="720.0" prefWidth="1080.0">
                <children>
-                  <HBox alignment="CENTER" prefHeight="111.0" prefWidth="1080.0" styleClass="header">
+                  <HBox prefHeight="71.0" prefWidth="1080.0" styleClass="header">
                      <children>
                         <Text fill="#1f951c" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="headerText" text="OVERSIGT" textAlignment="CENTER" wrappingWidth="1075.3203125">
                            <HBox.margin>

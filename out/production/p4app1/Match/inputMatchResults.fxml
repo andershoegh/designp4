@@ -10,8 +10,12 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
@@ -43,9 +47,9 @@
                 </VBox>
                 <VBox prefHeight="200.0" prefWidth="1080.0">
                     <children>
-                        <HBox prefHeight="71.0" prefWidth="200.0" styleClass="header">
+                        <HBox minHeight="71.0" prefHeight="71.0" prefWidth="200.0" styleClass="header">
                             <children>
-                                <Text fill="#1f951c" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="headerText" text="INDTAST RESULTAT" textAlignment="CENTER" wrappingWidth="1078.984390258789">
+                                <Text fill="#1f951c" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="headerText" text="INDTAST RESULTAT" textAlignment="CENTER" wrappingWidth="1080.0">
                                     <HBox.margin>
                                         <Insets top="25.0" />
                                     </HBox.margin>
@@ -76,6 +80,19 @@
                            <padding>
                               <Insets bottom="3.0" />
                            </padding></Label>
+                        <Region prefWidth="200.0" />
+                        <Button maxHeight="20.0" maxWidth="20.0" mnemonicParsing="false" prefWidth="25.0" style="-fx-background-color: none;">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="file:graphics/tooltip.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <tooltip>
+                              <Tooltip text="Dobbeltklik for at fjerne en spiller fra listen " />
+                           </tooltip>
+                        </Button>
                      </children>
                      <VBox.margin>
                         <Insets bottom="20.0" top="20.0" />
@@ -86,7 +103,7 @@
                         <Label layoutX="39.0" layoutY="30.0" styleClass="overviewText" text="Spillere" />
                         <ListView fx:id="listPlayers" layoutX="38.0" layoutY="56.0" prefHeight="503.0" prefWidth="244.0" />
                         <Label layoutX="400.0" layoutY="30.0" styleClass="overviewText" text="Resultat" />
-                        <HBox alignment="CENTER_LEFT" layoutX="400.0" layoutY="57.0" prefHeight="28.0" prefWidth="201.0">
+                        <HBox alignment="CENTER" layoutX="388.0" layoutY="57.0" prefHeight="28.0" prefWidth="269.0">
                            <children>
                               <Label fx:id="labelHomeTeam" text="Hjem">
                                  <HBox.margin>

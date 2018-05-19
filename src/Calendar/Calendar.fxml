@@ -53,9 +53,9 @@
                      <children>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Button fx:id="PrevMonthButton" mnemonicParsing="false" onMouseClicked="#PrevMonthButtonClick" style="-fx-background-color: #e8e8e8;">
+                              <Button fx:id="PrevMonthButton" maxHeight="45.0" maxWidth="35.0" mnemonicParsing="false" onMouseClicked="#PrevMonthButtonClick" style="-fx-background-color: #e8e8e8;">
                                  <graphic>
-                                    <ImageView fitHeight="60.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="30.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="file:graphics/icons8_Back_104px.png" />
                                        </image>
@@ -63,9 +63,9 @@
                                  </graphic>
                               </Button>
                               <Label fx:id="MonthYearLabel" alignment="CENTER" contentDisplay="CENTER" prefWidth="230.0" styleClass="pageheadline" stylesheets="@../stylesheet.css" text="* Month / Year picker goes here *" textAlignment="CENTER" />
-                              <Button fx:id="NextMonthButton" mnemonicParsing="false" onMouseClicked="#NextMonthButtonClick" style="-fx-background-color: #e8e8e8;">
+                              <Button fx:id="NextMonthButton" maxHeight="45.0" maxWidth="35.0" mnemonicParsing="false" onMouseClicked="#NextMonthButtonClick" style="-fx-background-color: #e8e8e8;">
                                  <graphic>
-                                    <ImageView fitHeight="60.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="30.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="file:graphics/icons8_Forward_104px.png" />
                                        </image>

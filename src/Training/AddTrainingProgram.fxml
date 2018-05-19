@@ -40,7 +40,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="71.0" prefWidth="278.0">
                <children>
-                  <Button fx:id="cancelButton" mnemonicParsing="false" prefWidth="70.0" styleClass="redButton" text="Anuller">
+                  <Button fx:id="cancelButton" mnemonicParsing="false" prefWidth="70.0" styleClass="redButton" text="Annuller">
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin>

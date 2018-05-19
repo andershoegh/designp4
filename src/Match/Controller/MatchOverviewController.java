@@ -48,7 +48,6 @@ public class MatchOverviewController {
     @FXML private ChoiceBox<Season> seasonSelector;
     @FXML private Button inputButton;
     @FXML private Button showTacticButton;
-    @FXML private Button showResButton;
     @FXML private Button deleteMatchButton;
 
 
@@ -100,7 +99,6 @@ public class MatchOverviewController {
 
         inputButton.setDisable(true);
         showTacticButton.setDisable(true);
-        showResButton.setDisable(true);
         deleteMatchButton.setDisable(true);
     }
 

@@ -36,7 +36,7 @@
             </VBox>
             <VBox prefHeight="720.0" prefWidth="1080.0">
                <children>
-                  <HBox prefHeight="71.0" prefWidth="200.0" styleClass="header">
+                  <HBox prefHeight="71.0" prefWidth="1080.0" styleClass="header">
                      <children>
                         <Text fill="#1f951c" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="headerText" text="OVERSIGT" textAlignment="CENTER" wrappingWidth="1075.3203125">
                            <HBox.margin>
