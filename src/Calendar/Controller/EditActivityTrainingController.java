@@ -61,11 +61,14 @@ public class EditActivityTrainingController {
                 programList.add(new Program(rs.getInt("program_id"),
                         rs.getString("name"),
                         rs.getString("notes"),
-                        rs.getString("duration")));
+                        rs.getString("duration"),
+                        rs.getInt("numExercises")));
             }
 
             programChoicebox.setItems(programList);
-            programChoicebox.setValue(programList.filtered(program -> program.getId() == selectedTraining.getProgramID()).get(0));
+            if(selectedTraining.getProgramID() != -1){
+                programChoicebox.setValue(programList.filtered(program -> program.getId() == selectedTraining.getProgramID()).get(0));
+            }
 
             SqlConnection.closeConnection();
         } catch (SQLException e) {
@@ -74,8 +77,7 @@ public class EditActivityTrainingController {
     }
 
     public void editButtonClick(){
-        String sql = "INSERT INTO trainings" + "(training_id," +
-                "date, start_time, end_time, program_id)" + "VALUES (null, ?, ?, ?, null)";
+        String sql = "UPDATE trainings SET date=?, start_time=?, end_time=?, program_id=? WHERE training_id = ?";
         try {
             Connection conn = SqlConnection.connectToDB();
             PreparedStatement stmt = conn.prepareStatement(sql);
@@ -87,15 +89,23 @@ public class EditActivityTrainingController {
 
             stmt.setString(3, endTimeInput.getText());
 
+            if(programChoicebox.getSelectionModel().isEmpty()){
+                stmt.setInt(4,-1);
+            }
+            else{
+                stmt.setInt(4, programChoicebox.getSelectionModel().getSelectedItem().getId());
+            }
+
+            stmt.setInt(5, selectedTraining.getId());
+
             stmt.executeUpdate();
 
             SqlConnection.closeConnection();
 
-            Stage stage = (Stage) editButton.getScene().getWindow();
-            stage.close();
-
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        Stage stage = (Stage) editButton.getScene().getWindow();
+        stage.close();
     }
 }

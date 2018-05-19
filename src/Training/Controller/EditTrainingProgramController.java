@@ -151,7 +151,7 @@ public class EditTrainingProgramController {
 
         //The training program and the exercises are two different tables in the DB the connection is like this
         //Overriding the training program
-        String sql = "UPDATE programs SET name = ?, notes = ?, duration = ?"
+        String sql = "UPDATE programs SET name = ?, notes = ?, duration = ?, numExercises = ?"
                 + " WHERE program_id = ?";
 
         //Inserts new elements into exercises-table
@@ -169,7 +169,8 @@ public class EditTrainingProgramController {
             stmt.setString(1,programNameText.getText());
             stmt.setString(2,notesText.getText());
             stmt.setString(3, programDuration.getText());
-            stmt.setInt(4, program.getId());
+            stmt.setInt(4, exercises.size());
+            stmt.setInt(5, program.getId());
             stmt.executeUpdate();
 
             //Loops through the exercises arraylist and inserts each exercise into the exercises-table

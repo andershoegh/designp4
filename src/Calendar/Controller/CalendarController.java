@@ -497,8 +497,16 @@ public class CalendarController {
             stage.setScene(createMiscScene);
 
             stage.showAndWait();
-
-
+        }
+        try {
+            loadOtherFromDB();
+            loadMatchFromDB();
+            loadTrainingFromDB();
+            updateOtherTable();
+            updateTrainingTable();
+            updateMatchTable();
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
     }
 

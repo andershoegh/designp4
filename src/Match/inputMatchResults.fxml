@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
@@ -17,45 +18,77 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Match.Controller.inputMatchResultsController">
+<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Match.Controller.inputMatchResultsController">
     <children>
         <HBox maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0">
             <children>
                 <VBox prefHeight="720.0" prefWidth="200.0" styleClass="menubar">
                     <children>
-                        <HBox alignment="CENTER">
+                        <HBox alignment="CENTER" styleClass="teamHeader">
                             <children>
-                                <Label fx:id="menuTeamName" alignment="TOP_CENTER" prefHeight="30.0" prefWidth="160.0" styleClass="teamname" text="Holdnavn">
-                                    <HBox.margin>
-                                        <Insets top="30.0" />
-                                    </HBox.margin>
-                                </Label>
+                        <Label fx:id="menuTeamName" alignment="CENTER" styleClass="teamname" text="HOLDNAVN" />
                             </children>
                             <VBox.margin>
-                                <Insets bottom="30.0" />
+                                <Insets />
                             </VBox.margin>
                         </HBox>
+                  <Separator prefWidth="200.0" styleClass="menuSeparator">
+                     <VBox.margin>
+                        <Insets bottom="30.0" />
+                     </VBox.margin>
+                  </Separator>
+                  <Separator prefWidth="200.0" styleClass="menuButtonSeparator">
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
+                  </Separator>
                         <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="menubarButton" text="Oversigt" />
+                  <Separator prefWidth="200.0" styleClass="menuButtonSeparator">
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
+                  </Separator>
                         <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefHeight="50.0" prefWidth="200.0" styleClass="menubarButton" text="Kalender" />
+                  <Separator prefWidth="200.0" styleClass="menuButtonSeparator">
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
+                  </Separator>
                         <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="menubarButton" text="Spillere" />
+                  <Separator prefWidth="200.0" styleClass="menuButtonSeparator">
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
+                  </Separator>
                         <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="selectedmenu" text="Kampe" />
+                  <Separator prefWidth="200.0" styleClass="menuButtonSeparator">
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
+                  </Separator>
                         <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="menubarButton" text="Træning" />
+                  <Separator prefWidth="200.0" styleClass="menuButtonSeparator">
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
+                  </Separator>
                         <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="menubarButton" text="Statistik" />
+                  <Separator prefWidth="200.0" styleClass="menuButtonSeparator">
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
+                  </Separator>
                     </children>
                 </VBox>
                 <VBox prefHeight="200.0" prefWidth="1080.0">
                     <children>
-                        <HBox minHeight="71.0" prefHeight="71.0" prefWidth="200.0" styleClass="header">
-                            <children>
-                                <Text fill="#1f951c" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="headerText" text="INDTAST RESULTAT" textAlignment="CENTER" wrappingWidth="1080.0">
-                                    <HBox.margin>
-                                        <Insets top="25.0" />
-                                    </HBox.margin>
-                                </Text>
-                            </children>
+                        <HBox alignment="CENTER" minHeight="72.0" prefHeight="85.0" prefWidth="1080.0" styleClass="header">
+                     <children>
+                        <Label styleClass="headerText" text="INDTAST RESULTAT" />
+                     </children>
                         </HBox>
+                  <Separator prefWidth="200.0" styleClass="menuSeparator" />
                   <HBox alignment="BOTTOM_LEFT" prefWidth="200.0">
                      <children>
                         <Label styleClass="overviewHeadline" text="Kamp:">

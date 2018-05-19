@@ -453,6 +453,7 @@ public class inputMatchResultsController {
 
                     PreparedStatement stmt = conn.prepareStatement(sqlPlayer);
 
+                    int f = updatedPlayers.get(i).getGoalsScored();
                     stmt.setInt(1, updatedPlayers.get(i).getGoalsScored());
                     stmt.setInt(2, updatedPlayers.get(i).getAssists());
                     stmt.setInt(3, updatedPlayers.get(i).getYellowCards());

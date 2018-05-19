@@ -21,6 +21,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.Tooltip;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
@@ -222,7 +223,7 @@ public class OverviewController {
 
         GridPane grid = new GridPane();
         grid.setMinWidth(324.0);
-        grid.setMinHeight(90.0);
+        grid.setMinHeight(80.0);
         grid.setPadding(new Insets(0, 0, 0, 30));
 
         Label dateLabel = new Label("Dato:");
@@ -231,25 +232,24 @@ public class OverviewController {
         Label timeLabel = new Label("Tidspunkt:");
         timeLabel.getStyleClass().add("overviewText");
         Label time = new Label(training.getStartTime() + " - " + training.getEndTime());
-        Label attendingLabel = new Label("Antal tilmeldte:");
-        attendingLabel.getStyleClass().add("overviewText");
-        Label attending = new Label(Integer.toString(training.getAttending()));
 
         Button trainingProgramButton = new Button("Træningsprogram");
         trainingProgramButton.getStyleClass().add("overviewButtons");
         trainingProgramButton.setMinWidth(135.0);
-
 
         vBox.getChildren().addAll(grid, trainingProgramButton);
         grid.setHgap(30.0);
         grid.setVgap(12.0);
         grid.addRow(1, dateLabel, date);
         grid.addRow(2, timeLabel, time);
-        grid.addRow(3, attendingLabel, attending);
         vBox.setMargin(grid, new Insets(15, 0, 0, 0));
         vBox.setMargin(trainingProgramButton, new Insets(15, 0, 20, 0));
 
         trainingColumn.getChildren().add(vBox);
+
+        if(training.getProgramID() == -1){
+            trainingProgramButton.setDisable(true);
+        }
 
         trainingProgramButton.setOnMouseClicked(e -> {
             try {
@@ -263,7 +263,8 @@ public class OverviewController {
                 Program program = new Program(rs.getInt("program_id"),
                         rs.getString("name"),
                         rs.getString("notes"),
-                        rs.getString("duration"));
+                        rs.getString("duration"),
+                        rs.getInt("numExercises"));
 
                 SqlConnection.closeConnection();
 

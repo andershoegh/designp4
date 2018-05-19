@@ -40,9 +40,7 @@ public class EditActivityMiscController {
     }
 
     public void editButtonClick() {
-        String sql = "INSERT INTO otherEvents " +
-                "(other_id, name, date, time, note)" +
-                "VALUES (null, ?, ?, ?, ?)";
+        String sql = "UPDATE otherEvents SET name=?, date=?, time=?, note=? WHERE other_id=?";
         try {
             Connection conn = SqlConnection.connectToDB();
             PreparedStatement stmt = conn.prepareStatement(sql);
@@ -58,6 +56,8 @@ public class EditActivityMiscController {
 
             // Passes notes input to DB
             stmt.setString(4, notesInput.getText());
+
+            stmt.setInt(5, selectedEvent.getId());
 
             stmt.executeUpdate();
 

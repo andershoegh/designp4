@@ -179,7 +179,8 @@ public class MatchOverviewController {
             Parent inputResultsFXML = loader.load();
 
             inputMatchResultsController matchResultsController = loader.getController();
-            matchResultsController.initData(tableMatches.getSelectionModel().getSelectedItem());
+            Match m1 = tableMatches.getSelectionModel().getSelectedItem();
+            matchResultsController.initData(m1);
             matchResultsController.loadDataFromDB();
 
             Stage stage = (Stage) inputButton.getScene().getWindow();

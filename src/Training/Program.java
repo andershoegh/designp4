@@ -12,13 +12,15 @@ public class Program implements DeleteAble {
     private String name;
     private String notes;
     private String duration;
+    private int numExercises;
 
     //Constructor
-    public Program(int id, String name, String notes, String duration) {
+    public Program(int id, String name, String notes, String duration, int numExercises) {
         this.id = id;
         this.name = name;
         this.notes = notes;
         this.duration = duration;
+        this.numExercises = numExercises;
     }
 
     //Getters
@@ -32,6 +34,7 @@ public class Program implements DeleteAble {
     public String getDuration() {
         return duration;
     }
+    public int getNumExercises() {return numExercises;}
 
     //Implementing the delete-method from Deleteable interface
     @Override
@@ -50,4 +53,6 @@ public class Program implements DeleteAble {
             excp.printStackTrace();
         }
     }
+
+
 }

@@ -1,24 +1,39 @@
 /* This file is the stylesheet for our program */
+* {
+    -lightGreen: rgba(25, 129, 29, 0.65);
+    -darkGreen: rgba(8, 87, 12, 0.64);
+    -lightRed: rgba(179, 38, 34, 0.8);
+    -darkRed: rgba(136, 27, 19, 0.75);
+    -lightBlue: rgba(31, 28, 149, 0.75);
+    -darkBlue: rgba(16, 15, 123, 0.75);
+    -lightGrey: #f4f4f4;
+    -grey: #e2e2e2;
+}
+
 
 .teamname{
-    -fx-font-size: 12px;
-    -fx-text-fill: #1f951c;
+    -fx-font-size: 16px;
+    -fx-text-fill: -lightGreen;
     -fx-font-weight: bold;
 }
 
 .window{
     -fx-font-family: "Montserrat";
     -fx-font-size: 12px;
-    -fx-background-color: #fefefe;
+    -fx-background-color: #f6f6f6;
 }
 .header {
-    -fx-background-color: #c5c5c5;
+    -fx-background-color: #f6f6f6;
+    -fx-pref-height: 70px;
+}
+
+.teamHeader{
+    -fx-pref-height: 70px;
 }
 
 .headerText{
     -fx-font-family: "Montserrat";
-    -fx-text-fill: #1f951c;
-    -fx-padding-right: 35;
+    -fx-text-fill: rgba(35, 159, 35, 0.81);
     -fx-font-size: 24px;
     -fx-text-alignment: center;
     -fx-font-weight: bold;
@@ -26,15 +41,13 @@
 
 .pageheadline{
     -fx-font-size: 24;
-    -fx-padding-left: 20;
-    -fx-text-fill: #1f951c;
+    -fx-text-fill: -lightGreen;
     -fx-font-weight: bold;
     -fx-border-radius: 0;
 }
 
 .pageheadlineYellow{
     -fx-font-size: 24;
-    -fx-padding-left: 20;
     -fx-text-fill: #ecd844;
     -fx-font-weight: bold;
     -fx-border-radius: 0;
@@ -43,14 +56,14 @@
 .pageheadlineRed {
     -fx-font-size: 24;
     -fx-padding-left: 20;
-    -fx-text-fill: #ec2d28;
+    -fx-text-fill: -lightRed;
     -fx-font-weight: bold;
     -fx-border-radius: 0;
 }
 
 .menubar{
     -fx-min-width: 200px;
-    -fx-background-color: #c5c5c5;
+    -fx-background-color: -grey;
 }
 
 .button{
@@ -74,59 +87,68 @@
 }
 
 .buttonApprove{
-    -fx-background-color: #1f951c;
+    -fx-background-color: -lightGreen;
     -fx-pref-width: 120px;
     -fx-pref-height: 35px;
     -fx-text-fill: white;
 }
 
 .buttonApprove:hover{
-    -fx-background-color: #0f4b0d;
+    -fx-background-color: -darkGreen;
 }
 
 .buttonCancel{
-    -fx-background-color: #ec2d28;
+    -fx-background-color: -lightRed;
     -fx-pref-width: 120px;
     -fx-pref-height: 35px;
     -fx-text-fill: white;
 }
 
 .buttonCancel:hover{
-    -fx-background-color: #8f1b18;
+    -fx-background-color: -darkRed;
 }
 
 .menubarButton{
     -fx-pref-height: 55px;
-    -fx-padding-left: 20;
-    -fx-background-color: #c5c5c5;
-    -fx-text-fill: #1f951c;
+    -fx-background-color: -grey;
+    -fx-text-fill: -lightGreen;
 }
 
 .menubarButton:hover{
     -fx-pref-height: 55px;
     -fx-padding-left: 20;
     -fx-background-color: #b5d9ad;
-    -fx-text-fill: #1f951c;
+    -fx-text-fill: -lightGreen;
     -fx-font-weight: bold;
     -fx-border-radius: 0;
 }
 
 .selectedmenu{
     -fx-border-style: solid;
-    -fx-background-color: #c5c5c5;
-    -fx-border-color: transparent #1f951c transparent transparent;
+    -fx-background-color: -grey;
+    -fx-border-color: transparent -lightGreen transparent transparent;
     -fx-border-width: 5px;
     -fx-font-weight: bold;
-    -fx-text-fill: #1f951c;
+    -fx-text-fill: -lightGreen;
+}
+
+.menuSeparator{
+    -fx-pref-height: 6px;
+}
+
+.menuButtonSeparator{
+    -fx-pref-width: 180px;
+    -fx-max-width: 180px;
+    -fx-pref-height: 3px;
 }
 
 .selectedmenu:hover{
     -fx-border-style: solid;
     -fx-background-color: #b5d9ad;
     -fx-border-width: 5px;
-    -fx-border-color: transparent #1f951c transparent transparent;
+    -fx-border-color: transparent -lightGreen transparent transparent;
     -fx-font-weight: bold;
-    -fx-text-fill: #1f951c;
+    -fx-text-fill: -lightGreen;
 }
 
 .table-row-cell {
@@ -155,7 +177,7 @@
     -fx-text-fill: #FFFFFF !important;
     -fx-text-alignment: center;
     -fx-alignment: center;
-    -fx-background-color: #2ba929;
+    -fx-background-color: -lightGreen;
 }
 
 .table-column{
@@ -181,7 +203,7 @@
 }
 
 .column-header-background {
-    -fx-background-color: #1f951c;
+    -fx-background-color: -lightGreen;
     -fx-text-fill: #FFFFFF !important;
     -fx-border-color: none;
     -fx-focus-color: none;
@@ -220,23 +242,23 @@
 }
 
 .greenButton{
-    -fx-background-color: #1f951c;
+    -fx-background-color: -lightGreen;
     -fx-pref-height: 35px;
     -fx-text-fill: white;
 }
 
 .redButton{
-    -fx-background-color: #ec2d28;
+    -fx-background-color: -lightRed;
     -fx-pref-height: 35px;
     -fx-text-fill: white;
 }
 
 .redButton:hover{
-    -fx-background-color: #8f1b18;
+    -fx-background-color: -darkRed;
 }
 
 .greenButton:hover{
-    -fx-background-color: #0f4b0d;
+    -fx-background-color: -darkGreen;
 }
 
 .choice-box:hover {
@@ -258,28 +280,28 @@
     -fx-text-fill: black;
 }
 .lineupButton{
-    -fx-background-color: #1f951c;
+    -fx-background-color: -lightGreen;
     -fx-pref-width: 274px;
     -fx-pref-height: 35px;
     -fx-text-fill: white;
 }
 
 .lineupButton:hover{
-    -fx-background-color: #0f4b0d;
+    -fx-background-color: -darkGreen;
 }
 
 .utilityButtons{
     -fx-pref-width: 120px;
     -fx-pref-height: 35px;
     -fx-text-fill: white;
-    -fx-background-color: #1f1c95;
+    -fx-background-color: -lightBlue;
 }
 
 .utilityButtons:hover {
     -fx-pref-width: 120px;
     -fx-pref-height: 35px;
     -fx-text-fill: white;
-    -fx-background-color: #0b0a3a;
+    -fx-background-color: -darkBlue;
 }
 
 .overviewButtons{
@@ -309,7 +331,7 @@
 
 .headerTextField{
     -fx-background-color: transparent;
-    -fx-border-color: transparent transparent #1f951c transparent;
+    -fx-border-color: transparent transparent -lightGreen transparent;
     -fx-border-width: 1;
 }
 
@@ -330,9 +352,9 @@
 }
 
 .hyperlink {
-    -fx-text-fill: #1f951c;
+    -fx-text-fill: -lightGreen;
 }
 
 .calender-hbox {
-    -fx-background-color: #1f951c;
+    -fx-background-color: -lightGreen;
 }

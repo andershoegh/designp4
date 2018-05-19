@@ -79,7 +79,7 @@ public class addNewPlayerController{
                 "yellowCards, redCards, goalScored, assist, motm, " +
                 "attendedMatches, attendedTrainings)" +
 
-                " VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, NULL, NULL, NULL, NULL, NULL, NULL, NULL)";
+                " VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, 0, 0, 0, 0, 0, 0)";
 
 
         // Connecting to the database

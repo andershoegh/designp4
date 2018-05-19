@@ -48,7 +48,8 @@ public class CreateActivityTrainingController {
                 programList.add(new Program(rs.getInt("program_id"),
                         rs.getString("name"),
                         rs.getString("notes"),
-                        rs.getString("duration")));
+                        rs.getString("duration"),
+                        rs.getInt("numExercises")));
             }
 
             programChoicebox.setItems(programList);
@@ -70,7 +71,13 @@ public class CreateActivityTrainingController {
             stmt.setString(1, date);
             stmt.setString(2, startTimeInput.getText());
             stmt.setString(3, endTimeInput.getText());
-            stmt.setInt(4, programChoicebox.getSelectionModel().getSelectedItem().getId());
+
+            if(programChoicebox.getSelectionModel().isEmpty()){
+                stmt.setInt(4, -1);
+            }
+            else{
+                stmt.setInt(4, programChoicebox.getSelectionModel().getSelectedItem().getId());
+            }
 
             stmt.executeUpdate();
 

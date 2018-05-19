@@ -89,7 +89,7 @@ public class EditActivityMatchController {
     }
 
     public void editButtonClick(){
-        String sql = "UPDATE matches(opponent, season_id, date, time, isHome, note) VALUES (?, ?, ?, ?, ?, ?) WHERE match_id = ?";
+        String sql = "UPDATE matches SET opponent=?, season_id=?, date, time=?, isHome=?, note=? WHERE match_id = ?";
         try {
             Connection conn = SqlConnection.connectToDB();
             PreparedStatement stmt = conn.prepareStatement(sql);
