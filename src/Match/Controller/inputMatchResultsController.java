@@ -41,6 +41,7 @@ public class inputMatchResultsController {
     private int goalsFor;
     private int goalsAgainst;
     private static String tempTable;
+    private String teamName;
     private static Player tempPlayer;
     private static int tempAmount;
     private Player selectedItem;
@@ -243,13 +244,13 @@ public class inputMatchResultsController {
         matchId = selectedMatch.getId();
 
         if(selectedMatch.getIsHome()) {
-            matchLabel.setText("AAIF vs " + selectedMatch.getOpponent());
-            labelHomeTeam.setText("AAIF");
+            matchLabel.setText(teamName + " vs " + selectedMatch.getOpponent());
+            labelHomeTeam.setText(teamName);
             labelGuestTeam.setText(selectedMatch.getOpponent());
         } else {
-            matchLabel.setText(selectedMatch.getOpponent() + " vs AAIF");
+            matchLabel.setText(selectedMatch.getOpponent() + " vs " + teamName);
             labelHomeTeam.setText(selectedMatch.getOpponent());
-            labelGuestTeam.setText("AAIF");
+            labelGuestTeam.setText(teamName);
         }
 
         dateLabel.setText(selectedMatch.getDate());
@@ -284,7 +285,8 @@ public class inputMatchResultsController {
         listPlayers.setItems(availablePlayers);
         choiceboxMOTM.setItems(availablePlayers);
 
-        menuTeamName.setText(SqlConnection.getTeamNameFromDB());
+        teamName = SqlConnection.getTeamNameFromDB();
+        menuTeamName.setText(teamName);
 
         SqlConnection.closeConnection();
     }

@@ -1,6 +1,5 @@
 package Overview.Controller;
 
-import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -17,12 +16,7 @@ public class TeamController {
 
     // This is a connection between the FXML file and the DB, inserting values.
     @FXML private TextField teamInput;
-    @FXML private Button createTeam;
-    @FXML private Button cancelButton;
-
-    @FXML
-    public void initialize() {
-    }
+    @FXML private Button createTeamButton;
 
     public void acceptButtonClick() throws IOException {
         Connection conn = SqlConnection.connectToDB();
@@ -45,7 +39,8 @@ public class TeamController {
 
             // Closes the connected database
             SqlConnection.closeConnection();
-            cancelButtonClick();
+            Stage stage = (Stage) createTeamButton.getScene().getWindow();
+            stage.close();
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -64,8 +59,7 @@ public class TeamController {
 
     public void cancelButtonClick(){
         // Closing the program
-        Stage stage = (Stage) cancelButton.getScene().getWindow();
-        stage.close();
+        System.exit(0);
     }
 }
 
