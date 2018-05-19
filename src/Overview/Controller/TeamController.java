@@ -64,7 +64,8 @@ public class TeamController {
 
     public void cancelButtonClick(){
         // Closing the program
-        System.exit(0);
+        Stage stage = (Stage) cancelButton.getScene().getWindow();
+        stage.close();
     }
 }
 
