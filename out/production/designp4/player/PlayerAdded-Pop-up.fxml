@@ -8,7 +8,7 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="149.0" prefWidth="294.0" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Player.Controller.PlayerAddedPopController">
    <children>
       <Text layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="er nu oprettet i systemet!" textAlignment="CENTER" textOrigin="CENTER" wrappingWidth="293.99999991059303" />
-      <Button fx:id="acceptButton" layoutX="112.0" layoutY="90.0" mnemonicParsing="false" onAction="#acceptButton" prefWidth="109.0" styleClass="overviewButtons" text="Ok" />
+      <Button fx:id="acceptButton" layoutX="87.0" layoutY="97.0" mnemonicParsing="false" onAction="#acceptButton" prefWidth="109.0" styleClass="buttonApprove" text="Ok" />
       <Label fx:id="playerName" alignment="CENTER" contentDisplay="CENTER" layoutX="-1.0" layoutY="10.0" prefHeight="50.0" prefWidth="294.0" styleClass="pageheadline" text="Spilleren" textAlignment="CENTER" />
    </children>
 </AnchorPane>

@@ -12,6 +12,6 @@
             <Font name="System Bold" size="12.0" />
          </font></Text>
       <Text fill="RED" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Der må kun være tal i telefonnumre." textAlignment="CENTER" wrappingWidth="296.9999995849066" />
-      <Button fx:id="acceptButton" layoutX="113.0" layoutY="115.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="74.0" styleClass="overviewButtons" text="Ok" />
+      <Button fx:id="acceptButton" layoutX="90.0" layoutY="116.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="74.0" styleClass="buttonApprove" text="Ok" />
    </children>
 </AnchorPane>

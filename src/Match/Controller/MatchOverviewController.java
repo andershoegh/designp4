@@ -48,7 +48,6 @@ public class MatchOverviewController {
     @FXML private ChoiceBox<Season> seasonSelector;
     @FXML private Button inputButton;
     @FXML private Button showTacticButton;
-    @FXML private Button showResButton;
     @FXML private Button deleteMatchButton;
 
 
@@ -100,17 +99,14 @@ public class MatchOverviewController {
 
         inputButton.setDisable(true);
         showTacticButton.setDisable(true);
-        showResButton.setDisable(true);
         deleteMatchButton.setDisable(true);
     }
 
     // Retrieves data from appropriate player class constructor
     private void setCellTable(){
         columnOpponent.setCellValueFactory(new MatchTitelPropertyValueFactory<>("opponent"));
-
-        columnGoalsFor.setCellValueFactory(new PropertyValueFactory<>("goalsFor"));
-
-        columnGoalsAgainst.setCellValueFactory(new PropertyValueFactory<>("goalsAgainst"));
+        columnGoalsFor.setCellValueFactory(new MatchGoalsForPropertyValueFactory<>("goalsFor"));
+        columnGoalsAgainst.setCellValueFactory(new MatchGoalsAgainstPropertyValueFactory<>("goalsAgainst"));
         columnDate.setCellValueFactory(new PropertyValueFactory<>("date"));
         columnTime.setCellValueFactory(new PropertyValueFactory<>("time"));
     }
@@ -146,15 +142,18 @@ public class MatchOverviewController {
             e.printStackTrace();
         }
 
-        seasonSelector.setItems(seasonData);
+        if(!(seasonData.isEmpty())){
+            seasonSelector.setItems(seasonData);
+            seasonSelector.getSelectionModel().selectLast();
+            updateTable(seasonSelector.getValue().getId());
+        }
+
 
         menuTeamName.setText(SqlConnection.getTeamNameFromDB());
 
         SqlConnection.closeConnection();
-
-        seasonSelector.getSelectionModel().selectLast();
-        updateTable(seasonSelector.getValue().getId());
     }
+
 
     private void updateTable(int newSeason){
         Collections.sort(matchData, new Comparator<Match>() {
@@ -180,7 +179,8 @@ public class MatchOverviewController {
             Parent inputResultsFXML = loader.load();
 
             inputMatchResultsController matchResultsController = loader.getController();
-            matchResultsController.initData(tableMatches.getSelectionModel().getSelectedItem());
+            Match m1 = tableMatches.getSelectionModel().getSelectedItem();
+            matchResultsController.initData(m1);
             matchResultsController.loadDataFromDB();
 
             Stage stage = (Stage) inputButton.getScene().getWindow();
@@ -193,10 +193,9 @@ public class MatchOverviewController {
         }
     }
 
-
     public void createMatchButtonClick(){
         try {
-            Parent createEventMatchFXML = FXMLLoader.load(getClass().getResource("../createActivityMatch.fxml"));
+            Parent createEventMatchFXML = FXMLLoader.load(getClass().getResource("../../Calendar/createActivityMatch.fxml"));
             Scene createActivityMatchScene = new Scene(createEventMatchFXML);
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
@@ -235,7 +234,6 @@ public class MatchOverviewController {
             stage.setScene(deleteMatchScene);
             stage.showAndWait();
 
-            //tableMatches.getItems().clear();
             initialize();
         } catch (IOException e){
             e.printStackTrace();
@@ -261,7 +259,6 @@ public class MatchOverviewController {
         }
     }
 
-
     public void showTacticButtonClick(){
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -270,7 +267,6 @@ public class MatchOverviewController {
 
             LineupController lineupController = loader.getController();
             lineupController.initData(tableMatches.getSelectionModel().getSelectedItem());
-            //lineupController.loadDataFromDB();
 
             Stage stage = (Stage) showTacticButton.getScene().getWindow();
 
@@ -280,7 +276,5 @@ public class MatchOverviewController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
-
 }

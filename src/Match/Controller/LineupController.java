@@ -41,6 +41,8 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class LineupController implements Initializable {
+
+    private String teamName;
     private Match selectedMatch;
     private ArrayList<PlayerPos> playerPosList;
 
@@ -166,15 +168,17 @@ public class LineupController implements Initializable {
     public void initData(Match match){
         selectedMatch = match;
 
-        if(selectedMatch.getIsHome()) {
-                matchLabel.setText("AAIF vs " + selectedMatch.getOpponent());
-        } else {
-            matchLabel.setText(selectedMatch.getOpponent() + " vs AAIF");
-        }
         dateLabel.setText(selectedMatch.getDate());
         timeLabel.setText(selectedMatch.getTime());
 
         loadDataFromDB();
+
+        if(selectedMatch.getIsHome()) {
+            matchLabel.setText(teamName + " vs " + selectedMatch.getOpponent());
+        } else {
+            matchLabel.setText(selectedMatch.getOpponent() + " vs " + teamName);
+        }
+
         displaySavedLineup();
     }
 
@@ -215,27 +219,33 @@ public class LineupController implements Initializable {
 
     public void saveLineupClick(){
             removeDataFromDB();
-            String sql = "INSERT INTO match_tactic_player " +
+            String sqlTactic = "INSERT INTO match_tactic_player " +
                     "(player_id, match_id, pos_x, pos_y)" +
                     "VALUES (?, ?,? , ?)";
+            String sqlPlayer = "UPDATE players SET attendedMatches = attendedMatches + 1 WHERE player_id = ?";
             try {
                 Connection conn = SqlConnection.connectToDB();
 
                 for (PlayerPos player : playerPosList) {
-                    PreparedStatement stmt = conn.prepareStatement(sql);
+                    PreparedStatement stmt = conn.prepareStatement(sqlTactic);
 
                     stmt.setInt(1, player.getPlayerID());
-
                     stmt.setInt(2, selectedMatch.getId());
-
                     stmt.setInt(3, player.getxPos());
-
                     stmt.setInt(4, player.getyPos());
 
                     stmt.executeUpdate();
                 }
-                SqlConnection.closeConnection();
 
+                for (PlayerPos player : playerPosList) {
+                    PreparedStatement stmt = conn.prepareStatement(sqlPlayer);
+
+                    stmt.setInt(1, player.getPlayerID());
+
+                    stmt.executeUpdate();
+                }
+
+                SqlConnection.closeConnection();
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
             }
@@ -296,7 +306,8 @@ public class LineupController implements Initializable {
             e.printStackTrace();
         }
 
-        menuTeamName.setText(SqlConnection.getTeamNameFromDB());
+        teamName = SqlConnection.getTeamNameFromDB();
+        menuTeamName.setText(teamName);
 
         SqlConnection.closeConnection();
     }

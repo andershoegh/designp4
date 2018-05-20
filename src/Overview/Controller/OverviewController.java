@@ -1,10 +1,13 @@
 package Overview.Controller;
 
 import Controller.MenuController;
+import Match.Controller.LineupController;
 import Match.Match;
 import Player.Player;
 import SQL.SqlConnection;
 import Team.Team;
+import Training.Controller.EditTrainingProgramController;
+import Training.Program;
 import Training.Training;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,6 +21,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.Tooltip;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
@@ -219,7 +223,7 @@ public class OverviewController {
 
         GridPane grid = new GridPane();
         grid.setMinWidth(324.0);
-        grid.setMinHeight(90.0);
+        grid.setMinHeight(80.0);
         grid.setPadding(new Insets(0, 0, 0, 30));
 
         Label dateLabel = new Label("Dato:");
@@ -228,9 +232,6 @@ public class OverviewController {
         Label timeLabel = new Label("Tidspunkt:");
         timeLabel.getStyleClass().add("overviewText");
         Label time = new Label(training.getStartTime() + " - " + training.getEndTime());
-        Label attendingLabel = new Label("Antal tilmeldte:");
-        attendingLabel.getStyleClass().add("overviewText");
-        Label attending = new Label(Integer.toString(training.getAttending()));
 
         Button trainingProgramButton = new Button("Træningsprogram");
         trainingProgramButton.getStyleClass().add("overviewButtons");
@@ -241,11 +242,53 @@ public class OverviewController {
         grid.setVgap(12.0);
         grid.addRow(1, dateLabel, date);
         grid.addRow(2, timeLabel, time);
-        grid.addRow(3, attendingLabel, attending);
         vBox.setMargin(grid, new Insets(15, 0, 0, 0));
         vBox.setMargin(trainingProgramButton, new Insets(15, 0, 20, 0));
 
         trainingColumn.getChildren().add(vBox);
+
+        if(training.getProgramID() == -1){
+            trainingProgramButton.setDisable(true);
+        }
+
+        trainingProgramButton.setOnMouseClicked(e -> {
+            try {
+                Connection conn = SqlConnection.connectToDB();
+                PreparedStatement stmt = conn.prepareStatement("SELECT * FROM programs WHERE program_id = ?");
+
+                stmt.setInt(1, training.getProgramID());
+
+                ResultSet rs = stmt.executeQuery();
+
+                Program program = new Program(rs.getInt("program_id"),
+                        rs.getString("name"),
+                        rs.getString("notes"),
+                        rs.getString("duration"),
+                        rs.getInt("numExercises"));
+
+                SqlConnection.closeConnection();
+
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("../../Training/EditTrainingProgram.fxml"));
+                Parent editProgramFXML = loader.load();
+
+                Stage stage = new Stage();
+                stage.setResizable(false);
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.setTitle("Vis træningsprogram");
+
+                EditTrainingProgramController controller = loader.getController();
+                controller.initData(program);
+
+                Scene editProgramScene = new Scene(editProgramFXML);
+                stage.setScene(editProgramScene);
+                stage.showAndWait();
+            } catch (SQLException exc) {
+                exc.printStackTrace();
+            } catch (IOException excp) {
+                excp.printStackTrace();
+            }
+        });
     }
 
     public void createMatchBox(Match match, ObservableList attendingPlayers) {
@@ -285,6 +328,7 @@ public class OverviewController {
         tacticButton.getStyleClass().add("overviewButton");
         tacticButton.setMinWidth(120.0);
 
+
         vBox.getChildren().addAll(grid, tacticButton);
         grid.setHgap(10.0);
         grid.setVgap(12.0);
@@ -297,6 +341,27 @@ public class OverviewController {
         vBox.setMargin(tacticButton, new Insets(25, 0, 20, 0));
 
         matchColumn.getChildren().add(vBox);
+
+        tacticButton.setOnMouseClicked(event -> {
+            try {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("../../Match/LineupOverview.fxml"));
+                Parent lineupFXML = loader.load();
+
+                LineupController lineupController = loader.getController();
+                lineupController.initData(match);
+                //lineupController.loadDataFromDB();
+
+                Stage stage = (Stage) tacticButton.getScene().getWindow();
+
+                Scene lineupScene = new Scene(lineupFXML);
+                stage.setScene(lineupScene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
     }
 
     public void createBirthdayBox(Player player) {

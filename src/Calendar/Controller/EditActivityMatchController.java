@@ -6,16 +6,26 @@ import Season.Season;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 public class EditActivityMatchController {
 
@@ -28,7 +38,7 @@ public class EditActivityMatchController {
     @FXML private DatePicker dateInput;
     @FXML private TextField timeInput;
     @FXML private CheckBox locationInput;
-    @FXML private TextField notesInput;
+    @FXML private TextArea notesInput;
     @FXML private Button editButton;
 
     // Converts seasonData to Season name to be displayed in the Choicebox
@@ -40,7 +50,6 @@ public class EditActivityMatchController {
             return null;
         }
     };
-
 
     @FXML public void initialize() {
 
@@ -83,8 +92,26 @@ public class EditActivityMatchController {
         }
     }
 
+    public void createSeasonButtonClick(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../../Match/newSeasonPop.fxml"));
+            Parent createEventFXML = loader.load();
+
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+
+            Scene createEventScene = new Scene(createEventFXML);
+            stage.setScene(createEventScene);
+            stage.showAndWait();
+            initialize();
+
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
     public void editButtonClick(){
-        String sql = "UPDATE matches(opponent, season_id, date, time, isHome, note) VALUES (?, ?, ?, ?, ?, ?) WHERE match_id = ?";
+        String sql = "UPDATE matches SET opponent=?, season_id=?, date=?, time=?, isHome=?, note=? WHERE match_id = ?";
         try {
             Connection conn = SqlConnection.connectToDB();
             PreparedStatement stmt = conn.prepareStatement(sql);

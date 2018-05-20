@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="198.0" prefWidth="265.0" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Player.Controller.DeletePlayerController">
+<AnchorPane prefHeight="198.0" prefWidth="290.0" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Player.Controller.DeletePlayerController">
    <children>
-      <VBox alignment="CENTER" prefWidth="273.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox alignment="CENTER" prefWidth="290.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label text="Ønsker du at slette spiller?">
                <VBox.margin>
@@ -21,18 +21,18 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="playerNameLabel" text="Label" />
-            <Region prefHeight="28.0" prefWidth="266.0" />
-            <HBox alignment="CENTER_RIGHT" prefWidth="200.0">
+            <Label fx:id="playerNameLabel" alignment="CENTER" prefHeight="17.0" prefWidth="269.0" text="Label" />
+            <Region prefHeight="40.0" prefWidth="266.0" />
+            <HBox alignment="CENTER" prefWidth="200.0">
                <children>
                   <Button fx:id="acceptButton" mnemonicParsing="false" onAction="#confirmButtonClick" styleClass="buttonApprove" text="Slet">
                      <HBox.margin>
-                        <Insets right="15.0" />
+                        <Insets left="20.0" right="20.0" />
                      </HBox.margin>
                   </Button>
                   <Button fx:id="closeButton" mnemonicParsing="false" onAction="#closeButtonClick" styleClass="buttonCancel" text="Fortryd">
                      <HBox.margin>
-                        <Insets right="30.0" />
+                        <Insets right="20.0" />
                      </HBox.margin>
                   </Button>
                </children>

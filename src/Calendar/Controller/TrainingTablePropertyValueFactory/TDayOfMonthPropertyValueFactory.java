@@ -22,7 +22,7 @@ public class TDayOfMonthPropertyValueFactory<S,T> implements Callback<TableColum
 
         if (iOfSlash != -1)
         {
-            subString = t.getDate().substring(0 , iOfSlash);
+            subString = t.getDate().substring(0 , iOfSlash) + ".";
         }
 
         T val = (T) subString;

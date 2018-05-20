@@ -4,11 +4,19 @@ import SQL.SqlConnection;
 import Season.Season;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -23,7 +31,7 @@ public class CreateActivityMatchController {
     @FXML private DatePicker dateInput;
     @FXML private TextField timeInput;
     @FXML private CheckBox locationInput;
-    @FXML private TextField notesInput;
+    @FXML private TextArea notesInput;
     @FXML private Button createButton;
     @FXML private ChoiceBox<Season> seasonChoiceBox;
 
@@ -63,6 +71,23 @@ public class CreateActivityMatchController {
         SqlConnection.closeConnection();
     }
 
+    public void createSeasonButtonClick(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../../Match/newSeasonPop.fxml"));
+            Parent createEventFXML = loader.load();
+
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+
+            Scene createEventScene = new Scene(createEventFXML);
+            stage.setScene(createEventScene);
+            stage.showAndWait();
+            initialize();
+
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+    }
 
     public void createButtonClick() {
         String sql = "INSERT INTO matches(match_id, opponent, goalsFor, goalsAgainst, season_id, date, time, isHome, note)" +
@@ -98,6 +123,21 @@ public class CreateActivityMatchController {
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+        }
+    }
+
+    public void backButtonClick(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../createActivityMenu.fxml"));
+            Parent createEventFXML = loader.load();
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.getIcons().add(new Image("file:graphics/ball.png"));
+            Scene createEventScene = new Scene(createEventFXML);
+            stage.setScene(createEventScene);
+            stage.show();
+        } catch (IOException e){
+            e.printStackTrace();
         }
     }
 }

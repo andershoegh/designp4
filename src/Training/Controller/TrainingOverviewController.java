@@ -24,9 +24,12 @@ public class TrainingOverviewController {
     private ObservableList<Program> programData = FXCollections.observableArrayList();
 
     //Connecting FXML elements
+    @FXML private Label menuTeamName;
     @FXML private TableView<Program> tablePrograms;
     @FXML private TableColumn<?, ?> columnName;
     @FXML private TableColumn<?, ?> columnDuration;
+    @FXML private TableColumn<?, ?> columnExercises;
+
 
     //Calling function, when page is initialized
     @FXML public void initialize(){
@@ -43,7 +46,8 @@ public class TrainingOverviewController {
     //Defines where the columns shall retrieve data
     private void setCellTable() {
         columnName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        columnDuration.setCellValueFactory(new PropertyValueFactory<>("duration"));
+        columnDuration.setCellValueFactory(new DurationPropertyValueFactory<>("duration"));
+        columnExercises.setCellValueFactory(new PropertyValueFactory<>("numExercises"));
     }
 
     //Loads training programs from database
@@ -58,9 +62,11 @@ public class TrainingOverviewController {
                 programData.add(new Program(rsProgram.getInt("program_id"),
                         rsProgram.getString("name"),
                         rsProgram.getString("notes"),
-                        rsProgram.getString("duration"))
-                );
+                        rsProgram.getString("duration"),
+                        rsProgram.getInt("numExercises")));
             }
+
+            menuTeamName.setText(SqlConnection.getTeamNameFromDB());
 
             SqlConnection.closeConnection();
 

@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="299.0" prefWidth="341.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Match.Controller.newSeasonController">
+<AnchorPane prefHeight="299.0" prefWidth="341.0" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Match.Controller.newSeasonController">
    <children>
       <VBox alignment="TOP_CENTER" prefHeight="384.0" prefWidth="341.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -48,7 +48,7 @@
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <ChoiceBox fx:id="springFallChoiceBox" prefHeight="31.0" prefWidth="175.0" GridPane.columnIndex="1">
+                        <ChoiceBox fx:id="springFallChoiceBox" prefHeight="31.0" prefWidth="175.0" styleClass="greenButton" GridPane.columnIndex="1">
                            <GridPane.margin>
                               <Insets left="20.0" />
                            </GridPane.margin>
@@ -58,7 +58,7 @@
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="yearTextField" prefHeight="34.0" prefWidth="175.0" promptText="eks. 2018" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <TextField fx:id="yearTextField" maxWidth="70.0" promptText="2018" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <GridPane.margin>
                               <Insets left="20.0" />
                            </GridPane.margin>
@@ -75,14 +75,14 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="91.0" prefWidth="341.0">
                <children>
-                  <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancelButtonClick" prefHeight="46.0" prefWidth="98.0" text="Afbryd">
+                  <Button fx:id="createButton" layoutX="122.0" layoutY="37.0" mnemonicParsing="false" onAction="#acceptButtonClick" prefHeight="46.0" prefWidth="98.0" styleClass="buttonApprove" text="Opret">
                      <HBox.margin>
                         <Insets right="20.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="createButton" layoutX="122.0" layoutY="37.0" mnemonicParsing="false" onAction="#acceptButtonClick" prefHeight="46.0" prefWidth="98.0" text="Opret">
+                  <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancelButtonClick" prefHeight="46.0" prefWidth="98.0" styleClass="buttonCancel" text="Afbryd">
                      <HBox.margin>
-                        <Insets left="20.0" />
+                        <Insets />
                      </HBox.margin>
                   </Button>
                </children>
