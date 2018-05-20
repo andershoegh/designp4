@@ -5,6 +5,7 @@ import SQL.SqlConnection;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -21,7 +22,7 @@ public class EditActivityMiscController {
     @FXML private TextField nameInputField;
     @FXML private DatePicker dateInput;
     @FXML private TextField timeInput;
-    @FXML private TextField notesInput;
+    @FXML private TextArea notesInput;
     @FXML private Button editButton;
 
     @FXML public void initialize() {

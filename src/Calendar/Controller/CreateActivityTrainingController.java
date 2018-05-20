@@ -4,14 +4,21 @@ import SQL.SqlConnection;
 import Training.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -88,6 +95,21 @@ public class CreateActivityTrainingController {
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+        }
+    }
+
+    public void backButtonClick(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../createActivityMenu.fxml"));
+            Parent createEventFXML = loader.load();
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.getIcons().add(new Image("file:graphics/ball.png"));
+            Scene createEventScene = new Scene(createEventFXML);
+            stage.setScene(createEventScene);
+            stage.show();
+        } catch (IOException e){
+            e.printStackTrace();
         }
     }
 }

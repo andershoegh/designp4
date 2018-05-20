@@ -193,7 +193,6 @@ public class MatchOverviewController {
         }
     }
 
-
     public void createMatchButtonClick(){
         try {
             Parent createEventMatchFXML = FXMLLoader.load(getClass().getResource("../../Calendar/createActivityMatch.fxml"));
@@ -235,7 +234,6 @@ public class MatchOverviewController {
             stage.setScene(deleteMatchScene);
             stage.showAndWait();
 
-            //tableMatches.getItems().clear();
             initialize();
         } catch (IOException e){
             e.printStackTrace();
@@ -261,7 +259,6 @@ public class MatchOverviewController {
         }
     }
 
-
     public void showTacticButtonClick(){
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -270,7 +267,6 @@ public class MatchOverviewController {
 
             LineupController lineupController = loader.getController();
             lineupController.initData(tableMatches.getSelectionModel().getSelectedItem());
-            //lineupController.loadDataFromDB();
 
             Stage stage = (Stage) showTacticButton.getScene().getWindow();
 
@@ -280,7 +276,5 @@ public class MatchOverviewController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
-
 }

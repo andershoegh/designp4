@@ -5,6 +5,7 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -31,6 +32,7 @@
             <RowConstraints maxHeight="105.0" minHeight="10.0" prefHeight="65.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sæson:" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Modstander:" GridPane.rowIndex="1" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Dato:" wrappingWidth="49.646484375" GridPane.rowIndex="2" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tid:" wrappingWidth="30.646484375" GridPane.rowIndex="3" />
@@ -40,13 +42,17 @@
                   <Insets top="4.0" />
                </GridPane.margin>
             </Text>
-            <TextField id="timeInput" fx:id="timeInput" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <TextField fx:id="notesInput" alignment="TOP_LEFT" prefHeight="107.0" prefWidth="197.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <DatePicker fx:id="dateInput" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <CheckBox fx:id="locationInput" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <ChoiceBox fx:id="seasonChoiceBox" prefWidth="120.0" styleClass="greenButton" GridPane.columnIndex="1" />
+            <Button mnemonicParsing="false" onAction="#createSeasonButtonClick" styleClass="greenButton" text="Ny sæson" GridPane.columnIndex="1">
+               <GridPane.margin>
+                  <Insets left="129.0" />
+               </GridPane.margin>
+            </Button>
             <TextField id="timeInput" fx:id="opponentInput" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sæson:" />
-            <ChoiceBox fx:id="seasonChoiceBox" prefWidth="150.0" styleClass="greenButton" GridPane.columnIndex="1" />
+            <DatePicker fx:id="dateInput" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField id="timeInput" fx:id="timeInput" maxWidth="50.0" promptText="12:00" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <CheckBox fx:id="locationInput" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextArea fx:id="notesInput" prefHeight="200.0" prefWidth="200.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="5" />
          </children>
       </GridPane>
       <Text layoutX="-4.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="pageheadline" text="REDIGER KAMP" textAlignment="CENTER" wrappingWidth="348.17919921875">
@@ -57,10 +63,6 @@
       <Line endX="250.0" layoutX="95.0" layoutY="81.0" startX="-100.0" />
       <Circle fill="#51b550" layoutX="212.0" layoutY="81.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
       <Circle fill="#51b550" layoutX="121.0" layoutY="81.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
-      <Button fx:id="editButton" layoutX="95.0" layoutY="371.0" mnemonicParsing="false" onAction="#editButtonClick" prefWidth="150.0" text="OK">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
+      <Button fx:id="editButton" layoutX="199.0" layoutY="388.0" mnemonicParsing="false" onAction="#editButtonClick" prefWidth="150.0" styleClass="buttonApprove" text="OK" />
    </children>
 </AnchorPane>

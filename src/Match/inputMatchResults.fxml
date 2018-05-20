@@ -19,7 +19,7 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Match.Controller.inputMatchResultsController">
+<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Match.Controller.inputMatchResultsController">
     <children>
         <HBox maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0">
             <children>
@@ -136,9 +136,9 @@
                         <Label layoutX="39.0" layoutY="30.0" styleClass="overviewText" text="Spillere" />
                         <ListView fx:id="listPlayers" layoutX="38.0" layoutY="56.0" prefHeight="503.0" prefWidth="244.0" />
                         <Label layoutX="400.0" layoutY="30.0" styleClass="overviewText" text="Resultat" />
-                        <HBox alignment="CENTER" layoutX="388.0" layoutY="57.0" prefHeight="28.0" prefWidth="269.0">
+                        <HBox alignment="CENTER" layoutX="388.0" layoutY="57.0" maxWidth="285.0" prefHeight="28.0" prefWidth="285.0">
                            <children>
-                              <Label fx:id="labelHomeTeam" text="Hjem">
+                              <Label fx:id="labelHomeTeam" alignment="CENTER_RIGHT" maxWidth="90.0" prefHeight="15.0" prefWidth="90.0" text="Hjem">
                                  <HBox.margin>
                                     <Insets right="10.0" />
                                  </HBox.margin>
@@ -150,7 +150,7 @@
                                  </HBox.margin>
                               </Label>
                               <TextField fx:id="textFieldGuestScore" prefHeight="23.0" prefWidth="30.0" />
-                              <Label fx:id="labelGuestTeam" text="Ude">
+                              <Label fx:id="labelGuestTeam" maxWidth="90.0" prefWidth="90.0" text="Ude">
                                  <HBox.margin>
                                     <Insets left="10.0" />
                                  </HBox.margin>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
@@ -7,13 +8,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="340.0" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Calendar.Controller.CreateActivityTrainingController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="340.0" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Calendar.Controller.CreateActivityTrainingController">
    <children>
       <Text layoutX="-3.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="pageheadline" text="OPRET TRÆNING" textAlignment="CENTER" wrappingWidth="348.17919921875">
          <font>
@@ -38,18 +40,23 @@
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Dato:" wrappingWidth="49.646484375" GridPane.rowIndex="1" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Startid:" wrappingWidth="63.646484375" GridPane.rowIndex="2" />
-            <DatePicker fx:id="dateInput" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField id="timeInput" fx:id="startTimeInput" maxWidth="50.0" prefHeight="25.0" prefWidth="60.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sluttid:" wrappingWidth="63.646484375" GridPane.rowIndex="3" />
-            <TextField id="timeInput" fx:id="endTimeInput" maxWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Træningsprogram:" GridPane.rowIndex="4" />
+            <DatePicker fx:id="dateInput" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField id="timeInput" fx:id="startTimeInput" maxWidth="50.0" prefHeight="25.0" prefWidth="60.0" promptText="12:00" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField id="timeInput" fx:id="endTimeInput" maxWidth="50.0" promptText="14:00" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <ChoiceBox fx:id="programChoicebox" prefWidth="180.0" styleClass="greenButton" GridPane.columnIndex="1" GridPane.rowIndex="4" />
          </children>
       </GridPane>
-      <Button fx:id="createButton" layoutX="98.0" layoutY="357.0" mnemonicParsing="false" onAction="#createButtonClick" prefWidth="150.0" text="Opret">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
+      <HBox alignment="CENTER" layoutX="-1.0" layoutY="338.0" prefHeight="82.0" prefWidth="340.0">
+         <children>
+            <Button fx:id="createButton" mnemonicParsing="false" onAction="#createButtonClick" prefWidth="150.0" styleClass="buttonApprove" text="Opret">
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#backButtonClick" styleClass="buttonCancel" text="Tilbage" />
+         </children>
+      </HBox>
    </children>
 </AnchorPane>

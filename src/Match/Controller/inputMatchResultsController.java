@@ -36,7 +36,7 @@ public class inputMatchResultsController {
 
     private Match selectedMatch;
     private int i;
-    private int inputGoalsScored;
+    private int inputGoalsScored = 0;
     private int matchId;
     private int goalsFor;
     private int goalsAgainst;

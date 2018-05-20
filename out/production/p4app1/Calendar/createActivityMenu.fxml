@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="374.0" prefWidth="370.0" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Calendar.Controller.CreateActivityController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="390.0" prefWidth="370.0" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Calendar.Controller.CreateActivityController">
    <children>
       <GridPane layoutX="80.0" layoutY="90.0" prefHeight="216.0" prefWidth="213.0" vgap="10.0">
          <columnConstraints>
@@ -48,6 +48,6 @@
       <Line endX="235.0" layoutX="137.0" layoutY="70.0" startX="-140.0" />
       <Circle fill="WHITE" layoutX="231.0" layoutY="70.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
       <Circle fill="#51b550" layoutX="138.0" layoutY="70.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
-      <Button fx:id="cancelButton" layoutX="143.0" layoutY="324.0" mnemonicParsing="false" onAction="#cancelButtonClick" styleClass="buttonCancel" text="Afbryd" />
+      <Button fx:id="cancelButton" layoutX="225.0" layoutY="337.0" mnemonicParsing="false" onAction="#cancelButtonClick" styleClass="buttonCancel" text="Afbryd" />
    </children>
 </AnchorPane>

@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -15,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="340.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Calendar.Controller.CreateActivityMiscController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="340.0" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Calendar.Controller.CreateActivityMiscController">
    <children>
       <VBox prefHeight="117.0" prefWidth="340.0" AnchorPane.bottomAnchor="323.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -74,22 +75,20 @@
                   <Insets left="10.0" />
                </GridPane.margin>
             </Text>
-            <TextField id="timeInput" fx:id="timeInput" prefWidth="159.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <TextField fx:id="notesInput" prefHeight="107.0" prefWidth="196.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <DatePicker fx:id="dateInput" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <TextField id="timeInput" fx:id="nameInputField" layoutX="23.0" layoutY="104.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <DatePicker fx:id="dateInput" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField id="timeInput" fx:id="timeInput" maxWidth="50.0" promptText="12:00" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextArea fx:id="notesInput" maxHeight="107.0" maxWidth="210.0" prefHeight="200.0" prefWidth="200.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
          </children>
       </GridPane>
       <HBox alignment="CENTER" layoutX="1.0" layoutY="367.0" prefHeight="73.0" prefWidth="340.0">
          <children>
-            <Button fx:id="createButton" mnemonicParsing="false" onAction="#createButtonClick" prefHeight="51.0" prefWidth="150.0" text="Opret">
-               <font>
-                  <Font size="18.0" />
-               </font>
+            <Button fx:id="createButton" mnemonicParsing="false" onAction="#createButtonClick" styleClass="buttonApprove" text="Opret">
                <HBox.margin>
-                  <Insets bottom="6.0" />
+                  <Insets right="20.0" />
                </HBox.margin>
             </Button>
+            <Button mnemonicParsing="false" onAction="#backButtonClick" styleClass="buttonCancel" text="Tilbage" />
          </children>
       </HBox>
    </children>
