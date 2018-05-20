@@ -116,12 +116,12 @@
                                           <Insets bottom="10.0" />
                                        </padding>
                                        <children>
-                                          <TableView fx:id="matchTableView" onMouseClicked="#matchHandleRowSelect" prefHeight="495.0" prefWidth="300.0" styleClass="headerVisibility">
+                                          <TableView fx:id="matchTableView" onMouseClicked="#matchHandleRowSelect" prefHeight="495.0" prefWidth="300.0">
                                             <columns>
-                                              <TableColumn fx:id="MDayInMonth" prefWidth="49.0" text="Dag i måned" />
-                                              <TableColumn fx:id="matchTitel" prefWidth="118.0" text="Kamp" />
+                                              <TableColumn fx:id="MDayInMonth" prefWidth="40.0" text="Dag i måned" />
+                                              <TableColumn fx:id="matchTitel" prefWidth="143.0" text="Kamp" />
                                                 <TableColumn fx:id="matchDate" prefWidth="49.0" text="Ugedag" />
-                                                <TableColumn fx:id="matchTime" prefWidth="81.0" text="Tidspunkt" />
+                                                <TableColumn fx:id="matchTime" prefWidth="65.0" text="Tidspunkt" />
                                             </columns>
                                              <HBox.margin>
                                                 <Insets left="20.0" right="20.0" />

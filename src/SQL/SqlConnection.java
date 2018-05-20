@@ -35,10 +35,12 @@ public class SqlConnection {
         try {
             PreparedStatement statement = conn.prepareStatement("SELECT team_name FROM team");
             ResultSet rs = statement.executeQuery();
-
             return rs.getString("team_name");
         } catch (SQLException e) {
             System.out.println("Could not connect to team table " + e.getMessage());
+        }
+        finally {
+            closeConnection();
         }
 
         return null;

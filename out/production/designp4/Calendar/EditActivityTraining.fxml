@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="340.0" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Calendar.Controller.EditActivityTrainingController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="410.0" prefWidth="340.0" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Calendar.Controller.EditActivityTrainingController">
    <children>
       <Text layoutX="-3.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="pageheadline" text="REDIGER TRÆNING" textAlignment="CENTER" wrappingWidth="348.17919921875">
          <font>
@@ -38,18 +38,14 @@
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Dato:" wrappingWidth="49.646484375" GridPane.rowIndex="1" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Startid:" wrappingWidth="63.646484375" GridPane.rowIndex="2" />
-            <DatePicker fx:id="dateInput" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField id="timeInput" fx:id="startTimeInput" maxWidth="50.0" prefWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sluttid:" wrappingWidth="63.646484375" GridPane.rowIndex="3" />
-            <TextField id="timeInput" fx:id="endTimeInput" maxWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Træningsprogram:" GridPane.rowIndex="4" />
+            <DatePicker fx:id="dateInput" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField id="timeInput" fx:id="startTimeInput" maxWidth="50.0" prefWidth="50.0" promptText="12:00" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField id="timeInput" fx:id="endTimeInput" maxWidth="50.0" promptText="14:00" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <ChoiceBox fx:id="programChoicebox" prefWidth="180.0" styleClass="greenButton" GridPane.columnIndex="1" GridPane.rowIndex="4" />
          </children>
       </GridPane>
-      <Button fx:id="editButton" layoutX="98.0" layoutY="357.0" mnemonicParsing="false" onAction="#editButtonClick" prefWidth="150.0" text="OK">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
+      <Button fx:id="editButton" layoutX="200.0" layoutY="350.0" mnemonicParsing="false" onAction="#editButtonClick" prefWidth="150.0" styleClass="buttonApprove" text="OK" />
    </children>
 </AnchorPane>
