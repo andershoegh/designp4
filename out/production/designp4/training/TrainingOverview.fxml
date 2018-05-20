@@ -12,17 +12,17 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Training.Controller.TrainingOverviewController">
+<AnchorPane styleClass="window" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Training.Controller.TrainingOverviewController">
     <children>
         <HBox maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0">
             <children>
                 <VBox prefHeight="720.0" prefWidth="200.0" styleClass="menubar">
                     <children>
-                        <HBox alignment="BOTTOM_CENTER">
+                        <HBox alignment="CENTER">
                             <children>
-                                <Label styleClass="teamname" text="AAIF Senior">
+                                <Label alignment="TOP_CENTER" prefHeight="30.0" prefWidth="160.0" styleClass="teamname" text="Holdnavn">
                                     <HBox.margin>
-                                        <Insets left="20.0" top="30.0" />
+                                        <Insets top="30.0" />
                                     </HBox.margin>
                                 </Label>
                             </children>
@@ -40,11 +40,11 @@
                 </VBox>
                 <VBox prefHeight="200.0" prefWidth="1080.0">
                     <children>
-                        <HBox alignment="CENTER" prefHeight="71.0" prefWidth="901.0" styleClass="header">
+                        <HBox prefHeight="71.0" prefWidth="901.0" styleClass="header">
                             <children>
-                                <Text fill="#1f951c" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="headerText" text="TRÆNING" textAlignment="CENTER" wrappingWidth="207.5617218017578">
+                                <Text fill="#1f951c" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="headerText" text="TRÆNING" textAlignment="CENTER" wrappingWidth="1043.5617218017578">
                                     <HBox.margin>
-                                        <Insets top="25.0" />
+                                        <Insets left="35.0" top="25.0" />
                                     </HBox.margin>
                                 </Text>
                             </children>

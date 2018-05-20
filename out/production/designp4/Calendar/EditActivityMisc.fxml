@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="340.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Calendar.Controller.EditActivityMiscController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="340.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Calendar.Controller.EditActivityMiscController">
    <children>
       <VBox prefHeight="117.0" prefWidth="340.0" AnchorPane.bottomAnchor="323.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -75,7 +75,7 @@
                </GridPane.margin>
             </Text>
             <TextField id="timeInput" fx:id="timeInput" prefWidth="159.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <TextField fx:id="notesInput" prefHeight="107.0" prefWidth="196.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="notesInput" alignment="TOP_LEFT" prefHeight="107.0" prefWidth="196.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <DatePicker fx:id="dateInput" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <TextField id="timeInput" fx:id="nameInputField" layoutX="23.0" layoutY="104.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
