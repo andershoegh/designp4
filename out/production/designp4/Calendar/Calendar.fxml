@@ -116,7 +116,7 @@
                                           <Insets bottom="10.0" />
                                        </padding>
                                        <children>
-                                          <TableView fx:id="matchTableView" onMouseClicked="#matchHandleRowSelect" prefHeight="495.0" prefWidth="300.0">
+                                          <TableView fx:id="matchTableView" onMouseClicked="#matchHandleRowSelect" prefHeight="495.0" prefWidth="300.0" styleClass="headerVisibility">
                                             <columns>
                                               <TableColumn fx:id="MDayInMonth" prefWidth="40.0" text="Dag i måned" />
                                               <TableColumn fx:id="matchTitel" prefWidth="143.0" text="Kamp" />

@@ -68,7 +68,7 @@
 
 .button{
     -fx-pref-height: 55px;
-    -fx-padding-left: 20;
+    -fx-padding-left: 20px;
     -fx-background-color: #383838;
     -fx-text-fill: #d8d8d8;
     -fx-border-radius: 0;
