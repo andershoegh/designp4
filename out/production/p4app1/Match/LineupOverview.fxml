@@ -106,7 +106,7 @@
                                        <tooltip>
                                           <Tooltip text="Træk og placér spiller fra listen til venstre. Klik på placeret spiller for at fjerne fra holdopstilling.">
                                              <font>
-                                                <Font size="18.0" />
+                                                <Font size="13.0" />
                                              </font>
                                           </Tooltip>
                                        </tooltip>

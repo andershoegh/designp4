@@ -106,7 +106,7 @@
                         </TableView>
                         <HBox alignment="TOP_RIGHT" layoutX="61.0" layoutY="511.0" prefHeight="100.0" prefWidth="960.0">
                            <children>
-                              <Button fx:id="showTacticButton" layoutX="189.0" layoutY="10.0" mnemonicParsing="false" onAction="#showTacticButtonClick" prefWidth="100.0" styleClass="utilityButtons" text="Vis taktik">
+                              <Button fx:id="showTacticButton" layoutX="189.0" layoutY="10.0" mnemonicParsing="false" onAction="#showTacticButtonClick" styleClass="utilityButtons" text="Taktik">
                                  <HBox.margin>
                                     <Insets right="10.0" />
                                  </HBox.margin>

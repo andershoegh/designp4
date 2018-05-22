@@ -40,7 +40,7 @@
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Startid:" wrappingWidth="63.646484375" GridPane.rowIndex="2" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sluttid:" wrappingWidth="63.646484375" GridPane.rowIndex="3" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Træningsprogram:" GridPane.rowIndex="4" />
-            <DatePicker fx:id="dateInput" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <DatePicker fx:id="dateInput" editable="false" promptText="01/01/2018" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <TextField id="timeInput" fx:id="startTimeInput" maxWidth="50.0" prefWidth="50.0" promptText="12:00" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <TextField id="timeInput" fx:id="endTimeInput" maxWidth="50.0" promptText="14:00" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <ChoiceBox fx:id="programChoicebox" prefWidth="180.0" styleClass="greenButton" GridPane.columnIndex="1" GridPane.rowIndex="4" />

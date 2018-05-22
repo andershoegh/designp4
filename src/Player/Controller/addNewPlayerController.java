@@ -63,6 +63,8 @@ public class addNewPlayerController{
                 }
             }
         });
+
+        birthdayInput.getEditor().setEditable(false);
     }
 
 

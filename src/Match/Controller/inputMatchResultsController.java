@@ -370,15 +370,19 @@ public class inputMatchResultsController {
         switch (table) {
             case "Goals":
                 playerGoals.remove(selectedItem);
+                selectedItem.setGoalsScored(0);
                 break;
             case "Assists":
                 playerAssists.remove(selectedItem);
+                selectedItem.setAssists(0);
                 break;
             case "Yellow":
                 playerYellow.remove(selectedItem);
+                selectedItem.setYellowCards(0);
                 break;
             case "Red":
                 playerRed.remove(selectedItem);
+                selectedItem.setRedCards(0);
                 break;
         }
     }

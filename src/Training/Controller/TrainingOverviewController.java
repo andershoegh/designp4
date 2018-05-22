@@ -3,15 +3,21 @@ package Training.Controller;
 import Controller.MenuController;
 import Training.Program;
 import SQL.SqlConnection;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import java.io.IOException;
@@ -29,6 +35,7 @@ public class TrainingOverviewController {
     @FXML private TableColumn<?, ?> columnName;
     @FXML private TableColumn<?, ?> columnDuration;
     @FXML private TableColumn<?, ?> columnExercises;
+    @FXML private Button editButton;
 
 
     //Calling function, when page is initialized
@@ -36,6 +43,30 @@ public class TrainingOverviewController {
         programData = FXCollections.observableArrayList();
         setCellTable();
         loadDataFromDB();
+
+        tablePrograms.getSelectionModel()
+                .selectedItemProperty()
+                .addListener(new ChangeListener<Program>() {
+            @Override
+            public void changed(ObservableValue<? extends Program> observable, Program oldValue, Program newValue) {
+                if (newValue != null) {
+                    editButton.setDisable(false);
+                }
+            }
+        });
+
+        tablePrograms.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if (event.getButton().equals(MouseButton.PRIMARY)) {
+                    if (event.getClickCount() == 2) {
+                        editProgram();
+                    }
+                }
+            }
+        });
+
+        editButton.setDisable(true);
     }
 
     //Funktion for clearing the tableview
@@ -79,7 +110,7 @@ public class TrainingOverviewController {
     }
 
     //Function, which creates a new training program, when button is clicked
-    public void addProgram(ActionEvent event) {
+    public void addProgram() {
         //switches from Overview to addTrainingProgram
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -104,7 +135,7 @@ public class TrainingOverviewController {
     }
 
     //Function for editing a training program
-    public void editProgram(ActionEvent event) {
+    public void editProgram() {
         //switches from Overview to EditTrainingProgram
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -115,6 +146,7 @@ public class TrainingOverviewController {
             stage.setResizable(false);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle("Vis træningsprogram");
+            stage.getIcons().add(new Image("file:graphics/ball.png"));
 
             //Transfer the selected program from tableview to EditTrainingProgramController class
             EditTrainingProgramController controller = loader.getController();
@@ -132,7 +164,7 @@ public class TrainingOverviewController {
     }
 
     //Function for delete a program, when button is clicked
-    public void deleteProgram(ActionEvent event) {
+    public void deleteProgram() {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("../DeleteTrainingProgram.fxml"));

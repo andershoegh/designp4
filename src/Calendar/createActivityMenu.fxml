@@ -12,9 +12,9 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="390.0" prefWidth="370.0" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Calendar.Controller.CreateActivityController">
    <children>
-      <GridPane layoutX="80.0" layoutY="90.0" prefHeight="216.0" prefWidth="213.0" vgap="10.0">
+      <GridPane alignment="CENTER" layoutX="80.0" layoutY="90.0" prefHeight="216.0" prefWidth="213.0" vgap="10.0">
          <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
          </columnConstraints>
          <rowConstraints>
             <RowConstraints />
@@ -23,17 +23,17 @@
             <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Button fx:id="trainingButton" mnemonicParsing="false" onAction="#trainingButtonClick" prefWidth="223.0" text="Træning" GridPane.rowIndex="1">
+            <Button fx:id="trainingButton" mnemonicParsing="false" onAction="#trainingButtonClick" prefWidth="180.0" styleClass="greenButton" text="Træning" GridPane.rowIndex="1">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="matchButton" mnemonicParsing="false" onAction="#matchButtonClick" prefWidth="394.0" text="Kamp" GridPane.rowIndex="2">
+            <Button fx:id="matchButton" mnemonicParsing="false" onAction="#matchButtonClick" prefWidth="180.0" styleClass="greenButton" text="Kamp" GridPane.rowIndex="2">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="miscButton" mnemonicParsing="false" onAction="#miscButtonClick" prefWidth="438.0" text="Diverse" GridPane.rowIndex="3">
+            <Button fx:id="miscButton" mnemonicParsing="false" onAction="#miscButtonClick" prefWidth="180.0" styleClass="greenButton" text="Diverse" GridPane.rowIndex="3">
                <font>
                   <Font size="18.0" />
                </font>

@@ -325,7 +325,7 @@ public class OverviewController {
         attendingListView.setMaxWidth(180.0);
 
         Button tacticButton = new Button("Taktik");
-        tacticButton.getStyleClass().add("overviewButton");
+        tacticButton.getStyleClass().add("overviewButtons");
         tacticButton.setMinWidth(120.0);
 
 
@@ -349,7 +349,7 @@ public class OverviewController {
                 Parent lineupFXML = loader.load();
 
                 LineupController lineupController = loader.getController();
-                lineupController.initData(match);
+                lineupController.initData(match, true);
                 //lineupController.loadDataFromDB();
 
                 Stage stage = (Stage) tacticButton.getScene().getWindow();

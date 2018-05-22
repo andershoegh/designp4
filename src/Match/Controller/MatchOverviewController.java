@@ -9,6 +9,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,6 +18,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -86,7 +89,7 @@ public class MatchOverviewController {
                 .selectedItemProperty()
                 .addListener((observable, oldValue, newValue) -> {
                     if (newValue != null) {
-                        if(newValue.getConvertedDate().before(date)){
+                        if(newValue.getConvertedDate().before(date) && newValue.getGoalsFor() == -1){
                             inputButton.setDisable(false);
                         }
                         else{
@@ -266,7 +269,7 @@ public class MatchOverviewController {
             Parent lineupFXML = loader.load();
 
             LineupController lineupController = loader.getController();
-            lineupController.initData(tableMatches.getSelectionModel().getSelectedItem());
+            lineupController.initData(tableMatches.getSelectionModel().getSelectedItem(), false);
 
             Stage stage = (Stage) showTacticButton.getScene().getWindow();
 

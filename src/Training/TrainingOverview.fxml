@@ -103,7 +103,7 @@
                                     <Insets right="20.0" />
                                  </HBox.margin>
                               </Button>
-                              <Button minWidth="107.0" mnemonicParsing="false" onAction="#editProgram" prefWidth="115.0" styleClass="utilityButtons" text="Vis program">
+                              <Button fx:id="editButton" minWidth="107.0" mnemonicParsing="false" onAction="#editProgram" prefWidth="115.0" styleClass="utilityButtons" text="Vis program">
                                  <HBox.margin>
                                     <Insets right="20.0" />
                                  </HBox.margin>

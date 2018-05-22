@@ -1,5 +1,6 @@
 package Calendar.Controller;
 
+import Controller.MenuController;
 import SQL.SqlConnection;
 import Training.*;
 import javafx.collections.FXCollections;
@@ -10,10 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
@@ -43,20 +41,22 @@ public class CreateActivityTrainingController {
     @FXML public void initialize() {
         loadDataFromDB();
         programChoicebox.setConverter(converter);
+
+        dateInput.getEditor().setEditable(false);
     }
 
     public void loadDataFromDB() {
         try {
             Connection conn = SqlConnection.connectToDB();
-            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM programs");
-            ResultSet rs = stmt.executeQuery();
+            PreparedStatement trainingStatement = conn.prepareStatement("SELECT * FROM programs");
+            ResultSet trainingRs = trainingStatement.executeQuery();
 
-            while (rs.next()) {
-                programList.add(new Program(rs.getInt("program_id"),
-                        rs.getString("name"),
-                        rs.getString("notes"),
-                        rs.getString("duration"),
-                        rs.getInt("numExercises")));
+            while (trainingRs.next()) {
+                programList.add(new Program(trainingRs.getInt("program_id"),
+                        trainingRs.getString("name"),
+                        trainingRs.getString("notes"),
+                        trainingRs.getString("duration"),
+                        trainingRs.getInt("numExercises")));
             }
 
             programChoicebox.setItems(programList);

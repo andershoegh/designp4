@@ -5,10 +5,7 @@ import Training.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
@@ -39,6 +36,7 @@ public class EditActivityTrainingController {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate selectedDate = LocalDate.parse(selectedTraining.getDate(), formatter);
         dateInput.setValue(selectedDate);
+        dateInput.getEditor().setEditable(false);
 
         startTimeInput.setText(selectedTraining.getStartTime());
         endTimeInput.setText(selectedTraining.getEndTime());
@@ -54,15 +52,15 @@ public class EditActivityTrainingController {
     public void loadDataFromDB() {
         try {
             Connection conn = SqlConnection.connectToDB();
-            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM programs");
-            ResultSet rs = stmt.executeQuery();
+            PreparedStatement trainingStatement = conn.prepareStatement("SELECT * FROM programs");
+            ResultSet trainingRs = trainingStatement.executeQuery();
 
-            while (rs.next()) {
-                programList.add(new Program(rs.getInt("program_id"),
-                        rs.getString("name"),
-                        rs.getString("notes"),
-                        rs.getString("duration"),
-                        rs.getInt("numExercises")));
+            while (trainingRs.next()) {
+                programList.add(new Program(trainingRs.getInt("program_id"),
+                        trainingRs.getString("name"),
+                        trainingRs.getString("notes"),
+                        trainingRs.getString("duration"),
+                        trainingRs.getInt("numExercises")));
             }
 
             programChoicebox.setItems(programList);

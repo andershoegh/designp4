@@ -60,6 +60,7 @@ public class EditActivityMatchController {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyy");
         LocalDate selectedDate = LocalDate.parse(selectedMatch.getDate(), formatter);
         dateInput.setValue(selectedDate);
+        dateInput.getEditor().setEditable(false);
 
         timeInput.setText(selectedMatch.getTime());
         locationInput.setSelected(selectedMatch.getIsHome());

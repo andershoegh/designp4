@@ -27,8 +27,9 @@ public class MissingDataPopup {
 
                 break;
             case "missing goalscorer":
-                message = "Målscorer er ikke valgt." + "\n" + "Tryk fortryd for at gå tilbage og vælge målscorer, eller tryk ok for at gemme og fortsætte.";
-                acceptButton.setOnAction(event -> acceptButtonClick(event));
+                message = "Valgte målscorer matcher ikke det indtastede resultat." + "\n" + "Tryk fortryd for at gå tilbage og vælge målscorer.";
+                acceptButton.setVisible(false);
+                //acceptButton.setOnAction(event -> acceptButtonClick(event));
 
                 Button cancelButton = new Button("Fortryd");
                 cancelButton.setOnAction(event -> cancelButtonClick(event));

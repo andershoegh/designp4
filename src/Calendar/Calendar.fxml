@@ -172,7 +172,7 @@
                                                 <Insets left="20.0" right="20.0" />
                                              </HBox.margin>
                                              <children>
-                                                <Label fx:id="AndetLabel" style="-fx-text-fill: white;" text="Andet" />
+                                                <Label fx:id="AndetLabel" style="-fx-text-fill: white;" text="Diverse" />
                                              </children>
                                           </HBox>
                                        </children>

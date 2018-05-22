@@ -43,6 +43,7 @@ import java.util.ResourceBundle;
 public class LineupController implements Initializable {
 
     private String teamName;
+    private boolean isFromOverview;
     private Match selectedMatch;
     private ArrayList<PlayerPos> playerPosList;
 
@@ -165,8 +166,9 @@ public class LineupController implements Initializable {
         });
     }
 
-    public void initData(Match match){
+    public void initData(Match match, boolean fromOverview){
         selectedMatch = match;
+        isFromOverview = fromOverview;
 
         dateLabel.setText(selectedMatch.getDate());
         timeLabel.setText(selectedMatch.getTime());
@@ -338,7 +340,12 @@ public class LineupController implements Initializable {
     }
 
     public void cancelButtonClick(ActionEvent event){
-        controller.sceneChange(event, "../Match/MatchOverview.fxml");
+
+        if (isFromOverview) {
+            controller.sceneChange(event, "../Overview/Overview.fxml");
+        } else {
+            controller.sceneChange(event, "../Match/MatchOverview.fxml");
+        }
     }
 
     // Menu buttons navigation

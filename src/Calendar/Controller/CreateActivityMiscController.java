@@ -27,6 +27,10 @@ public class CreateActivityMiscController {
     @FXML private TextArea notesInput;
     @FXML private Button createButton;
 
+    @FXML public void initialize() {
+        dateInput.getEditor().setEditable(false);
+    }
+
     public void createButtonClick() {
         String sql = "INSERT INTO otherEvents " +
                 "(other_id, name, date, time, note)" +

@@ -31,6 +31,7 @@ public class EditActivityMiscController {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate selectedDate = LocalDate.parse(selectedEvent.getDate(), formatter);
         dateInput.setValue(selectedDate);
+        dateInput.getEditor().setEditable(false);
 
         timeInput.setText(selectedEvent.getTime());
         notesInput.setText(selectedEvent.getNote());

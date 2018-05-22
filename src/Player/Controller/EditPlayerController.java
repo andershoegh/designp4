@@ -48,7 +48,7 @@ public class EditPlayerController {
     @FXML private TextField mail;
     @FXML private TextField ICEnameInput;
     @FXML private TextField ICEphoneInput;
-    @FXML private DatePicker birthday;
+    @FXML private DatePicker birthdayInput;
     @FXML private ChoiceBox position;
     @FXML private CheckBox health;
     @FXML private Label health_label;
@@ -88,6 +88,8 @@ public class EditPlayerController {
                 }
             }
         });
+
+        birthdayInput.getEditor().setEditable(false);
     }
 
     // Inputting editable data into text fields
@@ -123,16 +125,16 @@ public class EditPlayerController {
             ICEphoneInput.setText(Integer.toString(selectedPlayer.getICEtelephone()));
         }
         // BIRTHDAY
-        // This function formats the data from the "birthday" field in the database
+        // This function formats the data from the "birthdayInput" field in the database
         // and displays it the correct way. If there is no data, the field will be
         // empty. But if there is a value, it will be displayed as "dd/mm/yyyy"
         DateFormat format = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
         if (selectedPlayer.getBirthday() == null) {
-            birthday.setValue(localDate);
+            birthdayInput.setValue(localDate);
         } else {
             Date d = format.parse(selectedPlayer.getBirthday());
             LocalDate localDate = d.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-            birthday.setValue(localDate);
+            birthdayInput.setValue(localDate);
         }
         // POSITION
         position.setValue(selectedPlayer.getPosition());
@@ -193,12 +195,12 @@ public class EditPlayerController {
             }
             // BIRTHDAY
             // Creates a string, from the birthdayInput, and
-            // inserts data into the "birthday" field in the database.
+            // inserts data into the "birthdayInput" field in the database.
             // If there is no data, it will set the string to "null"
-            if (birthday.getValue() == null) {
+            if (birthdayInput.getValue() == null) {
                 stmt.setString(7, null);
             } else {
-                String date = birthday.getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                String date = birthdayInput.getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
                 stmt.setString(7, date);
             }
             // POSITION

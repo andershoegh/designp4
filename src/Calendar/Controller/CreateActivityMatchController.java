@@ -51,6 +51,7 @@ public class CreateActivityMatchController {
         loadDataFromDB();
 
         seasonChoiceBox.setConverter(converter);
+        dateInput.getEditor().setEditable(false);
     }
 
 

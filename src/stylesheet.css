@@ -1,6 +1,7 @@
 /* This file is the stylesheet for our program */
 * {
-    -lightGreen: rgba(25, 129, 29, 0.65);
+    -lightGreen: #b5d9ad;
+    -green: rgba(25, 129, 29, 0.65);
     -darkGreen: rgba(8, 87, 12, 0.64);
     -lightRed: rgba(179, 38, 34, 0.8);
     -darkRed: rgba(136, 27, 19, 0.75);
@@ -13,7 +14,7 @@
 
 .teamname{
     -fx-font-size: 16px;
-    -fx-text-fill: -lightGreen;
+    -fx-text-fill: -green;
     -fx-font-weight: bold;
 }
 
@@ -41,7 +42,7 @@
 
 .pageheadline{
     -fx-font-size: 24;
-    -fx-text-fill: -lightGreen;
+    -fx-text-fill: -green;
     -fx-font-weight: bold;
     -fx-border-radius: 0;
 }
@@ -66,28 +67,8 @@
     -fx-background-color: -grey;
 }
 
-.button{
-    -fx-pref-height: 55px;
-    -fx-padding-left: 20px;
-    -fx-background-color: #383838;
-    -fx-text-fill: #d8d8d8;
-    -fx-border-radius: 0;
-}
-
-.button:hover{
-    -fx-background-color: #3e3e3e;
-    -fx-text-fill: #ffffff;
-    -fx-border-radius: 0;
-    -fx-cursor: hand;
-}
-
-.button:pressed{
-    -fx-background-color: #484848;
-    -fx-border-radius: 0;
-}
-
 .buttonApprove{
-    -fx-background-color: -lightGreen;
+    -fx-background-color: -green;
     -fx-pref-width: 120px;
     -fx-pref-height: 35px;
     -fx-text-fill: white;
@@ -111,25 +92,26 @@
 .menubarButton{
     -fx-pref-height: 55px;
     -fx-background-color: -grey;
-    -fx-text-fill: -lightGreen;
+    -fx-text-fill: -green;
 }
 
 .menubarButton:hover{
     -fx-pref-height: 55px;
     -fx-padding-left: 20;
-    -fx-background-color: #b5d9ad;
-    -fx-text-fill: -lightGreen;
+    -fx-background-color: -lightGreen;
+    -fx-text-fill: -green;
     -fx-font-weight: bold;
     -fx-border-radius: 0;
 }
 
 .selectedmenu{
+    -fx-pref-height: 55px;
     -fx-border-style: solid;
     -fx-background-color: -grey;
-    -fx-border-color: transparent -lightGreen transparent transparent;
+    -fx-border-color: transparent -green transparent transparent;
     -fx-border-width: 5px;
     -fx-font-weight: bold;
-    -fx-text-fill: -lightGreen;
+    -fx-text-fill: -green;
 }
 
 .menuSeparator{
@@ -146,9 +128,9 @@
     -fx-border-style: solid;
     -fx-background-color: #b5d9ad;
     -fx-border-width: 5px;
-    -fx-border-color: transparent -lightGreen transparent transparent;
+    -fx-border-color: transparent -green transparent transparent;
     -fx-font-weight: bold;
-    -fx-text-fill: -lightGreen;
+    -fx-text-fill: -green;
 }
 
 .table-row-cell {
@@ -203,7 +185,7 @@
 }
 
 .column-header-background {
-    -fx-background-color: -lightGreen;
+    -fx-background-color: -green;
     -fx-text-fill: #FFFFFF !important;
     -fx-border-color: none;
     -fx-focus-color: none;
@@ -242,7 +224,7 @@
 }
 
 .greenButton{
-    -fx-background-color: -lightGreen;
+    -fx-background-color: -green;
     -fx-pref-height: 35px;
     -fx-text-fill: white;
 }
@@ -280,7 +262,7 @@
     -fx-text-fill: black;
 }
 .lineupButton{
-    -fx-background-color: -lightGreen;
+    -fx-background-color: -green;
     -fx-pref-width: 274px;
     -fx-pref-height: 35px;
     -fx-text-fill: white;
@@ -311,6 +293,10 @@
     -fx-background-color: #383838;
 }
 
+.overviewButtons:hover {
+    -fx-background-color: black;
+}
+
 .overviewHeadline{
     -fx-font-size: 18;
 }
@@ -331,7 +317,7 @@
 
 .headerTextField{
     -fx-background-color: transparent;
-    -fx-border-color: transparent transparent -lightGreen transparent;
+    -fx-border-color: transparent transparent -green transparent;
     -fx-border-width: 1;
 }
 
@@ -352,9 +338,9 @@
 }
 
 .hyperlink {
-    -fx-text-fill: -lightGreen;
+    -fx-text-fill: -green;
 }
 
 .calender-hbox {
-    -fx-background-color: -lightGreen;
+    -fx-background-color: -green;
 }
