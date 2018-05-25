@@ -36,37 +36,79 @@
                         <Insets left="10.0" />
                      </VBox.margin>
                   </Separator>
-                  <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="menubarButton" text="Oversigt" />
+                  <Button alignment="CENTER" graphicTextGap="25.0" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="menubarButton" text="Oversigt">
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="file:graphics/pie.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
                   <Separator prefWidth="200.0" styleClass="menuButtonSeparator">
                      <VBox.margin>
                         <Insets left="10.0" />
                      </VBox.margin>
                   </Separator>
-                  <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefHeight="50.0" prefWidth="200.0" styleClass="selectedmenu" text="Kalender" />
+                  <Button alignment="CENTER" graphicTextGap="24.0" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefHeight="50.0" prefWidth="200.0" styleClass="selectedmenu" text="Kalender">
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="file:graphics/calendar.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
                   <Separator prefWidth="200.0" styleClass="menuButtonSeparator">
                      <VBox.margin>
                         <Insets left="10.0" />
                      </VBox.margin>
                   </Separator>
-                  <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="menubarButton" text="Spillere" />
+                  <Button alignment="CENTER" graphicTextGap="31.0" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="menubarButton" text="Spillere">
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="file:graphics/playerlogo.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
                   <Separator prefWidth="200.0" styleClass="menuButtonSeparator">
                      <VBox.margin>
                         <Insets left="10.0" />
                      </VBox.margin>
                   </Separator>
-                  <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="menubarButton" text="Kampe" />
+                  <Button alignment="CENTER" graphicTextGap="32.0" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="menubarButton" text="Kampe">
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="file:graphics/ball.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
                   <Separator prefWidth="200.0" styleClass="menuButtonSeparator">
                      <VBox.margin>
                         <Insets left="10.0" />
                      </VBox.margin>
                   </Separator>
-                  <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="menubarButton" text="Træning" />
+                  <Button alignment="CENTER" graphicTextGap="25.0" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="menubarButton" text="Træning">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="file:graphics/trainingfield.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
                   <Separator prefWidth="200.0" styleClass="menuButtonSeparator">
                      <VBox.margin>
                         <Insets left="10.0" />
                      </VBox.margin>
                   </Separator>
-                  <Button alignment="CENTER" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="menubarButton" text="Statistik" />
+                  <Button alignment="CENTER" graphicTextGap="26.0" minWidth="200.0" mnemonicParsing="false" onAction="#menuButtonClick" prefWidth="200.0" styleClass="menubarButton" text="Statistik">
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="file:graphics/statistics.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
                   <Separator prefWidth="200.0" styleClass="menuButtonSeparator">
                      <VBox.margin>
                         <Insets left="10.0" />
@@ -172,7 +214,7 @@
                                                 <Insets left="20.0" right="20.0" />
                                              </HBox.margin>
                                              <children>
-                                                <Label fx:id="AndetLabel" style="-fx-text-fill: white;" text="Andet" />
+                                                <Label fx:id="AndetLabel" style="-fx-text-fill: white;" text="Diverse" />
                                              </children>
                                           </HBox>
                                        </children>

@@ -287,11 +287,12 @@ public class LineupController implements Initializable {
         Connection conn = SqlConnection.connectToDB();
         String sqlQuery = "SELECT players.name, players.player_id, match_tactic_player.pos_x, match_tactic_player.pos_y " +
                 "FROM match_tactic_player INNER JOIN players " +
-                "ON match_tactic_player.player_id = players.player_id WHERE match_tactic_player.match_id = ?";
+                "ON match_tactic_player.player_id = players.player_id WHERE match_tactic_player.match_id = ? AND players.health=?";
 
         try {
             PreparedStatement stmt = conn.prepareStatement(sqlQuery);
             stmt.setInt(1, selectedMatch.getId());
+            stmt.setInt(2,0);
 
             ResultSet rs = stmt.executeQuery();
             if(rs == null){
@@ -322,7 +323,9 @@ public class LineupController implements Initializable {
         Connection conn = SqlConnection.connectToDB();
 
         try {
-            PreparedStatement statement = conn.prepareStatement("SELECT player_id, name FROM players");
+            PreparedStatement statement = conn.prepareStatement("SELECT player_id, name FROM players WHERE health=?");
+
+            statement.setInt(1, 0);
             ResultSet rs = statement.executeQuery();
 
             while (rs.next()) {

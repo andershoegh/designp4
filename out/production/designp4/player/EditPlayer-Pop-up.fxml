@@ -100,7 +100,7 @@
                                 <Tooltip text="Skriv f.eks. spillerens forældres telefon nummer. Det virker kun med 8 tal eller mindre. " />
                             </tooltip>
                         </TextField>
-                        <DatePicker fx:id="birthday" prefHeight="26.0" prefWidth="218.0" promptText="10/10/1990" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                        <DatePicker fx:id="birthdayInput" prefHeight="26.0" prefWidth="218.0" promptText="10/10/1990" GridPane.columnIndex="1" GridPane.rowIndex="6">
                             <tooltip>
                                 <Tooltip text="Vælg spillerens fødselsdag." />
                             </tooltip></DatePicker>

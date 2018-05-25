@@ -8,7 +8,7 @@
     -lightBlue: rgba(31, 28, 149, 0.75);
     -darkBlue: rgba(16, 15, 123, 0.75);
     -lightGrey: #f4f4f4;
-    -grey: #e2e2e2;
+    -grey: #ffffff;
 }
 
 
@@ -21,10 +21,10 @@
 .window{
     -fx-font-family: "Montserrat";
     -fx-font-size: 12px;
-    -fx-background-color: #f6f6f6;
+    -fx-background-color: #ededed;
 }
 .header {
-    -fx-background-color: #f6f6f6;
+    -fx-background-color: #ffffff;
     -fx-pref-height: 70px;
 }
 
@@ -91,13 +91,14 @@
 
 .menubarButton{
     -fx-pref-height: 55px;
+    -fx-padding-left: 10px;
     -fx-background-color: -grey;
     -fx-text-fill: -green;
 }
 
 .menubarButton:hover{
     -fx-pref-height: 55px;
-    -fx-padding-left: 20;
+    -fx-padding-left: 20px;
     -fx-background-color: -lightGreen;
     -fx-text-fill: -green;
     -fx-font-weight: bold;
