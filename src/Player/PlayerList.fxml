@@ -131,12 +131,12 @@
                                 <Region prefHeight="60.0" prefWidth="200.0" />
                                 <TableView fx:id="tablePlayers" maxWidth="1005.0" onMouseClicked="#handleRowSelect" prefHeight="400.0">
                                     <columns>
-                                        <TableColumn id="name" fx:id="columnName" editable="false" prefWidth="200.0" resizable="false" styleClass="name" text="Navn" />
-                                        <TableColumn fx:id="columnPosition" editable="false" prefWidth="200.0" sortable="false" text="Position" />
-                                        <TableColumn fx:id="columnPhone" editable="false" minWidth="0.0" prefWidth="100.0" resizable="false" sortable="false" text="Telefon" />
-                                        <TableColumn fx:id="columnMail" editable="false" prefWidth="175.0" resizable="false" sortable="false" text="Mail" />
-                                        <TableColumn fx:id="columnAddress" editable="false" prefWidth="200.0" resizable="false" sortable="false" text="Addresse" />
-                                        <TableColumn fx:id="columnBirthday" editable="false" prefWidth="130.0" resizable="false" sortable="false" text="Fødselsdag" />
+                                        <TableColumn id="name" fx:id="columnName" editable="false" prefWidth="176.0" resizable="false" styleClass="name" text="Navn" />
+                                        <TableColumn fx:id="columnPosition" editable="false" prefWidth="173.0" sortable="false" text="Position" />
+                                        <TableColumn fx:id="columnPhone" editable="false" minWidth="0.0" prefWidth="104.0" resizable="false" sortable="false" text="Telefon" />
+                                        <TableColumn fx:id="columnMail" editable="false" prefWidth="221.0" resizable="false" sortable="false" text="Mail" />
+                                        <TableColumn fx:id="columnAddress" editable="false" prefWidth="198.0" resizable="false" sortable="false" text="Addresse" />
+                                        <TableColumn fx:id="columnBirthday" editable="false" prefWidth="105.0" resizable="false" sortable="false" text="Fødselsdag" />
                                     </columns>
                                     <VBox.margin>
                                         <Insets left="50.0" right="50.0" />

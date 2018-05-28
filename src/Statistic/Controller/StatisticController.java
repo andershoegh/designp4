@@ -47,12 +47,6 @@ public class StatisticController {
     @FXML private TableColumn<?, ?> stats_mofm_tablecolumn;
     @FXML private TableColumn<?, ?> stats_mofm_amount_tablecolumn;
 
-    // Træninger
-    private ObservableList<Player> trainingsData;
-    @FXML private TableView<Player> stats_trainings_tableview;
-    @FXML private TableColumn<?, ?> stats_trainings_tablecolumn;
-    @FXML private TableColumn<?, ?> stats_trainings_amount_tablecolumn;
-
     // Gule kort
     private ObservableList<Player> yellowData;
     @FXML private TableView<Player> stats_yellowcards_tableview;
@@ -71,7 +65,6 @@ public class StatisticController {
         matchData = FXCollections.observableArrayList();
         assistsData = FXCollections.observableArrayList();
         motmData = FXCollections.observableArrayList();
-        trainingsData = FXCollections.observableArrayList();
         yellowData = FXCollections.observableArrayList();
         redData = FXCollections.observableArrayList();
         setCellTable();
@@ -86,7 +79,6 @@ public class StatisticController {
                         stats_match_tableview.getSelectionModel().clearSelection();
                         stats_assists_tableview.getSelectionModel().clearSelection();
                         stats_mofm_tableview.getSelectionModel().clearSelection();
-                        stats_trainings_tableview.getSelectionModel().clearSelection();
                         stats_yellowcards_tableview.getSelectionModel().clearSelection();
                         stats_redcards_tableview.getSelectionModel().clearSelection();
                     }
@@ -101,7 +93,6 @@ public class StatisticController {
                         stats_goals_tableview.getSelectionModel().clearSelection();
                         stats_assists_tableview.getSelectionModel().clearSelection();
                         stats_mofm_tableview.getSelectionModel().clearSelection();
-                        stats_trainings_tableview.getSelectionModel().clearSelection();
                         stats_yellowcards_tableview.getSelectionModel().clearSelection();
                         stats_redcards_tableview.getSelectionModel().clearSelection();
                     }
@@ -117,7 +108,6 @@ public class StatisticController {
                         stats_goals_tableview.getSelectionModel().clearSelection();
                         stats_match_tableview.getSelectionModel().clearSelection();
                         stats_mofm_tableview.getSelectionModel().clearSelection();
-                        stats_trainings_tableview.getSelectionModel().clearSelection();
                         stats_yellowcards_tableview.getSelectionModel().clearSelection();
                         stats_redcards_tableview.getSelectionModel().clearSelection();
                     }
@@ -131,27 +121,10 @@ public class StatisticController {
                         stats_goals_tableview.getSelectionModel().clearSelection();
                         stats_match_tableview.getSelectionModel().clearSelection();
                         stats_assists_tableview.getSelectionModel().clearSelection();
-                        stats_trainings_tableview.getSelectionModel().clearSelection();
                         stats_yellowcards_tableview.getSelectionModel().clearSelection();
                         stats_redcards_tableview.getSelectionModel().clearSelection();
                     }
                 });
-
-        stats_trainings_tableview
-                .getSelectionModel()
-                .selectedItemProperty()
-                .addListener((observable, oldValue, newValue) -> {
-                    if (newValue != null) {
-                        selectedItem = newValue;
-                        stats_goals_tableview.getSelectionModel().clearSelection();
-                        stats_match_tableview.getSelectionModel().clearSelection();
-                        stats_assists_tableview.getSelectionModel().clearSelection();
-                        stats_mofm_tableview.getSelectionModel().clearSelection();
-                        stats_yellowcards_tableview.getSelectionModel().clearSelection();
-                        stats_redcards_tableview.getSelectionModel().clearSelection();
-                    }
-                });
-
 
         stats_yellowcards_tableview
                 .getSelectionModel()
@@ -163,7 +136,6 @@ public class StatisticController {
                         stats_match_tableview.getSelectionModel().clearSelection();
                         stats_assists_tableview.getSelectionModel().clearSelection();
                         stats_mofm_tableview.getSelectionModel().clearSelection();
-                        stats_trainings_tableview.getSelectionModel().clearSelection();
                         stats_redcards_tableview.getSelectionModel().clearSelection();
                     }
 
@@ -178,7 +150,6 @@ public class StatisticController {
                         stats_match_tableview.getSelectionModel().clearSelection();
                         stats_assists_tableview.getSelectionModel().clearSelection();
                         stats_mofm_tableview.getSelectionModel().clearSelection();
-                        stats_trainings_tableview.getSelectionModel().clearSelection();
                         stats_yellowcards_tableview.getSelectionModel().clearSelection();
                     }
 
@@ -199,8 +170,6 @@ public class StatisticController {
         stats_assists_amount_tablecolumn.setCellValueFactory(new PropertyValueFactory<>("assists"));
         stats_mofm_tablecolumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         stats_mofm_amount_tablecolumn.setCellValueFactory(new PropertyValueFactory<>("motm"));
-        stats_trainings_tablecolumn.setCellValueFactory(new PropertyValueFactory<>("name"));
-        stats_trainings_amount_tablecolumn.setCellValueFactory(new PropertyValueFactory<>("attendedTrainings"));
     }
 
     private void loadDataFromDB() {
@@ -275,22 +244,6 @@ public class StatisticController {
             System.out.println("--- Problems with loading 'Man Of The Match' ---");
         }
 
-        // Tager data fra "attendedTrainings" og sætter det op i Descending order."
-        try {
-            PreparedStatement statement = conn.prepareStatement("SELECT * FROM players ORDER BY attendedTrainings DESC, name ASC LIMIT 5");
-            ResultSet rs = statement.executeQuery();
-
-            while (rs.next()) {
-                trainingsData.add(new Player(rs.getString("name"), rs.getString("address"), rs.getInt("phone"),
-                        rs.getString("mail"), rs.getString("iceName"), rs.getInt("iceTelephone"),
-                        rs.getString("position"),  rs.getInt("health"), rs.getString("birthday"),
-                        rs.getInt("yellowCards"), rs.getInt("redCards"), rs.getInt("goalScored"),
-                        rs.getInt("assist"), rs.getInt("motm"), rs.getInt("attendedMatches"),
-                        rs.getInt("attendedTrainings"), rs.getInt("player_id")));
-            }
-        } catch (SQLException e) {
-            System.out.println("--- Problems with loading 'Antal Træninger' ---");
-        }
 
         // Tager data fra "yellowCards" og sætter det op i Descending order."
         try {
@@ -331,7 +284,6 @@ public class StatisticController {
         stats_match_tableview.setItems(matchData);
         stats_assists_tableview.setItems(assistsData);
         stats_mofm_tableview.setItems(motmData);
-        stats_trainings_tableview.setItems(trainingsData);
         stats_yellowcards_tableview.setItems(yellowData);
         stats_redcards_tableview.setItems(redData);
 

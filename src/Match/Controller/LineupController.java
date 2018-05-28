@@ -60,7 +60,6 @@ public class LineupController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         final GridPane target = gridPane;
-        //ImageView source = imageView();
         final TableView<Player> source = playersTable;
 
         playerPosList = new ArrayList<>();
@@ -139,7 +138,6 @@ public class LineupController implements Initializable {
                     playerPosList.add(playerPos);
                     playerData.remove(player);
                     updateTable();
-
                     image.setOnMouseClicked(e-> {
                         gridPane.getChildren().remove(text);
                         gridPane.getChildren().remove(image);
